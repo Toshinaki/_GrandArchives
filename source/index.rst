@@ -7,8 +7,11 @@ Welcome to gate-of-babylon's documentation!
 ===========================================
 
 .. toctree::
-   :maxdepth: 2
+   :maxdepth: 4
    :caption: Contents:
+   :glob:
+
+   Technology&Applied-Sciences/Computing&Information-Technology/Software-Design/index
 
 
 
