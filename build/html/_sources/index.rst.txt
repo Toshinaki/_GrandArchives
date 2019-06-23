@@ -3,18 +3,34 @@
    You can adapt this file completely to your liking, but it should at least
    contain the root `toctree` directive.
 
-Welcome to gate-of-babylon's documentation!
-===========================================
+Welcome to the Gate of Babylon!
+===============================
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+    :maxdepth: 2
+    :glob:
+    :caption: Technology and Applied Sciences
+
+    Tech-*/index
 
 
+.. toctree::
+    :maxdepth: 2
+    :glob:
+    :caption: Mathematics and Logic
 
-Indices and tables
-==================
+    Math-*/index
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+.. toctree::
+    :maxdepth: 3
+    :glob:
+    :caption: Resources
+
+    Resources/index
+
+.. Indices and tables
+.. ==================
+
+.. * :ref:`genindex`
+.. * :ref:`modindex`
+.. * :ref:`search`

@@ -1,0 +1,1023 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1. 函数与极限 &mdash; gate-of-babylon  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="2. 导数与微分" href="02_导数与微分.html" />
+    <link rel="prev" title="Calculus 微积分" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> gate-of-babylon
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Technology and Applied Sciences</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/index.html">Computing and information technology</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Mathematics and Logic</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Calculus 微积分</a><ul class="current">
+<li class="toctree-l2 current"><a class="current reference internal" href="#">1. 函数与极限</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">1.1. 映射与函数</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">1.1.1. 集合</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id4">概念</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id5">表示集合的方法</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id6">集合间的关系</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id7">集合间的运算</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id8">运算法</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">1.1.2. 区间</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id10">邻域</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">1.1.3. 映射</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">1.1.4. 函数</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id13">一些特殊的函数</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id14">函数的表示方法</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id15">函数的特性</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id16">反函数, 复合函数</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id17">基本初等函数</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id18">双曲函数和反双曲函数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id19">1.2. 数列极限</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id20">1.2.1. 定义</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id21">1.2.2. 收敛数列的性质</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id22">1.3. 函数极限</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id23">1.3.1. 定义</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id24">1.3.2. 函数极限的性质</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id25">1.4. 无穷小和无穷大</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id26">1.4.1. 无穷小</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id27">1.4.2. 无穷大</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id28">1.4.3. 无穷大和无穷小的关系</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id29">1.5. 极限运算法则</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id30">1.5.1. 定理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id31">1.5.2. 四则运算</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id32">1.5.3. 复合函数</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id33">1.6. 极限存在准则</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id34">1.6.1. 夹逼定理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id35">1.6.2. 单调有界的数列必有极限</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id36">1.7. 无穷小的比较</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id37">1.7.1. 等价无穷小的性质</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#x-to-0">1.7.2. <span class="math notranslate nohighlight">\(x \to 0\)</span> 时的常见无穷小</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id38">1.8. 函数的连续性与间断点</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id39">1.8.1. 函数的连续性</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id40">1.8.2. 函数的间断点</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id41">1.9. 连续函数的运算与初等函数的连续性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id42">1.10. 闭区间上连续函数的性质</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02_导数与微分.html">2. 导数与微分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_微分中值定理与导数的应用.html">3. 微分中值定理与导数的应用</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Math-Geometry/index.html">Geometry 几何学</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Resources/index.html">Resources</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">gate-of-babylon</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Calculus 微积分</a> &raquo;</li>
+        
+      <li>1. 函数与极限</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Math-Calculus/01_函数与极限.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>1. 函数与极限<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<ul class="simple">
+<li><p>高等数学的研究对象是 <em>变量</em></p></li>
+<li><p>函数关系就是变量之间的 <em>依赖关系</em></p></li>
+<li><p>极限方法是研究变量的一种基本方法</p></li>
+</ul>
+<div class="section" id="id2">
+<h2>1.1. 映射与函数<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>1.1.1. 集合<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h4>概念<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p><strong>集合</strong> 指具有某种特定性质的事物的总体(用大写字母 <span class="math notranslate nohighlight">\(ABC\)</span> 表示)</p></li>
+<li><p>组成集合的事物称为集合的 <strong>元素</strong> (用小写字母 <span class="math notranslate nohighlight">\(abc\)</span> 表示)</p></li>
+<li><p><span class="math notranslate nohighlight">\(a\)</span> 是 <span class="math notranslate nohighlight">\(A\)</span> 的元素, 则 <span class="math notranslate nohighlight">\(a\)</span> <strong>属于</strong> <span class="math notranslate nohighlight">\(A\)</span>, 记作 <span class="math notranslate nohighlight">\(a \in A\)</span>; <span class="math notranslate nohighlight">\(a\)</span> <strong>不属于</strong> <span class="math notranslate nohighlight">\(A\)</span>, 记作 <span class="math notranslate nohighlight">\(a \notin A\)</span></p></li>
+<li><p>含有有限元素的集合称为 <strong>有限集</strong>; 否则称为 <strong>无限集</strong></p></li>
+<li><p>不含任何元素的集合称为 <strong>空集</strong>, 记作 <span class="math notranslate nohighlight">\(\emptyset\)</span></p></li>
+</ul>
+</div>
+<div class="section" id="id5">
+<h4>表示集合的方法<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>列举法
+<span class="math notranslate nohighlight">\(A = \{a_{1}, a_{2}, ..., a_{n}\}\)</span></p></li>
+<li><p>描述法
+<span class="math notranslate nohighlight">\(M=\{x|x具有性质P\}\)</span></p></li>
+<li><p>对于数集, 在右上角标上 “*” 来表示排除 0, 标上 “+” 来表示排除 0 与负数
+-  <span class="math notranslate nohighlight">\(N\)</span> - 全体非负整数即自然数
+-  <span class="math notranslate nohighlight">\(N^{+}\)</span> - 全体正整数
+-  <span class="math notranslate nohighlight">\(Z\)</span> - 全体整数
+-  <span class="math notranslate nohighlight">\(Q\)</span> - 全体有理数
+-  <span class="math notranslate nohighlight">\(R\)</span> - 全体实数</p></li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h4>集合间的关系<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<p>设 <span class="math notranslate nohighlight">\(A\)</span>, <span class="math notranslate nohighlight">\(B\)</span> 是两个集合</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(A\)</span> 的元素都是 <span class="math notranslate nohighlight">\(B\)</span> 的元素, 则称 <span class="math notranslate nohighlight">\(A\)</span> 是 <span class="math notranslate nohighlight">\(B\)</span> 的 <strong>子集</strong>, 记作 <span class="math notranslate nohighlight">\(A \subset B\)</span> 或 <span class="math notranslate nohighlight">\(B \supset A\)</span> (否则 <span class="math notranslate nohighlight">\(A \not\subset B\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\(A\)</span> 与 <span class="math notranslate nohighlight">\(B\)</span> 互为子集, 即 <span class="math notranslate nohighlight">\(A \subset B\)</span> 且 <span class="math notranslate nohighlight">\(B \subset A\)</span>, 则称 <span class="math notranslate nohighlight">\(A\)</span> 与 <span class="math notranslate nohighlight">\(B\)</span> <strong>相等</strong>, 记作 <span class="math notranslate nohighlight">\(A = B\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(A \subset B\)</span> 且 <span class="math notranslate nohighlight">\(A \neq B\)</span>, 则称 <span class="math notranslate nohighlight">\(A\)</span> 是 <span class="math notranslate nohighlight">\(B\)</span> 的 <strong>真子集</strong>, 记作 <span class="math notranslate nohighlight">\(A \subsetneqq B\)</span></p></li>
+<li><p>空集是任何集合的子集 <span class="math notranslate nohighlight">\(\emptyset \subset A\)</span></p></li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h4>集合间的运算<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><dl class="simple">
+<dt><strong>并</strong></dt><dd><p>所有属于A或属于B的元素组成的集合, <span class="math notranslate nohighlight">\(A \cup B\)</span> (or)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>交</strong></dt><dd><p>所有既属于A又属于B的元素组成的集合, <span class="math notranslate nohighlight">\(A \cap B\)</span> (and)</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>差</strong></dt><dd><p>所有属于A不属于B的元素组成的集合, <span class="math notranslate nohighlight">\(A \setminus B\)</span> 或 <span class="math notranslate nohighlight">\(A - B\)</span></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>补</strong></dt><dd><p>全集中不属于 <span class="math notranslate nohighlight">\(A\)</span> 的元素, 记作 <span class="math notranslate nohighlight">\(\overline{A}\)</span> 或 <span class="math notranslate nohighlight">\(A^{C}\)</span> 或 <span class="math notranslate nohighlight">\(A'\)</span></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt><strong>直积</strong>/<strong>笛卡尔乘积</strong></dt><dd><p>所有可能的有序对组成的集合, <span class="math notranslate nohighlight">\(A \times B = \{(x,y)|x \in A, y \in B\}\)</span></p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="id8">
+<h4>运算法<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><dl class="simple">
+<dt>交换律</dt><dd><p><span class="math notranslate nohighlight">\(A \cup B = B \cup A,  A \cap B = B \cap A\)</span></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>结合律</dt><dd><p><span class="math notranslate nohighlight">\((A \cup B) \cup C = A \cup (B \cup C) = A \cup B \cup C\)</span>
+<span class="math notranslate nohighlight">\((A \cap B) \cap C = A \cap (B \cap C) = A \cap B \cap C\)</span></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>分配律</dt><dd><p><span class="math notranslate nohighlight">\((A \cap B) \cup C = (A \cup C) \cap (B \cup C)\)</span>
+<span class="math notranslate nohighlight">\((A \cup B) \cap C = (A \cap C) \cup (B \cap C)\)</span></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>对偶律(德摩根律)</dt><dd><p><span class="math notranslate nohighlight">\(\overline{(A \cap B)} = \overline{A} \cup \overline{B}, \overline{(A \cup B)} = \overline{A} \cap \overline{B} (绝对形式)\)</span>
+<span class="math notranslate nohighlight">\(A - (B \cap C) = (A - B) \cup (A - C),  A - (B \cup C) = (A - B) \cap (A - C) (相对形式)\)</span></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>吸收律</dt><dd><p><span class="math notranslate nohighlight">\((A \cap B) \cup A = A,  (A \cup B) \cap A = A\)</span></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>零律</dt><dd><p><span class="math notranslate nohighlight">\(A \cup E = E,  A \cap E = A\)</span></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>同一律</dt><dd><p><span class="math notranslate nohighlight">\(A \cup \emptyset = A,  A \cap E = A, A \cup E = E,  A \cap \emptyset = \emptyset\)</span></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>矛盾律</dt><dd><p><span class="math notranslate nohighlight">\(A \cap \overline{A} = \emptyset\)</span></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>排中律</dt><dd><p><span class="math notranslate nohighlight">\(A \cup \overline{A} = E\)</span></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>余补律</dt><dd><p><span class="math notranslate nohighlight">\(\overline{\emptyset} = E,  \overline{E} = \emptyset\)</span></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>双重否定律</dt><dd><p><span class="math notranslate nohighlight">\(\overline{(\overline{A})} = A\)</span></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>补交转换律</dt><dd><p><span class="math notranslate nohighlight">\(A - B = A \cap \overline{B}\)</span></p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id9">
+<h3>1.1.2. 区间<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<p>设 <span class="math notranslate nohighlight">\(a\)</span> 和 <span class="math notranslate nohighlight">\(b\)</span> 都是实数, 且 <span class="math notranslate nohighlight">\(a &lt; b\)</span></p>
+<ul class="simple">
+<li><p>开区间 <span class="math notranslate nohighlight">\((a, b) = |x|a &lt; x &lt; b|\)</span></p></li>
+<li><p>闭区间 <span class="math notranslate nohighlight">\([a, b] = |x|a \leqslant x \leqslant b|\)</span></p></li>
+<li><p>半开区间 <span class="math notranslate nohighlight">\([a,  b)\)</span>, <span class="math notranslate nohighlight">\((a,  b]\)</span></p></li>
+<li><p>以上区间称为 <strong>有限区间</strong>, <span class="math notranslate nohighlight">\(b-a\)</span> 称为区间长度</p></li>
+<li><p><strong>无限区间</strong> (如实数集 <span class="math notranslate nohighlight">\(R\)</span> 也可记为 <span class="math notranslate nohighlight">\((-\infty,  +\infty)\)</span>)</p></li>
+<li><p>两个闭区间的直积表示 <span class="math notranslate nohighlight">\(xOy\)</span> 平面上的矩形区域 (如 <span class="math notranslate nohighlight">\([a,b] \times [c,d] = |(x,y)|x \in [a,b], y \in [c,d]|\)</span> 即为 <span class="math notranslate nohighlight">\(xOy\)</span> 平面上的一个矩形区域, 这个区域在 <span class="math notranslate nohighlight">\(x\)</span> 轴和 <span class="math notranslate nohighlight">\(y\)</span> 轴上的投影分别为闭区间 <span class="math notranslate nohighlight">\([a,b]\)</span> 和闭区间 <span class="math notranslate nohighlight">\([c,d]\)</span>)</p></li>
+</ul>
+<div class="section" id="id10">
+<h4>邻域<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<ul>
+<li><p>以点 <span class="math notranslate nohighlight">\(a\)</span> 为中心的任何开区间称为点 <span class="math notranslate nohighlight">\(a\)</span> 的邻域, 记作 <span class="math notranslate nohighlight">\(U(a)\)</span></p></li>
+<li><p>设 <span class="math notranslate nohighlight">\(\delta\)</span> 为任一正数, 则开区间 <span class="math notranslate nohighlight">\((a-\delta,  a+\delta)\)</span> 就是点 <span class="math notranslate nohighlight">\(a\)</span> 的一个邻域; 这个邻域称为点 <span class="math notranslate nohighlight">\(a\)</span> 的 <span class="math notranslate nohighlight">\(\delta\)</span> 邻域, 记作 <span class="math notranslate nohighlight">\(U(a, \delta)\)</span>, 即与点 <span class="math notranslate nohighlight">\(a\)</span> 的距离小于 <span class="math notranslate nohighlight">\(\delta\)</span> 的一切点 <span class="math notranslate nohighlight">\(x\)</span> 的集合</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[U(a, \delta) = |x|a-\delta &lt; x &lt; a+\delta| = |x||x-a| &lt; \delta|\]</div>
+<p>点 <span class="math notranslate nohighlight">\(a\)</span> 称为邻域中心, <span class="math notranslate nohighlight">\(\delta\)</span> 称为邻域半径</p>
+</div></blockquote>
+</li>
+<li><p>去掉中心点 <span class="math notranslate nohighlight">\(a\)</span> 的 <span class="math notranslate nohighlight">\(\delta\)</span> 邻域叫做点 <span class="math notranslate nohighlight">\(a\)</span> 的去心 <span class="math notranslate nohighlight">\(\delta\)</span> 邻域, 记作 <span class="math notranslate nohighlight">\(\mathring{U}(a,\delta)=|x|0&lt;|x-a|&lt;\delta|\)</span></p></li>
+<li><p>左 <span class="math notranslate nohighlight">\(\delta\)</span> 邻域 <span class="math notranslate nohighlight">\((a-\delta,a)\)</span>, 右 <span class="math notranslate nohighlight">\(\delta\)</span> 邻域 <span class="math notranslate nohighlight">\((a,a+\delta)\)</span></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id11">
+<h3>1.1.3. 映射<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<p>设 <span class="math notranslate nohighlight">\(X\)</span>, <span class="math notranslate nohighlight">\(Y\)</span> 是两个非空集合, 如果存在一个法则 <span class="math notranslate nohighlight">\(f\)</span>, 使得对 <span class="math notranslate nohighlight">\(X\)</span> 中每个元素 <span class="math notranslate nohighlight">\(x\)</span>, 按法则 <span class="math notranslate nohighlight">\(f\)</span>, 在 <span class="math notranslate nohighlight">\(Y\)</span> 中有唯一确定的元素 <span class="math notranslate nohighlight">\(y\)</span> 与之对应, 则称 <span class="math notranslate nohighlight">\(f\)</span> 为从 <span class="math notranslate nohighlight">\(X\)</span> 到 <span class="math notranslate nohighlight">\(Y\)</span> 的 <strong>映射</strong>, 记作</p>
+<div class="math notranslate nohighlight">
+\[f:X \to Y\]</div>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(y\)</span> 称为元素 <span class="math notranslate nohighlight">\(x\)</span> (在映射:math:<cite>f</cite> 下)的 <strong>像</strong>, 并记作 <span class="math notranslate nohighlight">\(f(x)\)</span>, 即</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[y=f(x)\]</div>
+<ul class="simple">
+<li><p>元素 <span class="math notranslate nohighlight">\(x\)</span> 称为元素 <span class="math notranslate nohighlight">\(y\)</span> (在映射:math:<cite>f</cite> 下)的一个 <strong>原像</strong></p></li>
+<li><p>集合 <span class="math notranslate nohighlight">\(X\)</span> 称为映射 <span class="math notranslate nohighlight">\(f\)</span> 的 <strong>定义域</strong>, 记作 <span class="math notranslate nohighlight">\(D_{f}\)</span>, 即 <span class="math notranslate nohighlight">\(D_{f}=X\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(X\)</span> 中所有元素的像所组成的集合称为映射 <span class="math notranslate nohighlight">\(f\)</span> 的 <strong>值域</strong>, 记作 <span class="math notranslate nohighlight">\(R_{f}\)</span> 或 <span class="math notranslate nohighlight">\(f(X)\)</span>, 即</p></li>
+</ul>
+<div class="math notranslate nohighlight">
+\[R_{f} = f(X) = |f(x)|x \in X|\]</div>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>注意</p>
+<ol class="arabic simple">
+<li><p>构成一个映射必须具备三个要素: 定义域, 值域的范围, <span class="math notranslate nohighlight">\(f\)</span></p></li>
+<li><p>对于每个 <span class="math notranslate nohighlight">\(x \in X\)</span>, 元素 <span class="math notranslate nohighlight">\(x\)</span> 的像 <span class="math notranslate nohighlight">\(y\)</span> 是唯一的; 而对于每个 <span class="math notranslate nohighlight">\(y \in R\)</span>, 元素 <span class="math notranslate nohighlight">\(y\)</span> 的原像不一定是唯一的; 映射 <span class="math notranslate nohighlight">\(f\)</span> 的值域 <span class="math notranslate nohighlight">\(R_{f}\)</span> 是 <span class="math notranslate nohighlight">\(Y\)</span> 的一个子集</p></li>
+</ol>
+</div>
+<hr class="docutils" />
+<p>设 <span class="math notranslate nohighlight">\(f\)</span> 是从集合 <span class="math notranslate nohighlight">\(X\)</span> 到集合 <span class="math notranslate nohighlight">\(Y\)</span> 的映射</p>
+<ul class="simple">
+<li><dl class="simple">
+<dt>满射</dt><dd><p><span class="math notranslate nohighlight">\(R_{f} = Y\)</span></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>单射</dt><dd><p>对任意 <span class="math notranslate nohighlight">\(x_{1} \in X\)</span>, <span class="math notranslate nohighlight">\(x_{2} \in X\)</span> (<span class="math notranslate nohighlight">\(x_{1} \neq x_{2}\)</span>), <span class="math notranslate nohighlight">\(f(x_{1}) \neq f(x_{2})\)</span></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>一一映射 (<strong>双射</strong>)</dt><dd><p>映射 <span class="math notranslate nohighlight">\(f\)</span> 既是单射, 又是满射</p>
+</dd>
+</dl>
+</li>
+</ul>
+<hr class="docutils" />
+<dl>
+<dt><strong>逆映射</strong>:</dt><dd><p>设 <span class="math notranslate nohighlight">\(f\)</span> 是 <span class="math notranslate nohighlight">\(X\)</span> 到 <span class="math notranslate nohighlight">\(Y\)</span> 的映射, 则对于每个 <span class="math notranslate nohighlight">\(y \in R_{f}\)</span>, 都有唯一的 <span class="math notranslate nohighlight">\(x \in X\)</span>, 满足 <span class="math notranslate nohighlight">\(f(x)=y\)</span></p>
+<p>因此可以定义一个从 <span class="math notranslate nohighlight">\(R_{f}\)</span> 到 <span class="math notranslate nohighlight">\(X\)</span> 的新映射 <span class="math notranslate nohighlight">\(g\)</span>, 即 <span class="math notranslate nohighlight">\(g: R_{f} \to X\)</span>, <span class="math notranslate nohighlight">\(g(y) = x\)</span></p>
+<p>映射 <span class="math notranslate nohighlight">\(g\)</span> 称为 <span class="math notranslate nohighlight">\(f\)</span> 的 <strong>逆映射</strong>, 记作 <span class="math notranslate nohighlight">\(f^{-1}\)</span>, 其定义域为 <span class="math notranslate nohighlight">\(D_{f^{-1}}=R_{f}\)</span>, 值域为 <span class="math notranslate nohighlight">\(R_{f^{-1}}=X\)</span></p>
+</dd>
+<dt><strong>复合映射</strong>：</dt><dd><p>设有两个映射 <span class="math notranslate nohighlight">\(g:X \to Y_{1}\)</span>, <span class="math notranslate nohighlight">\(f:Y_{2} \to Z\)</span></p>
+<p>其中 <span class="math notranslate nohighlight">\(Y_{1} \subset Y_{2}\)</span></p>
+<p>则 <span class="math notranslate nohighlight">\(fg: X \to Z\)</span> 为从 <span class="math notranslate nohighlight">\(X\)</span> 到 <span class="math notranslate nohighlight">\(Z\)</span> 的复合映射</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id12">
+<h3>1.1.4. 函数<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<div class="math notranslate nohighlight">
+\[y = f(x), x \in D\]</div>
+<p><span class="math notranslate nohighlight">\(x\)</span> 为自变量, <span class="math notranslate nohighlight">\(y\)</span> 为因变量, <span class="math notranslate nohighlight">\(D\)</span> 为定义域, <span class="math notranslate nohighlight">\(f(x)\)</span> 的集合为值域</p>
+<ul class="simple">
+<li><p>函数是从实数集到实数集的映射, 其值域总在 <span class="math notranslate nohighlight">\(\mathbb{R}\)</span> 内,
+因此函数的构成要素为定义域和对应法则 <span class="math notranslate nohighlight">\(f\)</span></p></li>
+<li><p><strong>多值函数</strong> 对每一个 <span class="math notranslate nohighlight">\(x\)</span>, 有不止一个 <span class="math notranslate nohighlight">\(y\)</span> 与其对应
+若添加条件使对每一个 <span class="math notranslate nohighlight">\(x\)</span>, 都只有一个 <span class="math notranslate nohighlight">\(y\)</span> 与其对应,
+则这样的函数称为多值函数的 <strong>单值分支</strong></p></li>
+</ul>
+<div class="section" id="id13">
+<h4>一些特殊的函数<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
+<dl>
+<dt>符号函数 (Sign function, 简称sgn)</dt><dd><p>逻辑函数, 用以判断实数的正负号</p>
+<p><span class="math notranslate nohighlight">\(\text{sgn}(x) = \begin{cases} -1 : x &lt; 0 \\ 0, x = 0 \\ 1, x &gt; 0 \end{cases}\)</span></p>
+<img alt="../_images/Signum_function.png" src="../_images/Signum_function.png" />
+</dd>
+<dt>取整函数</dt><dd><p>一类将实数映射到相近的整数的函数</p>
+<p>常用的取整函数有 <strong>下取整函数</strong> (floor(x)) 和 <strong>上取整函数</strong> (ceil(x))</p>
+<p><a class="reference internal" href="../_images/Floor_function.png"><img alt="Floor_function" src="../_images/Floor_function.png" style="width: 300.0px; height: 300.0px;" /></a> <a class="reference internal" href="../_images/Ceiling_function.png"><img alt="Ceiling_function" src="../_images/Ceiling_function.png" style="width: 300.0px; height: 300.0px;" /></a></p>
+</dd>
+<dt>Dirichlet函数</dt><dd><p>定义在实数范围上, 值域为 <span class="math notranslate nohighlight">\([0, 1]\)</span>, 的处处不连续函数</p>
+<ol class="arabic simple">
+<li><p>自变量 <span class="math notranslate nohighlight">\(x\)</span> 为有理数时, <span class="math notranslate nohighlight">\(D(x) = 1\)</span></p></li>
+<li><p>自变量 <span class="math notranslate nohighlight">\(x\)</span> 为无理数时, <span class="math notranslate nohighlight">\(D(x) = 0\)</span></p></li>
+</ol>
+</dd>
+</dl>
+</div>
+<div class="section" id="id14">
+<h4>函数的表示方法<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
+<ul class="simple">
+<li><p>表格法</p></li>
+<li><p>图形法</p></li>
+<li><p>解析法(公式)</p></li>
+</ul>
+</div>
+<div class="section" id="id15">
+<h4>函数的特性<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
+<dl>
+<dt>有界性</dt><dd><p>若存在两个常数 <span class="math notranslate nohighlight">\(m\)</span> 和 <span class="math notranslate nohighlight">\(M\)</span>, 使函数 <span class="math notranslate nohighlight">\(y=f(x), x \in D\)</span> 满足 <span class="math notranslate nohighlight">\(m \leqslant f(x) \geq M, x \in D\)</span>,</p>
+<p>则称函数 <span class="math notranslate nohighlight">\(y=f(x)\)</span> 在 <span class="math notranslate nohighlight">\(D\)</span> 有界</p>
+<p>其中 <span class="math notranslate nohighlight">\(m\)</span> 是它的 <strong>下界</strong>, <span class="math notranslate nohighlight">\(M\)</span> 是它的 <strong>上界</strong></p>
+</dd>
+<dt>单调性</dt><dd><p>当函数 <span class="math notranslate nohighlight">\(f(x)\)</span> 的自变量在其定义区间内增大 (或减小)时, 函数值 <span class="math notranslate nohighlight">\(f(x)\)</span> 也随着增大 (或减小),</p>
+<p>则称该函数为在该区间上具有单调性</p>
+</dd>
+<dt>奇偶性</dt><dd><p>奇函数关于原点对称</p>
+<p>偶函数关于 <span class="math notranslate nohighlight">\(y\)</span> 轴对称</p>
+</dd>
+<dt>周期性</dt><dd><p>若存在非零常数 <span class="math notranslate nohighlight">\(T\)</span>, 对于定义域内的任意 <span class="math notranslate nohighlight">\(x\)</span>, 使 <span class="math notranslate nohighlight">\(f(x)=f(x+T)\)</span> 恒成立,</p>
+<p>则 <span class="math notranslate nohighlight">\(f(x)\)</span> 叫做周期函数, <span class="math notranslate nohighlight">\(T\)</span> 叫做这个函数的一个 <strong>周期</strong></p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id16">
+<h4>反函数, 复合函数<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h4>
+<dl>
+<dt>反函数</dt><dd><p>设函数 <span class="math notranslate nohighlight">\(y = f(x)\)</span> 的定义域是 <span class="math notranslate nohighlight">\(D\)</span>, 值域是 <span class="math notranslate nohighlight">\(f(D)\)</span></p>
+<p>如果对于值域 <span class="math notranslate nohighlight">\(f(D)\)</span> 中的每一个  <span class="math notranslate nohighlight">\(y\)</span>, 在 <span class="math notranslate nohighlight">\(D\)</span> 中有且只有一个 <span class="math notranslate nohighlight">\(x\)</span> 使得 <span class="math notranslate nohighlight">\(g(y)=x\)</span>,</p>
+<p>则按此对应法则得到了一个定义在 <span class="math notranslate nohighlight">\(f(D)\)</span> 上的函数, 并把该函数称为函数 <span class="math notranslate nohighlight">\(y = f(x)\)</span> 的反函数,</p>
+<p>记为 <span class="math notranslate nohighlight">\(x = f^{-1}(y), y \in f(D)\)</span></p>
+</dd>
+</dl>
+<hr class="docutils" />
+<blockquote>
+<div><p>由该定义可以很快得出函数 <span class="math notranslate nohighlight">\(f\)</span> 的定义域 <span class="math notranslate nohighlight">\(D\)</span> 和值域 <span class="math notranslate nohighlight">\(f(D)\)</span> 恰好就是反函数 <span class="math notranslate nohighlight">\(f^{-1}\)</span> 的值域和定义域,</p>
+<p>并且 <span class="math notranslate nohighlight">\(f^{-1}\)</span> 的反函数就是 <span class="math notranslate nohighlight">\(f\)</span> , 也就是说, 函数 <span class="math notranslate nohighlight">\(f\)</span> 和 <span class="math notranslate nohighlight">\(f^{-1}\)</span> 互为反函数, 即:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(g(x) = f^{-1}(x), x \in D\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(g^{-1}(x) = f(x), x \in D\)</span></p></li>
+</ul>
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><p>反函数与原函数的复合函数等于 <span class="math notranslate nohighlight">\(x\)</span>, 即 <span class="math notranslate nohighlight">\(f^{-1}(f(x)) = x, x \in D\)</span></p>
+</div></blockquote>
+<hr class="docutils" />
+<blockquote>
+<div><p>习惯上用 <span class="math notranslate nohighlight">\(x\)</span> 表示自变量, 用 <span class="math notranslate nohighlight">\(y\)</span> 表示因变量, 于是函数 <span class="math notranslate nohighlight">\(y=f(x)\)</span> 的反函数通常写成 <span class="math notranslate nohighlight">\(y=f^{-1}(x)\)</span></p>
+</div></blockquote>
+<dl>
+<dt>复合函数</dt><dd><p>设函数 <span class="math notranslate nohighlight">\(y=f(u)\)</span> 的定义域为 <span class="math notranslate nohighlight">\(D_u\)</span>, 值域为 <span class="math notranslate nohighlight">\(M_u\)</span>,</p>
+<p>函数 <span class="math notranslate nohighlight">\(u=g(x)\)</span> 的定义域为 <span class="math notranslate nohighlight">\(D_x\)</span>, 值域为 <span class="math notranslate nohighlight">\(M_x\)</span>,</p>
+<p>如果 <span class="math notranslate nohighlight">\(M_x \cap D_u \neq \emptyset\)</span>,</p>
+<p>那么对于 <span class="math notranslate nohighlight">\(M_x \cap D_u \neq \emptyset\)</span> 内的任意一个 <span class="math notranslate nohighlight">\(x\)</span> 经过 <span class="math notranslate nohighlight">\(u\)</span>, 有唯一确定的 <span class="math notranslate nohighlight">\(y\)</span> 值与之对应,</p>
+<p>则变量 <span class="math notranslate nohighlight">\(x\)</span> 与 <span class="math notranslate nohighlight">\(y\)</span> 之间通过变量 <span class="math notranslate nohighlight">\(u\)</span> 形成一种函数关系</p>
+<p>这种函数称为 <strong>复合函数</strong> (composite function),</p>
+<p>记为： <span class="math notranslate nohighlight">\(y=f[g(x)]\)</span>, 其中 <span class="math notranslate nohighlight">\(x\)</span> 为自变量,  <span class="math notranslate nohighlight">\(u\)</span> 为中间变量,  <span class="math notranslate nohighlight">\(y\)</span> 为因变量(即函数)</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id17">
+<h4>基本初等函数<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h4>
+<dl>
+<dt>幂函数</dt><dd><p><span class="math notranslate nohighlight">\(y=x^{a}\)</span></p>
+<img alt="../_images/Power_function.gif" src="../_images/Power_function.gif" />
+</dd>
+<dt>指数函数</dt><dd><p><span class="math notranslate nohighlight">\(y=a^{x} (a&gt;0且a \neq 1)\)</span></p>
+<img alt="../_images/Exponential_function.jpg" src="../_images/Exponential_function.jpg" />
+</dd>
+<dt>对数函数</dt><dd><p><span class="math notranslate nohighlight">\(y=\log_{a}x (a&gt;0且a \neq 1)\)</span></p>
+<img alt="../_images/Logarithm.jpg" src="../_images/Logarithm.jpg" />
+</dd>
+<dt>三角函数</dt><dd><p><span class="math notranslate nohighlight">\(y=\sin{x}\)</span> 等</p>
+<img alt="../_images/Trigonometric_functions.png" src="../_images/Trigonometric_functions.png" />
+</dd>
+<dt>反三角函数</dt><dd><p><span class="math notranslate nohighlight">\(y=\arcsin{x}\)</span> 等</p>
+<img alt="../_images/Inverse_trigonometric_functions.jpg" src="../_images/Inverse_trigonometric_functions.jpg" />
+</dd>
+</dl>
+<hr class="docutils" />
+<p>由基本初等函数和常数经过有限次的四则运算和有限次的函数复合步骤所构成并可用一个式子表示的函数称为 <strong>初等函数</strong></p>
+</div>
+<div class="section" id="id18">
+<h4>双曲函数和反双曲函数<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h4>
+<a class="reference internal image-reference" href="../_images/双曲函数.png"><img alt="../_images/双曲函数.png" src="../_images/双曲函数.png" style="width: 384.29999999999995px; height: 390.59999999999997px;" /></a>
+<dl>
+<dt>双曲正弦</dt><dd><p><span class="math notranslate nohighlight">\(\sinh{x} = \frac{e^{x} - e^{-x}}{2}\)</span></p>
+</dd>
+<dt>双曲余弦</dt><dd><p><span class="math notranslate nohighlight">\(\cosh{x} = \frac{e^{x} + e^{-x}}{2}\)</span></p>
+</dd>
+<dt>双曲正切</dt><dd><p><span class="math notranslate nohighlight">\(\tanh{x} = \frac{\sinh{x}}{\cosh{x}} = \frac{e^{x} - e^{-x}}{e^{x} + e^{-x}}\)</span></p>
+<img alt="../_images/双曲正切.PNG" src="../_images/双曲正切.PNG" />
+<p>公式:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\sinh{(x \pm y)} = \sinh{x}\cosh{y} \pm \cosh{x}\sinh{y}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\cosh{(x \pm y)} = \cosh{x}\cosh{y} \pm \sinh{x}\sinh{y}\)</span></p></li>
+</ul>
+</div></blockquote>
+</dd>
+<dt>反双曲正弦</dt><dd><p><span class="math notranslate nohighlight">\(y = arsh x = \ln{x+\sqrt{x^{2}+1}}\)</span></p>
+<img alt="../_images/反双曲正弦.PNG" src="../_images/反双曲正弦.PNG" />
+</dd>
+<dt>反双曲余弦</dt><dd><p><span class="math notranslate nohighlight">\(y = arsh x = \ln{x+\sqrt{x^{2}-1}}\)</span></p>
+<img alt="../_images/反双曲余弦.PNG" src="../_images/反双曲余弦.PNG" />
+</dd>
+<dt>反双曲正切</dt><dd><p><span class="math notranslate nohighlight">\(y = arth x = \frac{1}{2}\ln{\frac{1+x}{1-x}}\)</span></p>
+<img alt="../_images/反双曲正切.PNG" src="../_images/反双曲正切.PNG" />
+</dd>
+</dl>
+</div>
+</div>
+</div>
+<div class="section" id="id19">
+<h2>1.2. 数列极限<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id20">
+<h3>1.2.1. 定义<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h3>
+<p><strong>记号</strong>:</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\forall\)</span> 对于任意给定的/对于每一个</p></li>
+<li><p><span class="math notranslate nohighlight">\(\exists\)</span> 存在</p></li>
+</ul>
+</div></blockquote>
+<p><strong>定义</strong>:</p>
+<blockquote>
+<div><ul>
+<li><p>设 <span class="math notranslate nohighlight">\(\{x_n\}\)</span> 为一数列, 如果存在常数 <span class="math notranslate nohighlight">\(a\)</span>, 对于任意给定的正数 <span class="math notranslate nohighlight">\(\epsilon\)</span>, 总存在正整数 <span class="math notranslate nohighlight">\(N\)</span>, 使得当 <span class="math notranslate nohighlight">\(n &gt; N\)</span> 时, 不等式 <span class="math notranslate nohighlight">\(|x_n - a| &lt; \epsilon\)</span> 都成立,</p>
+<blockquote>
+<div><p>那么就称常数 <span class="math notranslate nohighlight">\(a\)</span> 是数列 <span class="math notranslate nohighlight">\(\{x_n\}\)</span> 的 <strong>极限</strong>, 或者称数列 <span class="math notranslate nohighlight">\(\{x_n\}\)</span> <strong>收敛于</strong> <span class="math notranslate nohighlight">\(a\)</span>, 记为</p>
+<p><span class="math notranslate nohighlight">\(\lim_{x \to \infty}x_n = a\)</span>, 或 <span class="math notranslate nohighlight">\(x_n \to a (n \to \infty)\)</span></p>
+<p>或者使用记号可以表达为: <span class="math notranslate nohighlight">\(lim_{n \to \infty}x_n = a \Leftrightarrow \forall \epsilon &gt; 0, \exists N \in \mathbb{N}, 当 n &gt; N 时, 有|x_n - a| &lt; \epsilon\)</span></p>
+</div></blockquote>
+</li>
+<li><p>如果不存在这样的常数, 就说数列 <span class="math notranslate nohighlight">\(\{x_n\}\)</span> 没有极限, 或者说其是 <strong>发散</strong> 的</p></li>
+</ul>
+<div class="admonition- admonition">
+<p class="admonition-title">例</p>
+<div class="figure align-center" id="id43">
+<a class="reference internal image-reference" href="../_images/limite_of_sequence1.png"><img alt="../_images/limite_of_sequence1.png" src="../_images/limite_of_sequence1.png" style="width: 40%;" /></a>
+<p class="caption"><span class="caption-text">数列收敛于极限 <span class="math notranslate nohighlight">\(a\)</span></span><a class="headerlink" href="#id43" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-center" id="id44">
+<a class="reference internal image-reference" href="../_images/limite_of_sequence2.png"><img alt="../_images/limite_of_sequence2.png" src="../_images/limite_of_sequence2.png" style="width: 40%;" /></a>
+<p class="caption"><span class="caption-text">对于任意 <span class="math notranslate nohighlight">\(\epsilon &gt; 0\)</span>, 总存在 <span class="math notranslate nohighlight">\(N_0\)</span>, 使得之后的所有数列值都在 <span class="math notranslate nohighlight">\((a-\epsilon, a+\epsilon)\)</span> 之间</span><a class="headerlink" href="#id44" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-center" id="id45">
+<a class="reference internal image-reference" href="../_images/limite_of_sequence3.png"><img alt="../_images/limite_of_sequence3.png" src="../_images/limite_of_sequence3.png" style="width: 40%;" /></a>
+<p class="caption"><span class="caption-text">还存在更小的 <span class="math notranslate nohighlight">\(\epsilon_1 &gt; 0\)</span> 和 <span class="math notranslate nohighlight">\(N_1\)</span>, 使得之后的所有数列值都在 <span class="math notranslate nohighlight">\((a-\epsilon_1, a+\epsilon_1)\)</span> 之间</span><a class="headerlink" href="#id45" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-center" id="id46">
+<a class="reference internal image-reference" href="../_images/limite_of_sequence2.png"><img alt="../_images/limite_of_sequence2.png" src="../_images/limite_of_sequence2.png" style="width: 40%;" /></a>
+<p class="caption"><span class="caption-text">对于任意 <span class="math notranslate nohighlight">\(\epsilon &gt; 0\)</span>, 只有有限的数列值都在 <span class="math notranslate nohighlight">\((a-\epsilon, a+\epsilon)\)</span> 之外</span><a class="headerlink" href="#id46" title="Permalink to this image">¶</a></p>
+</div>
+</div>
+</div></blockquote>
+</div>
+<div class="section" id="id21">
+<h3>1.2.2. 收敛数列的性质<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><dl>
+<dt>唯一性</dt><dd><p>如果数列收敛, 则其极限唯一</p>
+<div class="admonition- admonition">
+<p class="admonition-title">证</p>
+<p>設數列  <span class="math notranslate nohighlight">\(x_n\)</span> 有兩個不相等的極限值 <span class="math notranslate nohighlight">\(a, b\)</span>,</p>
+<p>則對於 <span class="math notranslate nohighlight">\(d=|a-b|&gt;0\)</span>, 可以找到正數 <span class="math notranslate nohighlight">\(N\)</span>, 使  <span class="math notranslate nohighlight">\(n &gt; N\)</span> 時, 恆有</p>
+<p><span class="math notranslate nohighlight">\(|x_n - a| &lt; \frac{d}{2}\)</span>, <span class="math notranslate nohighlight">\(|x_n - b| &lt; \frac{d}{2}\)</span></p>
+<p>從而 <span class="math notranslate nohighlight">\(|a - b| = |(x_n - a) - (x_n - b)| \leqslant |x_n - a| + |x_n - b| &lt; d\)</span></p>
+<p>這與假設 <span class="math notranslate nohighlight">\(d=|a-b|\)</span> 不可能有兩個不相等的極限值</p>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>有界性</dt><dd><p>如果数列收敛, 则其一定有界</p>
+</dd>
+</dl>
+</li>
+<li><p>保号性</p></li>
+<li><p>如果数列有极限, 则其任意子数列也有同样的极限</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="id22">
+<h2>1.3. 函数极限<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id23">
+<h3>1.3.1. 定义<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h3>
+<p>两种情况:</p>
+<ol class="arabic">
+<li><dl>
+<dt>自变量 <span class="math notranslate nohighlight">\(x\)</span> 任意地接近于有限值 <span class="math notranslate nohighlight">\(x_0\)</span> (记作 <span class="math notranslate nohighlight">\(x \to x_0\)</span>)时, 对应的函数值 <span class="math notranslate nohighlight">\(f(x)\)</span> 的变化</dt><dd><p>设函数 <span class="math notranslate nohighlight">\(f(x)\)</span> 在点 <span class="math notranslate nohighlight">\(x_0\)</span> 的某一去心邻域内有定义.</p>
+<p>如果存在常数 <span class="math notranslate nohighlight">\(A\)</span>, 对于任意给定的正数 <span class="math notranslate nohighlight">\(\epsilon\)</span>, 总存在正数 <span class="math notranslate nohighlight">\(\delta\)</span>, 使得当 <span class="math notranslate nohighlight">\(x\)</span> 满足不等式 <span class="math notranslate nohighlight">\(0 &lt; |x - x_0| &lt; \delta\)</span> 时, 对应的函数值 <span class="math notranslate nohighlight">\(f(x)\)</span> 都满足不等式 <span class="math notranslate nohighlight">\(|f(x) - A| &lt; \epsilon\)</span>,</p>
+<p>那么常数 <span class="math notranslate nohighlight">\(A\)</span> 就叫做函数 <span class="math notranslate nohighlight">\(f(x)\)</span> 当 <span class="math notranslate nohighlight">\(x \to x_0\)</span> 时的极限, 记作</p>
+<p><span class="math notranslate nohighlight">\(\lim_{x \to x_0}f(x) = A\)</span> 或 <span class="math notranslate nohighlight">\(f(x) \to A (x \to x_0)\)</span></p>
+<p>或 <span class="math notranslate nohighlight">\(\lim_{x \to x_0}f(x) = A \Leftrightarrow \forall \epsilon &gt; 0, \exists \delta &gt; 0, 当0 &lt; |x - x_0| &lt; \delta时, 有|f(x) - A| &lt; \epsilon\)</span></p>
+<a class="reference internal image-reference" href="../_images/limite_of_function.jpg"><img alt="../_images/limite_of_function.jpg" src="../_images/limite_of_function.jpg" style="width: 503.99999999999994px; height: 335.29999999999995px;" /></a>
+<dl class="simple">
+<dt>左极限和右极限</dt><dd><p>当 <span class="math notranslate nohighlight">\(x \to x_0\)</span> 时  <span class="math notranslate nohighlight">\(f(x)\)</span> 极限存在  <span class="math notranslate nohighlight">\(\Leftrightarrow\)</span> 左极限右极限存在且相等 (即  <span class="math notranslate nohighlight">\(f(x^{-}_{0}) = f(x^{+}_{0})\)</span>)</p>
+</dd>
+</dl>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><span class="math notranslate nohighlight">\(x \to \infty\)</span> 时, <span class="math notranslate nohighlight">\(f(x)\)</span> 的变化</dt><dd><div class="math notranslate nohighlight">
+\[\lim_{x \to \infty}f(x) = A \Leftrightarrow \forall \epsilon &gt; 0, \exists X &gt; 0, 当|x| &gt; X 时, 有|f(x) - A| &lt; \epsilon\]</div>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id24">
+<h3>1.3.2. 函数极限的性质<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p>唯一性</p></li>
+<li><p>局部有界性</p></li>
+<li><p>局部保号性</p></li>
+</ol>
+</div>
+</div>
+<div class="section" id="id25">
+<h2>1.4. 无穷小和无穷大<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id26">
+<h3>1.4.1. 无穷小<a class="headerlink" href="#id26" title="Permalink to this headline">¶</a></h3>
+<p>如果函数 <span class="math notranslate nohighlight">\(f(x)\)</span> 当 <span class="math notranslate nohighlight">\(x \to x_0\)</span> (或 <span class="math notranslate nohighlight">\(x \to \infty\)</span>)时极限为零,</p>
+<p>那么称函数 <span class="math notranslate nohighlight">\(f(x)\)</span> 为当 <span class="math notranslate nohighlight">\(x \to x_0\)</span> (或 <span class="math notranslate nohighlight">\(x \to \infty\)</span>)时的无穷小</p>
+<div class="math notranslate nohighlight">
+\[\lim f(x) = 0\]</div>
+</div>
+<div class="section" id="id27">
+<h3>1.4.2. 无穷大<a class="headerlink" href="#id27" title="Permalink to this headline">¶</a></h3>
+<p>设函数 <span class="math notranslate nohighlight">\(f(x)\)</span> 在 <span class="math notranslate nohighlight">\(x_0\)</span> 的某一去心邻域内有定义.</p>
+<p>如果对于任意给定的正数 <span class="math notranslate nohighlight">\(M\)</span>, 总存在正数 <span class="math notranslate nohighlight">\(\delta\)</span> (或 <span class="math notranslate nohighlight">\(X&gt;0\)</span>),
+只要 <span class="math notranslate nohighlight">\(x\)</span> 适合不等式 <span class="math notranslate nohighlight">\(0 &lt; |x - x_0| &lt; \delta\)</span> (或 <span class="math notranslate nohighlight">\(|x| &gt; X\)</span>) 时, 对应的函数值总满足 <span class="math notranslate nohighlight">\(|f(x)| &gt; M\)</span>,</p>
+<p>则称函数 <span class="math notranslate nohighlight">\(f(x)\)</span> 为当 <span class="math notranslate nohighlight">\(x \to x_0\)</span> (或 <span class="math notranslate nohighlight">\(x \to \infty\)</span>)时的无穷大</p>
+<div class="math notranslate nohighlight">
+\[\lim f(x) = \infty\]</div>
+<ul class="simple">
+<li><p>如果 <span class="math notranslate nohighlight">\(\lim_{x \to x_0}f(x) = \infty\)</span>, 则直线 <span class="math notranslate nohighlight">\(x = x_0\)</span> 是 <span class="math notranslate nohighlight">\(f(x)\)</span> 的 <strong>铅直渐近线</strong></p></li>
+</ul>
+</div>
+<div class="section" id="id28">
+<h3>1.4.3. 无穷大和无穷小的关系<a class="headerlink" href="#id28" title="Permalink to this headline">¶</a></h3>
+<p>如果 <span class="math notranslate nohighlight">\(f(x)\)</span> 为无穷大, 则 <span class="math notranslate nohighlight">\(\frac{1}{f(x)}\)</span> 为无穷小;</p>
+<p>反之, 如果 <span class="math notranslate nohighlight">\(f(x)\)</span> 为无穷小, 且 <span class="math notranslate nohighlight">\(f(x) \neq 0\)</span>, 则 <span class="math notranslate nohighlight">\(\frac{1}{f(x)}\)</span> 为无穷大</p>
+</div>
+</div>
+<div class="section" id="id29">
+<h2>1.5. 极限运算法则<a class="headerlink" href="#id29" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id30">
+<h3>1.5.1. 定理<a class="headerlink" href="#id30" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p>无穷小和函数极限的关系</p>
+<p>当 <span class="math notranslate nohighlight">\(x \to x_0\)</span> (或 <span class="math notranslate nohighlight">\(x \to \infty\)</span>)时,
+函数 <span class="math notranslate nohighlight">\(f(x)\)</span> 具有极限 <span class="math notranslate nohighlight">\(A\)</span> 的充分必要条件是 <span class="math notranslate nohighlight">\(f(x) = A + a\)</span>,</p>
+<p>其中 <span class="math notranslate nohighlight">\(a \to 0\)</span></p>
+</li>
+<li><p>有限个无穷小的和/差也是无穷小</p>
+<p>若 <span class="math notranslate nohighlight">\(\alpha \to 0, \beta \to 0 (x \to 0)\)</span>,</p>
+<p>则 <span class="math notranslate nohighlight">\(\alpha \pm \beta \to 0\)</span></p>
+</li>
+<li><p>无穷小和有界函数的积也是无穷小</p>
+<p>若 <span class="math notranslate nohighlight">\(\alpha \to 0, |\beta| \leq M\)</span>, 则</p>
+<p><span class="math notranslate nohighlight">\(\alpha\beta \to 0\)</span></p>
+</li>
+<li><p>无穷小和常数的积也是无穷小</p>
+<blockquote>
+<div><p>若 <span class="math notranslate nohighlight">\(\alpha \to 0\)</span>, <span class="math notranslate nohighlight">\(M\)</span> 是常数,</p>
+<p>则 <span class="math notranslate nohighlight">\(M\alpha \to 0\)</span></p>
+</div></blockquote>
+</li>
+<li><p>有限个无穷小的积也是无穷小</p>
+<p>若 <span class="math notranslate nohighlight">\(\alpha \to 0, \beta \to 0 (x \to 0)\)</span>,</p>
+<p>则 <span class="math notranslate nohighlight">\(\alpha\beta \to 0\)</span></p>
+</li>
+</ol>
+</div>
+<div class="section" id="id31">
+<h3>1.5.2. 四则运算<a class="headerlink" href="#id31" title="Permalink to this headline">¶</a></h3>
+<p>设 <span class="math notranslate nohighlight">\(\lim f(x) = A, \lim g(x) = B\)</span>, 则</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\lim(f(x) \pm g(x)) = A \pm B\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\lim(f(x)g(x)) = AB\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\lim \frac{f(x)}{g(x)} = \frac{A}{B}(B \neq 0)\)</span></p></li>
+</ol>
+<ul>
+<li><p>若 <span class="math notranslate nohighlight">\(P(x) = a_0 + a_1x + ... + a_nx^n\)</span>,</p>
+<p>则 <span class="math notranslate nohighlight">\(\lim_{x \to a}P(x) = P(a)\)</span></p>
+</li>
+<li><p>若 <span class="math notranslate nohighlight">\(P(x) = a_nx^n + ... + a_1x + a_0, Q(x) = b_mx^m + ... + b_1x + b_0 (b_m \neq 0)\)</span>,</p>
+<p>则 <span class="math notranslate nohighlight">\(\lim_{x \to \infty}\frac{P(x)}{Q(x)} = \begin{cases} \frac{a_n}{b_m}, &amp; m = n \\ 0, &amp; m &gt; n \\ \infty, &amp; m &lt; n \end{cases}\)</span></p>
+</li>
+</ul>
+</div>
+<div class="section" id="id32">
+<h3>1.5.3. 复合函数<a class="headerlink" href="#id32" title="Permalink to this headline">¶</a></h3>
+<p>若 <span class="math notranslate nohighlight">\(y = f(u), u = g(x) (g(x) \neq a)\)</span>, 其复合函数为 <span class="math notranslate nohighlight">\(f(g(x))\)</span>, 且 <span class="math notranslate nohighlight">\(\lim_{x \to x_0}g(x) = a, \lim_{u \to a}f(u) = A\)</span>,</p>
+<p>则 <span class="math notranslate nohighlight">\(\lim_{x \to x_0}f(g(x)) = A\)</span></p>
+</div>
+</div>
+<div class="section" id="id33">
+<h2>1.6. 极限存在准则<a class="headerlink" href="#id33" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id34">
+<h3>1.6.1. 夹逼定理<a class="headerlink" href="#id34" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>若数列 <span class="math notranslate nohighlight">\(a_n \leq b_n \leq c_n\)</span>,</p>
+<p>且 <span class="math notranslate nohighlight">\(\lim_{n \to \infty}a_n = \lim_{n \to \infty}c_n = A\)</span>,</p>
+<p>则 <span class="math notranslate nohighlight">\(\lim_{n \to \infty}b_n = A\)</span></p>
+</li>
+<li><p>若函数 <span class="math notranslate nohighlight">\(f(x) \leq g(x) \leq h(x)\)</span>,</p>
+<p>且 <span class="math notranslate nohighlight">\(\lim_{}f(x) = \lim_{}h(x) = A\)</span>,</p>
+<p>则 <span class="math notranslate nohighlight">\(\lim_{}g(x) = A\)</span></p>
+</li>
+</ul>
+<p><strong>重要极限1</strong>:</p>
+<div class="math notranslate nohighlight">
+\[\lim_{x \to 0}\frac{\sin{x}}{x} = 1\]</div>
+<img alt="../_images/重要极限12.png" src="../_images/重要极限12.png" />
+<img alt="../_images/重要极限1.png" src="../_images/重要极限1.png" />
+</div>
+<div class="section" id="id35">
+<h3>1.6.2. 单调有界的数列必有极限<a class="headerlink" href="#id35" title="Permalink to this headline">¶</a></h3>
+<p><strong>重要极限2</strong>:</p>
+<ul>
+<li><p>对数列 <span class="math notranslate nohighlight">\(a_n = (1 + \frac{1}{n})^n\)</span>,</p>
+<blockquote>
+<div><p>当 <span class="math notranslate nohighlight">\(n \to \infty\)</span> 时, <span class="math notranslate nohighlight">\(\lim_{n \to \infty}(1 + \frac{1}{n})^n = e\)</span></p>
+</div></blockquote>
+</li>
+<li><p>对函数 <span class="math notranslate nohighlight">\(f(x) = (1 + \frac{1}{x})^x\)</span>,</p>
+<blockquote>
+<div><p>当 <span class="math notranslate nohighlight">\(x \to \infty\)</span> 时, <span class="math notranslate nohighlight">\(\lim_{x \to \infty}(1 + \frac{1}{x})^x = e\)</span></p>
+</div></blockquote>
+</li>
+<li><p>对函数 <span class="math notranslate nohighlight">\(f(x) = (1 + x)^{\frac{1}{x}}\)</span>,</p>
+<blockquote>
+<div><p>当 <span class="math notranslate nohighlight">\(x \to 0\)</span> 时, <span class="math notranslate nohighlight">\(\lim_{x \to 0}(1 + x)^{\frac{1}{x}} = e\)</span></p>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id36">
+<h2>1.7. 无穷小的比较<a class="headerlink" href="#id36" title="Permalink to this headline">¶</a></h2>
+<p>无穷小的商, 反映了不同无穷小 <em>趋于零的快慢程度</em></p>
+<ul>
+<li><p>若 <span class="math notranslate nohighlight">\(\lim \frac{\beta}{\alpha} = 0\)</span>, 就说 <span class="math notranslate nohighlight">\(\beta\)</span> 是 <span class="math notranslate nohighlight">\(\alpha\)</span> 的 <strong>高阶无穷小</strong>,</p>
+<blockquote>
+<div><p>记作 <span class="math notranslate nohighlight">\(\beta = \omicron(\alpha)\)</span></p>
+</div></blockquote>
+</li>
+<li><p>若 <span class="math notranslate nohighlight">\(\lim \frac{\beta}{\alpha} = \infty\)</span>, 就说 <span class="math notranslate nohighlight">\(\beta\)</span> 是 <span class="math notranslate nohighlight">\(\alpha\)</span> 的 <strong>低阶无穷小</strong></p></li>
+<li><p>若 <span class="math notranslate nohighlight">\(\lim \frac{\beta}{\alpha} = c \neq 0\)</span>, 就说 <span class="math notranslate nohighlight">\(\beta\)</span> 是 <span class="math notranslate nohighlight">\(\alpha\)</span> 的 <strong>同阶无穷小</strong></p></li>
+<li><p>若 <span class="math notranslate nohighlight">\(\lim \frac{\beta}{\alpha^k} = c \neq 0, k &gt; 0\)</span>, 就说 <span class="math notranslate nohighlight">\(\beta\)</span> 是 <span class="math notranslate nohighlight">\(\alpha\)</span> 的 <strong>k阶无穷小</strong></p></li>
+<li><p>若 <span class="math notranslate nohighlight">\(\lim \frac{\beta}{\alpha} = 1\)</span>, 就说 <span class="math notranslate nohighlight">\(\beta\)</span> 是 <span class="math notranslate nohighlight">\(\alpha\)</span> 的 <strong>等价无穷小</strong>,</p>
+<blockquote>
+<div><p>记作 <span class="math notranslate nohighlight">\(\alpha \sim \beta\)</span></p>
+</div></blockquote>
+</li>
+</ul>
+<div class="section" id="id37">
+<h3>1.7.1. 等价无穷小的性质<a class="headerlink" href="#id37" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\alpha \sim \alpha\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\alpha \sim \beta \Rightarrow \beta \sim \alpha\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\alpha \sim \beta, \beta \sim \gamma \Rightarrow \alpha \sim \gamma\)</span></p></li>
+</ul>
+</li>
+<li><p>若 <span class="math notranslate nohighlight">\(\alpha \sim \alpha_1, \beta \sim \beta_1\)</span>,    且 <span class="math notranslate nohighlight">\(\lim \frac{\beta_1}{\alpha_1}=A\)</span>,</p>
+<p>则 <span class="math notranslate nohighlight">\(\lim \frac{\beta}{\alpha}=A\)</span></p>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\alpha \sim \beta \Leftrightarrow \beta = \alpha + \omicron(\alpha)\)</span></p></li>
+</ol>
+</div>
+<div class="section" id="x-to-0">
+<h3>1.7.2. <span class="math notranslate nohighlight">\(x \to 0\)</span> 时的常见无穷小<a class="headerlink" href="#x-to-0" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(x \sim \sin{x} \sim \tan{x} \sim \arcsin{x} \sim \arctan{x} \sim e^x-1 \sim \ln{(1+x)}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(1 - \cos{x} \sim \frac{1}{2}x^2\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((1+x)^a - 1 \sim ax\)</span></p></li>
+</ol>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>注</p>
+<ol class="arabic simple">
+<li><p>当有 <span class="math notranslate nohighlight">\(u(x)^{v(x)}\)</span> 时, 转换成 <span class="math notranslate nohighlight">\(e^{v(x)\ln{u(x)}}\)</span></p></li>
+<li><p>当有 <span class="math notranslate nohighlight">\(e^n\)</span> 时, 转换成 <span class="math notranslate nohighlight">\(e^{\Delta}-1 \sim \Delta (\Delta \to 0)\)</span></p></li>
+<li><p>当有 <span class="math notranslate nohighlight">\(\ln\)</span> 时, 转换成 <span class="math notranslate nohighlight">\(\ln{(1+\Delta)} \sim \Delta (\Delta \to 0)\)</span></p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="id38">
+<h2>1.8. 函数的连续性与间断点<a class="headerlink" href="#id38" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id39">
+<h3>1.8.1. 函数的连续性<a class="headerlink" href="#id39" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><p>若 <span class="math notranslate nohighlight">\(\lim_{x \to x_0}f(x) = f(x_0)\)</span>,</p>
+<p>则 <span class="math notranslate nohighlight">\(f(x)\)</span> 在 <span class="math notranslate nohighlight">\(x=x_0\)</span> 处 <strong>连续</strong></p>
+<p><span class="math notranslate nohighlight">\(f(x^{-}_0) = f(x^{+}_0) = f(x_0)\)</span></p>
+</li>
+<li><p>区间上的连续函数:</p>
+<ol class="arabic">
+<li><p>区间上的每一点都连续</p></li>
+<li><p>当区间为闭区间 <span class="math notranslate nohighlight">\([a,b]\)</span> 时,</p>
+<p><span class="math notranslate nohighlight">\(f(a) = f(a+0)\)</span> (左连续), <span class="math notranslate nohighlight">\(f(b) = f(b-0)\)</span> (右连续))</p>
+</li>
+</ol>
+</li>
+</ul>
+</div>
+<div class="section" id="id40">
+<h3>1.8.2. 函数的间断点<a class="headerlink" href="#id40" title="Permalink to this headline">¶</a></h3>
+<p>若 <span class="math notranslate nohighlight">\(\lim_{x \to x_0}f(x) \neq f(x_0)\)</span>, 则点 <span class="math notranslate nohighlight">\(x_0\)</span> 称为函数 <span class="math notranslate nohighlight">\(f(x)\)</span> 的间断点</p>
+<dl>
+<dt>第一类间断点</dt><dd><p>当 <span class="math notranslate nohighlight">\(f(a-0), f(a+0)\)</span> 存在</p>
+<blockquote>
+<div><ul class="simple">
+<li><p>可去间断点 <span class="math notranslate nohighlight">\(f(a-0) = f(a+0)\)</span></p></li>
+<li><p>跳跃间断点 <span class="math notranslate nohighlight">\(f(a-0) \neq f(a+0)\)</span></p></li>
+</ul>
+</div></blockquote>
+</dd>
+<dt>第二类间断点</dt><dd><p><span class="math notranslate nohighlight">\(f(a-0), f(a+0)\)</span> 至少有一个不存在</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="id41">
+<h2>1.9. 连续函数的运算与初等函数的连续性<a class="headerlink" href="#id41" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p>基本初等函数 (幂函数, 指数函数, 对数函数, 三角函数, 反三角函数) (不可拆解)</p>
+<blockquote>
+<div><p>基本初等函数在其定义域内都是连续的</p>
+</div></blockquote>
+</li>
+<li><p>初等函数 (由常数和基本初等函数经过四则运算/复合而成)</p>
+<p>初等函数在其定义区间内都是连续的</p>
+<ul>
+<li><p>若 <span class="math notranslate nohighlight">\(f(x), g(x)\)</span> 在点 <span class="math notranslate nohighlight">\(x_0\)</span> 连续,</p>
+<p>则其四则运算的结果也在 <span class="math notranslate nohighlight">\(x_0\)</span> 连续</p>
+</li>
+<li><p>若 <span class="math notranslate nohighlight">\(\lim_{u \to a}f(u) = f(a)\)</span>,</p>
+<p>即 <span class="math notranslate nohighlight">\(f(u)\)</span> 在点 <span class="math notranslate nohighlight">\(a\)</span> 连续, <span class="math notranslate nohighlight">\(\lim_{x \to x_0}g(x) = a\)</span>,</p>
+<p>则 <span class="math notranslate nohighlight">\(\lim_{x \to x_0}f(g(x)) = f(a)\)</span>, 即 <span class="math notranslate nohighlight">\(f(g(x))\)</span> 在点 <span class="math notranslate nohighlight">\(x_0\)</span> 连续</p>
+<p><span class="math notranslate nohighlight">\(\lim_{x \to x_0}f(g(x)) = f(\lim_{x \to x_0}g(x))\)</span></p>
+</li>
+</ul>
+</li>
+</ul>
+</div>
+<div class="section" id="id42">
+<h2>1.10. 闭区间上连续函数的性质<a class="headerlink" href="#id42" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
+<li><p><span class="math notranslate nohighlight">\(f(x) \in C[a,b]\)</span>, 则 <span class="math notranslate nohighlight">\(f(x)\)</span> 在 <span class="math notranslate nohighlight">\([a,b]\)</span> 上能取到 <span class="math notranslate nohighlight">\(m\)</span> 和 <span class="math notranslate nohighlight">\(M\)</span></p>
+<blockquote>
+<div><img alt="../_images/continuous1.png" src="../_images/continuous1.png" />
+<div class="figure align-center" id="id47">
+<img alt="../_images/continuous2.png" src="../_images/continuous2.png" />
+<p class="caption"><span class="caption-text">但在开区间上连续或在闭区间内有间断点时不一定有最大值最小值</span><a class="headerlink" href="#id47" title="Permalink to this image">¶</a></p>
+</div>
+</div></blockquote>
+</li>
+<li><p><span class="math notranslate nohighlight">\(f(x) \in C[a,b]\)</span>, 则 <span class="math notranslate nohighlight">\(\exists k &gt; 0\)</span>, <span class="math notranslate nohighlight">\(\forall x \in [a,b]\)</span>, 有 <span class="math notranslate nohighlight">\(|f(x)| \leq k\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(f(x) \in C[a,b]\)</span>, 且 <span class="math notranslate nohighlight">\(f(a)f(b) &lt; 0\)</span>, 则 <span class="math notranslate nohighlight">\(\exists x_0 \in (a,b)\)</span>, 使 <span class="math notranslate nohighlight">\(f(x_0) = 0\)</span> (零点定理)</p>
+<blockquote>
+<div><img alt="../_images/continuous3.png" src="../_images/continuous3.png" />
+</div></blockquote>
+</li>
+<li><p><span class="math notranslate nohighlight">\(f(x) \in C[a,b]\)</span>, 对于 <span class="math notranslate nohighlight">\(\forall \eta \in [m, M]\)</span>, 都 <span class="math notranslate nohighlight">\(\exists x_0 \in [a,b]\)</span>, 使得 <span class="math notranslate nohighlight">\(f(x_0) = \eta\)</span> (介值定理)(<span class="math notranslate nohighlight">\(m\)</span> 和 <span class="math notranslate nohighlight">\(M\)</span> 之间的值都可取到)</p>
+<blockquote>
+<div><img alt="../_images/continuous4.png" src="../_images/continuous4.png" />
+</div></blockquote>
+</li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="02_导数与微分.html" class="btn btn-neutral float-right" title="2. 导数与微分" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Calculus 微积分" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Toshinaki
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

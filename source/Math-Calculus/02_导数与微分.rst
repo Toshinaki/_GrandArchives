@@ -1,0 +1,232 @@
+
+导数与微分
+=============
+
+导数概念
+--------------
+
+(自变量发生微小变化时因变量的变化率)
+
+设函数 :math:`y = f(x)` 在点 :math:`x_0` 的某个邻域内有定义,
+当自变量 :math:`x` 在 :math:`x_0` 处取得增量 :math:`\Delta x` 时,
+相应的函数取得增量 :math:`\Delta y = f(x_0 + \Delta x) - f(x_0)`
+
+如果 :math:`\frac{\Delta y}{\Delta x}` 当 :math:`\Delta x \to 0` 时有极限,
+则称函数 :math:`y = f(x)` 在 :math:`x_0` 处 **可导**,
+并称这个极限为函数 :math:`y = f(x)` 在点 :math:`x_0` 处的导数, 记为 :math:`f'(x_0)`:
+
+.. math:: f'(x_0) = \lim_{\Delta x \to 0}\frac{\Delta y}{\Delta x} = \lim_{\Delta x \to 0}\frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x}
+
+也可记作 :math:`y'|_{x=x_0}, \frac{dy}{dx}|_{x=x_0}`,
+或 :math:`\frac{df(x)}{dx}|_{x=x_0}`
+
+-  :math:`f'(x_0) = \lim_{\Delta x \to 0}\frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x}` 也可表示为 :math:`f'(x_0) = \lim_{x \to x_0}\frac{f(x) - f(x_0)}{x - x_0}`
+-  若 :math:`f'(x_0)` 存在, 则 :math:`f(x)` 在 :math:`x_0` 处连续 (可导必然连续, 连续不一定可导)
+
+    .. image:: imgs/Derivative_continuous.png
+
+-  :math:`f'(x_0)` 存在 :math:`\Leftrightarrow` :math:`f'_{-}(x_0), f'_{+}(x_0)` 存在且相等
+
+几何意义
+~~~~~~~~~~~~~~~
+
+.. figure:: imgs/Graph_of_sliding_derivative_line.gif
+
+    :math:`x` 变化时函数 :math:`f(x) = 1 + x \sin (x^2)` (蓝色曲线) 的切线变化
+    函数的导数值就是切线的斜率, 绿色代表其值为正, 红色代表其值为负, 黑色代表值为零
+
+.. figure:: imgs/Derivative.jpg
+    :align: right
+
+当函数定义域和取值都在实数域中的时候, 导数可以表示成函数的曲线上的切线斜率
+
+如右图所示, 设 :math:`P_0` 为曲线上的一个定点, :math:`P` 为曲线上的一个动点
+
+当 :math:`P` 沿曲线逐渐趋向于点 :math:`P_0`, 并且割线 :math:`PP_0` 的极限位置 :math:`P_0T` 存在, 则称 :math:`P_0T` 为曲线在 :math:`P_0` 处的切线
+
+若曲线为函数 :math:`y=f(x)` 的图像, 那么割线 :math:`PP_0` (蓝色)的斜率为：
+
+:math:`\tan \varphi = \frac{\Delta y}{\Delta x} = \frac{f(x_0 + \Delta x)-f(x_0)}{\Delta x}`
+
+当 :math:`P_0` 处的切线 :math:`P_0T` (红色), 即 :math:`PP_0` 的极限位置存在时, 此时 :math:`\Delta x \to 0`, :math:`\varphi \to \alpha`, 则 :math:`P_0T` 的斜率 :math:`\tan \alpha` 为：
+
+:math:`\tan \alpha = \lim_{\Delta x \to 0} \tan \varphi = \lim_{\Delta x \to 0} \frac{f(x_0 + \Delta x)-f(x_0)}{\Delta x}`
+
+上式与一般定义中的导数定义完全相同, 也就是说 :math:`f'(x_0)=\tan \alpha`, 因此, 导数的几何意义即曲线 :math:`y=f(x)` 在点 :math:`P_0(x_0, f(x_0))` 处切线的斜率
+
+
+求导基本公式
+-----------------
+
+-  :math:`(x^a)' = ax^{a-1}`
+-  :math:`(a^x)' = a^x\ln{a}`; (:math:`(e^x)' = e^x`)
+-  :math:`(log_{a}x)' = \frac{1}{x\ln{a}}`;
+   (:math:`(\ln{x})' = \frac{1}{x}`)
+-  :math:`(\sin{x})' = \cos{x}`
+-  :math:`(\cos{x})' = -\sin{x}`
+-  :math:`(\tan{x})' = \sec^2{x}`
+-  :math:`(\cot{x})' = -\csc^2{x}`
+-  :math:`(\sec{x})' = \tan{x}\sec{x}`
+-  :math:`(\csc{x})' = -\cot{x}\csc{x}`
+-  :math:`(\arcsin{x})' = \frac{1}{\sqrt{1-x^2}}` (:math:`-1<x<1`)
+-  :math:`(\arccos{x})' = -\frac{1}{\sqrt{1-x^2}}` (:math:`-1<x<1`)
+-  :math:`(\arctan{x})' = \frac{1}{1+x^2}`
+-  :math:`(\text{arccot} {x})' = -\frac{1}{1+x^2}`
+
+四则求导
+~~~~~~~~~~~~
+
+-  :math:`(u(x) \pm v(x))' = u'(x) \pm v'(x)`
+-  :math:`(uv)' = u'v + uv'`
+-  :math:`(\frac{u}{v})' = \frac{u'v - uv'}{v^2}` 
+
+反函数求导
+~~~~~~~~~~~~~~~~~
+
+若函数 :math:`x = f(y)` 在区间 :math:`I_y` 内可导且 :math:`f'(y) \neq 0` (单调), 则其反函数 :math:`y = f^{-1}(x)` 在区间 :math:`I_x = \{x|x=f(y), y \in I_y\}` 内也可导, 且 
+
+.. math:: (f^{-1}(x))' = \frac{1}{f'(y)}
+
+复合函数求导
+~~~~~~~~~~~~~~~~~
+
+若 :math:`u = g(x)` 在点 :math:`x` 可导,
+而 :math:`y=f(u)` 在点 :math:`u=g(x)` 可导,
+则 :math:`y=f(g(x))` 在点 :math:`x` 可导
+
+.. math:: \frac{dy}{dx} = f'(u)g'(x)
+
+其他求导方法
+~~~~~~~~~~~~~~~~~~
+
+-  当有 :math:`y = u(x)^{v(x)}` 时,
+   转换为 :math:`y = e^{v(x)\ln{u(x)}}`,
+   求得导数为 :math:`y' = e^{v(x)\ln{u(x)}}[v'(x)\ln{u(x)} + v(x)\frac{1}{u(x)}u'(x)]`
+-  或转换为隐函数: :math:`\ln{y} = v(x)\ln{u(x)}` 再求导
+
+
+高阶导数
+--------------
+
+特殊的高阶导数
+~~~~~~~~~~~~~~~
+
+-  :math:`(\sin{x})^{(n)} = \sin{(x+\frac{n\pi}{2})}`
+-  :math:`(\cos{x})^{(n)} = \cos{(x+\frac{n\pi}{2})}`
+-  :math:`(\frac{1}{ax + b})^{(n)} = \frac{(-1)^n n! a^n}{(ax + b)^{n+1}}`
+
+Leibniz公式
+~~~~~~~~~~~~~~~
+
+:math:`(uv)^{(n)} = \Sigma_{k=0}^{n}C_n^ku^{(n-k)}v^{(k)}`
+
+高阶导数求导
+~~~~~~~~~~~~~~~
+
+- 递推
+- 公式
+
+
+隐函数及参数方程的导数
+-------------------------
+
+隐函数
+~~~~~~~~~~~~~~~~~
+
+函数的表达方法
+^^^^^^^^^^^^^^^^^^^
+
+显函数
+    自变量与因变量分别处于等号的两边
+
+隐函数
+    自变量与因变量同时处于等号的两边
+
+- 将隐函数转化为显函数叫做 **隐函数的显化**
+
+隐函数的求导
+^^^^^^^^^^^^^^^^^^^
+
+变量 :math:`x,y` 满足 :math:`F(x,y)=0`
+
+将 :math:`y` 看作 :math:`x` 的函数, 只对 :math:`x` 求导 
+
+参数方程
+~~~~~~~~~~~~~~~~~
+
+自变量与因变量都由另外的参数定义
+
+- 若 :math:`\begin{cases} x = \phi(t) \\ y = \psi(t)  \end{cases}`, :math:`\phi(t), \psi(t)` 可导且 :math:`\phi'(t) \neq 0`, 则 :math:`y` 关于 :math:`x` 的函数可导:
+
+    .. math:: \frac{dy}{dx} = \frac{\psi'(t)}{\phi'(t)}
+
+    .. admonition:: 证明
+
+        :math:`\phi'(t) = \lim_{\Delta{t} \to 0}\frac{\Delta{x}}{\Delta{t}} \neq 0`
+
+        :math:`\Delta{x}` 与 :math:`\Delta{t}` 为同阶无穷小 (☆)
+
+        :math:`\frac{dy}{dx} = \lim_{\Delta{x} \to 0}\frac{\Delta{y}}{\Delta{x}} = \lim_{\Delta{x} \to 0} \frac{ \frac{\Delta{y}}{\Delta{t}} }{ \frac{\Delta{x}}{\Delta{t}} }`
+
+        :math:`= \lim_{\Delta{t} \to 0} \frac{ \frac{\Delta{y}}{\Delta{t}} }{ \frac{\Delta{x}}{\Delta{t}} } = \frac{\psi'(t)}{\phi'(t)}`
+
+- 若 :math:`\begin{cases} x = \phi(t) \\ y = \psi(t)  \end{cases}`, :math:`\phi(t), \psi(t)` 二阶可导且 :math:`\phi'(t) \neq 0`, 则:
+
+    .. math:: \frac{d^2y}{dx^2} = \frac{d[\frac{\psi'(t)}{\phi'(t)}]}{dx} = \frac{\frac{d}{dt}[\frac{\psi'(t)}{\phi'(t)}]}{\frac{dx}{dt}} = \frac{[\frac{\psi'(t)}{\phi'(t)}]'}{\phi'(t)}
+
+
+函数的微分
+---------------
+
+定义
+    设函数 :math:`y=f(x)` 在某区间内有定义, :math:`x_0` 及 :math:`x_0+\Delta{x}` 在此区间内, 
+
+    如果增量 :math:`\Delta{y} = f(x_0+\Delta{x}) - f(x_0)` 可表示为 :math:`\Delta{y} = A\Delta{x} + o(\Delta{x})` (线性部分与 :math:`\Delta{x}` 的高阶无穷小之和)
+
+    其中 :math:`A` 是不依赖于 :math:`\Delta{x}` 的常数, 那么称函数 :math:`y=f(x)` 在点 :math:`x_0` 是 **可微** 的,
+
+    而 :math:`A\Delta{x}` 叫做函数 :math:`y=f(x)` 在点 :math:`x_0` 相应于自变量 :math:`\Delta{x}` 的 **微分** , 记作 :math:`dy`, 即 :math:`dy = A\Delta{x}` 
+
+
+- 若函数 :math:`y=f(x)` 在点 :math:`x_0` 可微, 则 :math:`\Delta{y} - dy|_{x=x_0} = o(\Delta{x})` 
+- 函数 :math:`y=f(x)` 在点 :math:`x_0` 可微 :math:`\Leftrightarrow` 函数 :math:`y=f(x)` 在点 :math:`x_0` 可导
+
+    .. admonition:: 证明
+
+        :math:`\Delta{y} = A\Delta{x} + o(\Delta{x})`
+
+        :math:`\Rightarrow \frac{\Delta{y}}{\Delta{x}} = A + \frac{o(\Delta{x})}{\Delta{x}}`
+
+        当 :math:`\Delta{x} \to 0` 时, :math:`\lim_{\Delta{x} \to 0}\frac{\Delta{y}}{\Delta{x}} = A = f'(x_0)`
+
+        反之亦然 
+
+- :math:`A = f'(x)`, 即 :math:`df(x)|_{x=x_0} = f'(x_0)dx` 
+- 若函数 :math:`y=f(x)` 处处可微, 则 :math:`dy = df(x) = f'(x)dx` 
+- 几何意义
+
+    .. image:: imgs/微分.PNG
+
+公式
+~~~~~~~~~~
+
+.. figure:: imgs/导数微分积分公式.jpg
+   :alt: 导数微分积分公式
+
+
+微分在近似计算中的应用
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:math:`\Delta{y} = dy + o(\Delta{x}) = A\Delta{x} + o(\Delta{x}) \Rightarrow`
+:math:`\Delta{y} \approx dy`, 即
+:math:`f(x_0+\Delta{x}) - f(x_0) \approx f'(x_0)\Delta{x} \Rightarrow f(x_0+\Delta{x}) \approx f(x_0) + f'(x_0)\Delta{x}`
+
+.. admonition:: 例
+
+    :math:`\sqrt{4.02} \approx ?`
+
+    令 :math:`f(x) = \sqrt{x}`, :math:`x_0=4`, :math:`\Delta{x}=0.02`, 则
+
+    :math:`f'(x) = \frac{1}{2\sqrt{x}}`, :math:`f(4) = 2`, :math:`f'(4) = \frac{1}{4}`
+
+    :math:`f(4.02) \approx f(4) + f'(4) \times 0.02`, 即 :math:`\sqrt{4.02} \approx 2 + \frac{1}{4} \times 0.02`

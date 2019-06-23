@@ -1,0 +1,736 @@
+
+函数与极限
+=============
+
+-  高等数学的研究对象是 *变量*
+-  函数关系就是变量之间的 *依赖关系*
+-  极限方法是研究变量的一种基本方法 
+
+映射与函数 
+-------------
+
+集合
+~~~~~~~~~~~
+
+概念
+^^^^^^^^^^^
+
+-  **集合** 指具有某种特定性质的事物的总体(用大写字母 :math:`ABC` 表示)
+-  组成集合的事物称为集合的 **元素** (用小写字母 :math:`abc` 表示)
+-  :math:`a` 是 :math:`A` 的元素, 则 :math:`a` **属于** :math:`A`, 记作 :math:`a \in A`; :math:`a` **不属于** :math:`A`, 记作 :math:`a \notin A`
+-  含有有限元素的集合称为 **有限集**; 否则称为 **无限集**
+-  不含任何元素的集合称为 **空集**, 记作 :math:`\emptyset`
+
+
+表示集合的方法
+^^^^^^^^^^^^^^^^
+
+-  列举法
+   :math:`A = \{a_{1}, a_{2}, ..., a_{n}\}`
+
+-  描述法
+   :math:`M=\{x|x具有性质P\}`
+
+-  对于数集, 在右上角标上 "\*" 来表示排除 0, 标上 "+" 来表示排除 0 与负数
+   -  :math:`N` - 全体非负整数即自然数
+   -  :math:`N^{+}` - 全体正整数
+   -  :math:`Z` - 全体整数
+   -  :math:`Q` - 全体有理数
+   -  :math:`R` - 全体实数
+
+
+集合间的关系
+^^^^^^^^^^^^^^^^
+
+设 :math:`A`, :math:`B` 是两个集合 
+
+- :math:`A` 的元素都是 :math:`B` 的元素, 则称 :math:`A` 是 :math:`B` 的 **子集**, 记作 :math:`A \subset B` 或 :math:`B \supset A` (否则 :math:`A \not\subset B`) 
+- :math:`A` 与 :math:`B` 互为子集, 即 :math:`A \subset B` 且 :math:`B \subset A`, 则称 :math:`A` 与 :math:`B` **相等**, 记作 :math:`A = B` 
+- :math:`A \subset B` 且 :math:`A \neq B`, 则称 :math:`A` 是 :math:`B` 的 **真子集**, 记作 :math:`A \subsetneqq B` 
+- 空集是任何集合的子集 :math:`\emptyset \subset A` 
+
+
+集合间的运算
+^^^^^^^^^^^^^^^^
+
+- **并** 
+    所有属于A或属于B的元素组成的集合, :math:`A \cup B` (or) 
+- **交** 
+    所有既属于A又属于B的元素组成的集合, :math:`A \cap B` (and) 
+- **差** 
+    所有属于A不属于B的元素组成的集合, :math:`A \setminus B` 或 :math:`A - B` 
+- **补** 
+    全集中不属于 :math:`A` 的元素, 记作 :math:`\overline{A}` 或 :math:`A^{C}` 或 :math:`A'` 
+- **直积**/**笛卡尔乘积** 
+    所有可能的有序对组成的集合, :math:`A \times B = \{(x,y)|x \in A, y \in B\}`
+
+运算法
+^^^^^^^^^^^^^^^^^
+
+- 交换律 
+    :math:`A \cup B = B \cup A,  A \cap B = B \cap A` 
+- 结合律 
+    :math:`(A \cup B) \cup C = A \cup (B \cup C) = A \cup B \cup C` 
+    :math:`(A \cap B) \cap C = A \cap (B \cap C) = A \cap B \cap C` 
+- 分配律
+    :math:`(A \cap B) \cup C = (A \cup C) \cap (B \cup C)`
+    :math:`(A \cup B) \cap C = (A \cap C) \cup (B \cap C)` 
+- 对偶律(德摩根律)
+    :math:`\overline{(A \cap B)} = \overline{A} \cup \overline{B}, \overline{(A \cup B)} = \overline{A} \cap \overline{B} (绝对形式)`
+    :math:`A - (B \cap C) = (A - B) \cup (A - C),  A - (B \cup C) = (A - B) \cap (A - C) (相对形式)`
+- 吸收律 
+    :math:`(A \cap B) \cup A = A,  (A \cup B) \cap A = A` 
+- 零律 
+    :math:`A \cup E = E,  A \cap E = A` 
+- 同一律 
+    :math:`A \cup \emptyset = A,  A \cap E = A, A \cup E = E,  A \cap \emptyset = \emptyset`
+- 矛盾律 
+    :math:`A \cap \overline{A} = \emptyset` 
+- 排中律 
+    :math:`A \cup \overline{A} = E` 
+- 余补律 
+    :math:`\overline{\emptyset} = E,  \overline{E} = \emptyset` 
+- 双重否定律 
+    :math:`\overline{(\overline{A})} = A`
+- 补交转换律 
+    :math:`A - B = A \cap \overline{B}` 
+
+
+区间
+~~~~~~~~~~
+
+设 :math:`a` 和 :math:`b` 都是实数, 且 :math:`a < b` 
+
+- 开区间 :math:`(a, b) = |x|a < x < b|` 
+- 闭区间 :math:`[a, b] = |x|a \leqslant x \leqslant b|` 
+- 半开区间 :math:`[a,  b)`, :math:`(a,  b]` 
+- 以上区间称为 **有限区间**, :math:`b-a` 称为区间长度
+- **无限区间** (如实数集 :math:`R` 也可记为 :math:`(-\infty,  +\infty)`) 
+- 两个闭区间的直积表示 :math:`xOy` 平面上的矩形区域 (如 :math:`[a,b] \times [c,d] = |(x,y)|x \in [a,b], y \in [c,d]|` 即为 :math:`xOy` 平面上的一个矩形区域, 这个区域在 :math:`x` 轴和 :math:`y` 轴上的投影分别为闭区间 :math:`[a,b]` 和闭区间 :math:`[c,d]`)
+
+邻域
+^^^^^^^^^^^
+
+- 以点 :math:`a` 为中心的任何开区间称为点 :math:`a` 的邻域, 记作 :math:`U(a)` 
+- 设 :math:`\delta` 为任一正数, 则开区间 :math:`(a-\delta,  a+\delta)` 就是点 :math:`a` 的一个邻域; 这个邻域称为点 :math:`a` 的 :math:`\delta` 邻域, 记作 :math:`U(a, \delta)`, 即与点 :math:`a` 的距离小于 :math:`\delta` 的一切点 :math:`x` 的集合
+
+    .. math:: U(a, \delta) = |x|a-\delta < x < a+\delta| = |x||x-a| < \delta|
+
+    点 :math:`a` 称为邻域中心, :math:`\delta` 称为邻域半径
+
+-  去掉中心点 :math:`a` 的 :math:`\delta` 邻域叫做点 :math:`a` 的去心 :math:`\delta` 邻域, 记作 :math:`\mathring{U}(a,\delta)=|x|0<|x-a|<\delta|`
+-  左 :math:`\delta` 邻域 :math:`(a-\delta,a)`, 右 :math:`\delta` 邻域 :math:`(a,a+\delta)`
+
+
+映射
+~~~~~~~~~~~~~~
+
+设 :math:`X`, :math:`Y` 是两个非空集合, 如果存在一个法则 :math:`f`, 使得对 :math:`X` 中每个元素 :math:`x`, 按法则 :math:`f`, 在 :math:`Y` 中有唯一确定的元素 :math:`y` 与之对应, 则称 :math:`f` 为从 :math:`X` 到 :math:`Y` 的 **映射**, 记作
+
+.. math:: f:X \to Y
+
+- :math:`y` 称为元素 :math:`x` (在映射:math:`f` 下)的 **像**, 并记作 :math:`f(x)`, 即
+
+.. math:: y=f(x)
+
+- 元素 :math:`x` 称为元素 :math:`y` (在映射:math:`f` 下)的一个 **原像**
+- 集合 :math:`X` 称为映射 :math:`f` 的 **定义域**, 记作 :math:`D_{f}`, 即 :math:`D_{f}=X` 
+- :math:`X` 中所有元素的像所组成的集合称为映射 :math:`f` 的 **值域**, 记作 :math:`R_{f}` 或 :math:`f(X)`, 即
+
+.. math:: R_{f} = f(X) = |f(x)|x \in X|
+
+.. note:: 注意
+
+   1. 构成一个映射必须具备三个要素: 定义域, 值域的范围, :math:`f` 
+   2. 对于每个 :math:`x \in X`, 元素 :math:`x` 的像 :math:`y` 是唯一的; 而对于每个 :math:`y \in R`, 元素 :math:`y` 的原像不一定是唯一的; 映射 :math:`f` 的值域 :math:`R_{f}` 是 :math:`Y` 的一个子集 
+
+-------------
+
+设 :math:`f` 是从集合 :math:`X` 到集合 :math:`Y` 的映射 
+
+- 满射
+    :math:`R_{f} = Y` 
+- 单射
+    对任意 :math:`x_{1} \in X`, :math:`x_{2} \in X` (:math:`x_{1} \neq x_{2}`), :math:`f(x_{1}) \neq f(x_{2})` 
+- 一一映射 (**双射**)
+    映射 :math:`f` 既是单射, 又是满射 
+    
+-------------
+
+**逆映射**:
+    设 :math:`f` 是 :math:`X` 到 :math:`Y` 的映射, 则对于每个 :math:`y \in R_{f}`, 都有唯一的 :math:`x \in X`, 满足 :math:`f(x)=y`
+    
+    因此可以定义一个从 :math:`R_{f}` 到 :math:`X` 的新映射 :math:`g`, 即 :math:`g: R_{f} \to X`, :math:`g(y) = x` 
+
+    映射 :math:`g` 称为 :math:`f` 的 **逆映射**, 记作 :math:`f^{-1}`, 其定义域为 :math:`D_{f^{-1}}=R_{f}`, 值域为 :math:`R_{f^{-1}}=X`
+
+**复合映射**： 
+    设有两个映射 :math:`g:X \to Y_{1}`, :math:`f:Y_{2} \to Z` 
+    
+    其中 :math:`Y_{1} \subset Y_{2}` 
+    
+    则 :math:`fg: X \to Z` 为从 :math:`X` 到 :math:`Z` 的复合映射
+
+
+函数
+~~~~~~~~~
+
+.. math:: y = f(x), x \in D
+
+:math:`x` 为自变量, :math:`y` 为因变量, :math:`D` 为定义域, :math:`f(x)` 的集合为值域
+
+-  函数是从实数集到实数集的映射, 其值域总在 :math:`\mathbb{R}` 内,
+   因此函数的构成要素为定义域和对应法则 :math:`f`
+-  **多值函数** 对每一个 :math:`x`, 有不止一个 :math:`y` 与其对应
+   若添加条件使对每一个 :math:`x`, 都只有一个 :math:`y` 与其对应,
+   则这样的函数称为多值函数的 **单值分支**
+
+一些特殊的函数
+^^^^^^^^^^^^^^^^^^^^ 
+
+符号函数 (Sign function, 简称sgn)
+    逻辑函数, 用以判断实数的正负号
+    
+    :math:`\text{sgn}(x) = \begin{cases} -1 : x < 0 \\ 0, x = 0 \\ 1, x > 0 \end{cases}`
+
+    .. image:: imgs/Signum_function.png
+
+取整函数 
+    一类将实数映射到相近的整数的函数
+
+    常用的取整函数有 **下取整函数** (floor(x)) 和 **上取整函数** (ceil(x))
+
+    |Floor_function| |Ceiling_function|
+
+    .. |Floor_function| image:: imgs/Floor_function.png
+        :scale: 50 %
+
+    .. |Ceiling_function| image:: imgs/Ceiling_function.png
+        :scale: 50 %
+
+
+Dirichlet函数 
+    定义在实数范围上, 值域为 :math:`[0, 1]`, 的处处不连续函数
+
+    1. 自变量 :math:`x` 为有理数时, :math:`D(x) = 1`
+    2. 自变量 :math:`x` 为无理数时, :math:`D(x) = 0`
+
+函数的表示方法
+^^^^^^^^^^^^^^^^^^^^^^^
+
+- 表格法 
+- 图形法 
+- 解析法(公式) 
+
+函数的特性
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+有界性
+    若存在两个常数 :math:`m` 和 :math:`M`, 使函数 :math:`y=f(x), x \in D` 满足 :math:`m \leqslant f(x) \geq M, x \in D`,
+    
+    则称函数 :math:`y=f(x)` 在 :math:`D` 有界
+    
+    其中 :math:`m` 是它的 **下界**, :math:`M` 是它的 **上界**
+
+单调性
+    当函数 :math:`f(x)` 的自变量在其定义区间内增大 (或减小)时, 函数值 :math:`f(x)` 也随着增大 (或减小), 
+    
+    则称该函数为在该区间上具有单调性
+
+奇偶性
+    奇函数关于原点对称
+    
+    偶函数关于 :math:`y` 轴对称 
+
+周期性
+    若存在非零常数 :math:`T`, 对于定义域内的任意 :math:`x`, 使 :math:`f(x)=f(x+T)` 恒成立, 
+    
+    则 :math:`f(x)` 叫做周期函数, :math:`T` 叫做这个函数的一个 **周期**
+
+反函数, 复合函数
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+反函数
+    设函数 :math:`y = f(x)` 的定义域是 :math:`D`, 值域是 :math:`f(D)`
+    
+    如果对于值域 :math:`f(D)` 中的每一个  :math:`y`, 在 :math:`D` 中有且只有一个 :math:`x` 使得 :math:`g(y)=x`, 
+    
+    则按此对应法则得到了一个定义在 :math:`f(D)` 上的函数, 并把该函数称为函数 :math:`y = f(x)` 的反函数, 
+    
+    记为 :math:`x = f^{-1}(y), y \in f(D)`
+
+-------------
+
+    由该定义可以很快得出函数 :math:`f` 的定义域 :math:`D` 和值域 :math:`f(D)` 恰好就是反函数 :math:`f^{-1}` 的值域和定义域,
+    
+    并且 :math:`f^{-1}` 的反函数就是 :math:`f` , 也就是说, 函数 :math:`f` 和 :math:`f^{-1}` 互为反函数, 即:
+
+    - :math:`g(x) = f^{-1}(x), x \in D`
+    - :math:`g^{-1}(x) = f(x), x \in D`
+
+-------------
+
+    反函数与原函数的复合函数等于 :math:`x`, 即 :math:`f^{-1}(f(x)) = x, x \in D`
+
+-------------
+
+    习惯上用 :math:`x` 表示自变量, 用 :math:`y` 表示因变量, 于是函数 :math:`y=f(x)` 的反函数通常写成 :math:`y=f^{-1}(x)` 
+
+复合函数
+    设函数 :math:`y=f(u)` 的定义域为 :math:`D_u`, 值域为 :math:`M_u`, 
+    
+    函数 :math:`u=g(x)` 的定义域为 :math:`D_x`, 值域为 :math:`M_x`, 
+    
+    如果 :math:`M_x \cap D_u \neq \emptyset`, 
+    
+    那么对于 :math:`M_x \cap D_u \neq \emptyset` 内的任意一个 :math:`x` 经过 :math:`u`, 有唯一确定的 :math:`y` 值与之对应,
+    
+    则变量 :math:`x` 与 :math:`y` 之间通过变量 :math:`u` 形成一种函数关系
+    
+    这种函数称为 **复合函数** (composite function),
+    
+    记为： :math:`y=f[g(x)]`, 其中 :math:`x` 为自变量,  :math:`u` 为中间变量,  :math:`y` 为因变量(即函数)
+
+
+基本初等函数
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+幂函数
+    :math:`y=x^{a}` 
+    
+    .. image:: imgs/Power_function.gif
+
+指数函数
+    :math:`y=a^{x} (a>0且a \neq 1)` 
+    
+    .. image:: imgs/Exponential_function.jpg
+
+对数函数
+    :math:`y=\log_{a}x (a>0且a \neq 1)` 
+    
+    .. image:: imgs/Logarithm.jpg
+三角函数
+    :math:`y=\sin{x}` 等 
+
+    .. image:: imgs/Trigonometric_functions.png
+反三角函数
+    :math:`y=\arcsin{x}` 等
+
+    .. image:: imgs/Inverse_trigonometric_functions.jpg
+
+-------------
+
+
+
+由基本初等函数和常数经过有限次的四则运算和有限次的函数复合步骤所构成并可用一个式子表示的函数称为 **初等函数**
+
+
+双曲函数和反双曲函数
+^^^^^^^^^^^^^^^^^^^^^^^
+
+.. image:: imgs/双曲函数.png
+    :scale: 70 %
+
+双曲正弦
+    :math:`\sinh{x} = \frac{e^{x} - e^{-x}}{2}`
+
+双曲余弦
+    :math:`\cosh{x} = \frac{e^{x} + e^{-x}}{2}`
+
+双曲正切
+    :math:`\tanh{x} = \frac{\sinh{x}}{\cosh{x}} = \frac{e^{x} - e^{-x}}{e^{x} + e^{-x}}`
+
+    .. image:: imgs/双曲正切.PNG
+    
+    公式: 
+
+        - :math:`\sinh{(x \pm y)} = \sinh{x}\cosh{y} \pm \cosh{x}\sinh{y}`
+        - :math:`\cosh{(x \pm y)} = \cosh{x}\cosh{y} \pm \sinh{x}\sinh{y}`
+
+反双曲正弦
+    :math:`y = arsh x = \ln{x+\sqrt{x^{2}+1}}`
+
+    .. image:: imgs/反双曲正弦.PNG
+
+反双曲余弦
+    :math:`y = arsh x = \ln{x+\sqrt{x^{2}-1}}`
+
+    .. image:: imgs/反双曲余弦.PNG
+
+反双曲正切
+    :math:`y = arth x = \frac{1}{2}\ln{\frac{1+x}{1-x}}`
+
+    .. image:: imgs/反双曲正切.PNG
+
+
+数列极限
+--------------
+
+定义
+~~~~~~~~~~~
+
+**记号**: 
+    
+    - :math:`\forall` 对于任意给定的/对于每一个 
+    - :math:`\exists` 存在
+
+**定义**: 
+
+    - 设 :math:`\{x_n\}` 为一数列, 如果存在常数 :math:`a`, 对于任意给定的正数 :math:`\epsilon`, 总存在正整数 :math:`N`, 使得当 :math:`n > N` 时, 不等式 :math:`|x_n - a| < \epsilon` 都成立,
+
+        那么就称常数 :math:`a` 是数列 :math:`\{x_n\}` 的 **极限**, 或者称数列 :math:`\{x_n\}` **收敛于** :math:`a`, 记为 
+        
+        :math:`\lim_{x \to \infty}x_n = a`, 或 :math:`x_n \to a (n \to \infty)`
+
+        或者使用记号可以表达为: :math:`lim_{n \to \infty}x_n = a \Leftrightarrow \forall \epsilon > 0, \exists N \in \mathbb{N}, 当 n > N 时, 有|x_n - a| < \epsilon`
+    
+    - 如果不存在这样的常数, 就说数列 :math:`\{x_n\}` 没有极限, 或者说其是 **发散** 的
+
+    .. admonition:: 例
+
+        .. figure:: imgs/limite_of_sequence1.png
+            :width: 40 %
+
+            数列收敛于极限 :math:`a`
+
+        .. figure:: imgs/limite_of_sequence2.png
+            :width: 40 %
+
+            对于任意 :math:`\epsilon > 0`, 总存在 :math:`N_0`, 使得之后的所有数列值都在 :math:`(a-\epsilon, a+\epsilon)` 之间
+        
+        .. figure:: imgs/limite_of_sequence3.png
+            :width: 40 %
+
+            还存在更小的 :math:`\epsilon_1 > 0` 和 :math:`N_1`, 使得之后的所有数列值都在 :math:`(a-\epsilon_1, a+\epsilon_1)` 之间
+
+        .. figure:: imgs/limite_of_sequence2.png
+            :width: 40 %
+
+            对于任意 :math:`\epsilon > 0`, 只有有限的数列值都在 :math:`(a-\epsilon, a+\epsilon)` 之外
+
+收敛数列的性质
+~~~~~~~~~~~~~~~~~~~
+
+1. 唯一性 
+    如果数列收敛, 则其极限唯一 
+
+    .. admonition:: 证
+
+        設數列  :math:`x_n` 有兩個不相等的極限值 :math:`a, b`, 
+        
+        則對於 :math:`d=|a-b|>0`, 可以找到正數 :math:`N`, 使  :math:`n > N` 時, 恆有 
+        
+        :math:`|x_n - a| < \frac{d}{2}`, :math:`|x_n - b| < \frac{d}{2}`
+
+        從而 :math:`|a - b| = |(x_n - a) - (x_n - b)| \leqslant |x_n - a| + |x_n - b| < d`
+
+        這與假設 :math:`d=|a-b|`相矛盾, 因此 :math:`x_n` 不可能有兩個不相等的極限值
+
+2. 有界性 
+    如果数列收敛, 则其一定有界 
+
+3. 保号性 
+
+4. 如果数列有极限, 则其任意子数列也有同样的极限
+
+函数极限
+-----------------
+
+定义
+~~~~~~~~~~
+
+两种情况: 
+
+1. 自变量 :math:`x` 任意地接近于有限值 :math:`x_0` (记作 :math:`x \to x_0`)时, 对应的函数值 :math:`f(x)` 的变化
+    设函数 :math:`f(x)` 在点 :math:`x_0` 的某一去心邻域内有定义.
+
+    如果存在常数 :math:`A`, 对于任意给定的正数 :math:`\epsilon`, 总存在正数 :math:`\delta`, 使得当 :math:`x` 满足不等式 :math:`0 < |x - x_0| < \delta` 时, 对应的函数值 :math:`f(x)` 都满足不等式 :math:`|f(x) - A| < \epsilon`,
+
+    那么常数 :math:`A` 就叫做函数 :math:`f(x)` 当 :math:`x \to x_0` 时的极限, 记作
+
+    :math:`\lim_{x \to x_0}f(x) = A` 或 :math:`f(x) \to A (x \to x_0)`
+    
+    或 :math:`\lim_{x \to x_0}f(x) = A \Leftrightarrow \forall \epsilon > 0, \exists \delta > 0, 当0 < |x - x_0| < \delta时, 有|f(x) - A| < \epsilon`
+
+    .. image:: imgs/limite_of_function.jpg
+        :scale: 70 %
+
+    左极限和右极限
+        当 :math:`x \to x_0` 时  :math:`f(x)` 极限存在  :math:`\Leftrightarrow` 左极限右极限存在且相等 (即  :math:`f(x^{-}_{0}) = f(x^{+}_{0})`)
+
+2. :math:`x \to \infty` 时, :math:`f(x)` 的变化
+    .. math:: \lim_{x \to \infty}f(x) = A \Leftrightarrow \forall \epsilon > 0, \exists X > 0, 当|x| > X 时, 有|f(x) - A| < \epsilon
+
+函数极限的性质
+~~~~~~~~~~~~~~~~~~~
+
+1. 唯一性 
+2. 局部有界性 
+3. 局部保号性
+
+
+无穷小和无穷大
+---------------------
+
+无穷小
+~~~~~~~~~~~~~~~~
+
+如果函数 :math:`f(x)` 当 :math:`x \to x_0` (或 :math:`x \to \infty`)时极限为零, 
+
+那么称函数 :math:`f(x)` 为当 :math:`x \to x_0` (或 :math:`x \to \infty`)时的无穷小
+
+.. math:: \lim f(x) = 0
+
+无穷大
+~~~~~~~~~~~~~~~~
+
+设函数 :math:`f(x)` 在 :math:`x_0` 的某一去心邻域内有定义.
+
+如果对于任意给定的正数 :math:`M`, 总存在正数 :math:`\delta` (或 :math:`X>0`),
+只要 :math:`x` 适合不等式 :math:`0 < |x - x_0| < \delta` (或 :math:`|x| > X`) 时, 对应的函数值总满足 :math:`|f(x)| > M`,
+
+则称函数 :math:`f(x)` 为当 :math:`x \to x_0` (或 :math:`x \to \infty`)时的无穷大
+
+.. math:: \lim f(x) = \infty
+
+- 如果 :math:`\lim_{x \to x_0}f(x) = \infty`, 则直线 :math:`x = x_0` 是 :math:`f(x)` 的 **铅直渐近线**
+
+无穷大和无穷小的关系
+~~~~~~~~~~~~~~~~~~~~~~~~
+ 
+如果 :math:`f(x)` 为无穷大, 则 :math:`\frac{1}{f(x)}` 为无穷小; 
+
+反之, 如果 :math:`f(x)` 为无穷小, 且 :math:`f(x) \neq 0`, 则 :math:`\frac{1}{f(x)}` 为无穷大
+
+
+极限运算法则
+----------------
+
+定理
+~~~~~~~~~~~~~~~~~
+
+1. 无穷小和函数极限的关系
+   
+   当 :math:`x \to x_0` (或 :math:`x \to \infty`)时,
+   函数 :math:`f(x)` 具有极限 :math:`A` 的充分必要条件是 :math:`f(x) = A + a`,
+
+   其中 :math:`a \to 0`
+
+2. 有限个无穷小的和/差也是无穷小
+   
+   若 :math:`\alpha \to 0, \beta \to 0 (x \to 0)`,
+
+   则 :math:`\alpha \pm \beta \to 0`
+
+3. 无穷小和有界函数的积也是无穷小
+
+   若 :math:`\alpha \to 0, |\beta| \leq M`, 则
+
+   :math:`\alpha\beta \to 0`
+
+4. 无穷小和常数的积也是无穷小 
+    
+    若 :math:`\alpha \to 0`, :math:`M` 是常数, 
+    
+    则 :math:`M\alpha \to 0`
+
+5. 有限个无穷小的积也是无穷小
+   
+   若 :math:`\alpha \to 0, \beta \to 0 (x \to 0)`,
+
+   则 :math:`\alpha\beta \to 0`
+
+四则运算
+~~~~~~~~~~~~
+
+设 :math:`\lim f(x) = A, \lim g(x) = B`, 则 
+
+1. :math:`\lim(f(x) \pm g(x)) = A \pm B` 
+2. :math:`\lim(f(x)g(x)) = AB` 
+3. :math:`\lim \frac{f(x)}{g(x)} = \frac{A}{B}(B \neq 0)`
+
+-  若 :math:`P(x) = a_0 + a_1x + ... + a_nx^n`,
+
+   则 :math:`\lim_{x \to a}P(x) = P(a)`
+
+-  若 :math:`P(x) = a_nx^n + ... + a_1x + a_0, Q(x) = b_mx^m + ... + b_1x + b_0 (b_m \neq 0)`,
+
+   则 :math:`\lim_{x \to \infty}\frac{P(x)}{Q(x)} = \begin{cases} \frac{a_n}{b_m}, & m = n \\ 0, & m > n \\ \infty, & m < n \end{cases}`
+
+
+复合函数
+~~~~~~~~~~~~
+
+若 :math:`y = f(u), u = g(x) (g(x) \neq a)`, 其复合函数为 :math:`f(g(x))`, 且 :math:`\lim_{x \to x_0}g(x) = a, \lim_{u \to a}f(u) = A`,
+
+则 :math:`\lim_{x \to x_0}f(g(x)) = A`
+
+
+极限存在准则
+-----------------
+
+夹逼定理
+~~~~~~~~~~~~~~~
+
+-  若数列 :math:`a_n \leq b_n \leq c_n`, 
+
+   且 :math:`\lim_{n \to \infty}a_n = \lim_{n \to \infty}c_n = A`,
+
+   则 :math:`\lim_{n \to \infty}b_n = A`
+
+-  若函数 :math:`f(x) \leq g(x) \leq h(x)`,
+
+   且 :math:`\lim_{}f(x) = \lim_{}h(x) = A`,
+
+   则 :math:`\lim_{}g(x) = A`
+
+**重要极限1**:
+
+.. math:: \lim_{x \to 0}\frac{\sin{x}}{x} = 1
+
+.. image:: imgs/重要极限12.png
+
+.. image:: imgs/重要极限1.png
+
+单调有界的数列必有极限
+~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+**重要极限2**: 
+
+- 对数列 :math:`a_n = (1 + \frac{1}{n})^n`, 
+    
+    当 :math:`n \to \infty` 时, :math:`\lim_{n \to \infty}(1 + \frac{1}{n})^n = e` 
+
+- 对函数 :math:`f(x) = (1 + \frac{1}{x})^x`, 
+
+    当 :math:`x \to \infty` 时, :math:`\lim_{x \to \infty}(1 + \frac{1}{x})^x = e` 
+
+- 对函数 :math:`f(x) = (1 + x)^{\frac{1}{x}}`,
+
+    当 :math:`x \to 0` 时, :math:`\lim_{x \to 0}(1 + x)^{\frac{1}{x}} = e`
+
+
+无穷小的比较
+---------------------
+
+无穷小的商, 反映了不同无穷小 *趋于零的快慢程度*
+
+- 若 :math:`\lim \frac{\beta}{\alpha} = 0`, 就说 :math:`\beta` 是 :math:`\alpha` 的 **高阶无穷小**,
+
+    记作 :math:`\beta = \omicron(\alpha)` 
+
+- 若 :math:`\lim \frac{\beta}{\alpha} = \infty`, 就说 :math:`\beta` 是 :math:`\alpha` 的 **低阶无穷小** 
+
+- 若 :math:`\lim \frac{\beta}{\alpha} = c \neq 0`, 就说 :math:`\beta` 是 :math:`\alpha` 的 **同阶无穷小**
+
+- 若 :math:`\lim \frac{\beta}{\alpha^k} = c \neq 0, k > 0`, 就说 :math:`\beta` 是 :math:`\alpha` 的 **k阶无穷小** 
+
+- 若 :math:`\lim \frac{\beta}{\alpha} = 1`, 就说 :math:`\beta` 是 :math:`\alpha` 的 **等价无穷小**,
+
+    记作 :math:`\alpha \sim \beta`
+
+等价无穷小的性质
+~~~~~~~~~~~~~~~~~~~~~~
+
+1. 
+   -  :math:`\alpha \sim \alpha`
+   -  :math:`\alpha \sim \beta \Rightarrow \beta \sim \alpha`
+   -  :math:`\alpha \sim \beta, \beta \sim \gamma \Rightarrow \alpha \sim \gamma`
+
+2. 若 :math:`\alpha \sim \alpha_1, \beta \sim \beta_1`,    且 :math:`\lim \frac{\beta_1}{\alpha_1}=A`,
+
+   则 :math:`\lim \frac{\beta}{\alpha}=A`
+
+3. :math:`\alpha \sim \beta \Leftrightarrow \beta = \alpha + \omicron(\alpha)`
+
+:math:`x \to 0` 时的常见无穷小
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+1. :math:`x \sim \sin{x} \sim \tan{x} \sim \arcsin{x} \sim \arctan{x} \sim e^x-1 \sim \ln{(1+x)}`
+2. :math:`1 - \cos{x} \sim \frac{1}{2}x^2`
+3. :math:`(1+x)^a - 1 \sim ax`
+
+.. note:: 注
+    
+    1. 当有 :math:`u(x)^{v(x)}` 时, 转换成 :math:`e^{v(x)\ln{u(x)}}`
+    2. 当有 :math:`e^n` 时, 转换成 :math:`e^{\Delta}-1 \sim \Delta (\Delta \to 0)` 
+    3. 当有 :math:`\ln` 时, 转换成 :math:`\ln{(1+\Delta)} \sim \Delta (\Delta \to 0)`
+
+
+函数的连续性与间断点
+---------------------------
+
+函数的连续性
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+-  若 :math:`\lim_{x \to x_0}f(x) = f(x_0)`,
+
+   则 :math:`f(x)` 在 :math:`x=x_0` 处 **连续**
+
+   :math:`f(x^{-}_0) = f(x^{+}_0) = f(x_0)`
+
+-  区间上的连续函数:
+
+   1. 区间上的每一点都连续
+   2. 当区间为闭区间 :math:`[a,b]` 时,
+
+      :math:`f(a) = f(a+0)` (左连续), :math:`f(b) = f(b-0)` (右连续))
+
+函数的间断点
+~~~~~~~~~~~~~~~~~~
+
+若 :math:`\lim_{x \to x_0}f(x) \neq f(x_0)`, 则点 :math:`x_0` 称为函数 :math:`f(x)` 的间断点
+
+第一类间断点
+    当 :math:`f(a-0), f(a+0)` 存在
+
+        -  可去间断点 :math:`f(a-0) = f(a+0)`
+        -  跳跃间断点 :math:`f(a-0) \neq f(a+0)`
+
+第二类间断点
+    :math:`f(a-0), f(a+0)` 至少有一个不存在
+
+
+连续函数的运算与初等函数的连续性
+------------------------------------------
+
+-  基本初等函数 (幂函数, 指数函数, 对数函数, 三角函数, 反三角函数) (不可拆解)
+    
+    基本初等函数在其定义域内都是连续的
+
+-  初等函数 (由常数和基本初等函数经过四则运算/复合而成)
+
+   初等函数在其定义区间内都是连续的
+
+   -  若 :math:`f(x), g(x)` 在点 :math:`x_0` 连续,
+
+      则其四则运算的结果也在 :math:`x_0` 连续
+
+   -  若 :math:`\lim_{u \to a}f(u) = f(a)`,
+
+      即 :math:`f(u)` 在点 :math:`a` 连续, :math:`\lim_{x \to x_0}g(x) = a`,
+
+      则 :math:`\lim_{x \to x_0}f(g(x)) = f(a)`, 即 :math:`f(g(x))` 在点 :math:`x_0` 连续
+
+      :math:`\lim_{x \to x_0}f(g(x)) = f(\lim_{x \to x_0}g(x))`
+
+闭区间上连续函数的性质
+-------------------------
+
+1. :math:`f(x) \in C[a,b]`, 则 :math:`f(x)` 在 :math:`[a,b]` 上能取到 :math:`m` 和 :math:`M`
+
+    .. image:: imgs/continuous1.png
+
+    .. figure:: imgs/continuous2.png
+        
+        但在开区间上连续或在闭区间内有间断点时不一定有最大值最小值
+
+2. :math:`f(x) \in C[a,b]`, 则 :math:`\exists k > 0`, :math:`\forall x \in [a,b]`, 有 :math:`|f(x)| \leq k`
+
+3. :math:`f(x) \in C[a,b]`, 且 :math:`f(a)f(b) < 0`, 则 :math:`\exists x_0 \in (a,b)`, 使 :math:`f(x_0) = 0` (零点定理)
+
+    .. image:: imgs/continuous3.png
+
+4. :math:`f(x) \in C[a,b]`, 对于 :math:`\forall \eta \in [m, M]`, 都 :math:`\exists x_0 \in [a,b]`, 使得 :math:`f(x_0) = \eta` (介值定理)(:math:`m` 和 :math:`M` 之间的值都可取到)
+
+    .. image:: imgs/continuous4.png

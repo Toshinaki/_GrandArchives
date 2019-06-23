@@ -1,0 +1,46 @@
+汤家凤_高数基础_同济大学第六版_上
+=====================================
+
+汤家凤 高数基础 同济大学第六版 上
+
+1.5 极限运算性质, 法则
+
+.. raw:: html
+
+    <object width="480" height="385">
+        <param name="movie" value="https://drive.google.com/file/d/1WuvUhtHBn2xEsEznoiwOhcVocoHA70ai/preview"></param>
+        <param name="allowFullScreen" value="true"></param>
+        <param name="allowscriptaccess" value="always"></param>
+        <embed src="https://drive.google.com/file/d/1WuvUhtHBn2xEsEznoiwOhcVocoHA70ai/preview" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="480">
+        </embed>
+    </object>
+    
+.. raw:: html
+
+    <object width="480" height="385">
+        <param name="movie" value="https://drive.google.com/file/d/12jGnpmx8AvDktyZothvLku7jYTZO31US/preview"></param>
+        <param name="allowFullScreen" value="true"></param>
+        <param name="allowscriptaccess" value="always"></param>
+        <embed src="https://drive.google.com/file/d/12jGnpmx8AvDktyZothvLku7jYTZO31US/preview" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="480">
+        </embed>
+    </object>
+    
+.. raw:: html
+
+    <object width="480" height="385">
+        <param name="movie" value="https://drive.google.com/file/d/1X3TSZc2-ko3ClxxCd5NX5NIEE1NacQzp/preview"></param>
+        <param name="allowFullScreen" value="true"></param>
+        <param name="allowscriptaccess" value="always"></param>
+        <embed src="https://drive.google.com/file/d/1X3TSZc2-ko3ClxxCd5NX5NIEE1NacQzp/preview" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="480">
+        </embed>
+    </object>
+    
+.. raw:: html
+
+    <object width="480" height="385">
+        <param name="movie" value="https://drive.google.com/file/d/1Dzkz6408WEv3slOnWfNDdUg78cxdzAfb/preview"></param>
+        <param name="allowFullScreen" value="true"></param>
+        <param name="allowscriptaccess" value="always"></param>
+        <embed src="https://drive.google.com/file/d/1Dzkz6408WEv3slOnWfNDdUg78cxdzAfb/preview" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="480">
+        </embed>
+    </object>

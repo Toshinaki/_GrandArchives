@@ -45,6 +45,15 @@ exclude_patterns = []
 # a list of builtin themes.
 #
 html_theme = 'sphinx_rtd_theme'
+# html_theme = 't3SphinxThemeRtd'
+# import t3SphinxThemeRtd
+# html_theme_path = [t3SphinxThemeRtd.get_html_theme_path()]
+# import stanford_theme
+# html_theme = "stanford_theme"
+# html_theme_path = [stanford_theme.get_html_theme_path()]
+# html_theme = 'sphinxbootstrap4theme'
+# import sphinxbootstrap4theme
+# html_theme_path = [sphinxbootstrap4theme.get_path()]
 
 # Add any paths that contain custom static files (such as style sheets) here,
 # relative to this directory. They are copied after the builtin static files,
@@ -52,3 +61,7 @@ html_theme = 'sphinx_rtd_theme'
 html_static_path = ['_static']
 
 master_doc = 'index'
+
+html_theme_options = {
+    'navigation_depth': 7,
+}

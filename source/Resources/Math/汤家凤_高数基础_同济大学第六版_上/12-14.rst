@@ -1,0 +1,36 @@
+汤家凤_高数基础_同济大学第六版_上
+=====================================
+
+汤家凤 高数基础 同济大学第六版 上
+
+1.6 存在性质
+
+.. raw:: html
+
+    <object width="480" height="385">
+        <param name="movie" value="https://drive.google.com/file/d/1crw2kDTAoCgvNqMkznESE3lK98ePj4jX/preview"></param>
+        <param name="allowFullScreen" value="true"></param>
+        <param name="allowscriptaccess" value="always"></param>
+        <embed src="https://drive.google.com/file/d/1crw2kDTAoCgvNqMkznESE3lK98ePj4jX/preview" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="480">
+        </embed>
+    </object>
+    
+.. raw:: html
+
+    <object width="480" height="385">
+        <param name="movie" value="https://drive.google.com/file/d/1u2tEXhDtXyLs4X5Qh3f7zHLOipHq0cVR/preview"></param>
+        <param name="allowFullScreen" value="true"></param>
+        <param name="allowscriptaccess" value="always"></param>
+        <embed src="https://drive.google.com/file/d/1u2tEXhDtXyLs4X5Qh3f7zHLOipHq0cVR/preview" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="480">
+        </embed>
+    </object>
+    
+.. raw:: html
+
+    <object width="480" height="385">
+        <param name="movie" value="https://drive.google.com/file/d/1k-2i96_2mD4PvkRHtincWuSJMJQMYT87/preview"></param>
+        <param name="allowFullScreen" value="true"></param>
+        <param name="allowscriptaccess" value="always"></param>
+        <embed src="https://drive.google.com/file/d/1k-2i96_2mD4PvkRHtincWuSJMJQMYT87/preview" type="application/x-shockwave-flash" allowscriptaccess="always" allowfullscreen="true" width="640" height="480">
+        </embed>
+    </object>

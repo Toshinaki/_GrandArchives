@@ -1,0 +1,741 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>3. 微分中值定理与导数的应用 &mdash; gate-of-babylon  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Geometry 几何学" href="../Math-Geometry/index.html" />
+    <link rel="prev" title="2. 导数与微分" href="02_导数与微分.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> gate-of-babylon
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Technology and Applied Sciences</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/index.html">Computing and information technology</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Mathematics and Logic</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Calculus 微积分</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01_函数与极限.html">1. 函数与极限</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_导数与微分.html">2. 导数与微分</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">3. 微分中值定理与导数的应用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">3.1. 微分中值定理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#rolle">3.1.1. 罗尔Rolle定理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#lagrange">3.1.2. 拉格朗日Lagrange中值定理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#cauchy">3.1.3. 柯西Cauchy中值定理</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#l-hospital">3.2. 洛必达L’Hospital法则</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#taylor">3.3. 泰勒Taylor公式</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">3.3.1. 泰勒公式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">3.3.2. 常用函数的泰勒展开</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">3.4. 中值定理常见题型</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#f-n-xi-0">3.4.1. 证明<span class="math notranslate nohighlight">\(f^{(n)}(\xi) = 0\)</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#xi">3.4.2. 结论中仅有 <span class="math notranslate nohighlight">\(\xi\)</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#xi-a-b">3.4.3. 结论中有 <span class="math notranslate nohighlight">\(\xi\)</span> 和区间 <span class="math notranslate nohighlight">\(a,b\)</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#xi-eta">3.4.4. 结论中有 <span class="math notranslate nohighlight">\(\xi\)</span> 和 <span class="math notranslate nohighlight">\(\eta\)</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">3.4.5. 泰勒</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">3.5. 单调性和极值</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id8">3.5.1. 极值定义</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">3.5.2. 求极值步骤</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id10">3.5.3. 最大值与最小值</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">3.5.4. 凹凸性</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">3.5.5. 拐点</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id13">3.5.6. 常见题型</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id14">极值点判断</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id15">不等式证明</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id16">函数零点</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">3.6. 函数图像绘制</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id18">3.6.1. 步骤</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">3.6.2. 渐近线</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id20">水平渐近线</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id21">铅直渐近线</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id22">斜渐近线</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id23">3.7. 曲率</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id24">3.7.1. 弧微分</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id25">3.7.2. 曲率</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Math-Geometry/index.html">Geometry 几何学</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Resources/index.html">Resources</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">gate-of-babylon</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Calculus 微积分</a> &raquo;</li>
+        
+      <li>3. 微分中值定理与导数的应用</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Math-Calculus/03_微分中值定理与导数的应用.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>3. 微分中值定理与导数的应用<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>3.1. 微分中值定理<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(f'(a) &gt; 0\)</span> 函数图像左低右高</p></li>
+<li><p><span class="math notranslate nohighlight">\(f'(a) &lt; 0\)</span> 函数图像左高右低</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(x)\)</span> 在 <span class="math notranslate nohighlight">\(x=a\)</span> 处取极值, 则 <span class="math notranslate nohighlight">\(f'(a) = 0\)</span> 或 <span class="math notranslate nohighlight">\(f'(a)\)</span> 不存在</p></li>
+</ul>
+<div class="section" id="rolle">
+<h3>3.1.1. 罗尔Rolle定理<a class="headerlink" href="#rolle" title="Permalink to this headline">¶</a></h3>
+<dl>
+<dt>费马引理</dt><dd><p>设函数 <span class="math notranslate nohighlight">\(y=f(x)\)</span> 在点 <span class="math notranslate nohighlight">\(x_0\)</span> 的某邻域 <span class="math notranslate nohighlight">\(U(x_0)\)</span> 内有定义, 且在 <span class="math notranslate nohighlight">\(x_0\)</span> 处可导,</p>
+<p>若对任意的 <span class="math notranslate nohighlight">\(x \in U(x_0)\)</span>, 都有 <span class="math notranslate nohighlight">\(f(x) \leq f(x_0)\)</span> 或 <span class="math notranslate nohighlight">\(f(x) \geq f(x_0)\)</span>,</p>
+<p>则 <span class="math notranslate nohighlight">\(f'(x_0) = 0\)</span> (极大值或极小值)</p>
+</dd>
+<dt>罗尔定理</dt><dd><p>若函数<span class="math notranslate nohighlight">\(y=f(x)\)</span>满足</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(f(x) \in c[a,b]\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(f(x)\)</span> 在 <span class="math notranslate nohighlight">\((a,b)\)</span> 上可导</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(a) = f(b)\)</span>,</p></li>
+</ol>
+<p>则 <span class="math notranslate nohighlight">\(\exists \xi \in (a,b)\)</span> (开区间), 使得 <span class="math notranslate nohighlight">\(f'(\xi) = 0\)</span></p>
+<img alt="../_images/罗尔定理.PNG" src="../_images/罗尔定理.PNG" />
+<div class="admonition- admonition">
+<p class="admonition-title">证明</p>
+<p><span class="math notranslate nohighlight">\(f(x) \in c[a,b]\)</span> <span class="math notranslate nohighlight">\(\Rightarrow\)</span> <span class="math notranslate nohighlight">\(f(x)\)</span> 在 <span class="math notranslate nohighlight">\([a,b]\)</span> 上有 <span class="math notranslate nohighlight">\(m\)</span> 和 <span class="math notranslate nohighlight">\(M\)</span></p>
+<ol class="arabic">
+<li><p><span class="math notranslate nohighlight">\(m = M\)</span>, 则 <span class="math notranslate nohighlight">\(f(x) \equiv C_0\)</span>, <span class="math notranslate nohighlight">\(\forall \xi in (a,b), f'(\xi) = 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(m &lt; M\)</span></p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(\because f(a) = f(b)\)</span></p>
+<p><span class="math notranslate nohighlight">\(\therefore m, M\)</span> 至少有一个在 <span class="math notranslate nohighlight">\((a, b)\)</span> 内</p>
+<p>设 <span class="math notranslate nohighlight">\(\exists \xi \in (a, b)\)</span>, 使得 <span class="math notranslate nohighlight">\(f(\xi) = M\)</span> <span class="math notranslate nohighlight">\(f'(\xi) = 0\)</span> 或 <span class="math notranslate nohighlight">\(f'(\xi)\)</span> 不存在</p>
+<p><span class="math notranslate nohighlight">\(\because f(x)\)</span> 在 <span class="math notranslate nohighlight">\((a, b)\)</span> 内可导, <span class="math notranslate nohighlight">\(\therefore f'(\xi) = 0\)</span></p>
+</div></blockquote>
+</li>
+</ol>
+</div>
+</dd>
+</dl>
+</div>
+<div class="section" id="lagrange">
+<h3>3.1.2. 拉格朗日Lagrange中值定理<a class="headerlink" href="#lagrange" title="Permalink to this headline">¶</a></h3>
+<p>若函数<span class="math notranslate nohighlight">\(y=f(x)\)</span>满足</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(f(x) \in c[a,b]\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(f(x)\)</span> 在<span class="math notranslate nohighlight">\((a,b)\)</span> 上可导</p></li>
+</ol>
+<p>则 <span class="math notranslate nohighlight">\(\exists \xi \in (a,b)\)</span>, 使得 <span class="math notranslate nohighlight">\(f'(\xi) = \frac{f(b) - f(a)}{b - a}\)</span></p>
+<img alt="../_images/拉格朗日.PNG" src="../_images/拉格朗日.PNG" />
+<p><strong>等价形式</strong>:</p>
+<p><span class="math notranslate nohighlight">\(f'(\xi) = \frac{f(b) - f(a)}{b - a} \Leftrightarrow f(b) - f(a) = f'(\xi)(b - a) \Leftrightarrow f(b) - f(a) = f'[a + \theta(b - a)](b - a)\)</span></p>
+<div class="admonition- admonition">
+<p class="admonition-title">证明</p>
+<p>曲线 <span class="math notranslate nohighlight">\(L\)</span>: <span class="math notranslate nohighlight">\(y = f(x)\)</span></p>
+<p>直线 <span class="math notranslate nohighlight">\(L_{AB}\)</span>: <span class="math notranslate nohighlight">\(y - f(a) = \frac{f(b) - f(a)}{b - a}(x - a)\)</span>, 即 <span class="math notranslate nohighlight">\(y = f(a) + \frac{f(b) - f(a)}{b - a}(x - a)\)</span></p>
+<p>令 <span class="math notranslate nohighlight">\(\phi(x) = L - L_{AB} = f(x) - f(a) - \frac{f(b) - f(a)}{b - a}(x - a)\)</span></p>
+<p>可得 <span class="math notranslate nohighlight">\(\phi(a) = \phi(b) = 0\)</span>, 而 <span class="math notranslate nohighlight">\(\phi(x) \in c[a, b]\)</span>, <span class="math notranslate nohighlight">\(\phi(x)\)</span> 在 <span class="math notranslate nohighlight">\((a, b)\)</span> 可导</p>
+<p>由罗尔定理, 可得 <span class="math notranslate nohighlight">\(\exists \xi \in (a, b)\)</span>, 使得 <span class="math notranslate nohighlight">\(\phi'(\xi) = 0\)</span></p>
+<p>而 <span class="math notranslate nohighlight">\(\phi'(x) = f'(x) - \frac{f(b) - f(a)}{b - a}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\therefore f'(x) = \frac{f(b) - f(a)}{b - a}\)</span></p>
+</div>
+</div>
+<div class="section" id="cauchy">
+<h3>3.1.3. 柯西Cauchy中值定理<a class="headerlink" href="#cauchy" title="Permalink to this headline">¶</a></h3>
+<p>若函数 <span class="math notranslate nohighlight">\(f(x), F(x)\)</span> 满足
+1. <span class="math notranslate nohighlight">\(f(x), F(x) \in c[a,b]\)</span>
+2. <span class="math notranslate nohighlight">\(f(x), F(x)\)</span> 在 <span class="math notranslate nohighlight">\((a,b)\)</span> 上可导
+3. <span class="math notranslate nohighlight">\(F'(x) \neq 0 (a &lt; x &lt; b)\)</span>,</p>
+<p>则 <span class="math notranslate nohighlight">\(\exists \xi \in (a,b)\)</span>, 使得 <span class="math notranslate nohighlight">\(\frac{f(b) - f(a)}{F(b) - F(a)} = \frac{f'(\xi)}{F'(\xi)}\)</span></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>拉格朗日定理是柯西定理的特殊情况</p>
+<p>当 <span class="math notranslate nohighlight">\(F(x) = x\)</span> 时, 柯西定理可转化为拉格朗日定理</p>
+</div>
+<div class="admonition- admonition">
+<p class="admonition-title">证明</p>
+<p>借用拉格朗日定理的证明 <span class="math notranslate nohighlight">\(\phi(x) = f(x) - f(a) - \frac{f(b) - f(a)}{b - a}(x - a)\)</span></p>
+<p>令 <span class="math notranslate nohighlight">\(\phi(x) = f(x) - f(a) - \frac{f(b) - f(a)}{F(b) - F(a)}(F(x) - F(a))\)</span></p>
+<p><span class="math notranslate nohighlight">\(\phi(x) \in c[a, b]\)</span>, <span class="math notranslate nohighlight">\(\phi(x)\)</span> 在 <span class="math notranslate nohighlight">\((a, b)\)</span> 内可导</p>
+<p><span class="math notranslate nohighlight">\(\phi(a) = 0\)</span>, <span class="math notranslate nohighlight">\(\phi(b) = 0\)</span></p>
+<p><span class="math notranslate nohighlight">\(\because \phi(a) = \phi(b) = 0 \therefore \exists \xi \in (a, b)\)</span>, 使得 <span class="math notranslate nohighlight">\(\phi'(\xi) = 0\)</span></p>
+<p>而 <span class="math notranslate nohighlight">\(\phi'(x) = f'(x) - \frac{f(b) - f(a)}{F(b) - F(a)}F'(x)\)</span></p>
+<p><span class="math notranslate nohighlight">\(\therefore f'(\xi) - \frac{f(b) - f(a)}{F(b) - F(a)}F'(\xi) = 0\)</span></p>
+<p><span class="math notranslate nohighlight">\(\Rightarrow \frac{f(b) - f(a)}{F(b) - F(a)} = \frac{f'(\xi)}{F'(\xi)}\)</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="l-hospital">
+<h2>3.2. 洛必达L’Hospital法则<a class="headerlink" href="#l-hospital" title="Permalink to this headline">¶</a></h2>
+<dl>
+<dt>未定式</dt><dd><p>当 <span class="math notranslate nohighlight">\(x \to a (或x \to \infty)\)</span> 时, <span class="math notranslate nohighlight">\(f(x), F(x)\)</span> 都趋于0或无穷,</p>
+<p>则极限 <span class="math notranslate nohighlight">\(\lim_{x \to a / x \to \infty} \frac{f(x)}{F(x)}\)</span> 可能存在, 也可能不存在</p>
+<p>通常把这种极限叫做未定式, 记作 <span class="math notranslate nohighlight">\(\frac{0}{0}\)</span> 或 <span class="math notranslate nohighlight">\(\frac{\infty}{\infty}\)</span></p>
+</dd>
+</dl>
+<ol class="arabic">
+<li><p>若函数<span class="math notranslate nohighlight">\(f(x), F(x)\)</span>满足</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>当 <span class="math notranslate nohighlight">\(x \to a\)</span> 时, <span class="math notranslate nohighlight">\(f(x), F(x) \to 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(f(x), F(x)\)</span> 在 <span class="math notranslate nohighlight">\(a\)</span> 的某去心邻域内可导且 <span class="math notranslate nohighlight">\(F'(x) \neq 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\lim_{x \to a}\frac{f'(x)}{F'(x)}\)</span> 存在或为无穷大,</p></li>
+</ol>
+<p>则 <span class="math notranslate nohighlight">\(\lim_{x \to a}\frac{f(x)}{F(x)} = \lim_{x \to a}\frac{f'(x)}{F'(x)}\)</span></p>
+</div></blockquote>
+</li>
+<li><p>若函数 <span class="math notranslate nohighlight">\(f(x), F(x)\)</span> 满足</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>当 <span class="math notranslate nohighlight">\(x \to \infty\)</span> 时, <span class="math notranslate nohighlight">\(f(x), F(x) \to 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(|x| &gt; N\)</span> 时 <span class="math notranslate nohighlight">\(f(x), F(x)\)</span> 可导且 <span class="math notranslate nohighlight">\(F'(x) \neq 0\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\lim_{x \to a}\frac{f'(x)}{F'(x)}\)</span> 存在或为无穷大,</p></li>
+</ol>
+<p>则 <span class="math notranslate nohighlight">\(\lim_{x \to \infty}\frac{f(x)}{F(x)} = \lim_{x \to \infty}\frac{f'(x)}{F'(x)}\)</span></p>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="taylor">
+<h2>3.3. 泰勒Taylor公式<a class="headerlink" href="#taylor" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">在函数的某点对函数进行近似</div>
+<div class="line">通过逐阶求导, 使多项式的高次项逐渐接近原函数, 精度越来越高</div>
+<div class="line">(使初始值相同, 一阶导数即变化率相同, 二阶导数即变化率的变化率相同…)</div>
+</div>
+<div class="figure align-center" id="id26">
+<img alt="../_images/Tayloranimation.gif" src="../_images/Tayloranimation.gif" />
+<p class="caption"><span class="caption-text">对 <span class="math notranslate nohighlight">\(f(x) = \frac{1}{1 + x^2}\)</span> (蓝色) 的近似, 分别以 <span class="math notranslate nohighlight">\(x=0\)</span> (红) 和 <span class="math notranslate nohighlight">\(x=1\)</span> (绿) 为参考点</span><a class="headerlink" href="#id26" title="Permalink to this image">¶</a></p>
+</div>
+<p>所有多项式都可以写成以某个实数 <span class="math notranslate nohighlight">\(a\)</span> 为参考点的 <strong>泰勒形式</strong>: <span class="math notranslate nohighlight">\(c_0 + c_1(x-a) + c_2(x-a)^2 + ... + c_nx^n\)</span> (升幂排列)</p>
+<div class="section" id="id3">
+<h3>3.3.1. 泰勒公式<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>若函数 <span class="math notranslate nohighlight">\(y=f(x)\)</span> 在含有 <span class="math notranslate nohighlight">\(x_0\)</span> 的某个开区间 <span class="math notranslate nohighlight">\((a,b)\)</span> 内 <span class="math notranslate nohighlight">\((n+1)\)</span> 阶可导, 则有</p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(f(x) = P_n(x) + R_n(x)\)</span> (n阶泰勒公式), 其中</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P_n(x) = f(x_0) + \frac{f'(x_0)}{1!}(x - x_0) + \frac{f''(x_0)}{2!}(x - x_0)^2 + ... + \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n\)</span> (n次泰勒多项式)</p></li>
+<li><p><span class="math notranslate nohighlight">\(R_n(x) = \frac{f^{(n+1)}(\xi)}{(n + 1)!}(x - x_0)^{n + 1}, \xi \in (x_0, x)\)</span> (拉格朗日型余项) (在不需要余项的精确表达式时, 也可以写成 <span class="math notranslate nohighlight">\(o[(x - x_0)^n]\)</span>, 叫做皮亚诺Peano型余项)</p></li>
+</ul>
+</div></blockquote>
+</li>
+<li><p>当 <span class="math notranslate nohighlight">\(x_0 = 0\)</span> 时</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(P_n(x) = f(0) + \frac{f'(0)}{1!}(x) + \frac{f''(0)}{2!}(x)^2 + ... + \frac{f^{(n)}(0)}{n!}(x)^n\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(R_n(x) = \frac{f^{(n+1)}(\xi)}{(n + 1)!}(x)^{n + 1}, \xi \in (x_0, x)\)</span> 或 <span class="math notranslate nohighlight">\(o(x^n)\)</span></p></li>
+<li><p>此时 <span class="math notranslate nohighlight">\(f(x) = P_n(x) + R_n(x)\)</span> 叫做麦克劳林Maclaurin公式</p></li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="id4">
+<h3>3.3.2. 常用函数的泰勒展开<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(e^x = 1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+...+\frac{x^n}{n!}+o(x^n)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\sin{x} = x-\frac{x^3}{3!}+\frac{x^5}{5!}-...+\frac{(-1)^{n}}{(2n+1)!}(x^{2n+1})+o(x^{2n+1})\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\cos{x} = 1-\frac{x^2}{2!}+\frac{x^4}{4!}-...+\frac{(-1)^n}{(2n)!}(x^{2n})+o(x^{2n})\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\frac{1}{1-x} = 1 + x + x^2 + ... + x^n + o(x^n)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\frac{1}{1+x} = 1 - x + x^2 - ... + (-1)^nx^n + o(x^n)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - ... + \frac{(-1)^{n-1}}{n}x^n + o(x^n)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((1+x)^a = 1 + ax + \frac{a(a-1)}{2!}x^2 + ... + \frac{a(a-1)...(a-n+1)}{n!}x^n +  + o(x^n)\)</span></p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id5">
+<h2>3.4. 中值定理常见题型<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="f-n-xi-0">
+<h3>3.4.1. 证明<span class="math notranslate nohighlight">\(f^{(n)}(\xi) = 0\)</span><a class="headerlink" href="#f-n-xi-0" title="Permalink to this headline">¶</a></h3>
+<p>多用罗尔定理 先找到 <span class="math notranslate nohighlight">\(f(a) = f(b)\)</span></p>
+<div class="admonition- admonition">
+<p class="admonition-title">例</p>
+<p><span class="math notranslate nohighlight">\(f(x) \in c[0, 2]\)</span>, 且在 <span class="math notranslate nohighlight">\((0, 2)\)</span> 上可导, <span class="math notranslate nohighlight">\(2f(0) = f(1) + f(2)\)</span></p>
+<p>证明 <span class="math notranslate nohighlight">\(\exists \xi \in (0, 2)\)</span>, 使得 <span class="math notranslate nohighlight">\(f'(\xi) = 0\)</span></p>
+<dl>
+<dt>证</dt><dd><p><span class="math notranslate nohighlight">\(f(x) \in c[1, 2]\)</span> <span class="math notranslate nohighlight">\(\Rightarrow\)</span> <span class="math notranslate nohighlight">\(f(x)\)</span> 在 <span class="math notranslate nohighlight">\([1, 2]\)</span> 上有 <span class="math notranslate nohighlight">\(m, M\)</span></p>
+<p><span class="math notranslate nohighlight">\(m \leq \frac{f(1) + f(2)}{2} \leq M\)</span></p>
+<p><span class="math notranslate nohighlight">\(\exists c \in [1,2]\)</span>, 使得 <span class="math notranslate nohighlight">\(f(c) = \frac{f(1) + f(2)}{2}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\Rightarrow f(1) + f(2) = 2f(c) = 2f(0)\)</span></p>
+<p><span class="math notranslate nohighlight">\(\because c \neq 0\)</span>, 而 <span class="math notranslate nohighlight">\(f(0) = f(c)\)</span></p>
+<p>由罗尔定理, <span class="math notranslate nohighlight">\(\therefore \exists \xi \in (0, c) \subset (0, 2)\)</span>, 使得 <span class="math notranslate nohighlight">\(f'(\xi) = 0\)</span></p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="xi">
+<h3>3.4.2. 结论中仅有 <span class="math notranslate nohighlight">\(\xi\)</span><a class="headerlink" href="#xi" title="Permalink to this headline">¶</a></h3>
+<p>利用还原法 <span class="math notranslate nohighlight">\([\ln{f(x)}]' = \frac{f'(x)}{f(x)}\)</span> 构建 <span class="math notranslate nohighlight">\(\frac{f'(x)}{f(x)}\)</span>, 然后构建辅助函数 <span class="math notranslate nohighlight">\(\phi(x)\)</span></p>
+<div class="admonition- admonition">
+<p class="admonition-title">例</p>
+<p><span class="math notranslate nohighlight">\(f(x), g(x)\)</span> 在 <span class="math notranslate nohighlight">\([a, b]\)</span> 上连续, 在 <span class="math notranslate nohighlight">\((a, b)\)</span> 内可导, <span class="math notranslate nohighlight">\(f(a) = f(b) = 0\)</span>, 证 <span class="math notranslate nohighlight">\(\exists \xi \in (a, b)\)</span>, 使 <span class="math notranslate nohighlight">\(f'(\xi) + f(\xi)g'(\xi) = 0\)</span></p>
+<dl>
+<dt>分析</dt><dd><p><span class="math notranslate nohighlight">\(f'(x) + f(x)g'(x) = 0\)</span></p>
+<p><span class="math notranslate nohighlight">\(\Downarrow\)</span></p>
+<p><span class="math notranslate nohighlight">\(\frac{f'(x)}{f(x)} + g'(x) = 0\)</span></p>
+<p><span class="math notranslate nohighlight">\(\Downarrow\)</span></p>
+<p><span class="math notranslate nohighlight">\([\ln{f(x)}]' + [\ln{e^{g(x)}}]' = 0\)</span></p>
+</dd>
+<dt>证</dt><dd><p>令 <span class="math notranslate nohighlight">\(\phi(x) = f(x)e^{g(x)}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\because f(a) = f(b) = 0\)</span></p>
+<p><span class="math notranslate nohighlight">\(\therefore \phi(a) = \phi(b) = 0\)</span></p>
+<p>由罗尔定理, <span class="math notranslate nohighlight">\(\exists \xi \in (a, b)\)</span>, 使得 <span class="math notranslate nohighlight">\(\phi'(\xi) = 0\)</span>,</p>
+<p>而 <span class="math notranslate nohighlight">\(\phi'(x) = f'(x)e^{g(x)} + f(x)g'(x)e^{g(x)} \\= e^{g(x)}[f'(x) + f(x)g'(x)] = 0\)</span></p>
+<p>带入 <span class="math notranslate nohighlight">\(\xi\)</span>, 得 <span class="math notranslate nohighlight">\(e^{g(\xi)}[f'(\xi) + f(\xi)g'(\xi)] = 0\)</span></p>
+<p><span class="math notranslate nohighlight">\(\because e^{g(\xi)} \neq 0\)</span>, <span class="math notranslate nohighlight">\(\therefore f'(\xi) + f(\xi)g'(\xi) = 0\)</span></p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="xi-a-b">
+<h3>3.4.3. 结论中有 <span class="math notranslate nohighlight">\(\xi\)</span> 和区间 <span class="math notranslate nohighlight">\(a,b\)</span><a class="headerlink" href="#xi-a-b" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p><span class="math notranslate nohighlight">\(\xi\)</span> 和 <span class="math notranslate nohighlight">\(a,b\)</span> 可分离 分离后使用柯西或拉格朗日</p>
+<blockquote>
+<div><div class="admonition- admonition">
+<p class="admonition-title">例</p>
+<p><span class="math notranslate nohighlight">\(0 &lt; a &lt; b\)</span>, 证明 <span class="math notranslate nohighlight">\(\exists \xi \in (a, b)\)</span>, 使得 <span class="math notranslate nohighlight">\(ae^b - be^a = (a-b)(1-\xi)e^{\xi}\)</span></p>
+<dl>
+<dt>分析</dt><dd><p><span class="math notranslate nohighlight">\(\frac{ae^b - be^a}{a-b} = (1-\xi)e^{\xi}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\Updownarrow\)</span></p>
+<p><span class="math notranslate nohighlight">\(\frac{\frac{e^b}{b} - \frac{e^a}{a}}{\frac{1}{b}-\frac{1}{a}} = (1-\xi)e^{\xi}\)</span></p>
+</dd>
+<dt>证</dt><dd><p>令 <span class="math notranslate nohighlight">\(f(x) = \frac{e^x}{x}\)</span>, <span class="math notranslate nohighlight">\(F(x) = \frac{1}{x}\)</span> (<span class="math notranslate nohighlight">\(F(x) \neq 0\)</span>)</p>
+<p>有 <span class="math notranslate nohighlight">\(f(x), F(x) \in c[a,b]\)</span>, 且在 <span class="math notranslate nohighlight">\((a,b)\)</span> 内可导, <span class="math notranslate nohighlight">\(F'(x) = -\frac{1}{x^2} \neq 0\)</span></p>
+<p>由柯西定理, <span class="math notranslate nohighlight">\(\exists \xi \in (a, b)\)</span>, 使得 <span class="math notranslate nohighlight">\(\frac{f(b) - f(a)}{F(b) - F(a)} = \frac{f'(\xi)}{F'(\xi)}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\frac{\frac{e^b}{b} - \frac{e^a}{a}}{\frac{1}{b}-\frac{1}{a}} = \frac{\frac{(\xi - 1)e^{\xi}}{\xi^2}}{-\frac{1}{\xi^2}} = (1-\xi)e^{\xi}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\Rightarrow ae^b - be^a = (a-b)(1-\xi)e^{\xi}\)</span></p>
+</dd>
+</dl>
+</div>
+</div></blockquote>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\xi\)</span> 和 <span class="math notranslate nohighlight">\(a,b\)</span> 不可分离 去分母移项, 还原, 构造辅助函数</p>
+<blockquote>
+<div><div class="admonition- admonition">
+<p class="admonition-title">例</p>
+<p><span class="math notranslate nohighlight">\(f(x), g(x) \in c[a,b]\)</span>, 且在 <span class="math notranslate nohighlight">\((a,b)\)</span> 内可导, <span class="math notranslate nohighlight">\(g'(x) \neq 0\)</span></p>
+<p>证明: <span class="math notranslate nohighlight">\(\exists \xi \in (a, b)\)</span>, 使 <span class="math notranslate nohighlight">\(\frac{f(b) - f(\xi)}{g(\xi) - g(a)} = \frac{f'(\xi)}{g'(\xi)}\)</span></p>
+<dl>
+<dt>分析</dt><dd><p><span class="math notranslate nohighlight">\(\frac{f(b) - f(\xi)}{g(\xi) - g(a)} = \frac{f'(\xi)}{g'(\xi)} \\ \Rightarrow f(b)g'(x) - f(x)g'(x) - f'(x)g(x) + f'(x)g(a) = 0\)</span></p>
+<p>即 <span class="math notranslate nohighlight">\([f(b)g(x) - f(x)g(x) + f(x)g(a)]' = 0\)</span></p>
+</dd>
+<dt>证</dt><dd><p>令 <span class="math notranslate nohighlight">\(\phi(x) = f(b)g(x) - f(x)g(x) + f(x)g(a)\)</span>, 则 <span class="math notranslate nohighlight">\(\phi'(x) = f(b)g'(x) - f(x)g'(x) - f'(x)g(x) + f'(x)g(a)\)</span></p>
+<p><span class="math notranslate nohighlight">\(\phi(a) = f(b)g(a) = \phi(b)\)</span>, 由罗尔定理, <span class="math notranslate nohighlight">\(\exists \xi \in (a,b)\)</span>, 使得 <span class="math notranslate nohighlight">\(\phi'(\xi) = 0\)</span></p>
+<p>代入得 <span class="math notranslate nohighlight">\(\phi'(\xi) = f(b)g'(\xi) - f(\xi)g'(\xi) - f'(\xi)g(\xi) + f'(\xi)g(a) = 0\)</span></p>
+<p>即 <span class="math notranslate nohighlight">\(\frac{f(b) - f(\xi)}{g(\xi) - g(a)} = \frac{f'(\xi)}{g'(\xi)}\)</span></p>
+</dd>
+</dl>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="xi-eta">
+<h3>3.4.4. 结论中有 <span class="math notranslate nohighlight">\(\xi\)</span> 和 <span class="math notranslate nohighlight">\(\eta\)</span><a class="headerlink" href="#xi-eta" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p>结论中仅有 <span class="math notranslate nohighlight">\(f'(\xi)\)</span> 和 <span class="math notranslate nohighlight">\(f'(\eta)\)</span>, 找三个点, 两次拉格朗日</p>
+<blockquote>
+<div><div class="admonition- admonition">
+<p class="admonition-title">例</p>
+<p><span class="math notranslate nohighlight">\(f(x) \in c[0, 1]\)</span>, 且在 <span class="math notranslate nohighlight">\((0, 1)\)</span> 内可导</p>
+<p><span class="math notranslate nohighlight">\(f(0) = 0, f(1) = 1\)</span></p>
+<p>证明: ① <span class="math notranslate nohighlight">\(\exists c \in (0, 1), f(c) = 1-c\)</span>
+② <span class="math notranslate nohighlight">\(\exists \xi, \eta \in (0, 1), f'(\xi)f'(\eta)=1\)</span></p>
+<dl>
+<dt>证</dt><dd><p>①令 <span class="math notranslate nohighlight">\(\phi(x) = f(x) - 1 + x\)</span></p>
+<p><span class="math notranslate nohighlight">\(\phi(0) = -1, \phi(1) = 1\)</span></p>
+<p><span class="math notranslate nohighlight">\(\because \phi(0)\phi(1) &lt; 0, \therefore \exists c \in (0, 1)\)</span>, 使得 <span class="math notranslate nohighlight">\(\phi(c) = 0\)</span> (零点定理)</p>
+<p>即 <span class="math notranslate nohighlight">\(f(c) = 1 - c\)</span></p>
+<p>②由拉格朗日定理, <span class="math notranslate nohighlight">\(\exists \xi \in (0, c), \exists \eta \in (c, 1)\)</span></p>
+<p>使得 <span class="math notranslate nohighlight">\(f'(\xi) = \frac{f(c) - f(0)}{c - 0}\)</span>, <span class="math notranslate nohighlight">\(f'(\eta) = \frac{f(1) - f(c)}{1 - c}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\Rightarrow f'(\xi) = \frac{1-c}{c}\)</span>, <span class="math notranslate nohighlight">\(f'(\eta) = \frac{c}{1-c}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\therefore f'(\xi)f'(\eta)=1\)</span></p>
+</dd>
+</dl>
+</div>
+</div></blockquote>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\xi\)</span> 和<span class="math notranslate nohighlight">\(\eta\)</span> 复杂程度不同</p>
+<blockquote>
+<div><p>两种情况:</p>
+<ol class="arabic simple">
+<li><p>复杂中值项为 <span class="math notranslate nohighlight">\(( )'\)</span> 的形式, 使用拉格朗日定理</p></li>
+<li><p>复杂中值项为 <span class="math notranslate nohighlight">\(\frac{( )'}{( )'}\)</span> 的形式, 使用柯西定理</p></li>
+</ol>
+<div class="admonition- admonition">
+<p class="admonition-title">例</p>
+<p><span class="math notranslate nohighlight">\(f(x) \in c[a, b]\)</span>, 且在 <span class="math notranslate nohighlight">\((a,b)\)</span> 内可导 ( <span class="math notranslate nohighlight">\(a&gt;0\)</span>)</p>
+<p>证明 <span class="math notranslate nohighlight">\(\exists \xi, \eta \in (a,b)\)</span>, 使得 <span class="math notranslate nohighlight">\(f'(\xi) = \frac{f(\eta)}{2\eta}(a+b)\)</span></p>
+<dl>
+<dt>证</dt><dd><p>令 <span class="math notranslate nohighlight">\(F(x) = x^2, F'(x) = 2x \neq 0\)</span></p>
+<p><span class="math notranslate nohighlight">\(\exists \eta \in (a,b)\)</span>, 使得 <span class="math notranslate nohighlight">\(\frac{f(b) - f(a)}{F(b) - F(a)} = \frac{f'(\eta)}{F'(\eta)}\)</span></p>
+<p>代入可得 <span class="math notranslate nohighlight">\(\frac{f(b) - f(a)}{b^2 - a^2} = \frac{f'(\eta)}{2\eta}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\Rightarrow \frac{f(b) - f(a)}{b - a} = \frac{f'(\eta)}{2\eta}(a+b)\)</span></p>
+<p>由拉格朗日定理, <span class="math notranslate nohighlight">\(\exists \xi \in (a,b)\)</span>, 使得 <span class="math notranslate nohighlight">\(f'(\xi) = \frac{f(b) - f(a)}{b - a}\)</span></p>
+</dd>
+</dl>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="id6">
+<h3>3.4.5. 泰勒<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>3.5. 单调性和极值<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id8">
+<h3>3.5.1. 极值定义<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<p>对 <span class="math notranslate nohighlight">\(y = f(x) (x \in D), x_0 \in D\)</span></p>
+<ol class="arabic simple">
+<li><p>若 <span class="math notranslate nohighlight">\(\exists \delta &gt; 0\)</span>, 当 <span class="math notranslate nohighlight">\(0 &lt; |x - x_0| &lt; \delta\)</span> 时, <span class="math notranslate nohighlight">\(f(x) &lt; f(x_0)\)</span>, 则 <span class="math notranslate nohighlight">\(x_0\)</span> 为 <strong>极大点</strong>, <span class="math notranslate nohighlight">\(f(x_0)\)</span> 为 <strong>极大值</strong></p></li>
+<li><p>若 <span class="math notranslate nohighlight">\(\exists \delta &gt; 0\)</span>, 当 <span class="math notranslate nohighlight">\(0 &lt; |x - x_0| &lt; \delta\)</span> 时, <span class="math notranslate nohighlight">\(f(x) &gt; f(x_0)\)</span>, 则 <span class="math notranslate nohighlight">\(x_0\)</span> 为 <strong>极小点</strong>, <span class="math notranslate nohighlight">\(f(x_0)\)</span> 为 <strong>极小值</strong></p></li>
+</ol>
+</div>
+<div class="section" id="id9">
+<h3>3.5.2. 求极值步骤<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p>找出定义域</p></li>
+<li><p>找出 <span class="math notranslate nohighlight">\(f'(x) = 0\)</span> (驻点) 或不存在 (但不一定就是极值点)</p></li>
+<li><p>判断方法</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p><span class="math notranslate nohighlight">\(\begin{cases} x &lt; x_0 \text{时}, f'(x) &lt; 0 \\ x &gt; x_0 \text{时}, f'(x) &gt; 0 \end{cases} \Rightarrow x_0\)</span> 为 <strong>极小值</strong></p>
+<blockquote>
+<div><p>或 <span class="math notranslate nohighlight">\(f'(x_0) = 0, f''(x_0) &gt; 0\)</span></p>
+</div></blockquote>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\begin{cases} x &lt; x_0 \text{时}, f'(x) &gt; 0 \\ x &gt; x_0 \text{时}, f'(x) &lt; 0 \end{cases} \Rightarrow x_0\)</span> 为 <strong>极大值</strong></p>
+<blockquote>
+<div><p>或 <span class="math notranslate nohighlight">\(f'(x_0) = 0， f''(x_0) &lt; 0\)</span></p>
+</div></blockquote>
+</li>
+</ol>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="id10">
+<h3>3.5.3. 最大值与最小值<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p><span class="math notranslate nohighlight">\(f(x) \in c[a,b]\)</span>, 找出 <span class="math notranslate nohighlight">\(x_1, ..., x_m\)</span> 使得 <span class="math notranslate nohighlight">\(f'(x)=0\text{或不存在}\)</span>, 则:</p>
+<blockquote>
+<div><p>最大值为 <span class="math notranslate nohighlight">\(M = max(f(a), f(x_1), ..., f(x_m), f(b))\)</span></p>
+<p>最小值为 <span class="math notranslate nohighlight">\(m = min(f(a), f(x_1), ..., f(x_m), f(b))\)</span></p>
+</div></blockquote>
+</li>
+<li><p><span class="math notranslate nohighlight">\(f(x) \in c(-\infty, +\infty)\)</span>,</p>
+<blockquote>
+<div><p>若 <span class="math notranslate nohighlight">\(f(x)\)</span> 在 <span class="math notranslate nohighlight">\((-\infty, +\infty)\)</span> 有唯一的极值, 则一定也为最值</p>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="id11">
+<h3>3.5.4. 凹凸性<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p><span class="math notranslate nohighlight">\(\forall x_1, x_2 \in D (x_1 \neq x_2)\)</span>, 都有 <span class="math notranslate nohighlight">\(f(\frac{x_1+x_2}{2}) &lt; \frac{f(x_1)+f(x_2)}{2}\)</span>,</p>
+<blockquote>
+<div><p>则 <span class="math notranslate nohighlight">\(f(x)\)</span> 在 <span class="math notranslate nohighlight">\(D\)</span> 上为凹函数, 此时 <span class="math notranslate nohighlight">\(f''(x_0) &gt; 0\)</span></p>
+</div></blockquote>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\forall x_1, x_2 \in D (x_1 \neq x_2)\)</span>, 都有 <span class="math notranslate nohighlight">\(f(\frac{x_1+x_2}{2}) &gt; \frac{f(x_1)+f(x_2)}{2}\)</span>,</p>
+<blockquote>
+<div><p>则 <span class="math notranslate nohighlight">\(f(x)\)</span> 在 <span class="math notranslate nohighlight">\(D\)</span> 上为凸函数, 此时 <span class="math notranslate nohighlight">\(f''(x_0) &lt; 0\)</span></p>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="id12">
+<h3>3.5.5. 拐点<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<p>若当 <span class="math notranslate nohighlight">\(x=x_0\)</span> 时, <span class="math notranslate nohighlight">\(y=f(x)\)</span> 两侧的凹凸性不同, 则称 <span class="math notranslate nohighlight">\((x_0, f(x_0))\)</span> 为 <span class="math notranslate nohighlight">\(y=f(x)\)</span> 的拐点</p>
+</div>
+<div class="section" id="id13">
+<h3>3.5.6. 常见题型<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id14">
+<h4>极值点判断<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="id15">
+<h4>不等式证明<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="id16">
+<h4>函数零点<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h4>
+</div>
+</div>
+</div>
+<div class="section" id="id17">
+<h2>3.6. 函数图像绘制<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id18">
+<h3>3.6.1. 步骤<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p>确定定义域, 奇偶性和周期性等</p></li>
+<li><p>找出一阶导数的驻点和不存在的点</p></li>
+<li><p>找出二阶导数的驻点和不存在的点</p></li>
+<li><p>使用2.和3.找出的点将定义域划分</p>
+<blockquote>
+<div><div class="admonition- admonition">
+<p class="admonition-title">例</p>
+<img alt="../_images/drawing.png" src="../_images/drawing.png" />
+</div>
+</div></blockquote>
+</li>
+<li><p>找出水平, 铅直, 斜渐近线</p></li>
+</ol>
+</div>
+<div class="section" id="id19">
+<h3>3.6.2. 渐近线<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">当任意曲线上一点 <span class="math notranslate nohighlight">\(M\)</span> 沿曲线无限远离原点时 (可以是正无穷也可以是负无穷), 如果 <span class="math notranslate nohighlight">\(M\)</span> 到一条直线 (或另外一条曲线) 的距离无限趋近于零, 那么这条直线 (曲线) 称为这条曲线的渐近线</div>
+<div class="line">即, 若函数 <span class="math notranslate nohighlight">\(y=f(x)\)</span> 的图形收敛, 则渐近线为 <span class="math notranslate nohighlight">\(y=\lim_{x\to \infty}f(x)\)</span></div>
+</div>
+<img alt="../_images/asymptote-types.svg" src="../_images/asymptote-types.svg" /><div class="section" id="id20">
+<h4>水平渐近线<a class="headerlink" href="#id20" title="Permalink to this headline">¶</a></h4>
+<p>令 <span class="math notranslate nohighlight">\(x\)</span> 趋于正负无穷大, 如果极限存在, 即为水平渐近线</p>
+<p>若 <span class="math notranslate nohighlight">\(\lim_{x \to +\infty}f(x) = A\)</span> 或 <span class="math notranslate nohighlight">\(\lim_{x \to -\infty}f(x) = A\)</span>, 则称直线 <span class="math notranslate nohighlight">\(y = A\)</span> 是函数 <span class="math notranslate nohighlight">\(f(x)\)</span> 的水平渐近线</p>
+</div>
+<div class="section" id="id21">
+<h4>铅直渐近线<a class="headerlink" href="#id21" title="Permalink to this headline">¶</a></h4>
+<p>只会在函数不连续的点出现; 在此点求极限, 若左右极限有一个趋于无穷大, 则在此点有铅直渐近线</p>
+<p>若 <span class="math notranslate nohighlight">\(\lim_{x \to x_0}f(x) = \infty\)</span>, 则称直线 <span class="math notranslate nohighlight">\(x = x_0\)</span> 是函数 <span class="math notranslate nohighlight">\(f(x)\)</span> 的铅直渐近线</p>
+</div>
+<div class="section" id="id22">
+<h4>斜渐近线<a class="headerlink" href="#id22" title="Permalink to this headline">¶</a></h4>
+<p>如果一个方向上有水平渐近线, 就不会有斜渐近线</p>
+<p>若 <span class="math notranslate nohighlight">\(\lim_{x \to +\infty}f(x) - ax - b = 0\)</span> 或 <span class="math notranslate nohighlight">\(\lim_{x \to -\infty}f(x) - ax - b = 0\)</span>, 则称直线 <span class="math notranslate nohighlight">\(y = ax + b\)</span> 是函数 <span class="math notranslate nohighlight">\(f(x)\)</span> 的斜渐近线</p>
+<ol class="arabic simple">
+<li><p>先求极限 <span class="math notranslate nohighlight">\(\lim_{x \to \infty}\frac{f(x)}{x}\)</span>, 若极限存在, 其值为 <span class="math notranslate nohighlight">\(a\)</span>, 则可确定有斜渐近线</p></li>
+<li><p>求极限 <span class="math notranslate nohighlight">\(\lim_{x \to \infty}\frac{f(x)}{x} - ax\)</span>, 若极限为 <span class="math notranslate nohighlight">\(b\)</span>, 则斜渐近线为 <span class="math notranslate nohighlight">\(y = ax + b\)</span></p></li>
+</ol>
+</div>
+</div>
+</div>
+<div class="section" id="id23">
+<h2>3.7. 曲率<a class="headerlink" href="#id23" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id24">
+<h3>3.7.1. 弧微分<a class="headerlink" href="#id24" title="Permalink to this headline">¶</a></h3>
+<img alt="../_images/弧微分.png" src="../_images/弧微分.png" />
+<p><span class="math notranslate nohighlight">\(\overset{\frown} {MM'}\)</span> 的长度为 <span class="math notranslate nohighlight">\(\Delta{S}\)</span></p>
+<p>而 <span class="math notranslate nohighlight">\((\Delta{S})^2 \approx (\Delta{x})^2 + (\Delta{y})^2\)</span></p>
+<p>当 <span class="math notranslate nohighlight">\(\Delta{x} \to 0\)</span> 时, 有 <span class="math notranslate nohighlight">\((ds)^2 = (dx)^2 + (dy)^2\)</span></p>
+<p>即 <span class="math notranslate nohighlight">\(ds = \sqrt{(dx)^2 + (dy)^2}\)</span></p>
+<ol class="arabic">
+<li><dl>
+<dt><span class="math notranslate nohighlight">\(y = f(x)\)</span></dt><dd><p><span class="math notranslate nohighlight">\(ds = \sqrt{(dx)^2 + (dy)^2} = \sqrt{1 + (\frac{dy}{dx})^2}dx\)</span></p>
+<p>即 <span class="math notranslate nohighlight">\(ds = \sqrt{1 + (f'(x))^2}dx\)</span></p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><span class="math notranslate nohighlight">\(\begin{cases} x = g(t) \\ y = \phi(t) \end{cases}\)</span></dt><dd><p><span class="math notranslate nohighlight">\(ds = \sqrt{(dx)^2 + (dy)^2} = \sqrt{(\frac{dx}{dt})^2 + (\frac{dy}{dt})^2}dt\)</span></p>
+<p>即 <span class="math notranslate nohighlight">\(ds = \sqrt{(g'(t))^2 + (\phi'(t))^2}dt\)</span></p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt><span class="math notranslate nohighlight">\(\begin{cases} x = r(\theta)\cos{\theta} \\ y = r(\theta)\sin{\theta} \end{cases}\)</span></dt><dd><p><span class="math notranslate nohighlight">\(ds = \sqrt{(dx)^2 + (dy)^2} = \sqrt{(\frac{dx}{d\theta})^2 + (\frac{dy}{d\theta})^2}d\theta\)</span></p>
+<p>即 <span class="math notranslate nohighlight">\(ds = \sqrt{(r(\theta))^2 + (r'(\theta))^2}d\theta\)</span></p>
+</dd>
+</dl>
+</li>
+</ol>
+</div>
+<div class="section" id="id25">
+<h3>3.7.2. 曲率<a class="headerlink" href="#id25" title="Permalink to this headline">¶</a></h3>
+<p>曲率即曲线的弯曲程度</p>
+<p><span class="math notranslate nohighlight">\(K = \frac{|y''|}{(1 + y'^2)^{\frac{3}{2}}}\)</span></p>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Math-Geometry/index.html" class="btn btn-neutral float-right" title="Geometry 几何学" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="02_导数与微分.html" class="btn btn-neutral float-left" title="2. 导数与微分" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Toshinaki
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>
