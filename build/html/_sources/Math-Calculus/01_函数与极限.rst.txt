@@ -191,10 +191,10 @@
 符号函数 (Sign function, 简称sgn)
     逻辑函数, 用以判断实数的正负号
     
-    :math:`\text{sgn}(x) = \begin{cases} -1 : x < 0 \\ 0, x = 0 \\ 1, x > 0 \end{cases}`
+    :math:`\text{sgn}(x) = \begin{cases} -1, \quad x < 0 \\ 0, \quad x = 0 \\ 1, \quad x > 0 \end{cases}`
 
-    .. image:: imgs/Signum_function.png
-
+    .. figure:: imgs/Signum_function.png
+        
 取整函数 
     一类将实数映射到相近的整数的函数
 
@@ -212,8 +212,8 @@
 Dirichlet函数 
     定义在实数范围上, 值域为 :math:`[0, 1]`, 的处处不连续函数
 
-    1. 自变量 :math:`x` 为有理数时, :math:`D(x) = 1`
-    2. 自变量 :math:`x` 为无理数时, :math:`D(x) = 0`
+    :math:`D(x) = \begin{cases} 0, \quad x \text{为有理数} \\ 1, \quad x \text{为无理数} \end{cases}`
+
 
 函数的表示方法
 ^^^^^^^^^^^^^^^^^^^^^^^
@@ -225,27 +225,30 @@ Dirichlet函数
 函数的特性
 ^^^^^^^^^^^^^^^^^^^^^^^^
 
-有界性
-    若存在两个常数 :math:`m` 和 :math:`M`, 使函数 :math:`y=f(x), x \in D` 满足 :math:`m \leqslant f(x) \geq M, x \in D`,
+① 奇偶性
+    前提: 定义域必须关于原点对称
+    
+    奇函数关于原点对称
+    
+    偶函数关于 :math:`y` 轴对称 
+
+② 单调性
+    当函数 :math:`f(x)` 的自变量在其定义区间内增大 (或减小)时, 函数值 :math:`f(x)` 也随着增大 (或减小), 
+    
+    则称该函数为在该区间上具有单调性
+
+③ 有界性
+    若存在两个常数 :math:`m` 和 :math:`M`, 使函数 :math:`y=f(x), x \in D` 满足 :math:`m \leqslant f(x) \leqslant M, x \in D`,
     
     则称函数 :math:`y=f(x)` 在 :math:`D` 有界
     
     其中 :math:`m` 是它的 **下界**, :math:`M` 是它的 **上界**
 
-单调性
-    当函数 :math:`f(x)` 的自变量在其定义区间内增大 (或减小)时, 函数值 :math:`f(x)` 也随着增大 (或减小), 
-    
-    则称该函数为在该区间上具有单调性
-
-奇偶性
-    奇函数关于原点对称
-    
-    偶函数关于 :math:`y` 轴对称 
-
-周期性
+④ 周期性
     若存在非零常数 :math:`T`, 对于定义域内的任意 :math:`x`, 使 :math:`f(x)=f(x+T)` 恒成立, 
     
     则 :math:`f(x)` 叫做周期函数, :math:`T` 叫做这个函数的一个 **周期**
+
 
 反函数, 复合函数
 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
@@ -253,7 +256,7 @@ Dirichlet函数
 反函数
     设函数 :math:`y = f(x)` 的定义域是 :math:`D`, 值域是 :math:`f(D)`
     
-    如果对于值域 :math:`f(D)` 中的每一个  :math:`y`, 在 :math:`D` 中有且只有一个 :math:`x` 使得 :math:`g(y)=x`, 
+    如果对于值域 :math:`f(D)` 中的每一个  :math:`y`, 在 :math:`D` 中有且只有一个 :math:`x` 使得 :math:`g(y)=x`, (即 :math:`y=f(x)` 严格单调)
     
     则按此对应法则得到了一个定义在 :math:`f(D)` 上的函数, 并把该函数称为函数 :math:`y = f(x)` 的反函数, 
     
@@ -412,6 +415,7 @@ Dirichlet函数
 ~~~~~~~~~~~~~~~~~~~
 
 1. 唯一性 
+
     如果数列收敛, 则其极限唯一 
 
     .. admonition:: 证
@@ -427,6 +431,7 @@ Dirichlet函数
         這與假設 :math:`d=|a-b|`相矛盾, 因此 :math:`x_n` 不可能有兩個不相等的極限值
 
 2. 有界性 
+
     如果数列收敛, 则其一定有界 
 
 3. 保号性 
@@ -475,7 +480,7 @@ Dirichlet函数
 无穷小
 ~~~~~~~~~~~~~~~~
 
-如果函数 :math:`f(x)` 当 :math:`x \to x_0` (或 :math:`x \to \infty`)时极限为零, 
+如果 **函数** :math:`f(x)` 当 :math:`x \to x_0` (或 :math:`x \to \infty`)时 **极限为零**,
 
 那么称函数 :math:`f(x)` 为当 :math:`x \to x_0` (或 :math:`x \to \infty`)时的无穷小
 
@@ -518,13 +523,13 @@ Dirichlet函数
 
 2. 有限个无穷小的和/差也是无穷小
    
-   若 :math:`\alpha \to 0, \beta \to 0 (x \to 0)`,
+   若 :math:`\alpha \to 0, \beta \to 0 (x \to x_0   \text{或} x \to \infty)`,
 
    则 :math:`\alpha \pm \beta \to 0`
 
 3. 无穷小和有界函数的积也是无穷小
 
-   若 :math:`\alpha \to 0, |\beta| \leq M`, 则
+   若 :math:`\alpha \to 0, |\beta| \leqslant M`, 则
 
    :math:`\alpha\beta \to 0`
 
@@ -572,7 +577,7 @@ Dirichlet函数
 夹逼定理
 ~~~~~~~~~~~~~~~
 
--  若数列 :math:`a_n \leq b_n \leq c_n`, 
+-  若数列 :math:`a_n \leqslant b_n \leqslant c_n`, 
 
    且 :math:`\lim_{n \to \infty}a_n = \lim_{n \to \infty}c_n = A`,
 
@@ -621,9 +626,11 @@ Dirichlet函数
 
 - 若 :math:`\lim \frac{\beta}{\alpha} = \infty`, 就说 :math:`\beta` 是 :math:`\alpha` 的 **低阶无穷小** 
 
-- 若 :math:`\lim \frac{\beta}{\alpha} = c \neq 0`, 就说 :math:`\beta` 是 :math:`\alpha` 的 **同阶无穷小**
-
 - 若 :math:`\lim \frac{\beta}{\alpha^k} = c \neq 0, k > 0`, 就说 :math:`\beta` 是 :math:`\alpha` 的 **k阶无穷小** 
+
+- 若 :math:`\lim \frac{\beta}{\alpha} = c \neq 0`, 就说 :math:`\beta` 是 :math:`\alpha` 的 **同阶无穷小**,
+
+    记作 :math:`\beta = O(\alpha)` 
 
 - 若 :math:`\lim \frac{\beta}{\alpha} = 1`, 就说 :math:`\beta` 是 :math:`\alpha` 的 **等价无穷小**,
 
@@ -650,7 +657,7 @@ Dirichlet函数
 2. :math:`1 - \cos{x} \sim \frac{1}{2}x^2`
 3. :math:`(1+x)^a - 1 \sim ax`
 
-.. note:: 注
+.. note::
     
     1. 当有 :math:`u(x)^{v(x)}` 时, 转换成 :math:`e^{v(x)\ln{u(x)}}`
     2. 当有 :math:`e^n` 时, 转换成 :math:`e^{\Delta}-1 \sim \Delta (\Delta \to 0)` 
@@ -700,24 +707,27 @@ Dirichlet函数
 
 -  初等函数 (由常数和基本初等函数经过四则运算/复合而成)
 
-   初等函数在其定义区间内都是连续的
+    初等函数在其定义区间内都是连续的
 
-   -  若 :math:`f(x), g(x)` 在点 :math:`x_0` 连续,
+    -  若 :math:`f(x), g(x)` 在点 :math:`x_0` 连续,
 
-      则其四则运算的结果也在 :math:`x_0` 连续
+        则其四则运算的结果也在 :math:`x_0` 连续
 
-   -  若 :math:`\lim_{u \to a}f(u) = f(a)`,
+    -  若 :math:`\lim_{u \to a}f(u) = f(a)`, 即 :math:`f(u)` 在点 :math:`a` 连续, :math:`\lim_{x \to x_0}g(x) = a`,
 
-      即 :math:`f(u)` 在点 :math:`a` 连续, :math:`\lim_{x \to x_0}g(x) = a`,
+        则 :math:`\lim_{x \to x_0}f(g(x)) = f(a)`, 即 :math:`f(g(x))` 在点 :math:`x_0` 连续
 
-      则 :math:`\lim_{x \to x_0}f(g(x)) = f(a)`, 即 :math:`f(g(x))` 在点 :math:`x_0` 连续
-
-      :math:`\lim_{x \to x_0}f(g(x)) = f(\lim_{x \to x_0}g(x))`
+        :math:`\lim_{x \to x_0}f(g(x)) = f(\lim_{x \to x_0}g(x))`
 
 闭区间上连续函数的性质
 -------------------------
 
-1. :math:`f(x) \in C[a,b]`, 则 :math:`f(x)` 在 :math:`[a,b]` 上能取到 :math:`m` 和 :math:`M`
+|  :math:`f(x)` 在 :math:`[a,b]` 上有定义, 若
+|  ① :math:`f(x)` 在 :math:`(a,b)` 内处处连续
+|  ② :math:`f(a) = f(a+0)`, :math:`f(b) = f(b-0)`
+|  则, 称 :math:`f(x)` 在 :math:`[a,b]` 上连续, 记作 :math:`f(x) \in C[a,b]`
+
+1. :math:`f(x) \in C[a,b]`, 则 :math:`f(x)` 在 :math:`[a,b]` 上能取到 :math:`m` 和 :math:`M` (最值定理)
 
     .. image:: imgs/continuous1.png
 
@@ -725,7 +735,7 @@ Dirichlet函数
         
         但在开区间上连续或在闭区间内有间断点时不一定有最大值最小值
 
-2. :math:`f(x) \in C[a,b]`, 则 :math:`\exists k > 0`, :math:`\forall x \in [a,b]`, 有 :math:`|f(x)| \leq k`
+2. :math:`f(x) \in C[a,b]`, 则 :math:`\exists k > 0`, :math:`\forall x \in [a,b]`, 有 :math:`|f(x)| \leq k` (有界定理)
 
 3. :math:`f(x) \in C[a,b]`, 且 :math:`f(a)f(b) < 0`, 则 :math:`\exists x_0 \in (a,b)`, 使 :math:`f(x_0) = 0` (零点定理)
 

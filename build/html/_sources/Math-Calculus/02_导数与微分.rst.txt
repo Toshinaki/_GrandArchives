@@ -66,8 +66,8 @@
 -  :math:`(\cos{x})' = -\sin{x}`
 -  :math:`(\tan{x})' = \sec^2{x}`
 -  :math:`(\cot{x})' = -\csc^2{x}`
--  :math:`(\sec{x})' = \tan{x}\sec{x}`
--  :math:`(\csc{x})' = -\cot{x}\csc{x}`
+-  :math:`(\sec{x})' = \sec{x}\tan{x}`
+-  :math:`(\csc{x})' = -\csc{x}\cot{x}`
 -  :math:`(\arcsin{x})' = \frac{1}{\sqrt{1-x^2}}` (:math:`-1<x<1`)
 -  :math:`(\arccos{x})' = -\frac{1}{\sqrt{1-x^2}}` (:math:`-1<x<1`)
 -  :math:`(\arctan{x})' = \frac{1}{1+x^2}`
@@ -78,7 +78,7 @@
 
 -  :math:`(u(x) \pm v(x))' = u'(x) \pm v'(x)`
 -  :math:`(uv)' = u'v + uv'`
--  :math:`(\frac{u}{v})' = \frac{u'v - uv'}{v^2}` 
+-  :math:`(\frac{u}{v})' = \frac{u'v - uv'}{v^2}` (:math:`v \neq 0`)
 
 反函数求导
 ~~~~~~~~~~~~~~~~~
@@ -123,7 +123,7 @@ Leibniz公式
 高阶导数求导
 ~~~~~~~~~~~~~~~
 
-- 递推
+- 递推, 归纳
 - 公式
 
 

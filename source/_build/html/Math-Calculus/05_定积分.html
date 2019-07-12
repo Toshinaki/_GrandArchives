@@ -1,0 +1,439 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>5. 定积分 &mdash; gate-of-babylon  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Geometry 几何学" href="../Math-Geometry/index.html" />
+    <link rel="prev" title="4. 不定积分" href="04_不定积分.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> gate-of-babylon
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Technology and Applied Sciences</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/index.html">Computing and information technology</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Mathematics and Logic</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Calculus 微积分</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01_函数与极限.html">1. 函数与极限</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_导数与微分.html">2. 导数与微分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_微分中值定理与导数的应用.html">3. 微分中值定理与导数的应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_不定积分.html">4. 不定积分</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">5. 定积分</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">5.1. 定积分的概念与性质</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">5.1.1. 背景</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id4">曲边梯形的面积</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#id5">5.1.2. 定积分的定义</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">5.1.3. 定积分的一般性质</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id7">5.2. 定积分基本公式</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id8">5.2.1. 积分上限函数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id9">5.2.2. 牛顿-莱布尼茨公式</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id10">5.3. 定积分的积分法</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id11">5.3.1. 换元积分法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id12">5.3.2. 定积分的特殊性质</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id13">对称区间定积分性质</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id14">三角函数定积分性质</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id15">周期函数定积分性质</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Math-Geometry/index.html">Geometry 几何学</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Resources/index.html">Resources</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">gate-of-babylon</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Calculus 微积分</a> &raquo;</li>
+        
+      <li>5. 定积分</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Math-Calculus/05_定积分.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>5. 定积分<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>5.1. 定积分的概念与性质<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id3">
+<h3>5.1.1. 背景<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id4">
+<h4>曲边梯形的面积<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<div class="figure align-right">
+<img alt="../_images/曲边梯形.png" src="../_images/曲边梯形.png" />
+</div>
+<div class="line-block">
+<div class="line">设 <span class="math notranslate nohighlight">\(y=f(x)\)</span> 在区间 <span class="math notranslate nohighlight">\([a, b]\)</span> 上连续非负</div>
+<div class="line">由直线 <span class="math notranslate nohighlight">\(x=a\)</span>, <span class="math notranslate nohighlight">\(x=b\)</span>, <span class="math notranslate nohighlight">\(y=0\)</span> 以及曲线 <span class="math notranslate nohighlight">\(y=f(x)\)</span> 所围成的图形称为 <strong>曲边梯形</strong></div>
+</div>
+<ol class="arabic">
+<li><p>在区间 <span class="math notranslate nohighlight">\([a, b]\)</span> 上取 <span class="math notranslate nohighlight">\(n-1\)</span> 分为 <span class="math notranslate nohighlight">\(n\)</span> 块</p>
+<blockquote>
+<div><p>其中各个小区间的长度为 <span class="math notranslate nohighlight">\(\Delta{x_i} = x_i - xi_1\)</span></p>
+</div></blockquote>
+</li>
+<li><p>在各个区间上任取 <span class="math notranslate nohighlight">\(\xi_i\)</span>, 作为区间的高, 得到以 <span class="math notranslate nohighlight">\([x_{i-1}, x_i]\)</span> 为底, <span class="math notranslate nohighlight">\(f(\xi)\)</span> 为高的矩形; 以所有这样的矩形的面积和作为曲边梯形的面积的近似值</p>
+<blockquote>
+<div><p>曲边梯形的面积 <span class="math notranslate nohighlight">\(A \approx \sum_{i=1}^n{f(\xi_i)\Delta{x_i}}\)</span></p>
+</div></blockquote>
+</li>
+<li><p>使所有区间的长度的最大值 <span class="math notranslate nohighlight">\(\lambda = \max{|\Delta{x_1}, \Delta{x_2}, ..., \Delta{x_n}|}\)</span> 趋近于 0, 则</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(A = \lim_{\lambda \to 0}\sum_{i=1}^n{f(\xi_i)\Delta{x_i}}\)</span></p>
+</div></blockquote>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="id5">
+<h3>5.1.2. 定积分的定义<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line"><span class="math notranslate nohighlight">\(f(x)\)</span> 在 <span class="math notranslate nohighlight">\([a, b]\)</span> 上有界 (必要条件)</div>
+<div class="line">1. <span class="math notranslate nohighlight">\(a=x_0&lt;x_1&lt;...&lt;x_n=b\)</span>, <span class="math notranslate nohighlight">\(\Delta{x_i} = x_i - x_{i-1}\)</span></div>
+<div class="line">2. <span class="math notranslate nohighlight">\(\forall \xi_i \in [x_{i-1}, x_i]\)</span>, 作 <span class="math notranslate nohighlight">\(\sum_{i=1}^n{f(\xi_i)\Delta{x_i}}\)</span> (称为 <strong>积分和</strong>)</div>
+<div class="line">3. 令 <span class="math notranslate nohighlight">\(\lambda = \max_{1 \leq i \leq n}{|\Delta{x_i}|}\)</span>, 若 <span class="math notranslate nohighlight">\(\lim_{\lambda \to 0}\sum_{i=1}^n{f(\xi_i)\Delta{x_i}}\)</span> 存在,</div>
+<div class="line">则称 <span class="math notranslate nohighlight">\(f(x)\)</span> 在 <span class="math notranslate nohighlight">\([a, b]\)</span> 上 <strong>可积</strong></div>
+<div class="line">极限值称为 <span class="math notranslate nohighlight">\(f(x)\)</span> 在 <span class="math notranslate nohighlight">\([a,b]\)</span> 上的 <strong>定积分</strong>, 记作 <span class="math notranslate nohighlight">\(\int_a^b{f(x)} dx\)</span></div>
+</div>
+<p>即 <span class="math notranslate nohighlight">\(\int_a^b{f(x)} dx \approx \lim_{\lambda \to 0}\sum_{i=1}^n{f(\xi_i)\Delta{x_i}}\)</span></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic">
+<li><p><span class="math notranslate nohighlight">\(f(x)\)</span> 在 <span class="math notranslate nohighlight">\([a, b]\)</span> 上连续, 则 <span class="math notranslate nohighlight">\(f(x)\)</span> 在 <span class="math notranslate nohighlight">\([a, b]\)</span> 上可积</p></li>
+<li><p><span class="math notranslate nohighlight">\(f(x)\)</span> 在 <span class="math notranslate nohighlight">\([a, b]\)</span> 上有界, 且只有有限个间断点, 则 <span class="math notranslate nohighlight">\(f(x)\)</span> 在 <span class="math notranslate nohighlight">\([a, b]\)</span> 上可积</p></li>
+<li><p>设 <span class="math notranslate nohighlight">\(f(x)\)</span> 在 <span class="math notranslate nohighlight">\([0, 1]\)</span> 上可积, 则 <span class="math notranslate nohighlight">\(\int_0^1{f(x)} dx = \lim_{\lambda \to 0}\sum_{i=1}^n{f(\xi_i)\Delta{x_i}}\)</span></p>
+<blockquote>
+<div><p>将 <span class="math notranslate nohighlight">\([0, 1]\)</span> 分为 <span class="math notranslate nohighlight">\([0, 1] = [0, \frac{1}{n}] \cup [\frac{1}{n}, \frac{2}{n}] \cup ... \cup [\frac{n-1}{n}, \frac{n}{n}]\)</span>, 则</p>
+<p><span class="math notranslate nohighlight">\(\Delta{x_i} = \frac{1}{n} = \lambda\)</span>, 且 <span class="math notranslate nohighlight">\(n \to 0 \Leftrightarrow \lambda \to \infty\)</span></p>
+<p>令 <span class="math notranslate nohighlight">\(\xi_1 = \frac{1}{n}\)</span>, <span class="math notranslate nohighlight">\(\xi_2 = \frac{2}{n}\)</span>, … <span class="math notranslate nohighlight">\(\xi_i = \frac{i}{n}\)</span>, … <span class="math notranslate nohighlight">\(\xi_n = \frac{n}{n}\)</span>, 替换可得</p>
+<p><span class="math notranslate nohighlight">\(\lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^n f(\frac{i}{n}) = \int_0^1{f(x)} dx\)</span></p>
+</div></blockquote>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>5.1.3. 定积分的一般性质<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p><span class="math notranslate nohighlight">\(\int_a^b [f(x) \pm g(x)] dx = \int_a^b f(x) dx \pm \int_a^b g(x) dx\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\int_a^b kf(x) dx = k \int_a^b f(x) dx\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\int_a^b f(x) dx = -\int_b^a f(x) dx\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\int_a^b f(x) dx = \int_a^c f(x) dx + \int_b^c f(x) dx\)</span> (<span class="math notranslate nohighlight">\(c\)</span> 不一定在 <span class="math notranslate nohighlight">\([a, b]\)</span> 内)</p></li>
+<li><p><span class="math notranslate nohighlight">\(\int_a^b 1 dx = b - a\)</span></p></li>
+<li><p>① <span class="math notranslate nohighlight">\(f(x) \geq 0 \quad (x \in [a, b])\)</span>, 则 <span class="math notranslate nohighlight">\(\int_a^b f(x) dx \geq 0\)</span></p>
+<p>② <span class="math notranslate nohighlight">\(f(x) \geq g(x) \quad (x \in [a, b])\)</span>, 则 <span class="math notranslate nohighlight">\(\int_a^b f(x) dx \geq \int_a^b g(x) dx\)</span></p>
+<p>☆③ <span class="math notranslate nohighlight">\(f(x), |f(x)|\)</span> 在 <span class="math notranslate nohighlight">\([a, b]\)</span> 上可积, 则 <span class="math notranslate nohighlight">\(|\int_a^b f(x) dx| \leq \int_a^b |f(x)| dx\)</span></p>
+</li>
+<li><p>积分中值定理</p>
+<blockquote>
+<div><p><span class="math notranslate nohighlight">\(f(x) \in c[a, b]\)</span>, 则 <span class="math notranslate nohighlight">\(\exists \xi \in [a, b]\)</span>, 使 <span class="math notranslate nohighlight">\(\int_a^b f(x) dx = f(\xi)(b-a)\)</span></p>
+<p><span class="math notranslate nohighlight">\(f(\xi)\)</span> 称为 <strong>平均高度</strong></p>
+<img alt="../_images/积分中值定理.png" src="../_images/积分中值定理.png" />
+</div></blockquote>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="id7">
+<h2>5.2. 定积分基本公式<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id8">
+<h3>5.2.1. 积分上限函数<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">设函数 <span class="math notranslate nohighlight">\(f(x)\)</span> 在区间 <span class="math notranslate nohighlight">\([a,b]\)</span> 上连续, 且 <span class="math notranslate nohighlight">\(x\)</span> 为 <span class="math notranslate nohighlight">\([a,b]\)</span> 上的一点</div>
+<div class="line">因为 <span class="math notranslate nohighlight">\(f(x)\)</span> 在 <span class="math notranslate nohighlight">\([a,x]\)</span> 上连续, 所以 <span class="math notranslate nohighlight">\(\int_a^x f(x) dx\)</span> 存在</div>
+<div class="line">而 <span class="math notranslate nohighlight">\(x\)</span> 既表示定积分的上限, 又表示积分变量, 为了进行区分, 将积分变量用 <span class="math notranslate nohighlight">\(t\)</span> 表示</div>
+<div class="line">得 <span class="math notranslate nohighlight">\(\int_a^x f(t) dt\)</span></div>
+</div>
+<div class="line-block">
+<div class="line">而 <span class="math notranslate nohighlight">\(\forall x \in [a, b]\)</span>, <span class="math notranslate nohighlight">\(\int_a^x f(t) dt\)</span> 都有一个对应的值</div>
+<div class="line">因此可以定义函数 <span class="math notranslate nohighlight">\(\Phi(x) = \int_a^x f(t) dt\)</span> (<span class="math notranslate nohighlight">\(a \leq x \leq b\)</span>)</div>
+</div>
+<p>函数 <span class="math notranslate nohighlight">\(\Phi(x) = \int_a^x f(t) dt\)</span> 叫做 <strong>积分上限函数</strong></p>
+<p><span class="math notranslate nohighlight">\(f(x) \in c[a,b]\)</span>, <span class="math notranslate nohighlight">\(\Phi(x) = \int_a^x f(t) dt\)</span>, 则</p>
+<p><span class="math notranslate nohighlight">\(\Phi(x)\)</span> 可导, 且其导数 <span class="math notranslate nohighlight">\(\frac{d}{dx} \int_a^x f(t) dt = f(x)\)</span></p>
+<p>即 <span class="math notranslate nohighlight">\(\Phi'(x) = f(x)\)</span></p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<ol class="arabic">
+<li><p><span class="math notranslate nohighlight">\(f(x)\)</span> 连续, <span class="math notranslate nohighlight">\(g(x)\)</span> 可导, 则 <span class="math notranslate nohighlight">\(\frac{d}{dx} \int_a^{g(x)} f(t) dt \stackrel{g(x) = u}{=\mathrel{\mkern-3mu}=\mathrel{\mkern-3mu}=} \frac{d}{dx}\int_a^u f(t) dt = f[g(x)]g'(x)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(f(x)\)</span> 连续, <span class="math notranslate nohighlight">\(g_1(x), g_2(x)\)</span> 可导, 则 <span class="math notranslate nohighlight">\(\frac{d}{dx} \int_{g_1(x)}^{g_2(x)} f(t) dt \\ = \frac{d}{dx}(\int_{g_1(x)}^0 f(t) dt + \int_0^{g_2(x)} f(t) dt) = \frac{d}{dx}(\int_0^{g_2(x)} f(t) dt - \int_0^{g_1(x)} f(t) dt) \\ = f[g_2(x)]g_2'(x) - f[g_1(x)]g_1'(x)\)</span></p></li>
+<li><p>对 <span class="math notranslate nohighlight">\(\int_a^{g(x)} f(x, t) dt\)</span> 求导时, 若表达式中有 <span class="math notranslate nohighlight">\(x\)</span>, 则先处理 <span class="math notranslate nohighlight">\(x\)</span></p>
+<blockquote>
+<div><div class="admonition- admonition">
+<p class="admonition-title">例</p>
+<p><span class="math notranslate nohighlight">\(\frac{d}{dx} \int_0^x x \sin{t^2} dt = ?\)</span></p>
+<p>将 <span class="math notranslate nohighlight">\(\int_0^x x \sin{t^2} dt = x \int_0^x \sin{t^2} dt\)</span> 代入可得</p>
+<p><span class="math notranslate nohighlight">\(\frac{d}{dx} \int_0^x x \sin{t^2} dt = \int_0^x \sin{t^2} dt + x \sin{x^2}\)</span></p>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="id9">
+<h3>5.2.2. 牛顿-莱布尼茨公式<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">若 <span class="math notranslate nohighlight">\(f(x) \in c[a, b]\)</span>, <span class="math notranslate nohighlight">\(F(x)\)</span> 为 <span class="math notranslate nohighlight">\(f(x)\)</span> 的一个原函数,</div>
+<div class="line">则 <span class="math notranslate nohighlight">\(\int_a^b f(x) dx = F(b) - F(a)\)</span></div>
+</div>
+<div class="admonition- admonition">
+<p class="admonition-title">证明</p>
+<p>令 <span class="math notranslate nohighlight">\(\Phi(x) = \int_a^x f(t) dt\)</span></p>
+<p><span class="math notranslate nohighlight">\(\because F'(x) = f(x), \Phi'(x) = f(x)\)</span></p>
+<p><span class="math notranslate nohighlight">\(\therefore \Phi(x) - F(x) = C_0\)</span></p>
+<p>则 <span class="math notranslate nohighlight">\(\begin{cases} \Phi(a) - F(a) = C_0 \\ \Phi(b) - F(b) = C_0 \end{cases}\)</span></p>
+<p><span class="math notranslate nohighlight">\(\Rightarrow \Phi(b) - F(b) = \Phi(a) - F(a)\)</span></p>
+<p><span class="math notranslate nohighlight">\(\because \Phi(a) = 0, \therefore \Phi(b) = F(b) - F(a)\)</span></p>
+<p>即 <span class="math notranslate nohighlight">\(\int_a^b f(t) dt = F(b) - F(a)\)</span>, 也可写成 <span class="math notranslate nohighlight">\(\int_a^b f(t) dt = F(x) |_a^b\)</span></p>
+</div>
+</div>
+</div>
+<div class="section" id="id10">
+<h2>5.3. 定积分的积分法<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id11">
+<h3>5.3.1. 换元积分法<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">若 <span class="math notranslate nohighlight">\(f(x) \in c[a,b]\)</span>, <span class="math notranslate nohighlight">\(x = g(t)\)</span> 可导且 <span class="math notranslate nohighlight">\(g'(t) \neq 0\)</span></div>
+<div class="line">令 <span class="math notranslate nohighlight">\(a = g(\alpha), b = g(\beta)\)</span>, 则</div>
+<div class="line"><span class="math notranslate nohighlight">\(\int_a^b f(x) dx \stackrel{x = g(t)}{=\mathrel{\mkern-3mu}=\mathrel{\mkern-3mu}=} \int_{\alpha}^{\beta} f[g(t)]g'(t) dt\)</span></div>
+</div>
+</div>
+<div class="section" id="id12">
+<h3>5.3.2. 定积分的特殊性质<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id13">
+<h4>对称区间定积分性质<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h4>
+<p><span class="math notranslate nohighlight">\(f(x) \in c[-a, a]\)</span>, 则 <span class="math notranslate nohighlight">\(\int_{-a}^a f(x) dx = \int_0^a [f(x) + f(-x)] dx\)</span></p>
+<dl>
+<dt>特殊情况</dt><dd><p>① 若 <span class="math notranslate nohighlight">\(f(-x) = -f(x)\)</span>, 则 <span class="math notranslate nohighlight">\(\int_{-a}^a f(x) fx = 0\)</span></p>
+<p>② 若 <span class="math notranslate nohighlight">\(f(-x) = f(x)\)</span>, 则 <span class="math notranslate nohighlight">\(\int_{-a}^a f(x) fx = 2\int_0^a f(x) fx\)</span></p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id14">
+<h4>三角函数定积分性质<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
+<p>① 若 <span class="math notranslate nohighlight">\(f(x) \in c[0, 1]\)</span>, 则 <span class="math notranslate nohighlight">\(\int_0^{\frac{\pi}{2}} f(\sin{x}) dx = \int_0^{\frac{\pi}{2}} f(\cos{x}) dx\)</span></p>
+<blockquote>
+<div><dl>
+<dt>特殊情况</dt><dd><p><span class="math notranslate nohighlight">\(\int_0^{\frac{\pi}{2}} \sin^n{x} dx = \int_0^{\frac{\pi}{2}} \cos^n{x} dx\)</span></p>
+<p>令 <span class="math notranslate nohighlight">\(I_n = \int_0^{\frac{\pi}{2}} \cos^n{x} dx \\ = \int_0^{\frac{\pi}{2}} \cos^{n-1}{x} d(\sin{x}) \\ = \cos^{n-1}{x}\sin{x}|_0^{\frac{\pi}{2}} - \int_0^{\frac{\pi}{2}} \sin{x} d(\cos^{n-1}{x}) \\ = (n-1) \int_0^{\frac{\pi}{2}} \cos^{n-2}{x}\sin^2{x} dx \\ = (n-1)\int_0^{\frac{\pi}{2}} \cos^{n-2}{x} (1-\cos^2{x}) dx \\ = (n-1)I_{n-2} - (n-1)I_n\)</span></p>
+<p>即 <span class="math notranslate nohighlight">\(\begin{cases} I_n = \frac{n-1}{n}I_{n-2} \\ I_0 = \frac{\pi}{2} \\ I_1 = 1 \end{cases}\)</span></p>
+<div class="admonition- admonition">
+<p class="admonition-title">例</p>
+<p><span class="math notranslate nohighlight">\(\int_0^{\frac{\pi}{2}} \cos^8{x} dx = I_8 = \frac{7}{8}I_6 = \frac{7}{8}\frac{5}{6}\frac{3}{4}\frac{1}{2}I_0 = \frac{7!!}{8!!}\frac{\pi}{2}\)</span></p>
+</div>
+</dd>
+</dl>
+</div></blockquote>
+<p>② <span class="math notranslate nohighlight">\(\int_0^{\pi} f(\sin{x}) dx = 2\int_0^{\frac{\pi}{2}} f(\sin{x}) dx\)</span></p>
+<blockquote>
+<div><dl class="simple">
+<dt>特殊情况</dt><dd><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(\int_0^{\frac{\pi}{2}} \sin^n{x} dx = 2I_n\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\int_0^{\frac{\pi}{2}} \cos^n{x} dx = \begin{cases} 0, \quad n\text{为奇数} \\ 2I_n, \quad n\text{为偶数} \end{cases}\)</span></p></li>
+</ul>
+</dd>
+</dl>
+</div></blockquote>
+<p>③ <span class="math notranslate nohighlight">\(\int_0^{\pi} xf(\sin{x}) dx = \frac{\pi}{2} \int_0^{\pi} \sin{x} dx\)</span></p>
+</div>
+<div class="section" id="id15">
+<h4>周期函数定积分性质<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
+<p>设 <span class="math notranslate nohighlight">\(f(x)\)</span> 是周期为 <span class="math notranslate nohighlight">\(T\)</span> 的可积函数, 则</p>
+<p>① <span class="math notranslate nohighlight">\(\int_a^{a+T} f(x) dx = \int_0^T f(x) dx\)</span></p>
+<p>② <span class="math notranslate nohighlight">\(\int_0^{nT} f(x) dx = n\int_0^T f(x) dx\)</span></p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Math-Geometry/index.html" class="btn btn-neutral float-right" title="Geometry 几何学" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="04_不定积分.html" class="btn btn-neutral float-left" title="4. 不定积分" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Toshinaki
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

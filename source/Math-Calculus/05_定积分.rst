@@ -1,0 +1,255 @@
+
+定积分
+=================
+
+定积分的概念与性质
+-------------------------
+
+背景
+~~~~~~~~~
+
+曲边梯形的面积
+^^^^^^^^^^^^^^^^^^
+
+.. figure:: imgs/曲边梯形.png
+    :align: right
+
+|  设 :math:`y=f(x)` 在区间 :math:`[a, b]` 上连续非负
+|  由直线 :math:`x=a`, :math:`x=b`, :math:`y=0` 以及曲线 :math:`y=f(x)` 所围成的图形称为 **曲边梯形**
+
+1. 在区间 :math:`[a, b]` 上取 :math:`n-1`个点, 将 :math:`[a,b]` 分为 :math:`n` 块
+    
+    其中各个小区间的长度为 :math:`\Delta{x_i} = x_i - xi_1`
+2. 在各个区间上任取 :math:`\xi_i`, 作为区间的高, 得到以 :math:`[x_{i-1}, x_i]` 为底, :math:`f(\xi)` 为高的矩形; 以所有这样的矩形的面积和作为曲边梯形的面积的近似值
+
+    曲边梯形的面积 :math:`A \approx \sum_{i=1}^n{f(\xi_i)\Delta{x_i}}`
+3. 使所有区间的长度的最大值 :math:`\lambda = \max{|\Delta{x_1}, \Delta{x_2}, ..., \Delta{x_n}|}` 趋近于 0, 则
+
+    :math:`A = \lim_{\lambda \to 0}\sum_{i=1}^n{f(\xi_i)\Delta{x_i}}`
+
+定积分的定义
+~~~~~~~~~~~~~~~
+
+|  :math:`f(x)` 在 :math:`[a, b]` 上有界 (必要条件)
+|  1. :math:`a=x_0<x_1<...<x_n=b`, :math:`\Delta{x_i} = x_i - x_{i-1}`
+|  2. :math:`\forall \xi_i \in [x_{i-1}, x_i]`, 作 :math:`\sum_{i=1}^n{f(\xi_i)\Delta{x_i}}` (称为 **积分和**)
+|  3. 令 :math:`\lambda = \max_{1 \leqslant i \leqslant n}{|\Delta{x_i}|}`, 若 :math:`\lim_{\lambda \to 0}\sum_{i=1}^n{f(\xi_i)\Delta{x_i}}` 存在, 
+|  则称 :math:`f(x)` 在 :math:`[a, b]` 上 **可积**
+|  极限值称为 :math:`f(x)` 在 :math:`[a,b]` 上的 **定积分**, 记作 :math:`\int_a^b{f(x)} dx`
+
+即 :math:`\int_a^b{f(x)} dx \approx \lim_{\lambda \to 0}\sum_{i=1}^n{f(\xi_i)\Delta{x_i}}`
+
+.. note::
+
+    1. :math:`f(x)` 在 :math:`[a, b]` 上连续, 则 :math:`f(x)` 在 :math:`[a, b]` 上可积
+    2. :math:`f(x)` 在 :math:`[a, b]` 上有界, 且只有有限个间断点, 则 :math:`f(x)` 在 :math:`[a, b]` 上可积
+    3. 设 :math:`f(x)` 在 :math:`[0, 1]` 上可积, 则 :math:`\int_0^1{f(x)} dx = \lim_{\lambda \to 0}\sum_{i=1}^n{f(\xi_i)\Delta{x_i}}`
+
+        将 :math:`[0, 1]` 分为 :math:`[0, 1] = [0, \frac{1}{n}] \cup [\frac{1}{n}, \frac{2}{n}] \cup ... \cup [\frac{n-1}{n}, \frac{n}{n}]`, 则
+
+        :math:`\Delta{x_i} = \frac{1}{n} = \lambda`, 且 :math:`n \to 0 \Leftrightarrow \lambda \to \infty`
+
+        令 :math:`\xi_1 = \frac{1}{n}`, :math:`\xi_2 = \frac{2}{n}`, ... :math:`\xi_i = \frac{i}{n}`, ... :math:`\xi_n = \frac{n}{n}`, 替换可得
+
+        :math:`\lim_{n \to \infty} \frac{1}{n} \sum_{i=1}^n f(\frac{i}{n}) = \int_0^1{f(x)} dx`
+
+定积分的一般性质
+~~~~~~~~~~~~~~~~~~~~
+
+1. :math:`\int_a^b [f(x) \pm g(x)] dx = \int_a^b f(x) dx \pm \int_a^b g(x) dx`
+
+2. :math:`\int_a^b kf(x) dx = k \int_a^b f(x) dx`
+
+3. :math:`\int_a^b f(x) dx = -\int_b^a f(x) dx`
+
+4. :math:`\int_a^b f(x) dx = \int_a^c f(x) dx + \int_b^c f(x) dx` (:math:`c` 不一定在 :math:`[a, b]` 内)
+
+5. :math:`\int_a^b 1 dx = b - a`
+
+6. 
+    
+    ① :math:`f(x) \geqslant 0 \quad (x \in [a, b])`, 则 :math:`\int_a^b f(x) dx \geqslant 0`
+
+    ② :math:`f(x) \geqslant g(x) \quad (x \in [a, b])`, 则 :math:`\int_a^b f(x) dx \geqslant \int_a^b g(x) dx`
+
+    ☆③ :math:`f(x), |f(x)|` 在 :math:`[a, b]` 上可积, 则 :math:`|\int_a^b f(x) dx| \leqslant \int_a^b |f(x)| dx`
+
+7. 积分中值定理
+
+    :math:`f(x) \in c[a, b]`, 则 :math:`\exists \xi \in [a, b]`, 使 :math:`\int_a^b f(x) dx = f(\xi)(b-a)`
+
+    :math:`f(\xi)` 称为 **平均高度**
+
+    .. image:: imgs/积分中值定理.png
+
+
+定积分基本公式
+------------------------
+
+积分上限函数
+~~~~~~~~~~~~~~~~~~
+
+|  设函数 :math:`f(x)` 在区间 :math:`[a,b]` 上连续, 且 :math:`x` 为 :math:`[a,b]` 上的一点
+|  因为 :math:`f(x)` 在 :math:`[a,x]` 上连续, 所以 :math:`\int_a^x f(x) dx` 存在
+|  而 :math:`x` 既表示定积分的上限, 又表示积分变量, 为了进行区分, 将积分变量用 :math:`t` 表示
+|  得 :math:`\int_a^x f(t) dt`
+
+|  而 :math:`\forall x \in [a, b]`, :math:`\int_a^x f(t) dt` 都有一个对应的值
+|  因此可以定义函数 :math:`\Phi(x) = \int_a^x f(t) dt` (:math:`a \leq x \leq b`)
+|  函数 :math:`\Phi(x) = \int_a^x f(t) dt` 叫做 **积分上限函数** (又称 **变上限积分**)
+
+|  :math:`f(x) \in c[a,b]`, :math:`\Phi(x) = \int_a^x f(t) dt`, 则 :math:`\Phi(x)` 可导, 
+|  且其导数 :math:`\frac{d}{dx} \int_a^x f(t) dt = f(x)`, 即 :math:`\Phi'(x) = f(x)`
+
+.. note:: 
+
+    1. :math:`f(x)` 连续, :math:`g(x)` 可导, 则 :math:`\frac{d}{dx} \int_a^{g(x)} f(t) dt \stackrel{g(x) = u}{=\mathrel{\mkern-3mu}=\mathrel{\mkern-3mu}=} \frac{d}{dx}\int_a^u f(t) dt = f[g(x)]g'(x)`
+
+    2. :math:`f(x)` 连续, :math:`g_1(x), g_2(x)` 可导, 则 :math:`\frac{d}{dx} \int_{g_1(x)}^{g_2(x)} f(t) dt \\ = \frac{d}{dx}(\int_{g_1(x)}^0 f(t) dt + \int_0^{g_2(x)} f(t) dt) = \frac{d}{dx}(\int_0^{g_2(x)} f(t) dt - \int_0^{g_1(x)} f(t) dt) \\ = f[g_2(x)]g_2'(x) - f[g_1(x)]g_1'(x)`
+
+    3. 对 :math:`\int_a^{g(x)} f(x, t) dt` 求导时, 若表达式中有 :math:`x`, 则先处理 :math:`x`
+
+        .. admonition:: 例
+
+            :math:`\frac{d}{dx} \int_0^x x \sin{t^2} dt = ?`
+
+            将 :math:`\int_0^x x \sin{t^2} dt = x \int_0^x \sin{t^2} dt` 代入可得
+
+            :math:`\frac{d}{dx} \int_0^x x \sin{t^2} dt = \int_0^x \sin{t^2} dt + x \sin{x^2}`
+
+
+牛顿-莱布尼茨公式
+~~~~~~~~~~~~~~~~~~~~
+
+|  若 :math:`f(x) \in c[a, b]`, :math:`F(x)` 为 :math:`f(x)` 的一个原函数,
+|  则 :math:`\int_a^b f(x) dx = F(b) - F(a)`
+
+.. admonition:: 证明
+
+    令 :math:`\Phi(x) = \int_a^x f(t) dt`
+
+    :math:`\because F'(x) = f(x), \Phi'(x) = f(x)`
+
+    :math:`\therefore \Phi(x) - F(x) = C_0`
+
+    则 :math:`\begin{cases} \Phi(a) - F(a) = C_0 \\ \Phi(b) - F(b) = C_0 \end{cases}`
+
+    :math:`\Rightarrow \Phi(b) - F(b) = \Phi(a) - F(a)`
+
+    :math:`\because \Phi(a) = 0, \therefore \Phi(b) = F(b) - F(a)`
+
+    即 :math:`\int_a^b f(t) dt = F(b) - F(a)`, 也可写成 :math:`\int_a^b f(t) dt = F(x) |_a^b`
+
+
+定积分的积分法
+-----------------
+
+换元积分法
+~~~~~~~~~~~~~
+
+|  若 :math:`f(x) \in c[a,b]`, :math:`x = g(t)` 可导且 :math:`g'(t) \neq 0`
+|  令 :math:`a = g(\alpha), b = g(\beta)`, 则
+|  :math:`\int_a^b f(x) dx \stackrel{x = g(t)}{=\mathrel{\mkern-3mu}=\mathrel{\mkern-3mu}=} \int_{\alpha}^{\beta} f[g(t)]g'(t) dt`
+
+定积分的特殊性质
+~~~~~~~~~~~~~~~~~~~~~~~
+
+对称区间定积分性质
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+:math:`f(x) \in c[-a, a]`, 则 :math:`\int_{-a}^a f(x) dx = \int_0^a [f(x) + f(-x)] dx`
+
+特殊情况
+    ① 若 :math:`f(-x) = -f(x)`, 则 :math:`\int_{-a}^a f(x) fx = 0`
+
+    ② 若 :math:`f(-x) = f(x)`, 则 :math:`\int_{-a}^a f(x) fx = 2\int_0^a f(x) fx`
+
+三角函数定积分性质
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+① 若 :math:`f(x) \in c[0, 1]`, 则 :math:`\int_0^{\frac{\pi}{2}} f(\sin{x}) dx = \int_0^{\frac{\pi}{2}} f(\cos{x}) dx`
+
+    特殊情况
+        :math:`\int_0^{\frac{\pi}{2}} \sin^n{x} dx = \int_0^{\frac{\pi}{2}} \cos^n{x} dx`
+
+        令 :math:`I_n = \int_0^{\frac{\pi}{2}} \cos^n{x} dx \\ = \int_0^{\frac{\pi}{2}} \cos^{n-1}{x} d(\sin{x}) \\ = \cos^{n-1}{x}\sin{x}|_0^{\frac{\pi}{2}} - \int_0^{\frac{\pi}{2}} \sin{x} d(\cos^{n-1}{x}) \\ = (n-1) \int_0^{\frac{\pi}{2}} \cos^{n-2}{x}\sin^2{x} dx \\ = (n-1)\int_0^{\frac{\pi}{2}} \cos^{n-2}{x} (1-\cos^2{x}) dx \\ = (n-1)I_{n-2} - (n-1)I_n`
+
+        即 :math:`\begin{cases} I_n = \frac{n-1}{n}I_{n-2} \\ I_0 = \frac{\pi}{2} \\ I_1 = 1 \end{cases}`
+
+        .. admonition:: 例
+
+           :math:`\int_0^{\frac{\pi}{2}} \cos^8{x} dx = I_8 = \frac{7}{8}I_6 = \frac{7}{8}\frac{5}{6}\frac{3}{4}\frac{1}{2}I_0 = \frac{7!!}{8!!}\frac{\pi}{2}`
+
+② :math:`\int_0^{\pi} f(\sin{x}) dx = 2\int_0^{\frac{\pi}{2}} f(\sin{x}) dx`
+
+    特殊情况
+        - :math:`\int_0^{\frac{\pi}{2}} \sin^n{x} dx = 2I_n`
+        - :math:`\int_0^{\frac{\pi}{2}} \cos^n{x} dx = \begin{cases} 0, \quad n\text{为奇数} \\ 2I_n, \quad n\text{为偶数} \end{cases}`
+
+③ :math:`\int_0^{\pi} xf(\sin{x}) dx = \frac{\pi}{2} \int_0^{\pi} \sin{x} dx`
+
+周期函数定积分性质
+^^^^^^^^^^^^^^^^^^^^^^
+
+设 :math:`f(x)` 是周期为 :math:`T` 的可积函数, 则
+
+① :math:`\int_a^{a+T} f(x) dx = \int_0^T f(x) dx`
+
+② :math:`\int_0^{nT} f(x) dx = n\int_0^T f(x) dx`
+
+
+分部积分法
+~~~~~~~~~~~~~~~
+
+:math:`\int_a^b (uv)' dx = \int_a^b u'v dx + \int_a^b uv' dx`
+
+即 :math:`uv|_a^b = \int_a^b v du + \int_a^b u dv`
+
+
+反常积分 (广义积分)
+---------------------
+
+积分区间无限 或 :math:`f(x)` 在区间上有无穷间断点
+
+区间无限 (函数正常)
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:math:`f(x) \in C[a, +\infty)`, :math:`\int_a^b f(x) dx = F(b) - F(a)`,
+
+|  若 :math:`\lim_{b \to \infty} [F(b) - F(a)]` 存在,
+|  则称 :math:`\int_a^{+\infty} f(x) dx` 收敛
+|  令 :math:`\lim_{b \to \infty} [F(b) - F(a)] = A`, 则记 :math:`\int_a^{+\infty} f(x) dx = A`
+
+|  若 :math:`\lim_{b \to \infty} [F(b) - F(a)]` 不存在,
+|  则称 :math:`\int_a^{+\infty} f(x) dx` 发散
+
+:math:`f(x) \in C(-\infty, a]` 同理
+
+:math:`f(x) \in C(-\infty, +\infty)` 可拆分为 :math:`f(x) \in C[a, +\infty)` 和 :math:`f(x) \in C(-\infty, a]`, 分别讨论
+
+无界函数
+~~~~~~~~~~~~
+
+:math:`f(x) \in C(a, b]`, 且 :math:`f(a+0) = \infty`,
+
+|  取 :math:`\forall \xi > 0`, 则 :math:`\int_{a+\xi}^b f(x) dx = F(b) - F(a+\xi)`
+|  若 :math:`\lim_{\xi \to 0} [F(b) - F(a+\xi)]` 存在,
+|  则称 :math:`\int_{a+\xi}^b f(x) dx` 收敛
+|  令 :math:`\lim_{\xi \to 0} [F(b) - F(a+\xi)] = A`, 则记 :math:`\int_{a+\xi}^b f(x) dx = A`
+
+:math:`f(x) \in C[a, b)` 同理
+
+:math:`f(x) \in C[a, c)\cup(c, b]`, 拆分为 :math:`[a, c)` 和 :math:`(c, b]` 分别讨论
+
+:math:`\Gamma` 函数
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+形如 :math:`\int_0^{+\infty} x^{\alpha-1} e^{-x} dx` 的函数叫做 :math:`\Gamma` 函数, 记作 :math:`\Gamma (\alpha)` 
+
+特性
+^^^^^^^^
+
+1. :math:`\Gamma (\alpha+1) = \alpha \Gamma (\alpha)` 
+2. :math:`\Gamma (n+1) = n!` 
+3. :math:`\Gamma (\frac{1}{2}) = \sqrt{\pi}` 
+

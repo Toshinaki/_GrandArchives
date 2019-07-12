@@ -1,0 +1,344 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>1. Git &amp; Github &mdash; gate-of-babylon  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../../" src="../../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../../_static/jquery.js"></script>
+        <script type="text/javascript" src="../../_static/underscore.js"></script>
+        <script type="text/javascript" src="../../_static/doctools.js"></script>
+        <script type="text/javascript" src="../../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../../genindex.html" />
+    <link rel="search" title="Search" href="../../search.html" />
+    <link rel="next" title="Software Design" href="../Software-Design/index.html" />
+    <link rel="prev" title="Tools" href="index.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../../index.html" class="icon icon-home"> gate-of-babylon
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Technology and Applied Sciences</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../index.html">Computing and information technology</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="index.html">Tools</a><ul class="current">
+<li class="toctree-l3 current"><a class="current reference internal" href="#">1. Git &amp; Github</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id1">1.1. 基本概念</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#version-control-system-vcs">1.2. Version Control System (VCS)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#distributed-version-control-system-dvcs">Distributed version control system (DVCS)</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#git-commands">1.3. Git commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#the-github-flow">1.4. The GitHub flow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#models-for-collaborative-development">1.5. Models for collaborative development</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Software-Design/index.html">Software Design</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Mathematics and Logic</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Math-Calculus/index.html">Calculus 微积分</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../../Math-Geometry/index.html">Geometry 几何学</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../Resources/index.html">Resources</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../../index.html">gate-of-babylon</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="../index.html">Computing and information technology</a> &raquo;</li>
+        
+          <li><a href="index.html">Tools</a> &raquo;</li>
+        
+      <li>1. Git &amp; Github</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../../_sources/Tech-Computing&amp;Information-Technology/Tools/git&amp;github.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="git-github">
+<h1>1. Git &amp; Github<a class="headerlink" href="#git-github" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>1.1. 基本概念<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<dl>
+<dt>Github</dt><dd><p>GitHub is a code hosting platform for <strong>version control</strong> and <strong>collaboration</strong></p>
+</dd>
+<dt>Repository</dt><dd><p>存放项目代码; 一个Repository对应一个项目</p>
+</dd>
+<dt>Branch</dt><dd><p>Branching is the way to work on different versions of a repository at one time</p>
+<p>experiment and make edits before committing them to <cite>master</cite></p>
+<img alt="../../_images/branch.png" src="../../_images/branch.png" />
+</dd>
+<dt>commits</dt><dd><p>saved changes</p>
+<p>Each commit has an associated <em>commit message</em>, which is a description explaining why a particular change was made</p>
+</dd>
+<dt>Pull Request</dt><dd><p>proposing your changes and requesting that someone review and pull in your contribution and merge them into their branch</p>
+</dd>
+<dt>Merge</dt><dd><p>merge branch into <cite>master</cite> branch, and delete the branch</p>
+</dd>
+<dt>Star</dt><dd><p>收藏</p>
+</dd>
+<dt>Fork</dt><dd><p>克隆项目以便于独立开发</p>
+</dd>
+<dt>Watch</dt><dd><p>关注; 有更新时会受到通知</p>
+</dd>
+<dt>Issue</dt><dd><p>问题</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="version-control-system-vcs">
+<h2>1.2. Version Control System (VCS)<a class="headerlink" href="#version-control-system-vcs" title="Permalink to this headline">¶</a></h2>
+<p>project history:
+- Which changes were made?
+- Who made the changes?
+- When were the changes made?
+- Why were changes needed?</p>
+<div class="section" id="distributed-version-control-system-dvcs">
+<h3>Distributed version control system (DVCS)<a class="headerlink" href="#distributed-version-control-system-dvcs" title="Permalink to this headline">¶</a></h3>
+<p>Unlike once popular centralized version control systems, DVCSs like Git don’t need a constant connection to a central repository. Developers can work anywhere and collaborate asynchronously from any time zone</p>
+</div>
+</div>
+<div class="section" id="git-commands">
+<h2>1.3. Git commands<a class="headerlink" href="#git-commands" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p><cite>git init</cite></p>
+<blockquote>
+<div><p>initializes a brand new Git repository and begins tracking an existing directory. It adds a hidden subfolder within the existing directory that houses the internal data structure required for version control.</p>
+</div></blockquote>
+</li>
+<li><p><cite>git clone</cite></p>
+<blockquote>
+<div><p>creates a local copy of a project that already exists remotely. The clone includes all the project’s files, history, and branches.</p>
+</div></blockquote>
+</li>
+<li><p><cite>git add</cite></p>
+<blockquote>
+<div><p>stages a change. Git tracks changes to a developer’s codebase, but it’s necessary to stage and take a snapshot of the changes to include them in the project’s history. This command performs staging, the first part of that two-step process. Any changes that are staged will become a part of the next snapshot and a part of the project’s history. Staging and committing separately gives developers complete control over the history of their project without changing how they code and work.</p>
+</div></blockquote>
+</li>
+<li><p><cite>git commit</cite></p>
+<blockquote>
+<div><p>saves the snapshot to the project history and completes the change-tracking process. In short, a commit functions like taking a photo. Anything that’s been staged with git add will become a part of the snapshot with git commit.</p>
+</div></blockquote>
+</li>
+<li><p><cite>git status</cite></p>
+<blockquote>
+<div><p>shows the status of changes as untracked, modified, or staged.</p>
+</div></blockquote>
+</li>
+<li><p><cite>git branch</cite></p>
+<blockquote>
+<div><p>shows the branches being worked on locally.</p>
+</div></blockquote>
+</li>
+<li><p><cite>git merge</cite></p>
+<blockquote>
+<div><p>merges lines of development together. This command is typically used to combine changes made on two distinct branches. For example, a developer would merge when they want to combine changes from a feature branch into the master branch for deployment.</p>
+</div></blockquote>
+</li>
+<li><p><cite>git pull</cite></p>
+<blockquote>
+<div><p>updates the local line of development with updates from its remote counterpart. Developers use this command if a teammate has made commits to a branch on a remote, and they would like to reflect those changes in their local environment.</p>
+</div></blockquote>
+</li>
+<li><p><cite>git push</cite></p>
+<blockquote>
+<div><p>updates the remote repository with any commits made locally to a branch.</p>
+</div></blockquote>
+</li>
+</ul>
+<p>For more details: <a class="reference external" href="https://git-scm.com/docs">https://git-scm.com/docs</a></p>
+</div>
+<div class="section" id="the-github-flow">
+<h2>1.4. The GitHub flow<a class="headerlink" href="#the-github-flow" title="Permalink to this headline">¶</a></h2>
+<img alt="../../_images/github-flow.PNG" src="../../_images/github-flow.PNG" />
+<ol class="arabic simple">
+<li><p><strong>Create a branch</strong>: Topic branches created from the canonical deployment branch (usually master) allow teams to contribute to many parallel efforts. Short-lived topic branches, in particular, keep teams focused and results in quick ships.</p></li>
+<li><p><strong>Add commits</strong>: Snapshots of development efforts within a branch create safe, revertible points in the project’s history.</p></li>
+<li><p><strong>Open a pull request</strong>: Pull requests publicize a project’s ongoing efforts and set the tone for a transparent development process.</p></li>
+<li><p><strong>Discuss and review code</strong>: Teams participate in code reviews by commenting, testing, and reviewing open pull requests. Code review is at the core of an open and participatory culture.</p></li>
+<li><p><strong>Merge</strong>: Upon clicking merge, GitHub automatically performs the equivalent of a local ‘git merge’ operation. GitHub also keeps the entire branch development history on the merged pull request.</p></li>
+<li><p><strong>Deploy</strong>: Teams can choose the best release cycles or incorporate continuous integration tools and operate with the assurance that code on the deployment branch has gone through a robust workflow.</p></li>
+</ol>
+</div>
+<div class="section" id="models-for-collaborative-development">
+<h2>1.5. Models for collaborative development<a class="headerlink" href="#models-for-collaborative-development" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic simple">
+<li><p>Shared repository (适合个人或团队)</p></li>
+<li><p>Fork and pull (适合开源项目, 难以控制权限时)</p></li>
+</ol>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="../Software-Design/index.html" class="btn btn-neutral float-right" title="Software Design" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral float-left" title="Tools" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Toshinaki
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

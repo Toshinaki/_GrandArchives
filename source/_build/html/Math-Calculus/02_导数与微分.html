@@ -1,0 +1,467 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>2. 导数与微分 &mdash; gate-of-babylon  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="3. 微分中值定理与导数的应用" href="03_微分中值定理与导数的应用.html" />
+    <link rel="prev" title="1. 函数与极限" href="01_函数与极限.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> gate-of-babylon
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Technology and Applied Sciences</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/index.html">Computing and information technology</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Mathematics and Logic</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Calculus 微积分</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01_函数与极限.html">1. 函数与极限</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">2. 导数与微分</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">2.1. 导数概念</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">2.1.1. 几何意义</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id4">2.2. 求导基本公式</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id5">2.2.1. 四则求导</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id6">2.2.2. 反函数求导</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">2.2.3. 复合函数求导</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id8">2.2.4. 其他求导方法</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">2.3. 高阶导数</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id10">2.3.1. 特殊的高阶导数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#leibniz">2.3.2. Leibniz公式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id11">2.3.3. 高阶导数求导</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id12">2.4. 隐函数及参数方程的导数</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id13">2.4.1. 隐函数</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id14">函数的表达方法</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#id15">隐函数的求导</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="#id16">2.4.2. 参数方程</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id17">2.5. 函数的微分</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id18">2.5.1. 公式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id19">2.5.2. 微分在近似计算中的应用</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="03_微分中值定理与导数的应用.html">3. 微分中值定理与导数的应用</a></li>
+<li class="toctree-l2"><a class="reference internal" href="04_不定积分.html">4. 不定积分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="05_定积分.html">5. 定积分</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Math-Geometry/index.html">Geometry 几何学</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Resources/index.html">Resources</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">gate-of-babylon</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Calculus 微积分</a> &raquo;</li>
+        
+      <li>2. 导数与微分</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Math-Calculus/02_导数与微分.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>2. 导数与微分<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>2.1. 导数概念<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>(自变量发生微小变化时因变量的变化率)</p>
+<p>设函数 <span class="math notranslate nohighlight">\(y = f(x)\)</span> 在点 <span class="math notranslate nohighlight">\(x_0\)</span> 的某个邻域内有定义,
+当自变量 <span class="math notranslate nohighlight">\(x\)</span> 在 <span class="math notranslate nohighlight">\(x_0\)</span> 处取得增量 <span class="math notranslate nohighlight">\(\Delta x\)</span> 时,
+相应的函数取得增量 <span class="math notranslate nohighlight">\(\Delta y = f(x_0 + \Delta x) - f(x_0)\)</span></p>
+<p>如果 <span class="math notranslate nohighlight">\(\frac{\Delta y}{\Delta x}\)</span> 当 <span class="math notranslate nohighlight">\(\Delta x \to 0\)</span> 时有极限,
+则称函数 <span class="math notranslate nohighlight">\(y = f(x)\)</span> 在 <span class="math notranslate nohighlight">\(x_0\)</span> 处 <strong>可导</strong>,
+并称这个极限为函数 <span class="math notranslate nohighlight">\(y = f(x)\)</span> 在点 <span class="math notranslate nohighlight">\(x_0\)</span> 处的导数, 记为 <span class="math notranslate nohighlight">\(f'(x_0)\)</span>:</p>
+<div class="math notranslate nohighlight">
+\[f'(x_0) = \lim_{\Delta x \to 0}\frac{\Delta y}{\Delta x} = \lim_{\Delta x \to 0}\frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x}\]</div>
+<p>也可记作 <span class="math notranslate nohighlight">\(y'|_{x=x_0}, \frac{dy}{dx}|_{x=x_0}\)</span>,
+或 <span class="math notranslate nohighlight">\(\frac{df(x)}{dx}|_{x=x_0}\)</span></p>
+<ul>
+<li><p><span class="math notranslate nohighlight">\(f'(x_0) = \lim_{\Delta x \to 0}\frac{f(x_0 + \Delta x) - f(x_0)}{\Delta x}\)</span> 也可表示为 <span class="math notranslate nohighlight">\(f'(x_0) = \lim_{x \to x_0}\frac{f(x) - f(x_0)}{x - x_0}\)</span></p></li>
+<li><p>若 <span class="math notranslate nohighlight">\(f'(x_0)\)</span> 存在, 则 <span class="math notranslate nohighlight">\(f(x)\)</span> 在 <span class="math notranslate nohighlight">\(x_0\)</span> 处连续 (可导必然连续, 连续不一定可导)</p>
+<blockquote>
+<div><img alt="../_images/Derivative_continuous.png" src="../_images/Derivative_continuous.png" />
+</div></blockquote>
+</li>
+<li><p><span class="math notranslate nohighlight">\(f'(x_0)\)</span> 存在 <span class="math notranslate nohighlight">\(\Leftrightarrow\)</span> <span class="math notranslate nohighlight">\(f'_{-}(x_0), f'_{+}(x_0)\)</span> 存在且相等</p></li>
+</ul>
+<div class="section" id="id3">
+<h3>2.1.1. 几何意义<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-center" id="id20">
+<img alt="../_images/Graph_of_sliding_derivative_line.gif" src="../_images/Graph_of_sliding_derivative_line.gif" />
+<p class="caption"><span class="caption-text"><span class="math notranslate nohighlight">\(x\)</span> 变化时函数 <span class="math notranslate nohighlight">\(f(x) = 1 + x \sin (x^2)\)</span> (蓝色曲线) 的切线变化
+函数的导数值就是切线的斜率, 绿色代表其值为正, 红色代表其值为负, 黑色代表值为零</span><a class="headerlink" href="#id20" title="Permalink to this image">¶</a></p>
+</div>
+<div class="figure align-right">
+<img alt="../_images/Derivative.jpg" src="../_images/Derivative.jpg" />
+</div>
+<p>当函数定义域和取值都在实数域中的时候, 导数可以表示成函数的曲线上的切线斜率</p>
+<p>如右图所示, 设 <span class="math notranslate nohighlight">\(P_0\)</span> 为曲线上的一个定点, <span class="math notranslate nohighlight">\(P\)</span> 为曲线上的一个动点</p>
+<p>当 <span class="math notranslate nohighlight">\(P\)</span> 沿曲线逐渐趋向于点 <span class="math notranslate nohighlight">\(P_0\)</span>, 并且割线 <span class="math notranslate nohighlight">\(PP_0\)</span> 的极限位置 <span class="math notranslate nohighlight">\(P_0T\)</span> 存在, 则称 <span class="math notranslate nohighlight">\(P_0T\)</span> 为曲线在 <span class="math notranslate nohighlight">\(P_0\)</span> 处的切线</p>
+<p>若曲线为函数 <span class="math notranslate nohighlight">\(y=f(x)\)</span> 的图像, 那么割线 <span class="math notranslate nohighlight">\(PP_0\)</span> (蓝色)的斜率为：</p>
+<p><span class="math notranslate nohighlight">\(\tan \varphi = \frac{\Delta y}{\Delta x} = \frac{f(x_0 + \Delta x)-f(x_0)}{\Delta x}\)</span></p>
+<p>当 <span class="math notranslate nohighlight">\(P_0\)</span> 处的切线 <span class="math notranslate nohighlight">\(P_0T\)</span> (红色), 即 <span class="math notranslate nohighlight">\(PP_0\)</span> 的极限位置存在时, 此时 <span class="math notranslate nohighlight">\(\Delta x \to 0\)</span>, <span class="math notranslate nohighlight">\(\varphi \to \alpha\)</span>, 则 <span class="math notranslate nohighlight">\(P_0T\)</span> 的斜率 <span class="math notranslate nohighlight">\(\tan \alpha\)</span> 为：</p>
+<p><span class="math notranslate nohighlight">\(\tan \alpha = \lim_{\Delta x \to 0} \tan \varphi = \lim_{\Delta x \to 0} \frac{f(x_0 + \Delta x)-f(x_0)}{\Delta x}\)</span></p>
+<p>上式与一般定义中的导数定义完全相同, 也就是说 <span class="math notranslate nohighlight">\(f'(x_0)=\tan \alpha\)</span>, 因此, 导数的几何意义即曲线 <span class="math notranslate nohighlight">\(y=f(x)\)</span> 在点 <span class="math notranslate nohighlight">\(P_0(x_0, f(x_0))\)</span> 处切线的斜率</p>
+</div>
+</div>
+<div class="section" id="id4">
+<h2>2.2. 求导基本公式<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\((x^a)' = ax^{a-1}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((a^x)' = a^x\ln{a}\)</span>; (<span class="math notranslate nohighlight">\((e^x)' = e^x\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\((log_{a}x)' = \frac{1}{x\ln{a}}\)</span>;
+(<span class="math notranslate nohighlight">\((\ln{x})' = \frac{1}{x}\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\((\sin{x})' = \cos{x}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((\cos{x})' = -\sin{x}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((\tan{x})' = \sec^2{x}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((\cot{x})' = -\csc^2{x}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((\sec{x})' = \sec{x}\tan{x}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((\csc{x})' = -\csc{x}\cot{x}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((\arcsin{x})' = \frac{1}{\sqrt{1-x^2}}\)</span> (<span class="math notranslate nohighlight">\(-1&lt;x&lt;1\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\((\arccos{x})' = -\frac{1}{\sqrt{1-x^2}}\)</span> (<span class="math notranslate nohighlight">\(-1&lt;x&lt;1\)</span>)</p></li>
+<li><p><span class="math notranslate nohighlight">\((\arctan{x})' = \frac{1}{1+x^2}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((\text{arccot} {x})' = -\frac{1}{1+x^2}\)</span></p></li>
+</ul>
+<div class="section" id="id5">
+<h3>2.2.1. 四则求导<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\((u(x) \pm v(x))' = u'(x) \pm v'(x)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((uv)' = u'v + uv'\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((\frac{u}{v})' = \frac{u'v - uv'}{v^2}\)</span> (<span class="math notranslate nohighlight">\(v \neq 0\)</span>)</p></li>
+</ul>
+</div>
+<div class="section" id="id6">
+<h3>2.2.2. 反函数求导<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p>若函数 <span class="math notranslate nohighlight">\(x = f(y)\)</span> 在区间 <span class="math notranslate nohighlight">\(I_y\)</span> 内可导且 <span class="math notranslate nohighlight">\(f'(y) \neq 0\)</span> (单调), 则其反函数 <span class="math notranslate nohighlight">\(y = f^{-1}(x)\)</span> 在区间 <span class="math notranslate nohighlight">\(I_x = \{x|x=f(y), y \in I_y\}\)</span> 内也可导, 且</p>
+<div class="math notranslate nohighlight">
+\[(f^{-1}(x))' = \frac{1}{f'(y)}\]</div>
+</div>
+<div class="section" id="id7">
+<h3>2.2.3. 复合函数求导<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p>若 <span class="math notranslate nohighlight">\(u = g(x)\)</span> 在点 <span class="math notranslate nohighlight">\(x\)</span> 可导,
+而 <span class="math notranslate nohighlight">\(y=f(u)\)</span> 在点 <span class="math notranslate nohighlight">\(u=g(x)\)</span> 可导,
+则 <span class="math notranslate nohighlight">\(y=f(g(x))\)</span> 在点 <span class="math notranslate nohighlight">\(x\)</span> 可导</p>
+<div class="math notranslate nohighlight">
+\[\frac{dy}{dx} = f'(u)g'(x)\]</div>
+</div>
+<div class="section" id="id8">
+<h3>2.2.4. 其他求导方法<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>当有 <span class="math notranslate nohighlight">\(y = u(x)^{v(x)}\)</span> 时,
+转换为 <span class="math notranslate nohighlight">\(y = e^{v(x)\ln{u(x)}}\)</span>,
+求得导数为 <span class="math notranslate nohighlight">\(y' = e^{v(x)\ln{u(x)}}[v'(x)\ln{u(x)} + v(x)\frac{1}{u(x)}u'(x)]\)</span></p></li>
+<li><p>或转换为隐函数: <span class="math notranslate nohighlight">\(\ln{y} = v(x)\ln{u(x)}\)</span> 再求导</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>2.3. 高阶导数<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id10">
+<h3>2.3.1. 特殊的高阶导数<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\((\sin{x})^{(n)} = \sin{(x+\frac{n\pi}{2})}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((\cos{x})^{(n)} = \cos{(x+\frac{n\pi}{2})}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\((\frac{1}{ax + b})^{(n)} = \frac{(-1)^n n! a^n}{(ax + b)^{n+1}}\)</span></p></li>
+</ul>
+</div>
+<div class="section" id="leibniz">
+<h3>2.3.2. Leibniz公式<a class="headerlink" href="#leibniz" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\((uv)^{(n)} = \Sigma_{k=0}^{n}C_n^ku^{(n-k)}v^{(k)}\)</span></p>
+</div>
+<div class="section" id="id11">
+<h3>2.3.3. 高阶导数求导<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li><p>递推, 归纳</p></li>
+<li><p>公式</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id12">
+<h2>2.4. 隐函数及参数方程的导数<a class="headerlink" href="#id12" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id13">
+<h3>2.4.1. 隐函数<a class="headerlink" href="#id13" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id14">
+<h4>函数的表达方法<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
+<dl class="simple">
+<dt>显函数</dt><dd><p>自变量与因变量分别处于等号的两边</p>
+</dd>
+<dt>隐函数</dt><dd><p>自变量与因变量同时处于等号的两边</p>
+</dd>
+</dl>
+<ul class="simple">
+<li><p>将隐函数转化为显函数叫做 <strong>隐函数的显化</strong></p></li>
+</ul>
+</div>
+<div class="section" id="id15">
+<h4>隐函数的求导<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
+<p>变量 <span class="math notranslate nohighlight">\(x,y\)</span> 满足 <span class="math notranslate nohighlight">\(F(x,y)=0\)</span></p>
+<p>将 <span class="math notranslate nohighlight">\(y\)</span> 看作 <span class="math notranslate nohighlight">\(x\)</span> 的函数, 只对 <span class="math notranslate nohighlight">\(x\)</span> 求导</p>
+</div>
+</div>
+<div class="section" id="id16">
+<h3>2.4.2. 参数方程<a class="headerlink" href="#id16" title="Permalink to this headline">¶</a></h3>
+<p>自变量与因变量都由另外的参数定义</p>
+<ul>
+<li><p>若 <span class="math notranslate nohighlight">\(\begin{cases} x = \phi(t) \\ y = \psi(t)  \end{cases}\)</span>, <span class="math notranslate nohighlight">\(\phi(t), \psi(t)\)</span> 可导且 <span class="math notranslate nohighlight">\(\phi'(t) \neq 0\)</span>, 则 <span class="math notranslate nohighlight">\(y\)</span> 关于 <span class="math notranslate nohighlight">\(x\)</span> 的函数可导:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\frac{dy}{dx} = \frac{\psi'(t)}{\phi'(t)}\]</div>
+<div class="admonition- admonition">
+<p class="admonition-title">证明</p>
+<p><span class="math notranslate nohighlight">\(\phi'(t) = \lim_{\Delta{t} \to 0}\frac{\Delta{x}}{\Delta{t}} \neq 0\)</span></p>
+<p><span class="math notranslate nohighlight">\(\Delta{x}\)</span> 与 <span class="math notranslate nohighlight">\(\Delta{t}\)</span> 为同阶无穷小 (☆)</p>
+<p><span class="math notranslate nohighlight">\(\frac{dy}{dx} = \lim_{\Delta{x} \to 0}\frac{\Delta{y}}{\Delta{x}} = \lim_{\Delta{x} \to 0} \frac{ \frac{\Delta{y}}{\Delta{t}} }{ \frac{\Delta{x}}{\Delta{t}} }\)</span></p>
+<p><span class="math notranslate nohighlight">\(= \lim_{\Delta{t} \to 0} \frac{ \frac{\Delta{y}}{\Delta{t}} }{ \frac{\Delta{x}}{\Delta{t}} } = \frac{\psi'(t)}{\phi'(t)}\)</span></p>
+</div>
+</div></blockquote>
+</li>
+<li><p>若 <span class="math notranslate nohighlight">\(\begin{cases} x = \phi(t) \\ y = \psi(t)  \end{cases}\)</span>, <span class="math notranslate nohighlight">\(\phi(t), \psi(t)\)</span> 二阶可导且 <span class="math notranslate nohighlight">\(\phi'(t) \neq 0\)</span>, 则:</p>
+<blockquote>
+<div><div class="math notranslate nohighlight">
+\[\frac{d^2y}{dx^2} = \frac{d[\frac{\psi'(t)}{\phi'(t)}]}{dx} = \frac{\frac{d}{dt}[\frac{\psi'(t)}{\phi'(t)}]}{\frac{dx}{dt}} = \frac{[\frac{\psi'(t)}{\phi'(t)}]'}{\phi'(t)}\]</div>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="id17">
+<h2>2.5. 函数的微分<a class="headerlink" href="#id17" title="Permalink to this headline">¶</a></h2>
+<dl>
+<dt>定义</dt><dd><p>设函数 <span class="math notranslate nohighlight">\(y=f(x)\)</span> 在某区间内有定义, <span class="math notranslate nohighlight">\(x_0\)</span> 及 <span class="math notranslate nohighlight">\(x_0+\Delta{x}\)</span> 在此区间内,</p>
+<p>如果增量 <span class="math notranslate nohighlight">\(\Delta{y} = f(x_0+\Delta{x}) - f(x_0)\)</span> 可表示为 <span class="math notranslate nohighlight">\(\Delta{y} = A\Delta{x} + o(\Delta{x})\)</span> (线性部分与 <span class="math notranslate nohighlight">\(\Delta{x}\)</span> 的高阶无穷小之和)</p>
+<p>其中 <span class="math notranslate nohighlight">\(A\)</span> 是不依赖于 <span class="math notranslate nohighlight">\(\Delta{x}\)</span> 的常数, 那么称函数 <span class="math notranslate nohighlight">\(y=f(x)\)</span> 在点 <span class="math notranslate nohighlight">\(x_0\)</span> 是 <strong>可微</strong> 的,</p>
+<p>而 <span class="math notranslate nohighlight">\(A\Delta{x}\)</span> 叫做函数 <span class="math notranslate nohighlight">\(y=f(x)\)</span> 在点 <span class="math notranslate nohighlight">\(x_0\)</span> 相应于自变量 <span class="math notranslate nohighlight">\(\Delta{x}\)</span> 的 <strong>微分</strong> , 记作 <span class="math notranslate nohighlight">\(dy\)</span>, 即 <span class="math notranslate nohighlight">\(dy = A\Delta{x}\)</span></p>
+</dd>
+</dl>
+<ul>
+<li><p>若函数 <span class="math notranslate nohighlight">\(y=f(x)\)</span> 在点 <span class="math notranslate nohighlight">\(x_0\)</span> 可微, 则 <span class="math notranslate nohighlight">\(\Delta{y} - dy|_{x=x_0} = o(\Delta{x})\)</span></p></li>
+<li><p>函数 <span class="math notranslate nohighlight">\(y=f(x)\)</span> 在点 <span class="math notranslate nohighlight">\(x_0\)</span> 可微 <span class="math notranslate nohighlight">\(\Leftrightarrow\)</span> 函数 <span class="math notranslate nohighlight">\(y=f(x)\)</span> 在点 <span class="math notranslate nohighlight">\(x_0\)</span> 可导</p>
+<blockquote>
+<div><div class="admonition- admonition">
+<p class="admonition-title">证明</p>
+<p><span class="math notranslate nohighlight">\(\Delta{y} = A\Delta{x} + o(\Delta{x})\)</span></p>
+<p><span class="math notranslate nohighlight">\(\Rightarrow \frac{\Delta{y}}{\Delta{x}} = A + \frac{o(\Delta{x})}{\Delta{x}}\)</span></p>
+<p>当 <span class="math notranslate nohighlight">\(\Delta{x} \to 0\)</span> 时, <span class="math notranslate nohighlight">\(\lim_{\Delta{x} \to 0}\frac{\Delta{y}}{\Delta{x}} = A = f'(x_0)\)</span></p>
+<p>反之亦然</p>
+</div>
+</div></blockquote>
+</li>
+<li><p><span class="math notranslate nohighlight">\(A = f'(x)\)</span>, 即 <span class="math notranslate nohighlight">\(df(x)|_{x=x_0} = f'(x_0)dx\)</span></p></li>
+<li><p>若函数 <span class="math notranslate nohighlight">\(y=f(x)\)</span> 处处可微, 则 <span class="math notranslate nohighlight">\(dy = df(x) = f'(x)dx\)</span></p></li>
+<li><p>几何意义</p>
+<blockquote>
+<div><img alt="../_images/微分.PNG" src="../_images/微分.PNG" />
+</div></blockquote>
+</li>
+</ul>
+<div class="section" id="id18">
+<h3>2.5.1. 公式<a class="headerlink" href="#id18" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-center">
+<img alt="导数微分积分公式" src="../_images/导数微分积分公式.jpg" />
+</div>
+</div>
+<div class="section" id="id19">
+<h3>2.5.2. 微分在近似计算中的应用<a class="headerlink" href="#id19" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(\Delta{y} = dy + o(\Delta{x}) = A\Delta{x} + o(\Delta{x}) \Rightarrow\)</span>
+<span class="math notranslate nohighlight">\(\Delta{y} \approx dy\)</span>, 即
+<span class="math notranslate nohighlight">\(f(x_0+\Delta{x}) - f(x_0) \approx f'(x_0)\Delta{x} \Rightarrow f(x_0+\Delta{x}) \approx f(x_0) + f'(x_0)\Delta{x}\)</span></p>
+<div class="admonition- admonition">
+<p class="admonition-title">例</p>
+<p><span class="math notranslate nohighlight">\(\sqrt{4.02} \approx ?\)</span></p>
+<p>令 <span class="math notranslate nohighlight">\(f(x) = \sqrt{x}\)</span>, <span class="math notranslate nohighlight">\(x_0=4\)</span>, <span class="math notranslate nohighlight">\(\Delta{x}=0.02\)</span>, 则</p>
+<p><span class="math notranslate nohighlight">\(f'(x) = \frac{1}{2\sqrt{x}}\)</span>, <span class="math notranslate nohighlight">\(f(4) = 2\)</span>, <span class="math notranslate nohighlight">\(f'(4) = \frac{1}{4}\)</span></p>
+<p><span class="math notranslate nohighlight">\(f(4.02) \approx f(4) + f'(4) \times 0.02\)</span>, 即 <span class="math notranslate nohighlight">\(\sqrt{4.02} \approx 2 + \frac{1}{4} \times 0.02\)</span></p>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="03_微分中值定理与导数的应用.html" class="btn btn-neutral float-right" title="3. 微分中值定理与导数的应用" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="01_函数与极限.html" class="btn btn-neutral float-left" title="1. 函数与极限" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Toshinaki
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

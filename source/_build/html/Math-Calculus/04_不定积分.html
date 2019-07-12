@@ -1,0 +1,390 @@
+
+
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>4. 不定积分 &mdash; gate-of-babylon  documentation</title>
+  
+
+  
+  
+  
+  
+
+  
+  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
+  
+    
+      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
+        <script type="text/javascript" src="../_static/jquery.js"></script>
+        <script type="text/javascript" src="../_static/underscore.js"></script>
+        <script type="text/javascript" src="../_static/doctools.js"></script>
+        <script type="text/javascript" src="../_static/language_data.js"></script>
+        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    
+    <script type="text/javascript" src="../_static/js/theme.js"></script>
+
+    
+
+  
+  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="5. 定积分" href="05_定积分.html" />
+    <link rel="prev" title="3. 微分中值定理与导数的应用" href="03_微分中值定理与导数的应用.html" /> 
+</head>
+
+<body class="wy-body-for-nav">
+
+   
+  <div class="wy-grid-for-nav">
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-scroll">
+        <div class="wy-side-nav-search" >
+          
+
+          
+            <a href="../index.html" class="icon icon-home"> gate-of-babylon
+          
+
+          
+          </a>
+
+          
+            
+            
+          
+
+          
+<div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
+    <input type="text" name="q" placeholder="Search docs" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+
+          
+        </div>
+
+        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+          
+            
+            
+              
+            
+            
+              <p class="caption"><span class="caption-text">Technology and Applied Sciences</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/index.html">Computing and information technology</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Mathematics and Logic</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="index.html">Calculus 微积分</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="01_函数与极限.html">1. 函数与极限</a></li>
+<li class="toctree-l2"><a class="reference internal" href="02_导数与微分.html">2. 导数与微分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="03_微分中值定理与导数的应用.html">3. 微分中值定理与导数的应用</a></li>
+<li class="toctree-l2 current"><a class="current reference internal" href="#">4. 不定积分</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#id2">4.1. 不定积分定义</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id3">4.1.1. 基本性质</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id4">4.1.2. 积分基本公式</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id5">4.2. 换元积分法</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id6">4.2.1. 第一类换元积分法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="#id7">4.2.2. 第二类换元积分法</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id8">4.3. 分部积分法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#id9">4.4. 重要类型 - 有理函数</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="#id10">4.4.1. 不定积分的步骤</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="#id11">4.5. 重要类型 - 三角有理函数</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="05_定积分.html">5. 定积分</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Math-Geometry/index.html">Geometry 几何学</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Resources</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../Resources/index.html">Resources</a></li>
+</ul>
+
+            
+          
+        </div>
+      </div>
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" aria-label="top navigation">
+        
+          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+          <a href="../index.html">gate-of-babylon</a>
+        
+      </nav>
+
+
+      <div class="wy-nav-content">
+        
+        <div class="rst-content">
+        
+          
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div role="navigation" aria-label="breadcrumbs navigation">
+
+  <ul class="wy-breadcrumbs">
+    
+      <li><a href="../index.html">Docs</a> &raquo;</li>
+        
+          <li><a href="index.html">Calculus 微积分</a> &raquo;</li>
+        
+      <li>4. 不定积分</li>
+    
+    
+      <li class="wy-breadcrumbs-aside">
+        
+            
+            <a href="../_sources/Math-Calculus/04_不定积分.rst.txt" rel="nofollow"> View page source</a>
+          
+        
+      </li>
+    
+  </ul>
+
+  
+  <hr/>
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody">
+            
+  <div class="section" id="id1">
+<h1>4. 不定积分<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id2">
+<h2>4.1. 不定积分定义<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<dl>
+<dt>原函数</dt><dd><p>设 <span class="math notranslate nohighlight">\(f(x), F(x)\)</span> <span class="math notranslate nohighlight">\((x \in I)\)</span></p>
+<p>若 <span class="math notranslate nohighlight">\(\forall x \in I\)</span>, 都有 <span class="math notranslate nohighlight">\(F'(x) = f(x)\)</span>, 则称 <span class="math notranslate nohighlight">\(F(x)\)</span> 为 <span class="math notranslate nohighlight">\(f(x)\)</span> 的原函数</p>
+<ol class="arabic simple">
+<li><p>连续函数一定有原函数</p></li>
+<li><p>一个函数若有原函数, 则一定有无数个原函数; 任两个原函数之间相差常数</p></li>
+</ol>
+</dd>
+<dt>不定积分</dt><dd><p><span class="math notranslate nohighlight">\(\int f(x)dx = F(x) + c\)</span> (找到所有原函数)</p>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\frac{d}{dx} \int f(x) dx = f(x)\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\int \frac{d}{dx} f(x) dx = \int f'(x) dx = f(x) + c\)</span></p></li>
+</ol>
+</dd>
+</dl>
+<div class="section" id="id3">
+<h3>4.1.1. 基本性质<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic simple">
+<li><p><span class="math notranslate nohighlight">\(\int [f(x) + \pm g(x)]dx = \int f(x) dx \pm \int g(x) dx\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\int k f(x) dx = k \int f(x) dx\)</span></p></li>
+</ol>
+</div>
+<div class="section" id="id4">
+<h3>4.1.2. 积分基本公式<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<img alt="../_images/导数微分积分公式.jpg" src="../_images/导数微分积分公式.jpg" />
+</div>
+</div>
+<div class="section" id="id5">
+<h2>4.2. 换元积分法<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="id6">
+<h3>4.2.1. 第一类换元积分法<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(\int f[g(x)]g'(x) dx = \int f[g(x)] d(g(x)) \\ \stackrel{g(x) = t}{=\mathrel{\mkern-3mu}=\mathrel{\mkern-3mu}=} \int f(t)dt = F(t) + c \\ = F[g(x)] + c\)</span></p>
+</div>
+<div class="section" id="id7">
+<h3>4.2.2. 第二类换元积分法<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<p><span class="math notranslate nohighlight">\(\int f(x) dx \stackrel{x = g(t)}{=\mathrel{\mkern-3mu}=\mathrel{\mkern-3mu}=} \int f[g(t)]g'(t) dt \\ = \int g(t) dt = G(t) + c = G[g^{-1}(x)] + c\)</span></p>
+<p>使用情况:</p>
+<ol class="arabic">
+<li><p>无理 → 有理</p></li>
+<li><p>平方和, 平方差</p>
+<blockquote>
+<div><ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(a^2 - x^2 \stackrel{x = a\sin{t}}{=\mathrel{\mkern-3mu}=\mathrel{\mkern-3mu}=} a^2\cos^2{t}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(a^2 + x^2 \stackrel{x = a\tan{t}}{=\mathrel{\mkern-3mu}=\mathrel{\mkern-3mu}=} a^2\sec^2{t}\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(x^2 - a^2 \stackrel{x = a\sec{t}}{=\mathrel{\mkern-3mu}=\mathrel{\mkern-3mu}=} a^2\tan^2{t}\)</span></p></li>
+</ul>
+</div></blockquote>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="id8">
+<h2>4.3. 分部积分法<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h2>
+<p><span class="math notranslate nohighlight">\(\int u dv\)</span> 与 <span class="math notranslate nohighlight">\(\int v du\)</span> 通常难易度不同</p>
+<p><span class="math notranslate nohighlight">\((uv)' = u'v + uv' \Rightarrow \int (uv)' dx = \int u'v dx + \int uv' dx \\ \Rightarrow uv = \int v du + \int u dv \\ \Rightarrow \int u dv = uv - \int v du\)</span></p>
+<p>使用场合:</p>
+<ol class="arabic">
+<li><p><span class="math notranslate nohighlight">\(\int x^n \ln{x} dx\)</span></p>
+<blockquote>
+<div><div class="admonition- admonition">
+<p class="admonition-title">例</p>
+<p><span class="math notranslate nohighlight">\(\int x^2 \ln{x} dx = \int \ln{x} d(\frac{1}{3}x^3) \\ = \frac{1}{3}x^3\ln{x} - \int \frac{1}{3}x^3d(\ln{x}) \\ = \frac{1}{3}x^3\ln{x} - \frac{1}{3}\int x^2 dx \\ = \frac{1}{3}x^3\ln{x} - \frac{1}{9}x^3 + c\)</span></p>
+</div>
+</div></blockquote>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\int x^n a^x dx\)</span></p>
+<blockquote>
+<div><div class="admonition- admonition">
+<p class="admonition-title">例</p>
+<p><span class="math notranslate nohighlight">\(\int x^2e^x dx = \int x^2 d(e^x) \\ = x^2e^x - \int e^x d(x^2) = x^2e^x - 2\int xe^x d(x) \\ = x^2e^x - 2\int x d(e^x) \\ = x^2e^x - 2[xe^x - \int e^x dx] = x^2e^x - 2[xe^x - e^x] + c\)</span></p>
+</div>
+</div></blockquote>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\int x^n \text{三角函数} dx\)</span></p>
+<blockquote>
+<div><div class="admonition- admonition">
+<p class="admonition-title">例</p>
+<p><span class="math notranslate nohighlight">\(\int x^n \sin{x} dx = -\int x^2 d(\cos{x}) = - x^2cosx + \int \cos{x} d(x^2) \\ = - x^2cosx + 2\int x \cos{x} dx = - x^2cosx + 2\int x d(\sin{x}) \\ = - x^2cosx + 2x\sin{x} + 2\cos{x} + c\)</span></p>
+</div>
+</div></blockquote>
+</li>
+<li><p><span class="math notranslate nohighlight">\(\int x^n \text{反三角函数} dx\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\int e^{ax} \text{三角函数(\sin 或\cos)} dx\)</span></p></li>
+<li><p><span class="math notranslate nohighlight">\(\int \sec^n{x} (或\csc^n{x}) dx\)</span> (<span class="math notranslate nohighlight">\(n\)</span> 是奇数)</p></li>
+</ol>
+</div>
+<div class="section" id="id9">
+<h2>4.4. 重要类型 - 有理函数<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p><span class="math notranslate nohighlight">\(\int R(x) dx\)</span></p>
+<p>其中 <span class="math notranslate nohighlight">\(R(x) = \frac{P(x)}{Q(x)} = \frac{a_nx^n + ... + a_1x + a_0}{b_mx^m + ... + b_1x + b_0}\)</span></p>
+<ul class="simple">
+<li><p>若 <span class="math notranslate nohighlight">\(n &lt; m\)</span>, 则 <span class="math notranslate nohighlight">\(R(x)\)</span> 称为 <strong>真分式</strong></p></li>
+<li><p>若 <span class="math notranslate nohighlight">\(n &gt;= m\)</span>, 则 <span class="math notranslate nohighlight">\(R(x)\)</span> 称为 <strong>假分式</strong></p></li>
+</ul>
+<div class="section" id="id10">
+<h3>4.4.1. 不定积分的步骤<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p>判断 <span class="math notranslate nohighlight">\(R(x)\)</span> 的类型</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>若是假分式, 则将假分式写成 <span class="math notranslate nohighlight">\(R(x) = \text{多项式} + \text{真分式}\)</span></p></li>
+<li><p>若是真分式, 则将真分式写成 <span class="math notranslate nohighlight">\(R(x) = 部分的和\)</span></p></li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>求真分式的不定积分</p>
+<blockquote>
+<div><p>真分式只看分母</p>
+<ol class="arabic">
+<li><p>分母可以因式分解</p>
+<blockquote>
+<div><div class="admonition- admonition">
+<p class="admonition-title">例</p>
+<p><span class="math notranslate nohighlight">\(\frac{x+4}{(2x-1)(x+2)} = \frac{A}{2x-1} + \frac{B}{x+2}\)</span></p>
+<p><span class="math notranslate nohighlight">\(A(x+2) + B(2x-1) = x + 4 \Rightarrow \begin{cases} A+2B=1 \\ 2A-B=4\end{cases}\)</span></p>
+<p>由此解出 <span class="math notranslate nohighlight">\(A, B\)</span></p>
+</div>
+<p>一般, 若分母中存在 <span class="math notranslate nohighlight">\((ax+b)^n\)</span>, 则求解时的部分中应有 <span class="math notranslate nohighlight">\(\frac{A_1}{ax+b} + \frac{A_2}{(ax+b)^2} + ... + \frac{A_n}{(ax+b)^n}\)</span></p>
+</div></blockquote>
+</li>
+<li><p>分母无法完全因式分解</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p>分子是常数则分母配方</p></li>
+<li><p>分子是多项式, 则将分子转换成分母的导数形式</p>
+<blockquote>
+<div><div class="admonition- admonition">
+<p class="admonition-title">例</p>
+<p><span class="math notranslate nohighlight">\(\int \frac{x + 2}{x^2 + x + 1} dx = \frac{1}{2}\int \frac{(2x+1)+3}{x^2+x+1} dx \\ = \frac{1}{2}\int \frac{1}{x^2+x+1} d(x^2+x+1) + \frac{3}{2} \int \frac{1}{ (\frac{\sqrt{3}}{2})^2 + (x + \frac{1}{2})^2 } d(x+\frac{1}{2})\)</span></p>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div></blockquote>
+</li>
+</ol>
+</div></blockquote>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="id11">
+<h2>4.5. 重要类型 - 三角有理函数<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h2>
+<p><strong>万能公式</strong></p>
+<p>令 <span class="math notranslate nohighlight">\(\tan{\frac{x}{2}} = u\)</span>, 则</p>
+<p><span class="math notranslate nohighlight">\(\begin{cases} \sin{x} = \frac{2u}{1+u^2} \\ \cos{x} = \frac{1-u^2}{1+u^2} \\ dx = \frac{2}{1+u^2} du \end{cases}\)</span></p>
+<p><a class="reference external" href="https://zh.wikipedia.org/wiki/%E7%A7%AF%E5%88%86%E8%A1%A8">积分表</a></p>
+</div>
+</div>
+
+
+           </div>
+           
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="05_定积分.html" class="btn btn-neutral float-right" title="5. 定积分" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="03_微分中值定理与导数的应用.html" class="btn btn-neutral float-left" title="3. 微分中值定理与导数的应用" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo">
+    <p>
+        &copy; Copyright 2019, Toshinaki
+
+    </p>
+  </div>
+  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
+
+</footer>
+
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.Navigation.enable(true);
+      });
+  </script>
+
+  
+  
+    
+   
+
+</body>
+</html>

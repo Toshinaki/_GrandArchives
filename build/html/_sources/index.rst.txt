@@ -22,11 +22,18 @@ Welcome to the Gate of Babylon!
     Math-*/index
 
 .. toctree::
-    :maxdepth: 3
+    :maxdepth: 2
     :glob:
-    :caption: Resources
+    :caption: Philosophy and Thinking
 
-    Resources/index
+    Philo-*/index
+
+.. .. toctree::
+..     :maxdepth: 3
+..     :glob:
+..     :caption: Resources
+
+..     Resources/index
 
 .. Indices and tables
 .. ==================

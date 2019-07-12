@@ -16,7 +16,7 @@
 费马引理
     设函数 :math:`y=f(x)` 在点 :math:`x_0` 的某邻域 :math:`U(x_0)` 内有定义, 且在 :math:`x_0` 处可导, 
 
-    若对任意的 :math:`x \in U(x_0)`, 都有 :math:`f(x) \leq f(x_0)` 或 :math:`f(x) \geq f(x_0)`,
+    若对任意的 :math:`x \in U(x_0)`, 都有 :math:`f(x) \leqslant f(x_0)` 或 :math:`f(x) \geqslant f(x_0)`,
 
     则 :math:`f'(x_0) = 0` (极大值或极小值)
 
@@ -35,14 +35,14 @@
     
         :math:`f(x) \in c[a,b]` :math:`\Rightarrow` :math:`f(x)` 在 :math:`[a,b]` 上有 :math:`m` 和 :math:`M`
 
-        1. :math:`m = M`, 则 :math:`f(x) \equiv C_0`, :math:`\forall \xi in (a,b), f'(\xi) = 0`
+        1. :math:`m = M`, 则 :math:`f(x) \equiv C_0`, :math:`\forall \xi \in (a,b), f'(\xi) = 0`
         2. :math:`m < M`
 
             :math:`\because f(a) = f(b)`
 
             :math:`\therefore m, M` 至少有一个在 :math:`(a, b)` 内
 
-            设 :math:`\exists \xi \in (a, b)`, 使得 :math:`f(\xi) = M` :math:`f'(\xi) = 0` 或 :math:`f'(\xi)` 不存在
+            设 :math:`\exists \xi \in (a, b)`, 使得 :math:`f(\xi) = M`, 则 :math:`f'(\xi) = 0` 或 :math:`f'(\xi)` 不存在
 
             :math:`\because f(x)` 在 :math:`(a, b)` 内可导, :math:`\therefore f'(\xi) = 0`
    
@@ -76,15 +76,15 @@
 
     而 :math:`\phi'(x) = f'(x) - \frac{f(b) - f(a)}{b - a}`
 
-    :math:`\therefore f'(x) = \frac{f(b) - f(a)}{b - a}`
+    :math:`\therefore f'(\xi) = \frac{f(b) - f(a)}{b - a}`
 
 柯西Cauchy中值定理
 ~~~~~~~~~~~~~~~~~~~~
 
-若函数 :math:`f(x), F(x)` 满足 
-1. :math:`f(x), F(x) \in c[a,b]` 
-2. :math:`f(x), F(x)` 在 :math:`(a,b)` 上可导 
-3. :math:`F'(x) \neq 0 (a < x < b)`,
+|  若函数 :math:`f(x), F(x)` 满足 
+|  1. :math:`f(x), F(x) \in c[a,b]` 
+|  2. :math:`f(x), F(x)` 在 :math:`(a,b)` 上可导 
+|  3. :math:`F'(x) \neq 0 (a < x < b)`,
 
 则 :math:`\exists \xi \in (a,b)`, 使得 :math:`\frac{f(b) - f(a)}{F(b) - F(a)} = \frac{f'(\xi)}{F'(\xi)}`
 
@@ -135,7 +135,7 @@
 
     1. 当 :math:`x \to \infty` 时, :math:`f(x), F(x) \to 0`
     2. :math:`|x| > N` 时 :math:`f(x), F(x)` 可导且 :math:`F'(x) \neq 0`
-    3. :math:`\lim_{x \to a}\frac{f'(x)}{F'(x)}` 存在或为无穷大,
+    3. :math:`\lim_{x \to \infty}\frac{f'(x)}{F'(x)}` 存在或为无穷大,
 
     则 :math:`\lim_{x \to \infty}\frac{f(x)}{F(x)} = \lim_{x \to \infty}\frac{f'(x)}{F'(x)}`
 
@@ -168,6 +168,8 @@
     - :math:`P_n(x) = f(0) + \frac{f'(0)}{1!}(x) + \frac{f''(0)}{2!}(x)^2 + ... + \frac{f^{(n)}(0)}{n!}(x)^n`
     - :math:`R_n(x) = \frac{f^{(n+1)}(\xi)}{(n + 1)!}(x)^{n + 1}, \xi \in (x_0, x)` 或 :math:`o(x^n)`
     - 此时 :math:`f(x) = P_n(x) + R_n(x)` 叫做麦克劳林Maclaurin公式
+
+:math:`R_n(x)` 即为函数 :math:`f(x)` 与近似函数 :math:`P_n(x)` 之间的误差
 
 常用函数的泰勒展开
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
@@ -350,8 +352,8 @@
 泰勒
 ~~~~~~~~
 
-单调性和极值
-----------------
+单调性, 凹凸性和极值
+-----------------------
 
 极值定义
 ~~~~~~~~~~
@@ -378,11 +380,11 @@
 最大值与最小值
 ~~~~~~~~~~~~~~~~~~~~
 
-1. :math:`f(x) \in c[a,b]`, 找出 :math:`x_1, ..., x_m` 使得 :math:`f'(x)=0\text{或不存在}`, 则:
+1. :math:`f(x) \in c[a,b]`, 找出 :math:`x_1, ..., x_n` 使得 :math:`f'(x)=0\text{或不存在}`, 则:
 
-    最大值为 :math:`M = max(f(a), f(x_1), ..., f(x_m), f(b))` 
+    最大值为 :math:`M = max(f(a), f(x_1), ..., f(x_n), f(b))` 
     
-    最小值为 :math:`m = min(f(a), f(x_1), ..., f(x_m), f(b))`
+    最小值为 :math:`m = min(f(a), f(x_1), ..., f(x_n), f(b))`
 
 2. :math:`f(x) \in c(-\infty, +\infty)`, 
 
@@ -399,6 +401,9 @@
     
     则 :math:`f(x)` 在 :math:`D` 上为凸函数, 此时 :math:`f''(x_0) < 0`
 
+.. image:: imgs/凹凸性.jpg
+
+
 拐点
 ~~~~~~~~~~~~~~~~
 
@@ -413,6 +418,8 @@
 不等式证明
 ^^^^^^^^^^^^^^^
 
+利用单调性证明不等式
+
 函数零点
 ^^^^^^^^^^^^^
 
@@ -425,12 +432,12 @@
 1. 确定定义域, 奇偶性和周期性等
 2. 找出一阶导数的驻点和不存在的点
 3. 找出二阶导数的驻点和不存在的点
-4. 使用2.和3.找出的点将定义域划分
+4. 找出水平, 铅直, 斜渐近线
+5. 使用2.和3.找出的点将定义域划分
 
     .. admonition:: 例
 
         .. image:: imgs/drawing.png
-5. 找出水平, 铅直, 斜渐近线
 
 渐近线
 ~~~~~~~~~~~~~
@@ -499,4 +506,17 @@
 
 曲率即曲线的弯曲程度
 
-:math:`K = \frac{|y''|}{(1 + y'^2)^{\frac{3}{2}}}`
+.. image:: imgs/Lissajous-Curve_nebeneinander_animated.gif
+
+|  过曲线上某一点做切线
+|  - 切线改变相同角度时经过的弧长与曲线的弯曲程度成反比
+|  - 弧长一定, 角度与弯曲程度成正比
+
+:math:`K = |\frac{d\alpha}{ds}| = \frac{|y''|}{(1 + y'^2)^{\frac{3}{2}}}`
+
+曲率半径
+~~~~~~~~~~~~~~
+
+.. image:: imgs/Osculating_circle.svg.png
+
+:math:`r = \frac{1}{k}` 

@@ -8,4 +8,9 @@ Computing and information technology
     :maxdepth: 2
     :glob:
 
+    Hardware/index
+    Operating-System/index
+    Programming-Language/index
+    Database/index
     Software-Design/index
+    Tools/index
