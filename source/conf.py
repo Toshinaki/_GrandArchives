@@ -122,3 +122,11 @@ master_doc = 'index'
 #     # Values: 'inverse', 'light' (Deafult: 'inverse')
 #     'table_thead_class' : 'inverse'
 # }
+
+
+latex_elements = {
+    # Additional stuff for the LaTeX preamble.
+    'preamble': "".join((
+        '\usepackage[utf8x]{inputenc}'
+    )),
+}
