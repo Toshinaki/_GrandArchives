@@ -123,6 +123,7 @@ master_doc = 'index'
 #     'table_thead_class' : 'inverse'
 # }
 
+import os
 on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
 if on_rtd:
