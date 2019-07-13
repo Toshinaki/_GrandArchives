@@ -123,10 +123,14 @@ master_doc = 'index'
 #     'table_thead_class' : 'inverse'
 # }
 
+on_rtd = os.environ.get('READTHEDOCS', None) == 'True'
 
-latex_elements = {
-    # Additional stuff for the LaTeX preamble.
-    'preamble': "".join((
-        '\usepackage[utf8x]{inputenc}'
-    )),
-}
+if on_rtd:
+    latex_elements = {
+        # Additional stuff for the LaTeX preamble.
+        'preamble': "".join((
+            '\hypersetup{unicode=true}',
+            '\usepackage[utf8x]{inputenc}',
+            '\usepackage{CJKutf8}',
+        )),
+    }
