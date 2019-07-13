@@ -1,0 +1,3 @@
+Package                            Version  
+---------------------------------- ---------
+t3SphinxThemeRtd                   3.6.15     

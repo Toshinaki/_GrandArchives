@@ -33,7 +33,7 @@
 |  :math:`f(x)` 在 :math:`[a, b]` 上有界 (必要条件)
 |  1. :math:`a=x_0<x_1<...<x_n=b`, :math:`\Delta{x_i} = x_i - x_{i-1}`
 |  2. :math:`\forall \xi_i \in [x_{i-1}, x_i]`, 作 :math:`\sum_{i=1}^n{f(\xi_i)\Delta{x_i}}` (称为 **积分和**)
-|  3. 令 :math:`\lambda = \max_{1 \leq i \leq n}{|\Delta{x_i}|}`, 若 :math:`\lim_{\lambda \to 0}\sum_{i=1}^n{f(\xi_i)\Delta{x_i}}` 存在, 
+|  3. 令 :math:`\lambda = \max_{1 \leqslant i \leqslant n}{|\Delta{x_i}|}`, 若 :math:`\lim_{\lambda \to 0}\sum_{i=1}^n{f(\xi_i)\Delta{x_i}}` 存在, 
 |  则称 :math:`f(x)` 在 :math:`[a, b]` 上 **可积**
 |  极限值称为 :math:`f(x)` 在 :math:`[a,b]` 上的 **定积分**, 记作 :math:`\int_a^b{f(x)} dx`
 
@@ -68,11 +68,11 @@
 
 6. 
     
-    ① :math:`f(x) \geq 0 \quad (x \in [a, b])`, 则 :math:`\int_a^b f(x) dx \geq 0`
+    ① :math:`f(x) \geqslant 0 \quad (x \in [a, b])`, 则 :math:`\int_a^b f(x) dx \geqslant 0`
 
-    ② :math:`f(x) \geq g(x) \quad (x \in [a, b])`, 则 :math:`\int_a^b f(x) dx \geq \int_a^b g(x) dx`
+    ② :math:`f(x) \geqslant g(x) \quad (x \in [a, b])`, 则 :math:`\int_a^b f(x) dx \geqslant \int_a^b g(x) dx`
 
-    ☆③ :math:`f(x), |f(x)|` 在 :math:`[a, b]` 上可积, 则 :math:`|\int_a^b f(x) dx| \leq \int_a^b |f(x)| dx`
+    ☆③ :math:`f(x), |f(x)|` 在 :math:`[a, b]` 上可积, 则 :math:`|\int_a^b f(x) dx| \leqslant \int_a^b |f(x)| dx`
 
 7. 积分中值定理
 
@@ -96,14 +96,10 @@
 
 |  而 :math:`\forall x \in [a, b]`, :math:`\int_a^x f(t) dt` 都有一个对应的值
 |  因此可以定义函数 :math:`\Phi(x) = \int_a^x f(t) dt` (:math:`a \leq x \leq b`)
+|  函数 :math:`\Phi(x) = \int_a^x f(t) dt` 叫做 **积分上限函数** (又称 **变上限积分**)
 
-函数 :math:`\Phi(x) = \int_a^x f(t) dt` 叫做 **积分上限函数**
-
-:math:`f(x) \in c[a,b]`, :math:`\Phi(x) = \int_a^x f(t) dt`, 则
-
-:math:`\Phi(x)` 可导, 且其导数 :math:`\frac{d}{dx} \int_a^x f(t) dt = f(x)`
-
-即 :math:`\Phi'(x) = f(x)`
+|  :math:`f(x) \in c[a,b]`, :math:`\Phi(x) = \int_a^x f(t) dt`, 则 :math:`\Phi(x)` 可导, 
+|  且其导数 :math:`\frac{d}{dx} \int_a^x f(t) dt = f(x)`, 即 :math:`\Phi'(x) = f(x)`
 
 .. note:: 
 
@@ -200,3 +196,60 @@
 ① :math:`\int_a^{a+T} f(x) dx = \int_0^T f(x) dx`
 
 ② :math:`\int_0^{nT} f(x) dx = n\int_0^T f(x) dx`
+
+
+分部积分法
+~~~~~~~~~~~~~~~
+
+:math:`\int_a^b (uv)' dx = \int_a^b u'v dx + \int_a^b uv' dx`
+
+即 :math:`uv|_a^b = \int_a^b v du + \int_a^b u dv`
+
+
+反常积分 (广义积分)
+---------------------
+
+积分区间无限 或 :math:`f(x)` 在区间上有无穷间断点
+
+区间无限 (函数正常)
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+:math:`f(x) \in C[a, +\infty)`, :math:`\int_a^b f(x) dx = F(b) - F(a)`,
+
+|  若 :math:`\lim_{b \to \infty} [F(b) - F(a)]` 存在,
+|  则称 :math:`\int_a^{+\infty} f(x) dx` 收敛
+|  令 :math:`\lim_{b \to \infty} [F(b) - F(a)] = A`, 则记 :math:`\int_a^{+\infty} f(x) dx = A`
+
+|  若 :math:`\lim_{b \to \infty} [F(b) - F(a)]` 不存在,
+|  则称 :math:`\int_a^{+\infty} f(x) dx` 发散
+
+:math:`f(x) \in C(-\infty, a]` 同理
+
+:math:`f(x) \in C(-\infty, +\infty)` 可拆分为 :math:`f(x) \in C[a, +\infty)` 和 :math:`f(x) \in C(-\infty, a]`, 分别讨论
+
+无界函数
+~~~~~~~~~~~~
+
+:math:`f(x) \in C(a, b]`, 且 :math:`f(a+0) = \infty`,
+
+|  取 :math:`\forall \xi > 0`, 则 :math:`\int_{a+\xi}^b f(x) dx = F(b) - F(a+\xi)`
+|  若 :math:`\lim_{\xi \to 0} [F(b) - F(a+\xi)]` 存在,
+|  则称 :math:`\int_{a+\xi}^b f(x) dx` 收敛
+|  令 :math:`\lim_{\xi \to 0} [F(b) - F(a+\xi)] = A`, 则记 :math:`\int_{a+\xi}^b f(x) dx = A`
+
+:math:`f(x) \in C[a, b)` 同理
+
+:math:`f(x) \in C[a, c)\cup(c, b]`, 拆分为 :math:`[a, c)` 和 :math:`(c, b]` 分别讨论
+
+:math:`\Gamma` 函数
+~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+形如 :math:`\int_0^{+\infty} x^{\alpha-1} e^{-x} dx` 的函数叫做 :math:`\Gamma` 函数, 记作 :math:`\Gamma (\alpha)` 
+
+特性
+^^^^^^^^
+
+1. :math:`\Gamma (\alpha+1) = \alpha \Gamma (\alpha)` 
+2. :math:`\Gamma (n+1) = n!` 
+3. :math:`\Gamma (\frac{1}{2}) = \sqrt{\pi}` 
+

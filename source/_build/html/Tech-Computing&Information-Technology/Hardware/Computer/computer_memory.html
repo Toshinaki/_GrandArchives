@@ -1,0 +1,1266 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="book-name"    content="gate-of-babylon"/>
+  <meta name="book-version" content=""/>
+  <meta name="book-release" content=""/>
+  <meta name="book-type"    content="Manual"/>
+
+  
+  <title>1. Computer Memory 计算机存储器 &mdash; gate-of-babylon  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../../_static/jquery-ui/jquery-ui.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/t3more.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="gate-of-babylon  documentation" href="#"/>
+        <link rel="up" title="Computer Science" href="index.html"/>
+        <link rel="next" title="2. Firmware 固件" href="Firmware.html"/>
+        <link rel="prev" title="Computer Science" href="index.html"/> 
+  <script src="../../../_static/js/modernizr.min.js"></script>
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        <ul class="sidebartop">
+
+          <li class="docsite">
+            <a href="https://docs.typo3.org"><img src="../../../_static/img/typo3-documentation.png" class="logo" /></a>
+          </li><li class="project">
+            <a href="../../../index.html">
+              gate-of-babylon</a>
+          </li>
+          <li class="nolink search"><div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search this project" id="searchinput" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+</li></ul>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <p class="caption"><span class="caption-text">Technology and Applied Sciences</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Computing and information technology</a><ul class="current">
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Hardware</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Computer Science</a><ul class="current">
+<li class="toctree-l4 current"><a class="current reference internal" href="#">1. Computer Memory</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#id1">1.1. 存储器层次结构</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#register">1.2. Register 寄存器</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#cache">1.3. cache 高速缓存</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#ram">1.4. RAM 主存</a></li>
+<li class="toctree-l5"><a class="reference internal" href="#hard-disk-drive-hdd">1.5. Hard Disk Drive (HDD) 硬盘</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id2">1.5.1. 物理结构</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id3">1.5.2. 数据编码</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id4">1.5.3. 读写数据</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id5">1.5.4. 逻辑结构</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id6">1.5.5. 磁盘地址管理方式</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#id7">1.5.6. 磁盘分区信息存储方式</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#mbr-master-boot-record">MBR (Master Boot Record)</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#gpt-guid-partition-table">GPT (GUID partition table)</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#id8">1.5.7. 数据接口</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#id9">1.6. 分类</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="Firmware.html">2. Firmware 固件</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Firmware.html#bios">2.1. BIOS</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Firmware.html#id1">2.1.1. BIOS 管理功能</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="Firmware.html#post">POST 加电自检</a></li>
+<li class="toctree-l7"><a class="reference internal" href="Firmware.html#id2">BIOS 中断调用</a></li>
+<li class="toctree-l7"><a class="reference internal" href="Firmware.html#id3">BIOS系统设置</a></li>
+<li class="toctree-l7"><a class="reference internal" href="Firmware.html#option-rom">Option ROM 扩展程序</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Firmware.html#uefi">2.2. UEFI</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Operating-System/index.html">Operating System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Operating-System/General/index.html">OS 101</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Operating-System/Linux/index.html">Linux</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Operating-System/Linux/FHS.html">Filesystem Hierarchy Standard</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programming-Language/index.html">Programming Languages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Programming-Language/Python/index.html">Python</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Programming-Language/Python/WebFrameworks/index.html">Python Web Frameworks</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming-Language/Python/WebFrameworks/Django/index.html">Django</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Programming-Language/Web-Front/index.html">Webpage Front</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Programming-Language/Web-Front/Bootstrap/index.html">Bootstrap</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming-Language/Web-Front/Bootstrap/templates.html">Templates</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming-Language/Web-Front/Bootstrap/templates.html#fixed-navbar">Fixed navbar</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../Programming-Language/Web-Front/Recipes/index.html">Recipes</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming-Language/Web-Front/Recipes/Timelines.html">Timelines</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming-Language/Web-Front/Recipes/Timelines.html#vertical-timelines">Vertical Timelines</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Database/index.html">Database</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Database/Basics.html">1. Database Bascis</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Database/Basics.html#introduction">1.1. Introduction</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Database/Basics.html#id1">1.1.1. 数据库系统概述</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Database/Basics.html#id2">1.1.1.1. 数据库的4个基本概念</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Database/Basics.html#id3">1.1.1.2. 数据管理的三个阶段</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Database/Basics.html#data-model">1.1.2. 数据模型 Data Model</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Database/Basics.html#id4">1.1.2.1. 目的不同的两类模型</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Database/Basics.html#id5">1.1.2.2. 数据模型的组成要素</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Database/Basics.html#id6">1.1.2.3. 格式化模型</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Database/Basics.html#id7">1.1.3. 数据库系统的结构</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Database/Basics.html#id8">1.1.3.1. 三级模式结构</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Database/Basics.html#id9">1.1.4. 数据库系统的组成</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Software-Design/index.html">Software Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/index.html">中级软件设计师考试</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html">1. 计算机组成与体系结构</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id2">1.1. 数据的表示</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id3">1.1.1. 进制转换</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#r"><span class="math notranslate nohighlight">\(R\)</span> 进制转十进制</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id4">十进制转 <span class="math notranslate nohighlight">\(R\)</span> 进制</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id5">二进制与八进制与十六进制</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id6">1.1.2. 编码</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id7">原码</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id8">反码</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id9">补码</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id10">移码</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id11">取值范围</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id12">1.1.3. 浮点数运算</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id13">1.2. 计算机结构</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#flynn">1.3. Flynn分类法</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#cisicrisc">1.4. CISIC和RISC</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#pipelining">1.5. 流水线 (Pipelining) 及其计算</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id14">1.5.1. 概念</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id15">1.5.2. 执行时长的计算</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#throughput-rate">1.5.3. 流水线吞吐率 (Throughput rate)</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id16">1.5.4. 流水线的加速比</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id17">1.5.5. 流水线的效率</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id18">1.6. 层次化存储结构</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#cache">1.6.1. 高速缓冲存储器 Cache</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id19">概念</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id20">命中率</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id21">1.6.2. 局部性原理</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#temporal-locality">时间局部性 (temporal locality)</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#spatial-locality">空间局部性 (spatial locality)</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id22">工作集理论</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#main-memory">1.6.3. 主存储器 Main memory</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id23">编址</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id24">1.6.4. 磁盘结构与参数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tools/index.html">Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Tools/git&amp;github.html">1. Git &amp; Github</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Tools/git&amp;github.html#id1">1.1. 基本概念</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tools/git&amp;github.html#version-control-system-vcs">1.2. Version Control System (VCS)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Tools/git&amp;github.html#distributed-version-control-system-dvcs">Distributed version control system (DVCS)</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tools/git&amp;github.html#git-commands">1.3. Git commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tools/git&amp;github.html#the-github-flow">1.4. The GitHub flow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tools/git&amp;github.html#models-for-collaborative-development">1.5. Models for collaborative development</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Mathematics and Logic</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Math-Calculus/index.html">Calculus 微积分</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html">1. 函数与极限</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id2">1.1. 映射与函数</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id3">1.1.1. 集合</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id4">概念</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id5">表示集合的方法</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id6">集合间的关系</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id7">集合间的运算</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id8">运算法</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id9">1.1.2. 区间</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id10">邻域</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id11">1.1.3. 映射</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id12">1.1.4. 函数</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id13">一些特殊的函数</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id14">函数的表示方法</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id15">函数的特性</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id16">反函数, 复合函数</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id17">基本初等函数</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id18">双曲函数和反双曲函数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id19">1.2. 数列极限</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id20">1.2.1. 定义</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id21">1.2.2. 收敛数列的性质</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id22">1.3. 函数极限</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id23">1.3.1. 定义</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id24">1.3.2. 函数极限的性质</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id25">1.4. 无穷小和无穷大</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id26">1.4.1. 无穷小</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id27">1.4.2. 无穷大</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id28">1.4.3. 无穷大和无穷小的关系</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id29">1.5. 极限运算法则</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id30">1.5.1. 定理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id31">1.5.2. 四则运算</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id32">1.5.3. 复合函数</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id33">1.6. 极限存在准则</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id34">1.6.1. 夹逼定理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id35">1.6.2. 单调有界的数列必有极限</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id36">1.7. 无穷小的比较</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id37">1.7.1. 等价无穷小的性质</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#x-to-0">1.7.2. <span class="math notranslate nohighlight">\(x \to 0\)</span> 时的常见无穷小</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id38">1.8. 函数的连续性与间断点</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id39">1.8.1. 函数的连续性</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id40">1.8.2. 函数的间断点</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id41">1.9. 连续函数的运算与初等函数的连续性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id42">1.10. 闭区间上连续函数的性质</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html">2. 导数与微分</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id2">2.1. 导数概念</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id3">2.1.1. 几何意义</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id4">2.2. 求导基本公式</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id5">2.2.1. 四则求导</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id6">2.2.2. 反函数求导</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id7">2.2.3. 复合函数求导</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id8">2.2.4. 其他求导方法</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id9">2.3. 高阶导数</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id10">2.3.1. 特殊的高阶导数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#leibniz">2.3.2. Leibniz公式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id11">2.3.3. 高阶导数求导</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id12">2.4. 隐函数及参数方程的导数</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id13">2.4.1. 隐函数</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id14">函数的表达方法</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id15">隐函数的求导</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id16">2.4.2. 参数方程</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id17">2.5. 函数的微分</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id18">2.5.1. 公式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id19">2.5.2. 微分在近似计算中的应用</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html">3. 微分中值定理与导数的应用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id2">3.1. 微分中值定理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#rolle">3.1.1. 罗尔Rolle定理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#lagrange">3.1.2. 拉格朗日Lagrange中值定理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#cauchy">3.1.3. 柯西Cauchy中值定理</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#l-hospital">3.2. 洛必达L’Hospital法则</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#taylor">3.3. 泰勒Taylor公式</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id3">3.3.1. 泰勒公式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id4">3.3.2. 常用函数的泰勒展开</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id5">3.4. 中值定理常见题型</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#f-n-xi-0">3.4.1. 证明<span class="math notranslate nohighlight">\(f^{(n)}(\xi) = 0\)</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#xi">3.4.2. 结论中仅有 <span class="math notranslate nohighlight">\(\xi\)</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#xi-a-b">3.4.3. 结论中有 <span class="math notranslate nohighlight">\(\xi\)</span> 和区间 <span class="math notranslate nohighlight">\(a,b\)</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#xi-eta">3.4.4. 结论中有 <span class="math notranslate nohighlight">\(\xi\)</span> 和 <span class="math notranslate nohighlight">\(\eta\)</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id6">3.4.5. 泰勒</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id7">3.5. 单调性, 凹凸性和极值</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id8">3.5.1. 极值定义</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id9">3.5.2. 求极值步骤</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id10">3.5.3. 最大值与最小值</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id11">3.5.4. 凹凸性</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id12">3.5.5. 拐点</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id13">3.5.6. 常见题型</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id14">极值点判断</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id15">不等式证明</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id16">函数零点</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id17">3.6. 函数图像绘制</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id18">3.6.1. 步骤</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id19">3.6.2. 渐近线</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id20">水平渐近线</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id21">铅直渐近线</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id22">斜渐近线</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id23">3.7. 曲率</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id24">3.7.1. 弧微分</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id25">3.7.2. 曲率</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id26">3.7.3. 曲率半径</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Math-Calculus/04_不定积分.html">4. 不定积分</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/04_不定积分.html#id2">4.1. 不定积分定义</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/04_不定积分.html#id3">4.1.1. 基本性质</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/04_不定积分.html#id4">4.1.2. 积分基本公式</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/04_不定积分.html#id5">4.2. 换元积分法</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/04_不定积分.html#id6">4.2.1. 第一类换元积分法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/04_不定积分.html#id7">4.2.2. 第二类换元积分法</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/04_不定积分.html#id8">4.3. 分部积分法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/04_不定积分.html#id9">4.4. 重要类型 - 有理函数</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/04_不定积分.html#id10">4.4.1. 不定积分的步骤</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/04_不定积分.html#id11">4.5. 重要类型 - 三角有理函数</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html">5. 定积分</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id2">5.1. 定积分的概念与性质</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id3">5.1.1. 背景</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id4">曲边梯形的面积</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id5">5.1.2. 定积分的定义</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id6">5.1.3. 定积分的一般性质</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id7">5.2. 定积分基本公式</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id8">5.2.1. 积分上限函数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id9">5.2.2. 牛顿-莱布尼茨公式</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id10">5.3. 定积分的积分法</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id11">5.3.1. 换元积分法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id12">5.3.2. 定积分的特殊性质</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id13">对称区间定积分性质</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id14">三角函数定积分性质</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id15">周期函数定积分性质</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id16">5.3.3. 分部积分法</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id17">5.4. 反常积分 (广义积分)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id18">5.4.1. 区间无限 (函数正常)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id19">5.4.2. 无界函数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#gamma">5.4.3. <span class="math notranslate nohighlight">\(\Gamma\)</span> 函数</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id20">特性</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Math-Calculus/06_定积分的应用.html">6. 定积分的应用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/06_定积分的应用.html#id2">6.1. 元素法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/06_定积分的应用.html#id3">6.2. 几何应用</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/06_定积分的应用.html#id4">6.2.1. 面积</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/06_定积分的应用.html#id5">6.2.2. 体积</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/06_定积分的应用.html#id6">旋转体的体积</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/06_定积分的应用.html#id7">截面面积已知的几何体体积</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/06_定积分的应用.html#id8">弧长</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/06_定积分的应用.html#id9">6.3. 物理应用</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/06_定积分的应用.html#id10">6.3.1. 做功</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/06_定积分的应用.html#id11">6.3.2. 力</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Math-Calculus/07_微分方程.html">7. 微分方程</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Math-Geometry/index.html">Geometry 几何学</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Math-Geometry/Trigonometry/index.html">Trigonometry 三角学</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Geometry/Trigonometry/01_三角函数.html">1. 三角函数</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Geometry/Trigonometry/01_三角函数.html#id2">1.1. 弧度和角度</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Geometry/Trigonometry/01_三角函数.html#id3">1.1.1. 概念</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Geometry/Trigonometry/01_三角函数.html#id4">1.1.2. 弧度和角度的换算</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Geometry/Trigonometry/01_三角函数.html#id5">1.2. 角的概念的推广</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Geometry/Trigonometry/01_三角函数.html#id6">1.3. 三角函数</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Geometry/Trigonometry/01_三角函数.html#id7">1.3.1. 图像和性质</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Geometry/Trigonometry/01_三角函数.html#id8">1.3.2. 公式</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Geometry/Trigonometry/01_三角函数.html#y-a-sin-bx-c-d">1.3.3. <span class="math notranslate nohighlight">\(y = a\sin{(bx + c)} + d\)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Philosophy and Thinking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Philo-history/index.html">Philosophy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Philo-history/timeline.html">Timeline of Philosophy</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">gate-of-babylon</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+          <li><a href="../../index.html">Computing and information technology</a> &raquo;</li>
+          <li><a href="../index.html">Hardware</a> &raquo;</li>
+          <li><a href="index.html">Computer Science</a> &raquo;</li>
+    <li>1. Computer Memory 计算机存储器</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/Tech-Computing&amp;Information-Technology/Hardware/Computer/computer_memory.rst.txt" rel="nofollow">
+                <span class="fa fa-binoculars"></span>&#32;View page source
+            </a>
+      </li>
+  </ul>
+  
+    <hr class="before-stealth-btn clear-both" />
+    
+      <a href="Firmware.html" class="stealth-btn float-right" title="Accesskey Alt(+Shift)+n">
+          <span class="stealth-btn-text">Next</span>
+          <span class="fa fa-arrow-circle-right"></span>
+      </a>
+    
+    
+      <a href="index.html" class="stealth-btn" title="Accesskey Alt(+Shift)+p">
+          <span class="fa fa-arrow-circle-left"></span>
+          <span class="stealth-btn-text">Previous</span>
+      </a>
+    
+
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody" class="toBeIndexed">
+            
+  <div class="section" id="computer-memory">
+<span id="memory"></span><h1>1. Computer Memory 计算机存储器<a class="headerlink" href="#computer-memory" title="Permalink to this headline">¶</a></h1>
+<p>一种利用半导体, 磁性介质等技术制成的存储数据的电子设备</p>
+<p>其电子电路中的数据以二进制方式存储, 不同存储器产品中基本单元的名称也不一样</p>
+<p>根据存储能力与电源的关系可以分为:</p>
+<ol class="arabic simple">
+<li><p>易失性存储器</p></li>
+<li><p>非易失性存储器</p></li>
+</ol>
+<div class="section" id="id1">
+<h2>1.1. 存储器层次结构<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<p>存储器层次结构是在计算机体系结构下存储系统层次结构的排列顺序</p>
+<p>每一层于下一层相比都拥有较高的速度和较低延迟性, 以及较小的容量</p>
+<p>由于高速缓存的效率和存储器传输位于层次结构中的不同等级, 所以实际上会限制处理的速度, 导致中央处理器花费大量的时间等待存储器I/O完成工作</p>
+<p>大部分计算机中的存储层次如下四层:</p>
+<table class="colwidths-auto docutils align-center">
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Name</p></th>
+<th class="head"><p>Description</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>寄存器 (Register)</p></th>
+<td><p>访问速度最快</p>
+<p>在32位处理器中, 每个寄存器就是32位</p>
+<p>x86处理器共有16个寄存器</p>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>高速缓存 (cache) (L1-L3: SRAM)</p></th>
+<td><p>第一级高速缓存(L1)– 通常访问只需要几个周期, 通常是几十个KB</p>
+<p>第二级高速缓存(L2)– 比L1约有2到10倍较高延迟性, 通常是几百个KB或更多</p>
+<p>第三级高速缓存(L3)(不一定有) – 比L2更高的延迟性, 通常有数MB之大</p>
+<p>第四级高速缓存(L4)(不普遍) – CPU外部的DRAM, 但速度较主存高</p>
+</td>
+</tr>
+<tr class="row-even"><th class="stub"><p>主存(DRAM)</p></th>
+<td><p>访问需要几百个周期, 可以大到数十GB</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>磁盘存储</p></th>
+<td><p>需要成千上百个周期, 容量非常大</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="register">
+<h2>1.2. Register 寄存器<a class="headerlink" href="#register" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="cache">
+<h2>1.3. cache 高速缓存<a class="headerlink" href="#cache" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="ram">
+<h2>1.4. RAM 主存<a class="headerlink" href="#ram" title="Permalink to this headline">¶</a></h2>
+<p>Random Access Memory (RAM) 随机存取存储器 (主存)</p>
+</div>
+<div class="section" id="hard-disk-drive-hdd">
+<h2>1.5. Hard Disk Drive (HDD) 硬盘<a class="headerlink" href="#hard-disk-drive-hdd" title="Permalink to this headline">¶</a></h2>
+<div class="line-block">
+<div class="line">非易失性存储器</div>
+<div class="line">使用坚硬的旋转盘片制成</div>
+</div>
+<div class="figure align-center" id="id10">
+<a class="reference internal image-reference" href="../../../_images/HDD_WD_Elements_Portable_WDBU6Y0020BBK-WESN.png"><img alt="../../../_images/HDD_WD_Elements_Portable_WDBU6Y0020BBK-WESN.png" src="../../../_images/HDD_WD_Elements_Portable_WDBU6Y0020BBK-WESN.png" style="width: 496.29999999999995px; height: 392.7px;" /></a>
+<p class="caption"><span class="caption-text">WD Elements Portable WDBU6Y0020BBK-WESN</span><a class="headerlink" href="#id10" title="Permalink to this image">¶</a></p>
+</div>
+<a class="reference internal image-reference" href="../../../_images/HardDiskAnatomy.jpg"><img alt="../../../_images/HardDiskAnatomy.jpg" src="../../../_images/HardDiskAnatomy.jpg" style="width: 3549.7px; height: 2221.1px;" /></a>
+<div class="section" id="id2">
+<h3>1.5.1. 物理结构<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
+<p>硬盘内部的碟片在通电后开始高速转动：</p>
+<object width="500" height="400">
+  <param name="movie" value=""></param>
+  <param name="allowFullScreen" value="true"></param>
+  <param name="allowscriptaccess" value="always"></param>
+  <embed src=""
+    type="application/x-shockwave-flash" allowscriptaccess="always"
+    allowfullscreen="true" width="500" height="400"></embed>
+</object><a class="reference internal image-reference" href="../../../_images/Hard_drive-en.svg.png"><img alt="../../../_images/Hard_drive-en.svg.png" src="../../../_images/Hard_drive-en.svg.png" style="width: 640.0px; height: 457.0px;" /></a>
+<dl>
+<dt>盘体 - Platters</dt><dd><div class="figure align-right">
+<a class="reference internal image-reference" href="../../../_images/hard_drive_under_microscope.jpg"><img alt="../../../_images/hard_drive_under_microscope.jpg" src="../../../_images/hard_drive_under_microscope.jpg" style="width: 300.0px; height: 251.39999999999998px;" /></a>
+</div>
+<p>盘体由单个或多个盘片组成, 各个盘片之间由垫圈隔开</p>
+<p>多由陶瓷, 铝合金和玻璃等非磁性材料 (non-magnetic material) 制成, 表面涂有用于记录数据的磁性介质</p>
+<p>一张盘片有上下两个盘面, 当主电动机带动碟片旋转时, 副电动机带动一组磁头到相对应的碟片上并确定读取哪一面</p>
+<p>磁头悬浮在碟面上画出一个与碟片同心的圆形轨道 (磁轨或称柱面), 这时由磁头的磁感线圈感应碟面上的磁性, 并使用硬盘厂商指定的读取时间或数据间隔定位扇区, 从而得到该扇区的数据内容</p>
+</dd>
+<dt>磁头 - Heads</dt><dd><a class="reference internal image-reference" href="../../../_images/accurator_arm.PNG"><img alt="../../../_images/accurator_arm.PNG" src="../../../_images/accurator_arm.PNG" style="width: 373.6px; height: 215.20000000000002px;" /></a>
+<a class="reference internal image-reference" href="../../../_images/Hard_disk_head.jpg"><img alt="../../../_images/Hard_disk_head.jpg" src="../../../_images/Hard_disk_head.jpg" style="width: 509.4px; height: 462.59999999999997px;" /></a>
+<p>由传动手臂和传动轴驱动</p>
+<p>所有的磁头连在一个磁头控制器上, 由磁头控制器负责各个磁头的运动</p>
+<p>硬盘不工作时, 磁头停留在启停区 (Landing Zone, 离盘心最近的区域, 不存放任何数据; 现多在盘片外面), 当需要从硬盘读写数据时, 磁盘开始旋转; 旋转速度达到额定的高速时, 磁头就会因盘片旋转产生的气流而抬起</p>
+<p>磁头在高速旋转的磁盘表面移动, 与盘片之间的间隙只有 3nm 左右</p>
+<p>磁头与旋转的硬盘片接触时 (磁头划碰 head crash), 会对磁盘表面的介质产生永久不可恢复的损害</p>
+</dd>
+<dt>主轴 - Spindle (下方是轴承和马达)</dt><dd><p>包括轴承和驱动电机等</p>
+<p>随着硬盘容量的扩大和速度的提高, 主轴电机马达的速度也在不断提升, 轴承也从滚珠轴承进化到油浸轴承再到液态轴承, 处于不断的改良当中</p>
+<p>目前液态轴承已经成为绝对的主流市场</p>
+</dd>
+</dl>
+</div>
+<div class="section" id="id3">
+<h3>1.5.2. 数据编码<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
+<p>FM &amp; MFM</p>
+<p>RLL</p>
+</div>
+<div class="section" id="id4">
+<h3>1.5.3. 读写数据<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
+<p>磁盘表面的磁性介质含有许多微小的磁性粒子, 一定量的粒子形成一个区域, 用于表示一个 bit</p>
+<p>磁场方向的变化表示 1, 磁场方向不变表示 0</p>
+<p>在未受到外部磁场影响的情况下磁盘表面的磁性粒子的磁极方向不会改变; 一般从未受到外部干扰的磁性粒子磁极方向是随机的, 于是出现互相抵消的情况, 这时磁盘的表现出无磁极显现</p>
+<p>写数据时, 磁头移到到磁盘要写入的位置, 磁头线圈通电产生感应磁场, 磁头下磁性粒子的磁极方向变为与磁场同向; 通过给磁头不同的电流方向, 使得磁盘局部产生不同的磁极</p>
+<img alt="../../../_images/DiskWrite.jpg" src="../../../_images/DiskWrite.jpg" />
+<p>读取时, 不通电的磁头在写入数据的位置上移动, 磁头线圈切割磁场线产生感应电流, 磁性材料的磁场方向不同, 所以产生的感应电流方向也不同</p>
+<img alt="../../../_images/DiskRead.jpg" src="../../../_images/DiskRead.jpg" />
+</div>
+<div class="section" id="id5">
+<h3>1.5.4. 逻辑结构<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
+<div class="figure align-right" id="id11">
+<a class="reference internal image-reference" href="../../../_images/Disk-structure2.svg.png"><img alt="../../../_images/Disk-structure2.svg.png" src="../../../_images/Disk-structure2.svg.png" style="width: 300.0px; height: 300.0px;" /></a>
+<p class="caption"><span class="caption-text">A：磁道
+B：扇面
+C：扇区
+D：簇 (扇区组)</span><a class="headerlink" href="#id11" title="Permalink to this image">¶</a></p>
+</div>
+<ul>
+<li><dl>
+<dt>磁道 - Track</dt><dd><p>当磁盘旋转, 磁头保持在一个位置上时, 每个磁头在磁盘表面划出的圆形轨迹</p>
+<p>磁道由外向内从 0 开始顺序编号</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>柱面 - Cylinder</dt><dd><p>在由多个盘片构成的盘组中, 处于不同盘片但同一半径圆的多个磁道组成的一个圆柱面</p>
+<img alt="../../../_images/cylinder.jpg" src="../../../_images/cylinder.jpg" />
+<p>每个圆柱上的磁头由上而下从 0 开始编号</p>
+<p>数据的读/写按柱面进行, 即磁头读/写数据时首先在同一柱面内从 0 磁头开始进行操作, 依次向下在同一柱面的不同盘面上进行操作</p>
+<p>只在同一柱面所有的磁头全部读/写完毕后, 磁头才会由外向内转移到下一柱面</p>
+<p>因为选取磁头只需通过电子切换, 而选取柱面则必须通过机械切换; 电子切换比机械上磁头向邻近磁道移动快得多, 所以数据的读/写按柱面进行, 而不按盘面进行</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>扇区 - Sector</dt><dd><p>磁盘上的每个磁道被等分为若干个弧段, 称为扇区</p>
+<p>扇区从 1 开始编号; 硬盘的第一个扇区叫做 <strong>引导扇区</strong> (扇区按照一定间隔跳跃编号, 这个间隔称作 <em>交叉因子</em>, 为避免磁盘转动过快来不及读取下一个扇区的数据)</p>
+<p>扇区是硬盘上存储的物理单位, 每个扇区可存储 <span class="math notranslate nohighlight">\(128×2^N\)</span> <span class="math notranslate nohighlight">\((N＝0,1,2,3)\)</span> 字节的数据 (默认 512 字节; 现在已有 4KB 的设计)</p>
+<p>也就是说即使计算机只需要硬盘上存储的某个字节, 也须一次把这个字节所在的扇区中的全部 512 字节读入内存, 再选择所需的那个字节</p>
+<p>而硬盘上的总扇区数为: <span class="math notranslate nohighlight">\(N_{\text{Cylinders}} \times N_{\text{Heads}} \times N_{\text{Sectors}}\)</span>; 这三个参数即是硬盘的物理参数</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>簇 - Cluster</dt><dd><p>物理相邻的若干个扇区</p>
+<p>操作系统读写磁盘的基本单位是扇区, 而文件系统的基本单位是簇 (Cluster)</p>
+<p>簇越大存储性能越好, 但空间浪费严重; 簇越小性能相对越低, 但空间利用率高</p>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>因为硬盘容量的不断扩大, 上述分区方式使得外围磁道数据密度太小, 造成浪费</p>
+<p>因此现在将外围磁道分为更多扇区, 使用扇区号码而不是柱面来分区</p>
+</div>
+</div>
+<div class="section" id="id6">
+<h3>1.5.5. 磁盘地址管理方式<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
+<ul>
+<li><dl>
+<dt>CHS (Cylinder, Head, Sector)</dt><dd><p>早期在 IBM PC 架构上面用来进行磁盘寻址的办法</p>
+<p>通过柱面, 磁头, 扇区来寻址</p>
+<p>CHS模式支持的硬盘容量有限, 柱面地址 10bit, 磁头地址 8bit, 扇区地址6bit; 而一个扇区共有512B</p>
+<p>则使用CHS寻址一块硬盘容量理论上限为 <span class="math notranslate nohighlight">\(\text{硬盘容量} = \text{柱面数} \times \text{磁头数} \times \text{扇区数}  \times \text{扇区大小} = 1024 \text{cylinders} \times 255 \text{tracks/cylinder} \times 63 \text{sectors/track} \times 512 \text{Bytes/sector} = 8064 MB\)</span></p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>LBA (Logical Block Address)</dt><dd><p>逻辑区块地址</p>
+<p>内外磁道上的扇区数量不同时, CHS很难寻址</p>
+<p>LBA为每个扇区分配逻辑地址, 从 0 开始编号, 以扇区为单位进行寻址</p>
+<p>LBA与CHS可以相互转换; 在访问硬盘时, 由硬盘控制器将LBA地址转换为实际硬盘的CHS物理地址</p>
+<p><span class="math notranslate nohighlight">\(\text{LBA} = (\text{磁头数} \times \text{当前所在柱面号} + \text{当前所在磁头号}) \times \text{每磁道扇区数} + \text{当前所在扇区号} - 1\)</span></p>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="id7">
+<h3>1.5.6. 磁盘分区信息存储方式<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<div class="line-block">
+<div class="line">磁盘分区指使用分区编辑器 (partition editor) 将一个硬盘划分成几个独立的逻辑部分</div>
+<div class="line"><em>引导扇区</em> 是每个分区的第一扇区, 而 <em>主引导扇区</em> 则是整个硬盘的第一扇区 (主分区的第一个扇区)</div>
+</div>
+<p>分区信息包含了分区从哪里开始的信息, 这样操作系统才知道哪个扇区是属于哪个分区的, 以及哪个分区是可以启动的</p>
+<div class="section" id="mbr-master-boot-record">
+<h4>MBR (Master Boot Record)<a class="headerlink" href="#mbr-master-boot-record" title="Permalink to this headline">¶</a></h4>
+<p>主引导记录, 又叫主引导扇区, 是计算机开机后访问硬盘时所必须要读取的首个扇区, 大小为 512 字节</p>
+<p>它在硬盘上的三维地址为 (柱面, 磁头, 扇区) = (0, 0, 1)</p>
+<p>有时也将其开头的446字节内容特指为”主引导记录”, 其后是4个16字节的”磁盘分区表”, 以及2字节的结束标志 (55AA)</p>
+<p>MBR支持最大2TB磁盘, 最多4个主分区</p>
+<div class="figure align-center">
+<img alt="../../../_images/MBR.png" src="../../../_images/MBR.png" />
+</div>
+<ul>
+<li><dl>
+<dt>MBR (466 B; 0000H - 01BDH)</dt><dd><p>保存了第一阶段引导代码, 其中的硬盘引导程序的主要作用是检查分区表是否正确, 并且在系统硬件完成自检以后将控制权交给硬盘上的引导程序, 如NTLDR、BOOTMGR和GNU GRUB等</p>
+<p>引导代码不依赖任何操作系统, 而且启动代码也是可以改变的, 从而能够实现多系统引导</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>DPT (Disk Partition Table 磁盘分区表; 64 B - 01BEH - 01FDH)</dt><dd><div class="admonition- admonition">
+<p class="admonition-title">分区表例</p>
+<p>以下四个分区分别表示:</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 9%" />
+<col style="width: 18%" />
+<col style="width: 11%" />
+<col style="width: 9%" />
+<col style="width: 19%" />
+<col style="width: 16%" />
+<col style="width: 10%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>可以引导</p></th>
+<th class="head"><p>开始磁头号</p></th>
+<th class="head"><p>开始扇区号 开始柱面号</p></th>
+<th class="head"><p>文件系统类型</p></th>
+<th class="head"><p>结束磁头号</p></th>
+<th class="head"><p>结束扇区号  结束柱面号</p></th>
+<th class="head"><p>首扇区的相对扇区号</p></th>
+<th class="head"><p>扇区总数</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>80</p></td>
+<td><p>01</p></td>
+<td><p>01         00</p></td>
+<td><p>06</p></td>
+<td><p>3F</p></td>
+<td><p>3F          C4</p></td>
+<td><p>3F 00-00 00</p></td>
+<td><p>81 1E 0C 00</p></td>
+</tr>
+<tr class="row-odd"><td><p>00</p></td>
+<td><p>00</p></td>
+<td><p>01         C5</p></td>
+<td><p>05</p></td>
+<td><p>3F</p></td>
+<td><p>7F          47</p></td>
+<td><p>C0 1E-0C 00</p></td>
+<td><p>40 0F 08 00</p></td>
+</tr>
+<tr class="row-even"><td><p>00</p></td>
+<td><p>00</p></td>
+<td><p>41         48</p></td>
+<td><p>82</p></td>
+<td><p>3F</p></td>
+<td><p>7F          53</p></td>
+<td><p>00 2E-14 00</p></td>
+<td><p>00 BD 00 00</p></td>
+</tr>
+<tr class="row-odd"><td><p>00</p></td>
+<td><p>00</p></td>
+<td><p>41         54</p></td>
+<td><p>83</p></td>
+<td><p>3F</p></td>
+<td><p>BF          0F</p></td>
+<td><p>00 EB-14 00</p></td>
+<td><p>00 91 0B 00</p></td>
+</tr>
+</tbody>
+</table>
+<table class="colwidths-auto docutils align-center">
+<thead>
+<tr class="row-odd"><th class="head"><p>Active
+Boot</p></th>
+<th class="head"><p>Starting Loc</p>
+<p>Head</p>
+</th>
+<th class="head"><p>Starting Loc</p>
+<p>Sector Cylinder</p>
+</th>
+<th class="head"><p>Partition Type</p></th>
+<th class="head"><p>Ending Loc</p>
+<p>Head</p>
+</th>
+<th class="head"><p>Ending Loc</p>
+<p>Sector Cylinder</p>
+</th>
+<th class="head"><p>Relative sectors</p></th>
+<th class="head"><p>Number of sectors</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>Yes</p></td>
+<td><p>1</p></td>
+<td><p>1 0</p></td>
+<td><p>DOS FAT-16</p></td>
+<td><p>63</p></td>
+<td><p>63 196</p></td>
+<td><p>63</p></td>
+<td><p>794241</p></td>
+</tr>
+<tr class="row-odd"><td><p>No</p></td>
+<td><p>0</p></td>
+<td><p>1 197</p></td>
+<td><p>Extended</p></td>
+<td><p>63</p></td>
+<td><p>63 327</p></td>
+<td><p>794304</p></td>
+<td><p>528192</p></td>
+</tr>
+<tr class="row-even"><td><p>No</p></td>
+<td><p>0</p></td>
+<td><p>1 328</p></td>
+<td><p>LINUX Swap</p></td>
+<td><p>63</p></td>
+<td><p>63 339</p></td>
+<td><p>1322496</p></td>
+<td><p>48384</p></td>
+</tr>
+<tr class="row-odd"><td><p>No</p></td>
+<td><p>0</p></td>
+<td><p>1 340</p></td>
+<td><p>LINUX Ext2FS</p></td>
+<td><p>63</p></td>
+<td><p>63 527</p></td>
+<td><p>1370880</p></td>
+<td><p>758016</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>更多文件系统类型编码见 <a class="reference external" href="https://www.win.tue.nl/~aeb/partitions/partition_types-1.html">List of partition identifiers</a></p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>结束标志字 (Magic Number; 2 B; 01FEH – 01FFH)</dt><dd><p>检验主引导记录是否有效的标志</p>
+</dd>
+</dl>
+</li>
+</ul>
+<dl>
+<dt>扩展分区</dt><dd><p>如果想要更多分区, 就要创建”扩展分区”, 并在其中创建逻辑分区</p>
+<p>扩展分区中的每个逻辑分区的分区信息都存在一个类似MBR的扩展引导记录 (简称EBR) 中</p>
+<p>扩展引导记录包括分区表和结束标志”55 AA”, 没有引导代码部分</p>
+<img alt="../../../_images/EBR.png" src="../../../_images/EBR.png" />
+</dd>
+</dl>
+</div>
+<div class="section" id="gpt-guid-partition-table">
+<h4>GPT (GUID partition table)<a class="headerlink" href="#gpt-guid-partition-table" title="Permalink to this headline">¶</a></h4>
+<p>Globally Unique Identifier Partition Table 全局唯一标识分区表</p>
+<div class="figure align-right">
+<a class="reference internal image-reference" href="../../../_images/GPT.png"><img alt="../../../_images/GPT.png" src="../../../_images/GPT.png" style="width: 240.0px; height: 330.0px;" /></a>
+</div>
+<p>GPT 是可扩展固件接口 (UEFI) 标准的一部分, 被用于替代 MBR 分区表</p>
+<dl>
+<dt>PMBR</dt><dd><p>Protective MBR, 存储于 LBA 0</p>
+<p>由磁盘签名, MBR 磁盘分区表和结束标志组成; 没有引导代码</p>
+<p>分区表内只有一个分区表项, 这个表项GPT根本不用, 只是为了让系统认为这个磁盘是合法的</p>
+</dd>
+<dt>GPT头</dt><dd><p>存储于LBA 1</p>
+<p>LBA 1在创建GPT磁盘时生成</p>
+<p>GPT头会定义分区表的起始位置, 分区表的结束位置, 每个分区表项的大小, 分区表项的个数及分区表的校验和等信息</p>
+<p>分区表头的格式:</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 8%" />
+<col style="width: 6%" />
+<col style="width: 86%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>起始字节</p></th>
+<th class="head"><p>长度</p></th>
+<th class="head"><p>内容</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>8字节</p></td>
+<td><p>签名 (“EFI PART”, 45 46 49 20 50 41 52 54)</p></td>
+</tr>
+<tr class="row-odd"><td><p>8</p></td>
+<td><p>4字节</p></td>
+<td><p>修订 (在1.0版中, 值是00 00 01 00)</p></td>
+</tr>
+<tr class="row-even"><td><p>12</p></td>
+<td><p>4字节</p></td>
+<td><p>分区表头的大小 (单位是字节, 通常是92字节, 即5C 00 00 00)</p></td>
+</tr>
+<tr class="row-odd"><td><p>16</p></td>
+<td><p>4字节</p></td>
+<td><p>分区表头 (第0－91字节) 的CRC32校验, 在计算时, 把这个字段作为0处理, 需要计算出分区序列的CRC32校验后再计算本字段</p></td>
+</tr>
+<tr class="row-even"><td><p>20</p></td>
+<td><p>4字节</p></td>
+<td><p>保留, 必须是0</p></td>
+</tr>
+<tr class="row-odd"><td><p>24</p></td>
+<td><p>8字节</p></td>
+<td><p>当前LBA (这个分区表头的位置)</p></td>
+</tr>
+<tr class="row-even"><td><p>32</p></td>
+<td><p>8字节</p></td>
+<td><p>备份LBA (另一个分区表头的位置; 硬盘的最后一个扇区)</p></td>
+</tr>
+<tr class="row-odd"><td><p>40</p></td>
+<td><p>8字节</p></td>
+<td><p>第一个可用于分区的LBA (主分区表的最后一个LBA + 1)</p></td>
+</tr>
+<tr class="row-even"><td><p>48</p></td>
+<td><p>8字节</p></td>
+<td><p>最后一个可用于分区的LBA (备份分区表的第一个LBA − 1)</p></td>
+</tr>
+<tr class="row-odd"><td><p>56</p></td>
+<td><p>16字节</p></td>
+<td><p>硬盘GUID (在类UNIX系统中也叫UUID)</p></td>
+</tr>
+<tr class="row-even"><td><p>72</p></td>
+<td><p>8字节</p></td>
+<td><p>分区表项的起始LBA (在主分区表中是2)</p></td>
+</tr>
+<tr class="row-odd"><td><p>80</p></td>
+<td><p>4字节</p></td>
+<td><p>分区表项的数量</p></td>
+</tr>
+<tr class="row-even"><td><p>84</p></td>
+<td><p>4字节</p></td>
+<td><p>一个分区表项的大小 (通常是128)</p></td>
+</tr>
+<tr class="row-odd"><td><p>88</p></td>
+<td><p>4字节</p></td>
+<td><p>分区序列的CRC32校验</p></td>
+</tr>
+<tr class="row-even"><td><p>92</p></td>
+<td><ul class="simple">
+<li></li>
+</ul>
+</td>
+<td><p>保留, 剩余的字节必须是0 (对于512字节LBA的硬盘即是420个字节)</p></td>
+</tr>
+</tbody>
+</table>
+</dd>
+<dt>分区表</dt><dd><p>存储于 LBA 2 - 33</p>
+<p>能够容纳 128 个分区表项, 每个分区表项大小为 128 字节</p>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 6%" />
+<col style="width: 5%" />
+<col style="width: 89%" />
+</colgroup>
+<thead>
+<tr class="row-odd"><th class="head"><p>起始字节</p></th>
+<th class="head"><p>长度</p></th>
+<th class="head"><p>内容</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><td><p>0</p></td>
+<td><p>16字节</p></td>
+<td><p><a class="reference external" href="https://zh.wikipedia.org/wiki/GUID%E7%A3%81%E7%A2%9F%E5%88%86%E5%89%B2%E8%A1%A8#%E5%88%86%E5%8C%BA%E7%B1%BB%E5%9E%8BGUID">分区类型GUID</a></p></td>
+</tr>
+<tr class="row-odd"><td><p>16</p></td>
+<td><p>16字节</p></td>
+<td><p>分区GUID</p></td>
+</tr>
+<tr class="row-even"><td><p>32</p></td>
+<td><p>8字节</p></td>
+<td><p>起始LBA (小端序)</p></td>
+</tr>
+<tr class="row-odd"><td><p>40</p></td>
+<td><p>8字节</p></td>
+<td><p>末尾LBA</p></td>
+</tr>
+<tr class="row-even"><td><p>48</p></td>
+<td><p>8字节</p></td>
+<td><p>属性标签 (如 60 表示”只读”)</p></td>
+</tr>
+<tr class="row-odd"><td><p>56</p></td>
+<td><p>72字节</p></td>
+<td><p>分区名 (可以包括36个UTF-16 (小端序) 字符)</p></td>
+</tr>
+</tbody>
+</table>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>GPT中操作系统引导文件有单独的分区, EFI系统分区 (EFI system partition, ESP), 由分区类型GUID指定</p>
+<p>UEFI固件可从ESP加载EFI启动程式或者EFI应用程式</p>
+</div>
+</dd>
+<dt>分区区域</dt><dd><p>即磁盘的分区</p>
+<p>起始地址和结束地址由GPT头定义</p>
+</dd>
+<dt>分区表备份</dt><dd><p>对分区表32个扇区的完整备份</p>
+<p>如果分区表被破坏，系统会自动读取分区表备份，也能够保证正常识别分区</p>
+</dd>
+<dt>GPT头备份</dt><dd><p>存储与最后一个扇区 LBA -1</p>
+</dd>
+</dl>
+</div>
+</div>
+<div class="section" id="id8">
+<h3>1.5.7. 数据接口<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<table class="colwidths-auto docutils align-center">
+<tbody>
+<tr class="row-odd"><th class="stub"><p>IDE</p></th>
+<td><p>Integrated Drive Electronics 电子集成驱动器</p>
+<p>也叫ATA (Advanced Technology Attachment) 接口</p>
+</td>
+<td><p>本意是指把”硬盘控制器”与”盘体”集成在一起的硬盘驱动器</p>
+<p>这样的做法减少了硬盘接口的电缆数目与长度, 数据传输的可靠性得到了增强</p>
+<p>硬盘制造起来变得更容易, 因为硬盘生产厂商不需要再担心自己的硬盘是否与其它厂商生产的控制器兼容; 硬盘安装起来也更为方便</p>
+<p>但并口线的抗干扰性太差, 且排线占用空间较大, 不利电脑内部散热, 已逐渐被SATA所取代</p>
+</td>
+<td><img alt="../../../_images/WD-IDE.jpg" src="../../../_images/WD-IDE.jpg" />
+<img alt="../../../_images/IDE-SATA.png" src="../../../_images/IDE-SATA.png" />
+</td>
+</tr>
+<tr class="row-even"><th class="stub"><p>SATA</p></th>
+<td><p>Serial ATA</p>
+<p>使用SATA接口的硬盘又叫串口硬盘</p>
+</td>
+<td><p>采用串行连接方式, 串行ATA总线使用嵌入式时钟信号, 具备了更强的纠错能力</p>
+<p>与以往相比其最大的区别在于能对传输指令 (不仅仅是数据) 进行检查, 如果发现错误会自动矫正, 很大程度上提高了数据传输的可靠性</p>
+<p>结构简单, 支持热插拔</p>
+<p>以连续串行的方式传送数据, 一次只会传送1位数据; 这样能减少SATA接口的针脚数目, 使连接电缆数目变少, 效率也会更高</p>
+</td>
+<td><img alt="../../../_images/disk-SATA.jpg" src="../../../_images/disk-SATA.jpg" />
+<img alt="../../../_images/disk-SATA-cable.jpg" src="../../../_images/disk-SATA-cable.jpg" />
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>SCSI</p></th>
+<td><p>Small Computer System Interface 小型计算机系统接口</p></td>
+<td><p>是与IDE (ATA) 完全不同的接口</p>
+<p>IDE接口是普通PC的标准接口; 而SCSI并不是专门为硬盘设计的接口, 而是一种总线型的系统接口</p>
+<p>SCSI接口具有应用范围广, 多任务, 带宽大, CPU占用率低, 以及热插拔等优点</p>
+<p>但较高的价格使得它很难如IDE硬盘般普及, 因此SCSI硬盘主要应用于中, 高端服务器和高档工作站中</p>
+</td>
+<td><img alt="../../../_images/SCSI.jpg" src="../../../_images/SCSI.jpg" />
+</td>
+</tr>
+<tr class="row-even"><th class="stub"><p>SAS</p></th>
+<td><p>Serial Attached SCSI 串行连接SCSI</p></td>
+<td><p>新一代的SCSI技术</p>
+<p>采用串行技术以获得更高传输速度</p>
+<p>此接口的设计是为了改善存储系统的效能, 可用性和扩充性</p>
+<p>SATA可以看作是SAS的一个子协议, SAS接口完全兼容SATA, SATA接口却不能支持SAS</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>mSATA</p></th>
+<td><p>mini-SATA</p></td>
+<td><p>由SATA协会(Serial ATA International Organization; SATA-IO)开发, 新的控制器可以让SATA技术整合在小尺寸的装置上</p>
+<p>多用于笔记本, 上网本等</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>M.2</p></th>
+<td></td>
+<td><p>Intel推出的一种替代MSATA新的接口规范, 是为超极本 (Ultrabook) 量身定做的新一代接口标准</p>
+<p>与mSATA相比, 更小巧的规格尺寸, 更高的传输性能</p>
+</td>
+<td></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>ESATA</p></th>
+<td><p>External Serial ATA 外部串行ATA</p></td>
+<td><p>SATA接口的外部扩展规范</p>
+<p>用来连接外部而非内部SATA设备</p>
+</td>
+<td><img alt="../../../_images/Esatap_port.jpg" src="../../../_images/Esatap_port.jpg" />
+</td>
+</tr>
+<tr class="row-even"><th class="stub"><p>USB</p></th>
+<td><p>Universal Serial Bus 通用串行总线</p></td>
+<td><p>通用串行总线是连接计算机系统与外部设备的一种串口总线标准, 也是一种输入输出接口的技术规范, 被广泛地应用于个人电脑和移动设备等信息通讯产品</p></td>
+<td><img alt="../../../_images/USB-Connector-Types.jpg" src="../../../_images/USB-Connector-Types.jpg" />
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="section" id="id9">
+<h2>1.6. 分类<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h2>
+<p>根据存储能力与电源的关系可以分为</p>
+<ol class="arabic">
+<li><p>易失性存储器 (Volatile memory)</p>
+<blockquote>
+<div><p>断电后存储器所存储的数据便会消失</p>
+<p>主要有RAM (DRAM, SRAM)</p>
+</div></blockquote>
+</li>
+<li><p>非易失性存储器 (Non-volatile memory)</p>
+<blockquote>
+<div><p>断电后数据不会消失</p>
+<p>主要有ROM, 闪存, 硬盘等</p>
+</div></blockquote>
+</li>
+</ol>
+</div>
+</div>
+
+
+           </div><!-- /.toBeIndexed -->
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="Firmware.html" class="btn btn-neutral float-right" title="Accesskey Alt(+Shift)+n" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="index.html" class="btn btn-neutral" title="Accesskey Alt(+Shift)+p" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo" class="contentinfo">
+      <p class="show_source">
+        <a href="../../../_sources/Tech-Computing&amp;Information-Technology/Hardware/Computer/computer_memory.rst.txt" rel="nofollow">
+          <span class="fa fa-binoculars"></span>&#32;View page source
+        </a>
+      </p>
+      <p class="show_copyright">
+            &copy; Copyright 2019, Toshinaki
+      </p>
+      <p class="show_sphinx">
+        Built with <a href="http://sphinx-doc.org/" target="_blank">Sphinx</a> and
+        <a href="https://github.com/TYPO3-Documentation/t3SphinxThemeRtd" target="_blank">t3SphinxThemeRtd.</a>
+        Report theme issues <a href="https://github.com/TYPO3-Documentation/t3SphinxThemeRtd/issues" target="_blank">here.</a>
+      </p>
+      <p class="show_legalinfo">
+        <a href="https://typo3.org/legal-info/" rel="nofollow">
+          <span class="fa fa-legal"></span>&#32;Legal Info
+        </a>
+      </p>
+
+
+
+
+  </div>
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/language_data.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="../../../_static/jquery-ui/jquery-ui.min.js"></script>
+      <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+      <script type="text/javascript" src="../../../_static/js/t3autocomplete.js"></script>
+
+  
+
+  
+   
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   <script type="text/javascript" id="idPiwikScriptPlaceholder"></script></body>
+</html>

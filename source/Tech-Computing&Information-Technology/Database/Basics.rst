@@ -254,10 +254,11 @@ Introduction
 数据库系统的组成
 ~~~~~~~~~~~~~~~~
 
-iiiiiiiiiiiiiiiiiiii
-iiiiiiiiiiiiiiiiii
-iiiiiiiiiiiiiiiiiiiiii
-iiiiiiiiiiiiiiiiiii
-iiiiiiiiiiiiiiiiiii
-iiiiiiiiiiiiiiiiiii
-iiiiiiiiiiiiiiiiii
+- 系统运行和数据存储所需要的硬件平台
+- 操作系统, 数据库管理系统, 开发工具
+- 用户, 应用程序员, 数据库管理员, 系统分析员
+
+
+关系数据库
+--------------
+

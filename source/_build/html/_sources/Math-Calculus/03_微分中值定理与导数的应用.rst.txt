@@ -380,11 +380,11 @@
 最大值与最小值
 ~~~~~~~~~~~~~~~~~~~~
 
-1. :math:`f(x) \in c[a,b]`, 找出 :math:`x_1, ..., x_m` 使得 :math:`f'(x)=0\text{或不存在}`, 则:
+1. :math:`f(x) \in c[a,b]`, 找出 :math:`x_1, ..., x_n` 使得 :math:`f'(x)=0\text{或不存在}`, 则:
 
-    最大值为 :math:`M = max(f(a), f(x_1), ..., f(x_m), f(b))` 
+    最大值为 :math:`M = max(f(a), f(x_1), ..., f(x_n), f(b))` 
     
-    最小值为 :math:`m = min(f(a), f(x_1), ..., f(x_m), f(b))`
+    最小值为 :math:`m = min(f(a), f(x_1), ..., f(x_n), f(b))`
 
 2. :math:`f(x) \in c(-\infty, +\infty)`, 
 
@@ -432,12 +432,12 @@
 1. 确定定义域, 奇偶性和周期性等
 2. 找出一阶导数的驻点和不存在的点
 3. 找出二阶导数的驻点和不存在的点
-4. 使用2.和3.找出的点将定义域划分
+4. 找出水平, 铅直, 斜渐近线
+5. 使用2.和3.找出的点将定义域划分
 
     .. admonition:: 例
 
         .. image:: imgs/drawing.png
-5. 找出水平, 铅直, 斜渐近线
 
 渐近线
 ~~~~~~~~~~~~~
@@ -506,4 +506,17 @@
 
 曲率即曲线的弯曲程度
 
-:math:`K = \frac{|y''|}{(1 + y'^2)^{\frac{3}{2}}}`
+.. image:: imgs/Lissajous-Curve_nebeneinander_animated.gif
+
+|  过曲线上某一点做切线
+|  - 切线改变相同角度时经过的弧长与曲线的弯曲程度成反比
+|  - 弧长一定, 角度与弯曲程度成正比
+
+:math:`K = |\frac{d\alpha}{ds}| = \frac{|y''|}{(1 + y'^2)^{\frac{3}{2}}}`
+
+曲率半径
+~~~~~~~~~~~~~~
+
+.. image:: imgs/Osculating_circle.svg.png
+
+:math:`r = \frac{1}{k}` 

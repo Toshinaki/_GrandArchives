@@ -36,12 +36,12 @@
 第一类换元积分法
 ~~~~~~~~~~~~~~~~~~~
 
-:math:`\int f[g(x)]g'(x) dx = \int f[g(x)] d(g(x)) \\ \stackrel{g(x) = t}{=\mathrel{\mkern-3mu}=\mathrel{\mkern-3mu}=} \int f(t)dt = F(t) + c \\ = F[g(x)] + c`
+:math:`\int f[g(x)]g'(x) dx = \int f[g(x)] d(g(x)) \\ \quad \stackrel{g(x) = t}{=\mathrel{\mkern-3mu}=\mathrel{\mkern-3mu}=} \int f(t)dt = F(t) + c \\ \quad = F[g(x)] + c`
 
 第二类换元积分法
 ~~~~~~~~~~~~~~~~~~~
 
-:math:`\int f(x) dx \stackrel{x = g(t)}{=\mathrel{\mkern-3mu}=\mathrel{\mkern-3mu}=} \int f[g(t)]g'(t) dt \\ = \int g(t) dt = G(t) + c = G[g^{-1}(x)] + c`
+:math:`\int f(x) dx \stackrel{x = g(t)}{=\mathrel{\mkern-3mu}=\mathrel{\mkern-3mu}=} \int f[g(t)]g'(t) dt \\ \quad = \int g(t) dt = G(t) + c = G[g^{-1}(x)] + c`
 
 使用情况:
 
@@ -81,9 +81,9 @@
 
 4. :math:`\int x^n \text{反三角函数} dx`
 
-5. :math:`\int e^{ax} \text{三角函数(\sin 或\cos)} dx`
+5. :math:`\int e^{ax} \text{三角函数(sin 或 cos)} dx`
 
-6. :math:`\int \sec^n{x} (或\csc^n{x}) dx` (:math:`n` 是奇数)
+6. :math:`\int \sec^n{x} (\text{或}\csc^n{x}) dx` (:math:`n` 是奇数)
 
 
 重要类型 - 有理函数

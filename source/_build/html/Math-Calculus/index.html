@@ -1,172 +1,577 @@
-
-
 <!DOCTYPE html>
 <!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
 <!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
 <head>
-  <meta charset="utf-8">
-  
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="book-name"    content="gate-of-babylon"/>
+  <meta name="book-version" content=""/>
+  <meta name="book-release" content=""/>
+  <meta name="book-type"    content="Manual"/>
+
   
   <title>Calculus 微积分 &mdash; gate-of-babylon  documentation</title>
   
 
   
   
-  
+
   
 
   
-  <script type="text/javascript" src="../_static/js/modernizr.min.js"></script>
-  
-    
-      <script type="text/javascript" id="documentation_options" data-url_root="../" src="../_static/documentation_options.js"></script>
-        <script type="text/javascript" src="../_static/jquery.js"></script>
-        <script type="text/javascript" src="../_static/underscore.js"></script>
-        <script type="text/javascript" src="../_static/doctools.js"></script>
-        <script type="text/javascript" src="../_static/language_data.js"></script>
-        <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
-    
-    <script type="text/javascript" src="../_static/js/theme.js"></script>
-
-    
 
   
-  <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
-  <link rel="stylesheet" href="../_static/pygments.css" type="text/css" />
-    <link rel="index" title="Index" href="../genindex.html" />
-    <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="1. 函数与极限" href="01_函数与极限.html" />
-    <link rel="prev" title="1. 计算机组成与体系结构" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html" /> 
+
+  
+    <link rel="stylesheet" href="../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../_static/jquery-ui/jquery-ui.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../_static/css/t3more.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../genindex.html"/>
+        <link rel="search" title="Search" href="../search.html"/>
+    <link rel="top" title="gate-of-babylon  documentation" href="#"/>
+        <link rel="next" title="1. 函数与极限" href="01_函数与极限.html"/>
+        <link rel="prev" title="1. Git &amp; Github" href="../Tech-Computing&amp;Information-Technology/Tools/git&amp;github.html"/> 
+  <script src="../_static/js/modernizr.min.js"></script>
 </head>
 
-<body class="wy-body-for-nav">
+<body class="wy-body-for-nav" role="document">
 
-   
   <div class="wy-grid-for-nav">
+
     
     <nav data-toggle="wy-nav-shift" class="wy-nav-side">
-      <div class="wy-side-scroll">
-        <div class="wy-side-nav-search" >
-          
+      <div class="wy-side-nav-search">
+        
 
-          
-            <a href="../index.html" class="icon icon-home"> gate-of-babylon
-          
+        <ul class="sidebartop">
 
-          
-          </a>
-
-          
-            
-            
-          
-
-          
-<div role="search">
+          <li class="docsite">
+            <a href="https://docs.typo3.org"><img src="../_static/img/typo3-documentation.png" class="logo" /></a>
+          </li><li class="project">
+            <a href="../index.html">
+              gate-of-babylon</a>
+          </li>
+          <li class="nolink search"><div role="search">
   <form id="rtd-search-form" class="wy-form" action="../search.html" method="get">
-    <input type="text" name="q" placeholder="Search docs" />
+    <input type="text" name="q" placeholder="Search this project" id="searchinput" />
     <input type="hidden" name="check_keywords" value="yes" />
     <input type="hidden" name="area" value="default" />
   </form>
 </div>
+</li></ul>
 
-          
-        </div>
+        
+      </div>
 
-        <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
           
-            
-            
-              
-            
-            
+          
               <p class="caption"><span class="caption-text">Technology and Applied Sciences</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/index.html">Computing and information technology</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/index.html">Computing and information technology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Hardware/index.html">Hardware</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Hardware/Computer/index.html">Computer Science</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Hardware/Computer/computer_memory.html">1. Computer Memory</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Hardware/Computer/computer_memory.html#id1">1.1. 存储器层次结构</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Hardware/Computer/computer_memory.html#register">1.2. Register 寄存器</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Hardware/Computer/computer_memory.html#cache">1.3. cache 高速缓存</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Hardware/Computer/computer_memory.html#ram">1.4. RAM 主存</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Hardware/Computer/computer_memory.html#hard-disk-drive-hdd">1.5. Hard Disk Drive (HDD) 硬盘</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Hardware/Computer/computer_memory.html#id2">1.5.1. 物理结构</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Hardware/Computer/computer_memory.html#id3">1.5.2. 数据编码</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Hardware/Computer/computer_memory.html#id4">1.5.3. 读写数据</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Hardware/Computer/computer_memory.html#id5">1.5.4. 逻辑结构</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Hardware/Computer/computer_memory.html#id6">1.5.5. 磁盘地址管理方式</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Hardware/Computer/computer_memory.html#id7">1.5.6. 磁盘分区信息存储方式</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Hardware/Computer/computer_memory.html#mbr-master-boot-record">MBR (Master Boot Record)</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Hardware/Computer/computer_memory.html#gpt-guid-partition-table">GPT (GUID partition table)</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Hardware/Computer/computer_memory.html#id8">1.5.7. 数据接口</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Hardware/Computer/computer_memory.html#id9">1.6. 分类</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Hardware/Computer/Firmware.html">2. Firmware 固件</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Hardware/Computer/Firmware.html#bios">2.1. BIOS</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Hardware/Computer/Firmware.html#id1">2.1.1. BIOS 管理功能</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Hardware/Computer/Firmware.html#post">POST 加电自检</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Hardware/Computer/Firmware.html#id2">BIOS 中断调用</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Hardware/Computer/Firmware.html#id3">BIOS系统设置</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Hardware/Computer/Firmware.html#option-rom">Option ROM 扩展程序</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Hardware/Computer/Firmware.html#uefi">2.2. UEFI</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Operating-System/index.html">Operating System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Operating-System/General/index.html">OS 101</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Operating-System/Linux/index.html">Linux</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Operating-System/Linux/FHS.html">Filesystem Hierarchy Standard</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Programming-Language/index.html">Programming Languages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Programming-Language/Python/index.html">Python</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Programming-Language/Python/WebFrameworks/index.html">Python Web Frameworks</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Programming-Language/Python/WebFrameworks/Django/index.html">Django</a><ul class="simple">
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Programming-Language/Web-Front/index.html">Webpage Front</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Programming-Language/Web-Front/Bootstrap/index.html">Bootstrap</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Programming-Language/Web-Front/Bootstrap/templates.html">Templates</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Programming-Language/Web-Front/Bootstrap/templates.html#fixed-navbar">Fixed navbar</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Programming-Language/Web-Front/Recipes/index.html">Recipes</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Programming-Language/Web-Front/Recipes/Timelines.html">Timelines</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Programming-Language/Web-Front/Recipes/Timelines.html#vertical-timelines">Vertical Timelines</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Database/index.html">Database</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Database/Basics.html">1. Database Bascis</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Database/Basics.html#introduction">1.1. Introduction</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Database/Basics.html#id1">1.1.1. 数据库系统概述</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Database/Basics.html#id2">1.1.1.1. 数据库的4个基本概念</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Database/Basics.html#id3">1.1.1.2. 数据管理的三个阶段</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Database/Basics.html#data-model">1.1.2. 数据模型 Data Model</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Database/Basics.html#id4">1.1.2.1. 目的不同的两类模型</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Database/Basics.html#id5">1.1.2.2. 数据模型的组成要素</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Database/Basics.html#id6">1.1.2.3. 格式化模型</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Database/Basics.html#id7">1.1.3. 数据库系统的结构</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Database/Basics.html#id8">1.1.3.1. 三级模式结构</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Database/Basics.html#id9">1.1.4. 数据库系统的组成</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/index.html">Software Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/index.html">中级软件设计师考试</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html">1. 计算机组成与体系结构</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id2">1.1. 数据的表示</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id3">1.1.1. 进制转换</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#r"><span class="math notranslate nohighlight">\(R\)</span> 进制转十进制</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id4">十进制转 <span class="math notranslate nohighlight">\(R\)</span> 进制</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id5">二进制与八进制与十六进制</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id6">1.1.2. 编码</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id7">原码</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id8">反码</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id9">补码</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id10">移码</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id11">取值范围</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id12">1.1.3. 浮点数运算</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id13">1.2. 计算机结构</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#flynn">1.3. Flynn分类法</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#cisicrisc">1.4. CISIC和RISC</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#pipelining">1.5. 流水线 (Pipelining) 及其计算</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id14">1.5.1. 概念</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id15">1.5.2. 执行时长的计算</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#throughput-rate">1.5.3. 流水线吞吐率 (Throughput rate)</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id16">1.5.4. 流水线的加速比</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id17">1.5.5. 流水线的效率</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id18">1.6. 层次化存储结构</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#cache">1.6.1. 高速缓冲存储器 Cache</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id19">概念</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id20">命中率</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id21">1.6.2. 局部性原理</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#temporal-locality">时间局部性 (temporal locality)</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#spatial-locality">空间局部性 (spatial locality)</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id22">工作集理论</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#main-memory">1.6.3. 主存储器 Main memory</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id23">编址</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id24">1.6.4. 磁盘结构与参数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Tools/index.html">Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Tools/git&amp;github.html">1. Git &amp; Github</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Tools/git&amp;github.html#id1">1.1. 基本概念</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Tools/git&amp;github.html#version-control-system-vcs">1.2. Version Control System (VCS)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Tools/git&amp;github.html#distributed-version-control-system-dvcs">Distributed version control system (DVCS)</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Tools/git&amp;github.html#git-commands">1.3. Git commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Tools/git&amp;github.html#the-github-flow">1.4. The GitHub flow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Tech-Computing&amp;Information-Technology/Tools/git&amp;github.html#models-for-collaborative-development">1.5. Models for collaborative development</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
 </ul>
 <p class="caption"><span class="caption-text">Mathematics and Logic</span></p>
 <ul class="current">
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Calculus 微积分</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="01_函数与极限.html">1. 函数与极限</a></li>
-<li class="toctree-l2"><a class="reference internal" href="02_导数与微分.html">2. 导数与微分</a></li>
-<li class="toctree-l2"><a class="reference internal" href="03_微分中值定理与导数的应用.html">3. 微分中值定理与导数的应用</a></li>
-<li class="toctree-l2"><a class="reference internal" href="04_不定积分.html">4. 不定积分</a></li>
-<li class="toctree-l2"><a class="reference internal" href="05_定积分.html">5. 定积分</a></li>
+<li class="toctree-l2"><a class="reference internal" href="01_函数与极限.html">1. 函数与极限</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="01_函数与极限.html#id2">1.1. 映射与函数</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="01_函数与极限.html#id3">1.1.1. 集合</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="01_函数与极限.html#id4">概念</a></li>
+<li class="toctree-l5"><a class="reference internal" href="01_函数与极限.html#id5">表示集合的方法</a></li>
+<li class="toctree-l5"><a class="reference internal" href="01_函数与极限.html#id6">集合间的关系</a></li>
+<li class="toctree-l5"><a class="reference internal" href="01_函数与极限.html#id7">集合间的运算</a></li>
+<li class="toctree-l5"><a class="reference internal" href="01_函数与极限.html#id8">运算法</a></li>
 </ul>
 </li>
-<li class="toctree-l1"><a class="reference internal" href="../Math-Geometry/index.html">Geometry 几何学</a></li>
+<li class="toctree-l4"><a class="reference internal" href="01_函数与极限.html#id9">1.1.2. 区间</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="01_函数与极限.html#id10">邻域</a></li>
 </ul>
-<p class="caption"><span class="caption-text">Resources</span></p>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="01_函数与极限.html#id11">1.1.3. 映射</a></li>
+<li class="toctree-l4"><a class="reference internal" href="01_函数与极限.html#id12">1.1.4. 函数</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="01_函数与极限.html#id13">一些特殊的函数</a></li>
+<li class="toctree-l5"><a class="reference internal" href="01_函数与极限.html#id14">函数的表示方法</a></li>
+<li class="toctree-l5"><a class="reference internal" href="01_函数与极限.html#id15">函数的特性</a></li>
+<li class="toctree-l5"><a class="reference internal" href="01_函数与极限.html#id16">反函数, 复合函数</a></li>
+<li class="toctree-l5"><a class="reference internal" href="01_函数与极限.html#id17">基本初等函数</a></li>
+<li class="toctree-l5"><a class="reference internal" href="01_函数与极限.html#id18">双曲函数和反双曲函数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="01_函数与极限.html#id19">1.2. 数列极限</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="01_函数与极限.html#id20">1.2.1. 定义</a></li>
+<li class="toctree-l4"><a class="reference internal" href="01_函数与极限.html#id21">1.2.2. 收敛数列的性质</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="01_函数与极限.html#id22">1.3. 函数极限</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="01_函数与极限.html#id23">1.3.1. 定义</a></li>
+<li class="toctree-l4"><a class="reference internal" href="01_函数与极限.html#id24">1.3.2. 函数极限的性质</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="01_函数与极限.html#id25">1.4. 无穷小和无穷大</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="01_函数与极限.html#id26">1.4.1. 无穷小</a></li>
+<li class="toctree-l4"><a class="reference internal" href="01_函数与极限.html#id27">1.4.2. 无穷大</a></li>
+<li class="toctree-l4"><a class="reference internal" href="01_函数与极限.html#id28">1.4.3. 无穷大和无穷小的关系</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="01_函数与极限.html#id29">1.5. 极限运算法则</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="01_函数与极限.html#id30">1.5.1. 定理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="01_函数与极限.html#id31">1.5.2. 四则运算</a></li>
+<li class="toctree-l4"><a class="reference internal" href="01_函数与极限.html#id32">1.5.3. 复合函数</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="01_函数与极限.html#id33">1.6. 极限存在准则</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="01_函数与极限.html#id34">1.6.1. 夹逼定理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="01_函数与极限.html#id35">1.6.2. 单调有界的数列必有极限</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="01_函数与极限.html#id36">1.7. 无穷小的比较</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="01_函数与极限.html#id37">1.7.1. 等价无穷小的性质</a></li>
+<li class="toctree-l4"><a class="reference internal" href="01_函数与极限.html#x-to-0">1.7.2. <span class="math notranslate nohighlight">\(x \to 0\)</span> 时的常见无穷小</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="01_函数与极限.html#id38">1.8. 函数的连续性与间断点</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="01_函数与极限.html#id39">1.8.1. 函数的连续性</a></li>
+<li class="toctree-l4"><a class="reference internal" href="01_函数与极限.html#id40">1.8.2. 函数的间断点</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="01_函数与极限.html#id41">1.9. 连续函数的运算与初等函数的连续性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="01_函数与极限.html#id42">1.10. 闭区间上连续函数的性质</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="02_导数与微分.html">2. 导数与微分</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="02_导数与微分.html#id2">2.1. 导数概念</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="02_导数与微分.html#id3">2.1.1. 几何意义</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="02_导数与微分.html#id4">2.2. 求导基本公式</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="02_导数与微分.html#id5">2.2.1. 四则求导</a></li>
+<li class="toctree-l4"><a class="reference internal" href="02_导数与微分.html#id6">2.2.2. 反函数求导</a></li>
+<li class="toctree-l4"><a class="reference internal" href="02_导数与微分.html#id7">2.2.3. 复合函数求导</a></li>
+<li class="toctree-l4"><a class="reference internal" href="02_导数与微分.html#id8">2.2.4. 其他求导方法</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="02_导数与微分.html#id9">2.3. 高阶导数</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="02_导数与微分.html#id10">2.3.1. 特殊的高阶导数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="02_导数与微分.html#leibniz">2.3.2. Leibniz公式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="02_导数与微分.html#id11">2.3.3. 高阶导数求导</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="02_导数与微分.html#id12">2.4. 隐函数及参数方程的导数</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="02_导数与微分.html#id13">2.4.1. 隐函数</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="02_导数与微分.html#id14">函数的表达方法</a></li>
+<li class="toctree-l5"><a class="reference internal" href="02_导数与微分.html#id15">隐函数的求导</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="02_导数与微分.html#id16">2.4.2. 参数方程</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="02_导数与微分.html#id17">2.5. 函数的微分</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="02_导数与微分.html#id18">2.5.1. 公式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="02_导数与微分.html#id19">2.5.2. 微分在近似计算中的应用</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="03_微分中值定理与导数的应用.html">3. 微分中值定理与导数的应用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="03_微分中值定理与导数的应用.html#id2">3.1. 微分中值定理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="03_微分中值定理与导数的应用.html#rolle">3.1.1. 罗尔Rolle定理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="03_微分中值定理与导数的应用.html#lagrange">3.1.2. 拉格朗日Lagrange中值定理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="03_微分中值定理与导数的应用.html#cauchy">3.1.3. 柯西Cauchy中值定理</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="03_微分中值定理与导数的应用.html#l-hospital">3.2. 洛必达L’Hospital法则</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03_微分中值定理与导数的应用.html#taylor">3.3. 泰勒Taylor公式</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="03_微分中值定理与导数的应用.html#id3">3.3.1. 泰勒公式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="03_微分中值定理与导数的应用.html#id4">3.3.2. 常用函数的泰勒展开</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="03_微分中值定理与导数的应用.html#id5">3.4. 中值定理常见题型</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="03_微分中值定理与导数的应用.html#f-n-xi-0">3.4.1. 证明<span class="math notranslate nohighlight">\(f^{(n)}(\xi) = 0\)</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="03_微分中值定理与导数的应用.html#xi">3.4.2. 结论中仅有 <span class="math notranslate nohighlight">\(\xi\)</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="03_微分中值定理与导数的应用.html#xi-a-b">3.4.3. 结论中有 <span class="math notranslate nohighlight">\(\xi\)</span> 和区间 <span class="math notranslate nohighlight">\(a,b\)</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="03_微分中值定理与导数的应用.html#xi-eta">3.4.4. 结论中有 <span class="math notranslate nohighlight">\(\xi\)</span> 和 <span class="math notranslate nohighlight">\(\eta\)</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="03_微分中值定理与导数的应用.html#id6">3.4.5. 泰勒</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="03_微分中值定理与导数的应用.html#id7">3.5. 单调性, 凹凸性和极值</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="03_微分中值定理与导数的应用.html#id8">3.5.1. 极值定义</a></li>
+<li class="toctree-l4"><a class="reference internal" href="03_微分中值定理与导数的应用.html#id9">3.5.2. 求极值步骤</a></li>
+<li class="toctree-l4"><a class="reference internal" href="03_微分中值定理与导数的应用.html#id10">3.5.3. 最大值与最小值</a></li>
+<li class="toctree-l4"><a class="reference internal" href="03_微分中值定理与导数的应用.html#id11">3.5.4. 凹凸性</a></li>
+<li class="toctree-l4"><a class="reference internal" href="03_微分中值定理与导数的应用.html#id12">3.5.5. 拐点</a></li>
+<li class="toctree-l4"><a class="reference internal" href="03_微分中值定理与导数的应用.html#id13">3.5.6. 常见题型</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="03_微分中值定理与导数的应用.html#id14">极值点判断</a></li>
+<li class="toctree-l5"><a class="reference internal" href="03_微分中值定理与导数的应用.html#id15">不等式证明</a></li>
+<li class="toctree-l5"><a class="reference internal" href="03_微分中值定理与导数的应用.html#id16">函数零点</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="03_微分中值定理与导数的应用.html#id17">3.6. 函数图像绘制</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="03_微分中值定理与导数的应用.html#id18">3.6.1. 步骤</a></li>
+<li class="toctree-l4"><a class="reference internal" href="03_微分中值定理与导数的应用.html#id19">3.6.2. 渐近线</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="03_微分中值定理与导数的应用.html#id20">水平渐近线</a></li>
+<li class="toctree-l5"><a class="reference internal" href="03_微分中值定理与导数的应用.html#id21">铅直渐近线</a></li>
+<li class="toctree-l5"><a class="reference internal" href="03_微分中值定理与导数的应用.html#id22">斜渐近线</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="03_微分中值定理与导数的应用.html#id23">3.7. 曲率</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="03_微分中值定理与导数的应用.html#id24">3.7.1. 弧微分</a></li>
+<li class="toctree-l4"><a class="reference internal" href="03_微分中值定理与导数的应用.html#id25">3.7.2. 曲率</a></li>
+<li class="toctree-l4"><a class="reference internal" href="03_微分中值定理与导数的应用.html#id26">3.7.3. 曲率半径</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="04_不定积分.html">4. 不定积分</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="04_不定积分.html#id2">4.1. 不定积分定义</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="04_不定积分.html#id3">4.1.1. 基本性质</a></li>
+<li class="toctree-l4"><a class="reference internal" href="04_不定积分.html#id4">4.1.2. 积分基本公式</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="04_不定积分.html#id5">4.2. 换元积分法</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="04_不定积分.html#id6">4.2.1. 第一类换元积分法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="04_不定积分.html#id7">4.2.2. 第二类换元积分法</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="04_不定积分.html#id8">4.3. 分部积分法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="04_不定积分.html#id9">4.4. 重要类型 - 有理函数</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="04_不定积分.html#id10">4.4.1. 不定积分的步骤</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="04_不定积分.html#id11">4.5. 重要类型 - 三角有理函数</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="05_定积分.html">5. 定积分</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="05_定积分.html#id2">5.1. 定积分的概念与性质</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="05_定积分.html#id3">5.1.1. 背景</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="05_定积分.html#id4">曲边梯形的面积</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="05_定积分.html#id5">5.1.2. 定积分的定义</a></li>
+<li class="toctree-l4"><a class="reference internal" href="05_定积分.html#id6">5.1.3. 定积分的一般性质</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="05_定积分.html#id7">5.2. 定积分基本公式</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="05_定积分.html#id8">5.2.1. 积分上限函数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="05_定积分.html#id9">5.2.2. 牛顿-莱布尼茨公式</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="05_定积分.html#id10">5.3. 定积分的积分法</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="05_定积分.html#id11">5.3.1. 换元积分法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="05_定积分.html#id12">5.3.2. 定积分的特殊性质</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="05_定积分.html#id13">对称区间定积分性质</a></li>
+<li class="toctree-l5"><a class="reference internal" href="05_定积分.html#id14">三角函数定积分性质</a></li>
+<li class="toctree-l5"><a class="reference internal" href="05_定积分.html#id15">周期函数定积分性质</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="05_定积分.html#id16">5.3.3. 分部积分法</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="05_定积分.html#id17">5.4. 反常积分 (广义积分)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="05_定积分.html#id18">5.4.1. 区间无限 (函数正常)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="05_定积分.html#id19">5.4.2. 无界函数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="05_定积分.html#gamma">5.4.3. <span class="math notranslate nohighlight">\(\Gamma\)</span> 函数</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="05_定积分.html#id20">特性</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="06_定积分的应用.html">6. 定积分的应用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="06_定积分的应用.html#id2">6.1. 元素法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06_定积分的应用.html#id3">6.2. 几何应用</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="06_定积分的应用.html#id4">6.2.1. 面积</a></li>
+<li class="toctree-l4"><a class="reference internal" href="06_定积分的应用.html#id5">6.2.2. 体积</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="06_定积分的应用.html#id6">旋转体的体积</a></li>
+<li class="toctree-l5"><a class="reference internal" href="06_定积分的应用.html#id7">截面面积已知的几何体体积</a></li>
+<li class="toctree-l5"><a class="reference internal" href="06_定积分的应用.html#id8">弧长</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="06_定积分的应用.html#id9">6.3. 物理应用</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="06_定积分的应用.html#id10">6.3.1. 做功</a></li>
+<li class="toctree-l4"><a class="reference internal" href="06_定积分的应用.html#id11">6.3.2. 力</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="07_微分方程.html">7. 微分方程</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../Math-Geometry/index.html">Geometry 几何学</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Math-Geometry/Trigonometry/index.html">Trigonometry 三角学</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../Math-Geometry/Trigonometry/01_三角函数.html">1. 三角函数</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../Math-Geometry/Trigonometry/01_三角函数.html#id2">1.1. 弧度和角度</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../Math-Geometry/Trigonometry/01_三角函数.html#id3">1.1.1. 概念</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../Math-Geometry/Trigonometry/01_三角函数.html#id4">1.1.2. 弧度和角度的换算</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../Math-Geometry/Trigonometry/01_三角函数.html#id5">1.2. 角的概念的推广</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../Math-Geometry/Trigonometry/01_三角函数.html#id6">1.3. 三角函数</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../Math-Geometry/Trigonometry/01_三角函数.html#id7">1.3.1. 图像和性质</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../Math-Geometry/Trigonometry/01_三角函数.html#id8">1.3.2. 公式</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../Math-Geometry/Trigonometry/01_三角函数.html#y-a-sin-bx-c-d">1.3.3. <span class="math notranslate nohighlight">\(y = a\sin{(bx + c)} + d\)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Philosophy and Thinking</span></p>
 <ul>
-<li class="toctree-l1"><a class="reference internal" href="../Resources/index.html">Resources</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Philo-history/index.html">Philosophy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../Philo-history/timeline.html">Timeline of Philosophy</a></li>
+</ul>
+</li>
 </ul>
 
-            
           
-        </div>
+        
       </div>
+      &nbsp;
     </nav>
 
     <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
 
       
-      <nav class="wy-nav-top" aria-label="top navigation">
-        
-          <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
-          <a href="../index.html">gate-of-babylon</a>
-        
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../index.html">gate-of-babylon</a>
       </nav>
 
 
+      
       <div class="wy-nav-content">
-        
         <div class="rst-content">
-        
-          
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<div role="navigation" aria-label="breadcrumbs navigation">
-
+          <div role="navigation" aria-label="breadcrumbs navigation">
   <ul class="wy-breadcrumbs">
-    
-      <li><a href="../index.html">Docs</a> &raquo;</li>
-        
-      <li>Calculus 微积分</li>
-    
-    
+    <li><a href="../index.html">Docs</a> &raquo;</li>
+    <li>Calculus 微积分</li>
       <li class="wy-breadcrumbs-aside">
-        
-            
-            <a href="../_sources/Math-Calculus/index.rst.txt" rel="nofollow"> View page source</a>
-          
-        
+            <a href="../_sources/Math-Calculus/index.rst.txt" rel="nofollow">
+                <span class="fa fa-binoculars"></span>&#32;View page source
+            </a>
       </li>
-    
   </ul>
-
   
-  <hr/>
+    <hr class="before-stealth-btn clear-both" />
+    
+      <a href="01_函数与极限.html" class="stealth-btn float-right" title="Accesskey Alt(+Shift)+n">
+          <span class="stealth-btn-text">Next</span>
+          <span class="fa fa-arrow-circle-right"></span>
+      </a>
+    
+    
+      <a href="../Tech-Computing&amp;Information-Technology/Tools/git&amp;github.html" class="stealth-btn" title="Accesskey Alt(+Shift)+p">
+          <span class="fa fa-arrow-circle-left"></span>
+          <span class="stealth-btn-text">Previous</span>
+      </a>
+    
+
 </div>
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
-           <div itemprop="articleBody">
+           <div itemprop="articleBody" class="toBeIndexed">
             
   <div class="section" id="calculus">
 <h1>Calculus 微积分<a class="headerlink" href="#calculus" title="Permalink to this headline">¶</a></h1>
-<p>Calculus</p>
 <div class="toctree-wrapper compound">
 <p class="caption"><span class="caption-text">Table of Content</span></p>
 <ul>
@@ -287,6 +692,7 @@
 <li class="toctree-l2"><a class="reference internal" href="03_微分中值定理与导数的应用.html#id23">3.7. 曲率</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="03_微分中值定理与导数的应用.html#id24">3.7.1. 弧微分</a></li>
 <li class="toctree-l3"><a class="reference internal" href="03_微分中值定理与导数的应用.html#id25">3.7.2. 曲率</a></li>
+<li class="toctree-l3"><a class="reference internal" href="03_微分中值定理与导数的应用.html#id26">3.7.3. 曲率半径</a></li>
 </ul>
 </li>
 </ul>
@@ -325,42 +731,79 @@
 <li class="toctree-l2"><a class="reference internal" href="05_定积分.html#id10">5.3. 定积分的积分法</a><ul>
 <li class="toctree-l3"><a class="reference internal" href="05_定积分.html#id11">5.3.1. 换元积分法</a></li>
 <li class="toctree-l3"><a class="reference internal" href="05_定积分.html#id12">5.3.2. 定积分的特殊性质</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05_定积分.html#id16">5.3.3. 分部积分法</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="05_定积分.html#id17">5.4. 反常积分 (广义积分)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="05_定积分.html#id18">5.4.1. 区间无限 (函数正常)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05_定积分.html#id19">5.4.2. 无界函数</a></li>
+<li class="toctree-l3"><a class="reference internal" href="05_定积分.html#gamma">5.4.3. <span class="math notranslate nohighlight">\(\Gamma\)</span> 函数</a></li>
 </ul>
 </li>
 </ul>
 </li>
+<li class="toctree-l1"><a class="reference internal" href="06_定积分的应用.html">6. 定积分的应用</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="06_定积分的应用.html#id2">6.1. 元素法</a></li>
+<li class="toctree-l2"><a class="reference internal" href="06_定积分的应用.html#id3">6.2. 几何应用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="06_定积分的应用.html#id4">6.2.1. 面积</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06_定积分的应用.html#id5">6.2.2. 体积</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="06_定积分的应用.html#id9">6.3. 物理应用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="06_定积分的应用.html#id10">6.3.1. 做功</a></li>
+<li class="toctree-l3"><a class="reference internal" href="06_定积分的应用.html#id11">6.3.2. 力</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="07_微分方程.html">7. 微分方程</a></li>
 </ul>
 </div>
 </div>
 
 
-           </div>
-           
+           </div><!-- /.toBeIndexed -->
           </div>
           <footer>
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="01_函数与极限.html" class="btn btn-neutral float-right" title="1. 函数与极限" accesskey="n" rel="next">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="01_函数与极限.html" class="btn btn-neutral float-right" title="Accesskey Alt(+Shift)+n" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
-        <a href="../Tech-Computing&amp;Information-Technology/Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html" class="btn btn-neutral float-left" title="1. 计算机组成与体系结构" accesskey="p" rel="prev"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+        <a href="../Tech-Computing&amp;Information-Technology/Tools/git&amp;github.html" class="btn btn-neutral" title="Accesskey Alt(+Shift)+p" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
       
     </div>
   
 
   <hr/>
 
-  <div role="contentinfo">
-    <p>
-        &copy; Copyright 2019, Toshinaki
+  <div role="contentinfo" class="contentinfo">
+      <p class="show_source">
+        <a href="../_sources/Math-Calculus/index.rst.txt" rel="nofollow">
+          <span class="fa fa-binoculars"></span>&#32;View page source
+        </a>
+      </p>
+      <p class="show_copyright">
+            &copy; Copyright 2019, Toshinaki
+      </p>
+      <p class="show_sphinx">
+        Built with <a href="http://sphinx-doc.org/" target="_blank">Sphinx</a> and
+        <a href="https://github.com/TYPO3-Documentation/t3SphinxThemeRtd" target="_blank">t3SphinxThemeRtd.</a>
+        Report theme issues <a href="https://github.com/TYPO3-Documentation/t3SphinxThemeRtd/issues" target="_blank">here.</a>
+      </p>
+      <p class="show_legalinfo">
+        <a href="https://typo3.org/legal-info/" rel="nofollow">
+          <span class="fa fa-legal"></span>&#32;Legal Info
+        </a>
+      </p>
 
-    </p>
+
+
+
   </div>
-  Built with <a href="http://sphinx-doc.org/">Sphinx</a> using a <a href="https://github.com/rtfd/sphinx_rtd_theme">theme</a> provided by <a href="https://readthedocs.org">Read the Docs</a>. 
 
 </footer>
-
         </div>
       </div>
 
@@ -370,16 +813,35 @@
   
 
 
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../_static/jquery.js"></script>
+      <script type="text/javascript" src="../_static/underscore.js"></script>
+      <script type="text/javascript" src="../_static/doctools.js"></script>
+      <script type="text/javascript" src="../_static/language_data.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="../_static/jquery-ui/jquery-ui.min.js"></script>
+      <script type="text/javascript" src="../_static/js/theme.js"></script>
+      <script type="text/javascript" src="../_static/js/t3autocomplete.js"></script>
+
+  
+
+  
+   
+  
   <script type="text/javascript">
       jQuery(function () {
-          SphinxRtdTheme.Navigation.enable(true);
+          SphinxRtdTheme.StickyNav.enable();
       });
   </script>
-
-  
-  
-    
-   
-
-</body>
+   <script type="text/javascript" id="idPiwikScriptPlaceholder"></script></body>
 </html>
