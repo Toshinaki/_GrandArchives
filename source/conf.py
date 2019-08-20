@@ -63,6 +63,9 @@ html_static_path = ['_static']
 
 master_doc = 'index'
 
+def setup(app):
+    app.add_stylesheet('css/theme.css')
+
 # html_theme_options = {
 #     'navigation_depth': 7,
 # }
