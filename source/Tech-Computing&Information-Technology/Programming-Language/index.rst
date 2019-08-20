@@ -9,4 +9,5 @@ Programming Languages
     :glob:
 
     Python/index
+    Javascript/index
     Web-Front/index

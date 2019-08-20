@@ -1,0 +1,148 @@
+
+h1 {
+    font-size: 3em;
+    margin-bottom: 45px;
+    margin-top: 20px;
+    text-align: center;
+}
+
+h2 {
+    font-size: 1.5em;
+}
+
+.float-container {
+    background-color: #1F2739;
+    background-image: url("../../imgs/black-twill.png");
+    color: #A7A1AE;
+    text-align: initial;
+    width: 1500px;
+    height: 100%;
+    margin: 0;
+}
+.float-container .float-item {
+    width: 50%;
+    border-right: 1px solid #A7A1AE55;
+    margin: 10px 0;
+    padding: 0 20px;
+    float: left;
+}
+.float-container .float-item section {
+    text-align: initial;
+}
+.float-container::after {
+    content: " ";
+    display: block;
+    clear: both;
+}
+
+header, section {
+    margin: 10px auto;
+    border-bottom: 1px solid #FFFFFF55;
+}
+
+.float-example {
+    background-color: #00000011;
+    text-align: initial;
+    border: 1px solid #FFFFFF55;
+    padding: 10px;
+}
+
+.float-example div, .float-example span {
+    width: 100px;
+    height: 100px;
+    color: #FFFFFF;
+    text-align: center;
+    padding-top: 35px;
+}
+.float-example #left {
+    background-color: #00ff9f;
+    float: left;
+    margin-right: 20px;
+    margin-bottom: 10px;
+    opacity: 0.8;
+    font-weight: bold;
+    padding-top: 50px;
+}
+.float-example #none {
+    float: none;
+    width: 100%;
+    height: 50px;
+    border: 1px solid #001eff;
+    padding: 0;
+    background-color: #d600ff;
+}
+.float-example #right, .float-example #right-width {
+    background-color: #00b8ff;
+    float: right;
+    margin-left: 20px;
+    margin-bottom: 10px;
+}
+#right-width {
+    width: auto;
+}
+
+.float-row .float-example #example-container {
+    width: 100%;
+    height: initial;
+    padding: 3px;
+    background-color: #00b8ff;
+}
+.float-row .float-example #example-container div {
+    width: 30px;
+    height: 30px;
+    padding: initial;
+    margin: 0 3px;
+}
+.float-row .float-example #example-container div.left {
+    background-color: #bd00ff;
+    float: left;
+}
+.float-row .float-example #example-container div.right {
+    background-color: #d600ff;
+    float: right;
+}
+.float-row .float-example #example-container div.clear {
+    width: 120px;
+    opacity: 1;
+    background-color: #001eff;
+}
+
+.float-group {
+    width: 100%;
+    margin-bottom: 5px;
+    padding-bottom: 3px;
+}
+
+.float-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+    margin-bottom: 2px;
+    font-family: Consolas, monospace;
+    font-size: 14px;
+    min-height: 42px;
+}
+
+.default {
+    font-weight: bold;
+    color: #FFFFFF;
+}
+
+.position-fig {
+    max-width: 50%;
+}
+.position-fig.before {
+    width: 40%;
+}
+.position-fig img {
+    width: 100%;
+}
+
+.position-img {
+    max-width: 30%;
+}
+
+.float-row ul {
+    text-align: left;
+}

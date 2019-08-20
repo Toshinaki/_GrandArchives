@@ -8,4 +8,5 @@ Code snippets of HTML, CSS, Javascript & .etc
     :maxdepth: 2
     :glob:
 
+    CSS centering <centering>    
     Timelines

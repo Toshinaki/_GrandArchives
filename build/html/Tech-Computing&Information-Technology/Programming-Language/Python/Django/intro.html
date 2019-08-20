@@ -1,0 +1,1590 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="book-name"    content="gate-of-babylon"/>
+  <meta name="book-version" content=""/>
+  <meta name="book-release" content=""/>
+  <meta name="book-type"    content="Manual"/>
+
+  
+  <title>Django Basics &mdash; gate-of-babylon  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+    <link rel="stylesheet" href="../../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../../../_static/jquery-ui/jquery-ui.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../../_static/css/t3more.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../../search.html"/>
+    <link rel="top" title="gate-of-babylon  documentation" href="#"/> 
+  <script src="../../../../_static/js/modernizr.min.js"></script>
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        <ul class="sidebartop">
+
+          <li class="docsite">
+            <a href="https://docs.typo3.org"><img src="../../../../_static/img/typo3-documentation.png" class="logo" /></a>
+          </li><li class="project">
+            <a href="../../../../index.html">
+              gate-of-babylon</a>
+          </li>
+          <li class="nolink search"><div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search this project" id="searchinput" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+</li></ul>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <p class="caption"><span class="caption-text">Technology and Applied Sciences</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../index.html">Computing and information technology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Hardware/index.html">Hardware</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Hardware/Computer/index.html">Computer Science</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Hardware/Computer/computer_memory.html">1. Computer Memory</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Hardware/Computer/computer_memory.html#id1">1.1. 存储器层次结构</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Hardware/Computer/computer_memory.html#register">1.2. Register 寄存器</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Hardware/Computer/computer_memory.html#cache">1.3. cache 高速缓存</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Hardware/Computer/computer_memory.html#ram">1.4. RAM 主存</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Hardware/Computer/computer_memory.html#hard-disk-drive-hdd">1.5. Hard Disk Drive (HDD) 硬盘</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../../Hardware/Computer/computer_memory.html#id2">1.5.1. 物理结构</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../Hardware/Computer/computer_memory.html#id3">1.5.2. 数据编码</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../Hardware/Computer/computer_memory.html#id4">1.5.3. 读写数据</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../Hardware/Computer/computer_memory.html#id5">1.5.4. 逻辑结构</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../Hardware/Computer/computer_memory.html#id6">1.5.5. 磁盘地址管理方式</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../Hardware/Computer/computer_memory.html#id7">1.5.6. 磁盘分区信息存储方式</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../../Hardware/Computer/computer_memory.html#mbr-master-boot-record">MBR (Master Boot Record)</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../Hardware/Computer/computer_memory.html#gpt-guid-partition-table">GPT (GUID partition table)</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../../Hardware/Computer/computer_memory.html#id8">1.5.7. 数据接口</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Hardware/Computer/computer_memory.html#id9">1.6. 分类</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Hardware/Computer/Firmware.html">2. Firmware 固件</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Hardware/Computer/Firmware.html#bios">2.1. BIOS</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../../Hardware/Computer/Firmware.html#id1">2.1.1. BIOS 管理功能</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../../Hardware/Computer/Firmware.html#post">POST 加电自检</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../Hardware/Computer/Firmware.html#id2">BIOS 中断调用</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../Hardware/Computer/Firmware.html#id3">BIOS系统设置</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../Hardware/Computer/Firmware.html#option-rom">Option ROM 扩展程序</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Hardware/Computer/Firmware.html#uefi">2.2. UEFI</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Operating-System/index.html">Operating System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Operating-System/General/index.html">OS 101</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Operating-System/Linux/index.html">Linux</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Operating-System/Linux/FHS.html">Filesystem Hierarchy Standard</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../index.html">Programming Languages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../index.html">Python</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../WebFramework/index.html">Python Web Framworks</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../WebProgramming/index.html">Python Web Programming</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../WebProgramming/webspider.html">WebSpider</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../WebProgramming/webspider.html#introduction">Introduction</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../WebProgramming/webspider.html#id1">什么是爬虫</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../WebProgramming/webspider.html#http-https">HTTP/HTTPS</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../WebProgramming/webspider.html#request-methods">request methods</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../WebProgramming/webspider.html#id2">常见请求头</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../WebProgramming/webspider.html#id3">常见响应状态码</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="../WebProgramming/webspider.html#url">URL</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../WebProgramming/webspider.html#python">Python 爬虫库</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../WebProgramming/webspider.html#urllib">urllib</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Javascript/index.html">Javascript</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Javascript/intro.html">1. Introduction</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Javascript/intro.html#js">1.1. 浏览器如何执行 JS</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Javascript/intro.html#id1">1.2. JS 的组成</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Javascript/intro.html#id2">1.3. JS 的写法</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/intro.html#id3">1.3.1. 行内 JS</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/intro.html#id4">1.3.2. 内嵌 JS</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/intro.html#id5">1.3.3. 外部 JS</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/intro.html#id6">1.3.4. JS 注释</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Javascript/intro.html#id7">1.4. 变量的使用</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/intro.html#id8">1.4.1. 更新变量</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/intro.html#id9">1.4.2. 声明多个变量</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Javascript/intro.html#id10">1.5. 数据类型</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/intro.html#id11">1.5.1. 数据类型的分类</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/intro.html#id12">1.5.2. 获取数据类型</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/intro.html#id13">1.5.3. 数据类型转换</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Javascript/intro.html#operator">1.6. 运算符 operator</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/intro.html#id14">1.6.1. 优先级</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Javascript/intro.html#id15">1.7. 流程控制</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/intro.html#id16">1.7.1. 顺序结构</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/intro.html#id17">1.7.2. 分支流程控制</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/intro.html#id18">1.7.3. 循环结构</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Javascript/intro.html#id19">1.8. 数组</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/intro.html#id20">1.8.1. 创建数组</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/intro.html#id21">1.8.2. 获取数组元素</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/intro.html#id22">1.8.3. 获取元素索引</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/intro.html#id23">1.8.4. 添加元素</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/intro.html#id24">1.8.5. 删除元素</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/intro.html#id25">1.8.6. 数组排序</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Javascript/intro.html#id26">1.9. 函数</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/intro.html#id27">1.9.1. 参数</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/intro.html#return">1.9.2. <cite>return</cite> 返回值</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/intro.html#arguments">1.9.3. <cite>arguments</cite></a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/intro.html#id28">1.9.4. 函数表达式</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/intro.html#id29">1.9.5. 立即执行函数</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Javascript/intro.html#id30">1.10. 作用域</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Javascript/intro.html#id31">1.11. 预解析</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Javascript/intro.html#id32">1.12. 对象</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/intro.html#id33">1.12.1. 创建对象</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/intro.html#id34">1.12.2. 调用属性和方法</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/intro.html#id35">1.12.3. 遍历对象属性和方法</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Javascript/intro.html#javascript">1.13. Javascript 内置对象</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../Javascript/webapis.html">2. Web APIs</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Javascript/webapis.html#dom">2.1. DOM</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/webapis.html#id1">2.1.1. 获取元素</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/webapis.html#id2">2.1.2. 操作元素</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/webapis.html#id3">2.1.3. 节点操作</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Javascript/webapis.html#id4">2.2. 事件</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/webapis.html#id5">2.2.1. 事件基础</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/webapis.html#id6">2.2.2. 绑定/注册事件</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/webapis.html#id7">2.2.3. 移除事件</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/webapis.html#id8">2.2.4. DOM 事件流</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/webapis.html#id9">2.2.5. 事件对象</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/webapis.html#id10">2.2.6. 事件委托</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Javascript/webapis.html#id11">2.3. 鼠标事件</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/webapis.html#id12">2.3.1. 常用鼠标事件</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/webapis.html#mouseevent">2.3.2. 鼠标事件对象 MouseEvent</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Javascript/webapis.html#id13">2.4. 键盘事件</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/webapis.html#id14">2.4.1. 常用键盘事件</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/webapis.html#keyboardevent">2.4.2. 键盘事件对象 KeyboardEvent</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Javascript/webapis.html#bom">2.5. BOM</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/webapis.html#window">2.5.1. window 对象常用事件</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/webapis.html#location">2.5.2. location 对象</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/webapis.html#navigator">2.5.3. navigator 对象</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/webapis.html#history">2.5.4. history 对象</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/webapis.html#id15">2.5.5. 定时器</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/webapis.html#js">2.5.6. JS 执行机制</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Javascript/webapis.html#id16">同步和异步</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Javascript/webapis.html#pc">2.6. PC 网页特效</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/webapis.html#offset">2.6.1. offset</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/webapis.html#client">2.6.2. client</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/webapis.html#scroll">2.6.3. scroll</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Javascript/webapis.html#sp">2.7. SP 网页特效</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/webapis.html#touch">2.7.1. 触屏事件 touch</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/webapis.html#touchevent">2.7.2. 触摸事件对象 TouchEvent</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Javascript/webapis.html#local-storage">2.8. 本地存储 Local Storage</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/webapis.html#window-sessionstorage">2.8.1. window.sessionStorage</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/webapis.html#window-localstorage">2.8.2. window.localStorage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../Javascript/jQuery.html">3. jQuery</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Javascript/jQuery.html#id1">3.1. 基础</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/jQuery.html#id2">3.1.1. jQuery 入口函数</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/jQuery.html#id3">3.1.2. jQuery 顶级对象 <cite>$</cite></a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/jQuery.html#jquery-dom">3.1.3. jQuery 对象和 DOM 对象</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Javascript/jQuery.html#jquery-api">3.2. jQuery 常用 API</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/jQuery.html#id4">3.2.1. jQuery 选择器</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/jQuery.html#css">3.2.2. 操作 css</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/jQuery.html#id5">3.2.3. 操作类</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/jQuery.html#id6">3.2.4. jQuery 效果</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/jQuery.html#id7">3.2.5. jQuery 属性</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/jQuery.html#id8">3.2.6. jQuery 操作内容</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/jQuery.html#id9">3.2.7. jQuery 操作元素</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/jQuery.html#id10">3.2.8. jQuery 尺寸 &amp; 位置</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Javascript/jQuery.html#id11">3.3. jQuery 事件</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/jQuery.html#on">3.3.1. 用 <cite>on()</cite> 绑定事件</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/jQuery.html#id12">3.3.2. 事件委派</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/jQuery.html#off">3.3.3. 用 <cite>off()</cite> 绑定事件</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/jQuery.html#one">3.3.4. 用 <cite>one()</cite> 触发事件一次</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/jQuery.html#trigger">3.3.5. <cite>trigger()</cite> 触发事件</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../Javascript/ES6.html">4. ECMAScript 6</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Javascript/ES6.html#id1">4.1. 面向对象</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/ES6.html#id2">4.1.1. 创建类</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Javascript/ES6.html#id3">4.1.2. 继承类</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Web-Front/index.html">Webpage Front</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Web-Front/CSS.html">1. CSS</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Web-Front/CSS.html#css-selectors">1.1. CSS Selectors 选择器</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Web-Front/CSS.html#id1">1.2. 元素的渲染 - 属性值的计算过程</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Web-Front/CSS.html#css-cascade">1.2.1. CSS Cascade 层叠</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Web-Front/CSS.html#css-inheritance">1.2.2. CSS Inheritance 继承</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Web-Front/CSS.html#css-box-model">1.3. CSS Box Model 盒模型</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Web-Front/CSS.html#box-types">1.3.1. Box Types 盒类型</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Web-Front/CSS.html#box-components">1.3.2. Box Components 组成</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Web-Front/CSS.html#box-sizing">1.3.3. 使用 <cite>box-sizing</cite> 改变宽高适用范围</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Web-Front/CSS.html#background-clip">1.3.4. 使用 <cite>background-clip</cite> 改变背景覆盖范围</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Web-Front/CSS.html#id2">1.3.5. 可替换元素和非可替换元素</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Web-Front/CSS.html#block-format-context-bfc">1.4. Block Format Context (BFC)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Web-Front/CSS.html#bfc">1.4.1. BFC的创建</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Web-Front/CSS.html#rules">1.5. &#64;-rules</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Web-Front/CSS.html#layout">1.6. Layout</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Web-Front/CSS.html#normal-flow">1.6.1. Normal flow</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Web-Front/CSS.html#margin-collapsing">margin collapsing</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../Web-Front/CSS.html#contaning-block">1.6.2. Contaning Block</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Web-Front/CSS.html#id3">确定包含块</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Web-Front/CSS.html#id4">包含块中元素的尺寸</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../Web-Front/CSS.html#flexbox">1.6.3. Flexbox</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Web-Front/CSS.html#grid">1.6.4. Grid</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Web-Front/CSS.html#floats-positioning">1.6.5. Floats &amp; Positioning</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Web-Front/CSS.html#table-layout">1.6.6. Table layout</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Web-Front/CSS.html#multiple-column-layout">1.6.7. Multiple-column layout</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../Web-Front/Bootstrap/index.html">2. Bootstrap</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Web-Front/Bootstrap/templates.html">2.1. Templates</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Web-Front/Bootstrap/templates.html#fixed-navbar">2.1.1. Fixed navbar</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../Web-Front/Recipes/index.html">3. Recipes</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Web-Front/Recipes/centering.html">3.1. CSS centering</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Web-Front/Recipes/centering.html#horizontally-centering">3.1.1. Horizontally Centering</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Web-Front/Recipes/centering.html#inline-inline-block-box">inline / inline-block box</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Web-Front/Recipes/centering.html#block-box">block box</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Web-Front/Recipes/centering.html#normal-flow">normal flow</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Web-Front/Recipes/centering.html#absolute-or-fixed-positioned-element"><cite>absolute</cite> or <cite>fixed</cite> positioned element</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../Web-Front/Recipes/centering.html#vertically-centering">3.1.2. Vertically Centering</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Web-Front/Recipes/centering.html#id1">inline / inline-block box</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Web-Front/Recipes/centering.html#id2">block box</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Web-Front/Recipes/centering.html#id3"><cite>absolute</cite> or <cite>fixed</cite> positioned element</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Web-Front/Recipes/Timelines.html">3.2. Timelines</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Web-Front/Recipes/Timelines.html#vertical-timelines">3.2.1. Vertical Timelines</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../Web-Front/cheat-sheet.html">4. Cheat Sheet</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Web-Front/cheat-sheet.html#html">4.1. HTML</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Web-Front/cheat-sheet.html#css">4.2. CSS</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Web-Front/cheat-sheet.html#javascript">4.3. Javascript</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Web-Front/cheat-sheet.html#others">4.4. others</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Database/index.html">Database</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Database/Basics.html">1. Database Bascis</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Database/Basics.html#introduction">1.1. Introduction</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Database/Basics.html#id1">1.1.1. 数据库系统概述</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../../Database/Basics.html#id2">1.1.1.1. 数据库的4个基本概念</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../Database/Basics.html#id3">1.1.1.2. 数据管理的三个阶段</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Database/Basics.html#data-model">1.1.2. 数据模型 Data Model</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../../Database/Basics.html#id4">1.1.2.1. 目的不同的两类模型</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../Database/Basics.html#id5">1.1.2.2. 数据模型的组成要素</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../Database/Basics.html#id6">1.1.2.3. 格式化模型</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Database/Basics.html#id7">1.1.3. 数据库系统的结构</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../../Database/Basics.html#id8">1.1.3.1. 三级模式结构</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Database/Basics.html#id9">1.1.4. 数据库系统的组成</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Database/Basics.html#id10">1.2. 关系数据库</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Database/Basics.html#id11">1.2.1. 关系模型的数据结构</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../../Database/Basics.html#id12">1.2.1.1. 基本概念</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../Database/Basics.html#id13">1.2.1.2. 关系模式</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Database/Basics.html#id14">1.2.2. 关系操作</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../../Database/Basics.html#id15">1.2.2.1. 基本操作</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../Database/Basics.html#id16">1.2.2.2. 关系数据语言的分类</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Database/Basics.html#id17">1.2.3. 关系的完整性</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../../Database/Basics.html#id18">1.2.3.1. 实体完整性</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../Database/Basics.html#id19">1.2.3.2. 参照完整性</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Database/Basics.html#id20">1.2.4. 关系代数</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Database/Basics.html#sql">1.3. SQL</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Database/Basics.html#cheat-sheet">1.3.1. Cheat Sheet</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Software-Design/index.html">Software Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/index.html">中级软件设计师考试</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html">1. 计算机组成与体系结构</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id2">1.1. 数据的表示</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id3">1.1.1. 进制转换</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#r"><span class="math notranslate nohighlight">\(R\)</span> 进制转十进制</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id4">十进制转 <span class="math notranslate nohighlight">\(R\)</span> 进制</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id5">二进制与八进制与十六进制</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id6">1.1.2. 编码</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id7">原码</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id8">反码</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id9">补码</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id10">移码</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id11">取值范围</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id12">1.1.3. 浮点数运算</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id13">1.2. 计算机结构</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#flynn">1.3. Flynn分类法</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#cisicrisc">1.4. CISIC和RISC</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#pipelining">1.5. 流水线 (Pipelining) 及其计算</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id14">1.5.1. 概念</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id15">1.5.2. 执行时长的计算</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#throughput-rate">1.5.3. 流水线吞吐率 (Throughput rate)</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id16">1.5.4. 流水线的加速比</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id17">1.5.5. 流水线的效率</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id18">1.6. 层次化存储结构</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#cache">1.6.1. 高速缓冲存储器 Cache</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id19">概念</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id20">命中率</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id21">1.6.2. 局部性原理</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#temporal-locality">时间局部性 (temporal locality)</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#spatial-locality">空间局部性 (spatial locality)</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id22">工作集理论</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#main-memory">1.6.3. 主存储器 Main memory</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id23">编址</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id24">1.6.4. 磁盘结构与参数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Tools/index.html">Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Tools/git&amp;github.html">1. Git &amp; Github</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Tools/git&amp;github.html#id1">1.1. 基本概念</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Tools/git&amp;github.html#version-control-system-vcs">1.2. Version Control System (VCS)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Tools/git&amp;github.html#distributed-version-control-system-dvcs">1.2.1. Distributed version control system (DVCS)</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Tools/git&amp;github.html#git-commands">1.3. Git commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Tools/git&amp;github.html#the-github-flow">1.4. The GitHub flow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Tools/git&amp;github.html#models-for-collaborative-development">1.5. Models for collaborative development</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Tools/docker.html">2. Docker</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Tools/docker.html#intro">2.1. Intro</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Tools/docker.html#id1">2.1.1. 为什么需要 Docker</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../../Tools/docker.html#id2">2.1.1.1. 环境配置的难题</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../Tools/docker.html#id3">2.1.1.2. 虚拟机</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../Tools/docker.html#linux">2.1.1.3. Linux 容器</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Tools/docker.html#id4">2.1.2. Docker</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../../Tools/docker.html#id5">2.1.2.1. Docker 架构</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../Tools/docker.html#id6">2.1.2.2. 用途</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Tools/docker.html#detailed">2.2. Detailed</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Tools/docker.html#id7">2.2.1. Docker 体系结构</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Tools/docker.html#id8">2.2.2. 内部组件</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Tools/docker.html#id9">2.2.3. Docker 核心组件</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../../Tools/docker.html#docker-client">2.2.3.1. Docker Client</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../Tools/docker.html#docker-daemon">2.2.3.2. Docker Daemon</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../Tools/docker.html#image">2.2.3.3. image 文件</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../Tools/docker.html#container">2.2.3.4. Container 容器文件</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../Tools/docker.html#repository">2.2.3.5. Repository 仓库</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Tools/docker.html#dockerfile">2.2.4. Dockerfile 文件</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Tools/docker.html#id10">2.2.5. 应用程序数据</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Tools/docker.html#docker-compose">2.2.6. Docker Compose</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Tools/docker.html#id11">2.3. Docker 使用</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Tools/gcp.html">3. Google Cloud Platform</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Tools/gcp.html#introduction">3.1. Introduction</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Tools/gcp.html#overview-of-google-s-infrastructure">3.1.1. Overview of Google’s infrastructure</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../../Tools/gcp.html#physical-level">3.1.1.1. Physical Level</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../Tools/gcp.html#abstract-level">3.1.1.2. Abstract Level</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Tools/gcp.html#ways-for-pricing-reducing">3.1.2. 4 ways for pricing reducing</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Tools/gcp.html#terms">3.1.3. Terms</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../../Tools/gcp.html#waves-of-cloud-computing">3.1.3.1. 3 waves of Cloud Computing</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../Tools/gcp.html#iaas-paas">3.1.3.2. IaaS &amp; PaaS</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../../Tools/gcp.html#main-categories-of-products-and-services">3.1.3.3. Main Categories of products and services</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Mathematics and Logic</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Math-Calculus/index.html">Calculus 微积分</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html">1. 函数与极限</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id2">1.1. 映射与函数</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id3">1.1.1. 集合</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id4">概念</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id5">表示集合的方法</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id6">集合间的关系</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id7">集合间的运算</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id8">运算法</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id9">1.1.2. 区间</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id10">邻域</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id11">1.1.3. 映射</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id12">1.1.4. 函数</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id13">一些特殊的函数</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id14">函数的表示方法</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id15">函数的特性</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id16">反函数, 复合函数</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id17">基本初等函数</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id18">双曲函数和反双曲函数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id19">1.2. 数列极限</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id20">1.2.1. 定义</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id21">1.2.2. 收敛数列的性质</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id22">1.3. 函数极限</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id23">1.3.1. 定义</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id24">1.3.2. 函数极限的性质</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id25">1.4. 无穷小和无穷大</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id26">1.4.1. 无穷小</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id27">1.4.2. 无穷大</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id28">1.4.3. 无穷大和无穷小的关系</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id29">1.5. 极限运算法则</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id30">1.5.1. 定理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id31">1.5.2. 四则运算</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id32">1.5.3. 复合函数</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id33">1.6. 极限存在准则</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id34">1.6.1. 夹逼定理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id35">1.6.2. 单调有界的数列必有极限</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id36">1.7. 无穷小的比较</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id37">1.7.1. 等价无穷小的性质</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#x-to-0">1.7.2. <span class="math notranslate nohighlight">\(x \to 0\)</span> 时的常见无穷小</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id38">1.8. 函数的连续性与间断点</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id39">1.8.1. 函数的连续性</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id40">1.8.2. 函数的间断点</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id41">1.9. 连续函数的运算与初等函数的连续性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/01_函数与极限.html#id42">1.10. 闭区间上连续函数的性质</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Math-Calculus/02_导数与微分.html">2. 导数与微分</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/02_导数与微分.html#id2">2.1. 导数概念</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/02_导数与微分.html#id3">2.1.1. 几何意义</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/02_导数与微分.html#id4">2.2. 求导基本公式</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/02_导数与微分.html#id5">2.2.1. 四则求导</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/02_导数与微分.html#id6">2.2.2. 反函数求导</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/02_导数与微分.html#id7">2.2.3. 复合函数求导</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/02_导数与微分.html#id8">2.2.4. 其他求导方法</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/02_导数与微分.html#id9">2.3. 高阶导数</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/02_导数与微分.html#id10">2.3.1. 特殊的高阶导数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/02_导数与微分.html#leibniz">2.3.2. Leibniz公式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/02_导数与微分.html#id11">2.3.3. 高阶导数求导</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/02_导数与微分.html#id12">2.4. 隐函数及参数方程的导数</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/02_导数与微分.html#id13">2.4.1. 隐函数</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Calculus/02_导数与微分.html#id14">函数的表达方法</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Calculus/02_导数与微分.html#id15">隐函数的求导</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/02_导数与微分.html#id16">2.4.2. 参数方程</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/02_导数与微分.html#id17">2.5. 函数的微分</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/02_导数与微分.html#id18">2.5.1. 公式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/02_导数与微分.html#id19">2.5.2. 微分在近似计算中的应用</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html">3. 微分中值定理与导数的应用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#id2">3.1. 微分中值定理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#rolle">3.1.1. 罗尔Rolle定理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#lagrange">3.1.2. 拉格朗日Lagrange中值定理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#cauchy">3.1.3. 柯西Cauchy中值定理</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#l-hospital">3.2. 洛必达L’Hospital法则</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#taylor">3.3. 泰勒Taylor公式</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#id3">3.3.1. 泰勒公式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#id4">3.3.2. 常用函数的泰勒展开</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#id5">3.4. 中值定理常见题型</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#f-n-xi-0">3.4.1. 证明<span class="math notranslate nohighlight">\(f^{(n)}(\xi) = 0\)</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#xi">3.4.2. 结论中仅有 <span class="math notranslate nohighlight">\(\xi\)</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#xi-a-b">3.4.3. 结论中有 <span class="math notranslate nohighlight">\(\xi\)</span> 和区间 <span class="math notranslate nohighlight">\(a,b\)</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#xi-eta">3.4.4. 结论中有 <span class="math notranslate nohighlight">\(\xi\)</span> 和 <span class="math notranslate nohighlight">\(\eta\)</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#id6">3.4.5. 泰勒</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#id7">3.5. 单调性, 凹凸性和极值</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#id8">3.5.1. 极值定义</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#id9">3.5.2. 求极值步骤</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#id10">3.5.3. 最大值与最小值</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#id11">3.5.4. 凹凸性</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#id12">3.5.5. 拐点</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#id13">3.5.6. 常见题型</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#id14">极值点判断</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#id15">不等式证明</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#id16">函数零点</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#id17">3.6. 函数图像绘制</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#id18">3.6.1. 步骤</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#id19">3.6.2. 渐近线</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#id20">水平渐近线</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#id21">铅直渐近线</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#id22">斜渐近线</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#id23">3.7. 曲率</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#id24">3.7.1. 弧微分</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#id25">3.7.2. 曲率</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/03_微分中值定理与导数的应用.html#id26">3.7.3. 曲率半径</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Math-Calculus/04_不定积分.html">4. 不定积分</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/04_不定积分.html#id2">4.1. 不定积分定义</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/04_不定积分.html#id3">4.1.1. 基本性质</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/04_不定积分.html#id4">4.1.2. 积分基本公式</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/04_不定积分.html#id5">4.2. 换元积分法</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/04_不定积分.html#id6">4.2.1. 第一类换元积分法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/04_不定积分.html#id7">4.2.2. 第二类换元积分法</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/04_不定积分.html#id8">4.3. 分部积分法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/04_不定积分.html#id9">4.4. 重要类型 - 有理函数</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/04_不定积分.html#id10">4.4.1. 不定积分的步骤</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/04_不定积分.html#id11">4.5. 重要类型 - 三角有理函数</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Math-Calculus/05_定积分.html">5. 定积分</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/05_定积分.html#id2">5.1. 定积分的概念与性质</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/05_定积分.html#id3">5.1.1. 背景</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Calculus/05_定积分.html#id4">曲边梯形的面积</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/05_定积分.html#id5">5.1.2. 定积分的定义</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/05_定积分.html#id6">5.1.3. 定积分的一般性质</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/05_定积分.html#id7">5.2. 定积分基本公式</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/05_定积分.html#id8">5.2.1. 积分上限函数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/05_定积分.html#id9">5.2.2. 牛顿-莱布尼茨公式</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/05_定积分.html#id10">5.3. 定积分的积分法</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/05_定积分.html#id11">5.3.1. 换元积分法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/05_定积分.html#id12">5.3.2. 定积分的特殊性质</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Calculus/05_定积分.html#id13">对称区间定积分性质</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Calculus/05_定积分.html#id14">三角函数定积分性质</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Calculus/05_定积分.html#id15">周期函数定积分性质</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/05_定积分.html#id16">5.3.3. 分部积分法</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/05_定积分.html#id17">5.4. 反常积分 (广义积分)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/05_定积分.html#id18">5.4.1. 区间无限 (函数正常)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/05_定积分.html#id19">5.4.2. 无界函数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/05_定积分.html#gamma">5.4.3. <span class="math notranslate nohighlight">\(\Gamma\)</span> 函数</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Calculus/05_定积分.html#id20">特性</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Math-Calculus/06_定积分的应用.html">6. 定积分的应用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/06_定积分的应用.html#id2">6.1. 元素法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/06_定积分的应用.html#id3">6.2. 几何应用</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/06_定积分的应用.html#id4">6.2.1. 面积</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/06_定积分的应用.html#id5">6.2.2. 体积</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Calculus/06_定积分的应用.html#id6">旋转体的体积</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Calculus/06_定积分的应用.html#id7">截面面积已知的几何体体积</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Calculus/06_定积分的应用.html#id8">弧长</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Calculus/06_定积分的应用.html#id9">6.3. 物理应用</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/06_定积分的应用.html#id10">6.3.1. 做功</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Calculus/06_定积分的应用.html#id11">6.3.2. 力</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Math-Calculus/07_微分方程.html">7. 微分方程</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Math-Geometry/index.html">Geometry 几何学</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Math-Geometry/Trigonometry/index.html">Trigonometry 三角学</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../../Math-Geometry/Trigonometry/01_三角函数.html">1. 三角函数</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Geometry/Trigonometry/01_三角函数.html#id2">1.1. 弧度和角度</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Geometry/Trigonometry/01_三角函数.html#id3">1.1.1. 概念</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Geometry/Trigonometry/01_三角函数.html#id4">1.1.2. 弧度和角度的换算</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Geometry/Trigonometry/01_三角函数.html#id5">1.2. 角的概念的推广</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../../Math-Geometry/Trigonometry/01_三角函数.html#id6">1.3. 三角函数</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Geometry/Trigonometry/01_三角函数.html#id7">1.3.1. 图像和性质</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Geometry/Trigonometry/01_三角函数.html#id8">1.3.2. 公式</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../../Math-Geometry/Trigonometry/01_三角函数.html#y-a-sin-bx-c-d">1.3.3. <span class="math notranslate nohighlight">\(y = a\sin{(bx + c)} + d\)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Philosophy and Thinking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../../Philo-history/index.html">Philosophy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../../Philo-history/timeline.html">Timeline of Philosophy</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../../index.html">gate-of-babylon</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../../index.html">Docs</a> &raquo;</li>
+    <li>Django Basics</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../../_sources/Tech-Computing&amp;Information-Technology/Programming-Language/Python/Django/intro.rst.txt" rel="nofollow">
+                <span class="fa fa-binoculars"></span>&#32;View page source
+            </a>
+      </li>
+  </ul>
+  
+  <hr class="clear-both"/>
+
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody" class="toBeIndexed">
+            
+  <div class="section" id="django-basics">
+<h1>Django Basics<a class="headerlink" href="#django-basics" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="mvc-mvt">
+<h2>MVC &amp; MVT<a class="headerlink" href="#mvc-mvt" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference external" href="https://www.cnblogs.com/yangmingxianshen/p/8305697.html">https://www.cnblogs.com/yangmingxianshen/p/8305697.html</a></p>
+</div>
+<div class="section" id="dtl">
+<h2>DTL 模板语言<a class="headerlink" href="#dtl" title="Permalink to this headline">¶</a></h2>
+<p>Django Template Language (DTL), Django 默认的模板语言</p>
+<p>模板的目的是*可视化*, 将数据按照一定的布局格式输出; 模板不是为了数据处理, 所以一般不会有复杂的处理逻辑</p>
+<p>模板的引入实现了业务逻辑和显示格式的分离</p>
+<div class="section" id="id1">
+<h3>语法<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<div class="section" id="id2">
+<h4>变量<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<ul>
+<li><dl>
+<dt>普通变量</dt><dd><div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{{ name }}
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>对象变量</dt><dd><p>使用点号 “.” 访问对象属性和方法, 方法不加括号</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{{ book.id }}
+</pre></div>
+</div>
+<p>解析顺序:</p>
+<ol class="arabic simple">
+<li><p>当做一个字典处理</p></li>
+<li><p>属性或者方法查询 (方法不用带小括号)</p></li>
+<li><p>当做列表或者元组查询, 把 id 当做索引</p></li>
+<li><p>在模板中调用方法不能传递参数, 因为模板里面不能写小括号</p></li>
+</ol>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="id3">
+<h4>标签<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<ul>
+<li><dl>
+<dt>if 标签</dt><dd><dl class="simple">
+<dt>{ %if …%}</dt><dd><p>逻辑1</p>
+</dd>
+<dt>{ %elif …%}</dt><dd><p>逻辑2</p>
+</dd>
+<dt>{ %else%}</dt><dd><p>逻辑3</p>
+</dd>
+</dl>
+<p>{ %endif%}</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>相等判断</dt><dd><p>x, y可以是变量, 字符串, 整数, 小数; 变量不需要加 <cite>{{}}</cite></p>
+<p>字符串可以是单/双引号引起的硬编码, 但列表, 字典, 布尔值不能硬编码, 可以使用标签变量赋值</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{% ifequal x y %}
+{% else %}
+{% endifequal %}
+
+{% ifnotequal x y %}
+{% else %}
+{% endifnotequal %}
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>for 标签</dt><dd><div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{ %for ... in ...%}
+    循环逻辑
+{ %empty%}
+    给出的列表为空或列表不存在时, 执行此处
+{ %endfor%}
+
+# 反向迭代
+{% for item in items reversed %}
+{% endfor %}
+
+# 迭代字典
+{% for k, v in data.items %}
+{% endfor %}
+</pre></div>
+</div>
+<p><cite>for</cite> 标签中自带 <cite>forloop</cite> 对象:</p>
+<ul class="simple">
+<li><p><cite>forloop.counter</cite> 从 1 开始计数</p></li>
+<li><p><cite>forloop.counter0</cite> 从 0 开始计数</p></li>
+<li><p><cite>forloop.revcounter</cite> 逆向计数, 最后一个数是 1</p></li>
+<li><p><cite>forloop.revcounter0</cite> 逆向计数, 最后一个数是 0</p></li>
+<li><p><cite>forloop.first</cite> boolean, 第一次循环时为 True</p></li>
+<li><p><cite>forloop.last</cite> boolean, 最后一次循环时为 True</p></li>
+<li><p><cite>forloop.parentloop</cite> 引用父级循环的 forloop 对象</p></li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>commnent</dt><dd><div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{# 单行注释 #}
+
+{% comment %}
+    多行注释
+{% endcomment %}
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+</ul>
+</div>
+<div class="section" id="filter">
+<h4>filter 过滤器<a class="headerlink" href="#filter" title="Permalink to this headline">¶</a></h4>
+<p>{{ 变量|过滤器 }}</p>
+<p>使用管道符号 (|) 来应用过滤器, 通过使用过滤器来改变变量的计算结果</p>
+<p>可以在if标签中使用过滤器结合运算符</p>
+<table class="colwidths-auto docutils align-center">
+<thead>
+<tr class="row-odd"><th class="head stub"><p>过滤器</p></th>
+<th class="head"><p>说明</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p>{{ name|lower }}</p></th>
+<td><p>全小写</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>{{ name|upper }}</p></th>
+<td><p>全大写</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>{{ name|title }}</p></th>
+<td><p>首字母大写</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>{{ users_list|first }}</p></th>
+<td><p>第一个元素</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>{{ users_list|last }}</p></th>
+<td><p>最后一个元素</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>{{ value|yesno:”True,False,None” }}</p></th>
+<td><p>判断变量 boolean, 返回对应值; None 可选, 默认返回 False 对应的值</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>{{ value|add:val }}</p></th>
+<td><p>加法, 参数是负数则为减法; 若是列表则合并</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>{{ value|divisibleby:”3” }}</p></th>
+<td><p>boolean, 能否被 3 整除</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>{{ users_list|join:”,” }}</p></th>
+<td><p>用 “,” 连接所有元素</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>{{ sentence|truncatewords:”5” }}</p></th>
+<td><p>字符串截断, 以空格区分(所以中文无效); 取前五个单词, 多余的词用 “…” 省略; 数字必须放在双引号内</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>{{ sentence|slice:”4” }}</p></th>
+<td><p>字符串切分, 可以用于中文; 多余的词没有任何标识</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>{{ sentence|addslashes}}</p></th>
+<td><p>在反斜线, 单引号, 双引号前面加一个斜线, 可用于转义字符串</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>{{ word_or_list:length }}</p></th>
+<td><p>返回长度</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>{{ value|default:”default_value” }}</p></th>
+<td><p>变量为 False 时使用默认值</p></td>
+</tr>
+<tr class="row-even"><th class="stub"><p>{{ value|default_if_none:”default_value” }}</p></th>
+<td><p>变量为 None 时使用默认值</p></td>
+</tr>
+<tr class="row-odd"><th class="stub"><p>{{ birthday|data:”F j, y” }}</p></th>
+<td><p>格式化 date 或 datatime 对象</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id4">
+<h4>自定义 filter<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<p>自定义的过滤器就是一些有一到两个参数的 Python 函数</p>
+<p>如在过滤器 <cite>{{ var|foo:”bar” }}</cite> 中, 变量 <cite>var</cite> 和参数 <cite>bar</cite> 会传递给过滤器 <cite>foo</cite>, 第一个参数是要过滤的对象, 第二个参数才是自定义的参数; 最多只能有两个参数</p>
+<p>由于模板语言没有提供异常处理，任何从过滤器中抛出的异常都将会显示为服务器错误</p>
+<p>自定义 filter 有两种方式:</p>
+<ol class="arabic">
+<li><p>在 app 中新建 <cite>templatetags</cite> 文件夹, 并创建一个单独的 py 文件</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p>在 app 中新建 <cite>templatetags</cite> 文件夹</p></li>
+<li><p>新建 py 文件 (<cite>test.py</cite>)</p></li>
+<li><p>定义过滤器函数并用 <cite>&#64;register.filter</cite> 装饰器</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django</span> <span class="kn">import</span> <span class="n">template</span>
+<span class="n">register</span> <span class="o">=</span> <span class="n">template</span><span class="o">.</span><span class="n">Library</span><span class="p">()</span>
+
+<span class="c1"># filter_name 可以省略, 使用时直接使用函数名</span>
+<span class="nd">@register.filter</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;filter_name&#39;</span><span class="p">)</span>
+<span class="k">def</span> <span class="nf">custom_filter</span><span class="p">(</span><span class="n">value</span><span class="p">):</span>
+    <span class="k">return</span> <span class="o">...</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>使用时在模板中引入定义文件</p>
+<blockquote>
+<div><div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{% load test.py %}
+{{ var | custom_filter }}
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div></blockquote>
+</li>
+<li><p>单独创建一个 app 用来存放项目中所有的自定义过滤器</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>在 app 中新建 <cite>templatetags</cite> 文件夹</p></li>
+<li><p>在 <cite>settings.py</cite> 中导入 <cite>templatetags</cite></p></li>
+<li><p>其他同上</p></li>
+</ol>
+</div></blockquote>
+</li>
+</ol>
+</div>
+<div class="section" id="id5">
+<h4>模板引用<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<p>引用其他模板的全部内容</p>
+<div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{% include url %}
+</pre></div>
+</div>
+<p>url可以是双引号字符串硬编码,也可以是变量</p>
+</div>
+<div class="section" id="id6">
+<h4>模板继承<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<ul>
+<li><p>父模板使用 <cite>block</cite> 标签表示可以被子模板修改的块</p>
+<blockquote>
+<div><p>{% block block_name %}{% endblock %}</p>
+</div></blockquote>
+</li>
+<li><p>子模板在文件第一行使用 <cite>extends</cite> 标签继承父模板, 并同样使用 <cite>block</cite> 标签修改父模板中的同名块</p>
+<blockquote>
+<div><div class="highlight-html notranslate"><div class="highlight"><pre><span></span>{% extends parent_url %}
+
+{% block block_name %}
+    新的内容
+{% endblock %}
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>继承树中的任何模板都能访问上下文中的每一个模板变量</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="id7">
+<h3>设计理念<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
+<ol class="arabic">
+<li><p>表现与逻辑分离</p>
+<blockquote>
+<div><p>模板系统用于控制表现及与其相关的逻辑, 仅此而已</p>
+<p>超出这一基本目标的功能都不应该支持</p>
+</div></blockquote>
+</li>
+<li><p>避免重复</p>
+<blockquote>
+<div><p>大多数动态网站都使用某种全站通用的设计, 例如通用的页头, 页脚, 导航栏, 等等</p>
+<p>Django 模板系统应该为此提供便利的方式, 把这些元素存储在一个位置, 减少重复的代码</p>
+<p>模板继承背后就是这个理念</p>
+</div></blockquote>
+</li>
+<li><p>与 HTML 解耦</p>
+<blockquote>
+<div><p>模板系统不应该只能输出 HTML, 还要能够生成其他基于文本的格式 (也就是纯文本)</p>
+</div></blockquote>
+</li>
+<li><p>XML 不应该作为模板语言</p>
+<blockquote>
+<div><p>如果使用 XML 引擎解析模板, 编辑模板时可能引入大量人为错误, 而且处理模板有很多额外消耗</p>
+</div></blockquote>
+</li>
+<li><p>不要求具备设计能力</p>
+<blockquote>
+<div><p>模板系统不应该必须在 WYSIWYG 编辑器 (如 Dreamweaver) 中才能写出; 这样有太多局限, 句法不够灵活</p>
+<p>Django 的目标是让模板编写人员能直接编辑 HTML</p>
+</div></blockquote>
+</li>
+<li><p>透明处理空格</p>
+<blockquote>
+<div><p>模板系统不应该特殊处理空格</p>
+<p>模板中的空格就是空格, 要像文本那样显示出来</p>
+<p>不在模板标签中的空格都应该显示</p>
+</div></blockquote>
+</li>
+<li><p>不重造一门编程语言</p>
+<blockquote>
+<div><p>模板系统一定不能允许:</p>
+<ul class="simple">
+<li><p>为变量赋值</p></li>
+<li><p>编写高级的逻辑</p></li>
+</ul>
+<p>也就是不能重造一门编程语言</p>
+<p>模板系统的目标是提供适量的编程功能, 例如分支和循环, 足够做表现相关的判断就行</p>
+<p>Django 模板系统知道模板最常由设计师编写, 而不是程序员, 因此不要求具备 Python 知识</p>
+</div></blockquote>
+</li>
+<li><p>安全保障</p>
+<blockquote>
+<div><p>模板系统默认应该禁止包含恶意代码, 例如删除数据库记录的命令</p>
+<p>这是模板系统不允许随意使用Python 代码的另一个原因</p>
+</div></blockquote>
+</li>
+<li><p>可扩展</p>
+<blockquote>
+<div><p>模板系统应该认识到, 高级模板编写人员可能想扩展功能</p>
+<p>这是自定义模板标签和过滤器背后的理念</p>
+</div></blockquote>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="orm">
+<h2>ORM<a class="headerlink" href="#orm" title="Permalink to this headline">¶</a></h2>
+<p>Why:</p>
+<ol class="arabic simple">
+<li><p>不需要写 SQL 语句, 数据库操作更加简单</p></li>
+<li><p>开发效率高</p></li>
+<li><p>同样的代码可以操作不同类型的数据库</p></li>
+</ol>
+<p>How:</p>
+<ol class="arabic simple">
+<li><p>创建数据库</p></li>
+<li><p>在 <cite>settings.py</cite> 中配置数据库信息</p></li>
+<li><p>使用第三方 libraries 连接数据库</p></li>
+<li><p>在 app 下的 <cite>models.py</cite> 中创建数据库对象</p></li>
+</ol>
+<div class="section" id="model">
+<h3>Model<a class="headerlink" href="#model" title="Permalink to this headline">¶</a></h3>
+<p>模型准确且唯一的描述了数据, 包含了储存的重要字段和行为; 每一个模型都映射一张数据库表</p>
+<ul class="simple">
+<li><p>每个模型都是一个 Python 的类, 这些类继承 <cite>django.db.models.Model</cite></p></li>
+<li><p>模型类的每个属性都相当于一个数据库的字段</p></li>
+<li><p>利用这些, Django 提供了一个自动生成访问数据库的 API</p></li>
+</ul>
+<div class="section" id="id8">
+<h4>定义模型<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">django.db</span> <span class="kn">import</span> <span class="n">models</span>
+
+<span class="k">class</span> <span class="nc">Person</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">first_name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+    <span class="n">last_name</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">max_length</span><span class="o">=</span><span class="mi">30</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>模型的定义会被转换为 SQL 语句:</p>
+<div class="highlight-sql notranslate"><div class="highlight"><pre><span></span><span class="k">CREATE</span> <span class="k">TABLE</span> <span class="n">myapp_person</span> <span class="p">(</span>
+    <span class="ss">&quot;id&quot;</span> <span class="nb">serial</span> <span class="k">NOT</span> <span class="k">NULL</span> <span class="k">PRIMARY</span> <span class="k">KEY</span><span class="p">,</span>
+    <span class="ss">&quot;first_name&quot;</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span><span class="p">,</span>
+    <span class="ss">&quot;last_name&quot;</span> <span class="nb">varchar</span><span class="p">(</span><span class="mi">30</span><span class="p">)</span> <span class="k">NOT</span> <span class="k">NULL</span>
+<span class="p">);</span>
+</pre></div>
+</div>
+<ul class="simple">
+<li><p>表名根据 app 自动创建</p></li>
+<li><p>主键的 id 字段会被自动添加</p></li>
+<li><p>SQL 语句由 <cite>settings.py</cite> 中配置的数据库后端决定</p></li>
+</ul>
+</div>
+<div class="section" id="id9">
+<h4>使用模型<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
+<p>模型定义后需要注册才能被使用</p>
+<ol class="arabic">
+<li><p>在 <cite>settings.py</cite> 中注册模型所在的 app</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">INSTALLED_APPS</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="c1">#...</span>
+    <span class="s1">&#39;myapp&#39;</span><span class="p">,</span>
+    <span class="c1">#...</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>迁移并同步数据库</p>
+<blockquote>
+<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> python manage.py makemigrations
+<span class="gp">$</span> python manage.py migrate
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+</div>
+</div>
+<div class="section" id="field">
+<h3>Field<a class="headerlink" href="#field" title="Permalink to this headline">¶</a></h3>
+<p>模型中每一个字段都应该是某个 Field 类的实例, 这些字段能够:</p>
+<ol class="arabic simple">
+<li><p>指定数据库数据类型</p></li>
+<li><p>在渲染表单字段时使用默认的 HTML 视图</p></li>
+</ol>
+<div class="section" id="id10">
+<h4>字段类型<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h4>
+<table class="docutils align-center">
+<colgroup>
+<col style="width: 50%" />
+<col style="width: 50%" />
+</colgroup>
+<tbody>
+<tr class="row-odd"><td><p><cite>AutoField(**options)</cite></p></td>
+<td><p>int 自增列; 当 model 中没有自增列时会自动会创建一个列名为 id 的列</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>BigAutoField</cite></p></td>
+<td><p>64 bit int, 类似 AutoField</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>IntegerField(**options)</cite></p></td>
+<td><p>int</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>SmallIntegerField</cite></p></td>
+<td><p>较小的整数</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>BigIntegerField</cite></p></td>
+<td><p>64 bit int, 类似 IntegerField</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>PositiveIntegerField(**options)</cite></p></td>
+<td><p>非负整数, 类似 IntegerField</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>PositiveSmallIntegerField</cite></p></td>
+<td><p>较小的非负整数</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>DecimalField</cite></p></td>
+<td><p>定长小数</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>FloatField(max_digits=None, decimal_places=None, **options)</cite></p></td>
+<td><p>浮点数</p>
+<p><cite>max_digits</cite> 包括整数和小数, 不包括符号的总位数</p>
+<p><cite>decimal_places</cite> 小数位数</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><cite>BinaryField</cite></p></td>
+<td><p>存储二进制数据; 默认不可修改; 必须有一个参数 maxlength</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>BooleanField(**options)</cite></p></td>
+<td><p>true/false</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>NullBooleanField(**options)</cite></p></td>
+<td><p>null/true/false</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>CharField(max_length=None, **options)</cite></p></td>
+<td><p>字符串字段, 用于较短的字符串; 必须有一个参数 maxlength</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>TextField(**options)</cite></p></td>
+<td><p>容量很大的文本字段</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>EmailField(max_length=75, **options)</cite></p></td>
+<td><p>带有检查Email合法性的 CharField</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>URLField(verify_exists=True, max_length=200, **options)</cite></p></td>
+<td><p>用于保存 URL 的 CharField; 带有 URL 校验</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>DateField(auto_now=False, auto_now_add=False, **options)</cite></p></td>
+<td><p>日期字段; 日期格式为 “YYYY-MM-DD”</p>
+<p><cite>auto_now=False</cite> 指定对象被保存时是否自动更新为当前时间</p>
+<p><cite>auto_now_add=False</cite> 对象首次被创建时是否自动设置为当前时间</p>
+</td>
+</tr>
+<tr class="row-even"><td><p><cite>DateTimeField(auto_now=False, auto_now_add=False, **options)</cite></p></td>
+<td><p>日期时间字段; 日期格式为 “YYYY-MM-DD HH:MM[:ss[.uuuuuu]][TZ]”; 类似于 DateField</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>TimeField(auto_now=False, auto_now_add=False, **options)</cite></p></td>
+<td><p>时间字段</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>DurationField</cite></p></td>
+<td><p>时间段字段</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>FileField(upload_to=None, max_length=100, **options)</cite></p></td>
+<td><p>文件上传字段</p>
+<p><cite>upload_to</cite>, 用于保存上载文件的本地文件系统路径, 必须包含 <cite>strftime</cite> 格式化字符串</p>
+<p>如 <cite>upload = models.FileField(upload_to=’uploads/%Y/%m/%d/’)</cite></p>
+</td>
+</tr>
+<tr class="row-even"><td><p><cite>FilePathField(path=None, match=None, recursive=False, max_length=100, **options)</cite></p></td>
+<td><p>字符串, Django Admin 以及 ModelForm 中提供读取文件夹下文件的功能</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>ImageField(upload_to=None, height_field=None, width_field=None, max_length=100, **options)</cite></p></td>
+<td><p>类似FileField, 不过要校验上传对象是否是一个合法图片</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>GenericIPAddressField</cite></p></td>
+<td><p>IPv4/IPv6 地址字符串</p></td>
+</tr>
+<tr class="row-odd"><td><p><cite>SlugField(max_length=50, **options)</cite></p></td>
+<td><p>字符串, Django Admin 以及 ModelForm 中提供验证</p></td>
+</tr>
+<tr class="row-even"><td><p><cite>UUIDField</cite></p></td>
+<td><p>universally unique identifiers 存储字段</p></td>
+</tr>
+</tbody>
+</table>
+</div>
+<div class="section" id="id11">
+<h4>关联关系字段<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
+<ul>
+<li><p><cite>ForeignKey(to, on_delete, **options)</cite></p>
+<blockquote>
+<div><ul>
+<li><dl class="simple">
+<dt>to</dt><dd><p>设置要关联的表</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>to_field</dt><dd><p>设置要关联的表的字段</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>related_name</dt><dd><p>反向操作时, 使用的字段名, 用于代替原反向查询时的 “表名_set”。</p>
+<div class="admonition- admonition">
+<p class="admonition-title">例</p>
+<dl class="simple">
+<dt>class Classes(models.Model):</dt><dd><p>name = models.CharField(max_length=32)</p>
+</dd>
+<dt>class Student(models.Model):</dt><dd><p>name = models.CharField(max_length=32)
+theclass = models.ForeignKey(to=”Classes”, related_name=”students”)</p>
+</dd>
+</dl>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>related_query_name</dt><dd><p>反向查询操作时, 使用的连接前缀, 用于替换表名</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>on_delete</dt><dd><p>当删除关联表中的数据时, 当前表与其关联的行的行为</p>
+<p>有效的值有:</p>
+<ul>
+<li><p>models.CASCADE 删除关联数据, 与之关联也删除</p></li>
+<li><p>models.DO_NOTHING 删除关联数据, 引发错误IntegrityError</p></li>
+<li><p>models.PROTECT 删除关联数据, 引发错误ProtectedError</p></li>
+<li><p>models.SET_NULL 删除关联数据, 与之关联的值设置为null（前提FK字段需要设置为可空）</p></li>
+<li><p>models.SET_DEFAULT 删除关联数据, 与之关联的值设置为默认值（前提FK字段需要设置默认值）</p></li>
+<li><p>models.SET 删除关联数据,</p>
+<blockquote>
+<div><ol class="arabic simple">
+<li><p>与之关联的值设置为指定值, 设置: models.SET(值)</p></li>
+<li><p>与之关联的值设置为可执行对象的返回值, 设置: models.SET(可执行对象)</p></li>
+</ol>
+</div></blockquote>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>db_constraint</dt><dd><p>是否在数据库中创建外键约束, 默认为True</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><cite>ManyToManyField(to, **options)</cite></p>
+<blockquote>
+<div><p>用于表示多对多的关联关系, 在数据库中通过第三张表来建立关联关系</p>
+<ul>
+<li><dl class="simple">
+<dt>to</dt><dd><p>设置要关联的表</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>related_name</dt><dd><p>同ForeignKey字段</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>related_query_name</dt><dd><p>同ForeignKey字段</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>symmetrical</dt><dd><p>仅用于多对多自关联时, 指定内部是否创建反向操作的字段; 默认为True</p>
+</dd>
+</dl>
+</li>
+<li><dl>
+<dt>through</dt><dd><p>在使用ManyToManyField字段时, Django将自动生成一张表来管理多对多的关联关系</p>
+<p>也可以手动创建第三张表来管理多对多关系, 此时就需要通过through来指定第三张表的表名</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>through_fields</dt><dd><p>设置关联的字段</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>db_table</dt><dd><p>默认创建第三张表时, 数据库中表的名称</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</li>
+<li><p><cite>OneToOneField(to, on_delete, parent_link=False, **options)</cite></p>
+<blockquote>
+<div><p>通常一对一字段用来扩展已有字段, 多用在当一张表的不同字段查询频次差距过大的情况下, 将本可以存储在一张表的字段拆开放置在两张表中, 然后将两张表建立一对一的关联关系</p>
+<div class="admonition- admonition">
+<p class="admonition-title">例</p>
+<dl class="simple">
+<dt>class Author(models.Model):</dt><dd><p>name = models.CharField(max_length=32)
+info = models.OneToOneField(to=’AuthorInfo’)</p>
+</dd>
+<dt>class AuthorInfo(models.Model):</dt><dd><p>phone = models.CharField(max_length=11)
+email = models.EmailField()</p>
+</dd>
+</dl>
+</div>
+<ul class="simple">
+<li><dl class="simple">
+<dt>to</dt><dd><p>设置要关联的表</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>to_field</dt><dd><p>设置要关联的字段</p>
+</dd>
+</dl>
+</li>
+<li><dl class="simple">
+<dt>on_delete</dt><dd><p>同 ForeignKey 字段</p>
+</dd>
+</dl>
+</li>
+</ul>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+</div>
+</div>
+
+
+           </div><!-- /.toBeIndexed -->
+          </div>
+          <footer>
+  
+
+  <hr/>
+
+  <div role="contentinfo" class="contentinfo">
+      <p class="show_source">
+        <a href="../../../../_sources/Tech-Computing&amp;Information-Technology/Programming-Language/Python/Django/intro.rst.txt" rel="nofollow">
+          <span class="fa fa-binoculars"></span>&#32;View page source
+        </a>
+      </p>
+      <p class="show_copyright">
+            &copy; Copyright 2019, Toshinaki
+      </p>
+      <p class="show_sphinx">
+        Built with <a href="http://sphinx-doc.org/" target="_blank">Sphinx</a> and
+        <a href="https://github.com/TYPO3-Documentation/t3SphinxThemeRtd" target="_blank">t3SphinxThemeRtd.</a>
+        Report theme issues <a href="https://github.com/TYPO3-Documentation/t3SphinxThemeRtd/issues" target="_blank">here.</a>
+      </p>
+      <p class="show_legalinfo">
+        <a href="https://typo3.org/legal-info/" rel="nofollow">
+          <span class="fa fa-legal"></span>&#32;Legal Info
+        </a>
+      </p>
+
+
+
+
+  </div>
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../../_static/language_data.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="../../../../_static/jquery-ui/jquery-ui.min.js"></script>
+      <script type="text/javascript" src="../../../../_static/js/theme.js"></script>
+      <script type="text/javascript" src="../../../../_static/js/t3autocomplete.js"></script>
+
+  
+
+  
+   
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   <script type="text/javascript" id="idPiwikScriptPlaceholder"></script></body>
+</html>

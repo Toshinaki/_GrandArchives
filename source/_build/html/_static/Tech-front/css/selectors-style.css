@@ -1,0 +1,59 @@
+html, body {
+    height: 100%;
+}
+
+table.container {
+    background-color: #1F2739;
+    background-image: url("../../imgs/black-twill.png");
+    color: #A7A1AE;
+    text-align: center;
+    width: 2400px;
+    height: 100%;
+    margin: 0;
+    table-layout: fixed;
+}
+table.container>thead {
+    color: #4DC3FA;
+}
+table.container h1, table.container h2 {
+    font-weight: 700;
+}
+table.container>tbody {
+    width: 100%;
+}
+table.container>tbody>tr>td:nth-child(1) {
+    width: 33%;
+}
+table.container>tbody>tr>td:nth-child(2) {
+    width: 33%;
+}
+table.container>tbody>tr>td:nth-child(3) {
+    width: 34%;
+}
+
+table.container table {
+    text-align: left;
+}
+table.container table th {
+    text-align: center;
+    vertical-align: middle;
+    cursor: pointer;
+}
+table.container table thead th {
+    color: #196588;
+}
+
+table.container table tbody th {
+    color: #FB667A;
+}
+table.container table tbody th[scope="row"] {
+    font-weight: normal;
+}
+table.container table tbody th h4 {
+    /* font-size: smaller; */
+    font-weight: lighter;
+}
+
+table.container table tbody dl dt {
+    display: list-item;
+}

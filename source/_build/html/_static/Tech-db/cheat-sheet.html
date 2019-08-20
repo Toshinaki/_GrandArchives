@@ -1,0 +1,1072 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>SQL Cheat Sheet</title>
+
+    <link rel="stylesheet" href="./static/styles/dracula.css">
+    <script src="./static/highlight.pack.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+</head>
+
+<body>
+    <table style="width: 3000px;">
+        <tr>
+            <td style="width: 25%; vertical-align: top;">
+                <table style="background-color: #d3dfee; border-color: #000000; width: 100%;" border="1" cellspacing="0"
+                    cellpadding="5">
+                    <tbody>
+                        <tr>
+                            <td style="background-color: #6547b9; text-align: center; vertical-align: middle;"
+                                colspan="2">
+                                <h2><span style="color: #ffffff;"><strong>SQL</strong></span></h2>
+                                <h2><span style="color: #ffffff;"><strong>Cheat Sheet</strong></span></h2>
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;" colspan="2">
+                                <p>SQL (Structured Query Language) is a domain-specific language used in programming and
+                                    designed for
+                                    querying a database.</p>
+                                <p><span style="color: #000000;"><strong>Definitions:</strong></span></p>
+                                <ul>
+                                    <li>SCHEMA</li>
+                                    <li>TABLE</li>
+                                    <li>VIEW</li>
+                                    <li>INDEX</li>
+                                </ul>
+                                <p>&nbsp;</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; background-color: #47a3b9;" colspan="2">
+                                <h3><span style="color: #ffffff;"><strong>SQL Command Categories</strong></span></h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #4f81bd; text-align: center; vertical-align: middle;"
+                                colspan="2" scope="row">
+                                <span style="color: #ffffff;"><strong>Data Definition Language<br />
+                                        (DDL)</strong></span>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <strong><span style="color: #ffffff;">CREATE</span></strong></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">Create db
+                                object
+                                (table, view,
+                                etc.)</td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">ALTER </span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">Modify db
+                                object
+                                (table, view,
+                                etc.)</td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">DROP</span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">Delete db
+                                object
+                                (table, view,
+                                etc.)</td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #4f81bd; text-align: center; vertical-align: middle;"
+                                colspan="2" scope="row">
+                                <span style="color: #ffffff;">Data Manipulation Language<br /> (DML)</span></th>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">INSERT</span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">Insert data
+                                into db table</td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">UPDATE</span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">Update data in
+                                db table</td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">DELETE </span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">Delete data
+                                from table</td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #4f81bd; text-align: center; vertical-align: middle;"
+                                colspan="2" scope="row">
+                                <span style="color: #ffffff;">Data Query Language<br /> (DQL)</span></th>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">SELECT</span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">Retrieve data
+                                from table(s)
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #4f81bd; text-align: center; vertical-align: middle;"
+                                colspan="2" scope="row">
+                                <span style="color: #ffffff;">Data Control Language<br /> (DCL)</span></th>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">GRANT </span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">Assign
+                                privilege
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">REVOKE </span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">remove
+                                privilege
+                            </td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; background-color: #47a3b9;" colspan="2">
+                                <h3><span style="color: #ffffff;"><strong>Table Constraints</strong></span></h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">NOT NULL</span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">confirms that
+                                a column cannot store NULL value
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">UNIQUE</span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">ensures that
+                                each row for a column must have a different value
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">PRIMARY KEY</span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">a combination
+                                of NOT NULL and UNIQUE<br />ensures that the specific column or combination of two or
+                                more columns for a table have a unique identity which helps to find a particular record
+                                in a table more easily and quickly
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">CHECK</span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">ensures that
+                                the value stored in a column meets a specific condition
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">DEFAULT</span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">provides a
+                                default value when specified none for this column
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">FOREIGN KEY</span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">ensure the
+                                referential integrity of the data in one table to match values in another
+                                table;<br />The FOREIGN KEY CONSTRAINT is a column or list of columns which points to
+                                the PRIMARY KEY of another table.<br /> The main purpose of FOREIGN KEY is, only those
+                                values will appear which are present in the primary key table.
+                                <ul>
+                                    <li>
+                                        <pre><code class="sql">CREATE TABLE &lt;table_name&gt;( 
+    column1    data_type[(size)] ,  
+    column2    data_type[(size)] ,  
+    constraint(constraint_name) 
+    FOREIGN KEY  [column1,column2...] 
+    REFERENCES [primary_key_table] (column_list_of_primary_key_table) ...);</code></pre>
+                                    </li>
+                                    <li>
+                                        <pre><code class="sql">CREATE TABLE &lt;table_name&gt;( 
+    column1    data_type[(size)] ,  
+    column2    data_type[(size)]
+    REFERENCES &lt;primary_key_table&gt; [column_list_of_primary_key_table] ...);</code></pre>
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; background-color: #47a3b9;" colspan="2">
+                                <h3><span style="color: #ffffff;"><strong>Operators</strong></span></h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #4f81bd; text-align: center; vertical-align: middle;"
+                                colspan="2" scope="row">
+                                <span style="color: #ffffff;">Arithmetic Operators</span></th>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">+ - * / %</span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">add, subtract,
+                                multiply, divide or find remainder on <strong>numeric values</strong>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #4f81bd; text-align: center; vertical-align: middle;"
+                                colspan="2" scope="row">
+                                <span style="color: #ffffff;">Comparison Operators</span></th>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">=; >; &lt;; >=; &lt;=; &lt;>;</span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">find out if
+                                equal to, greater than, less than, greater than equal to, less than equal to, or not
+                                euqal to on any compatible data types
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">IS NULL; IS NOT NULL</span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">testing if a
+                                column is null<br />In SQL, a comparison between a NULL value and any other value
+                                (including another NULL) using a comparison operator will result in a NULL, which is
+                                considered as false for the purposes of a where clause
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #4f81bd; text-align: center; vertical-align: middle;"
+                                colspan="2" scope="row">
+                                <span style="color: #ffffff;">Logical Operators</span></th>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">AND OR NOT</span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">Logical
+                                comparison
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">IN</span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">checks a value
+                                within a set of values separated by commas and retrieve the rows from the table which
+                                are matching;<br />Operates on any set of values of the same datatype
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">BETWEEN</span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">tests an
+                                expression against a range. The range consists of a beginning, followed by an AND
+                                keyword and an end expression;<br />Operates on numeric, characters, or datetime values
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">ANY</span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">compares a
+                                value to each value in a list or results from a query and evaluates to true if the
+                                result of an inner query contains at least one row;<br />Operates on a value to a list
+                                or a single - columns set of values
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">ALL</span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">compares a
+                                value to every value in a list or results from a query.<br />must be preceded by the
+                                comparison operators and evaluates to TRUE if the query returns no rows;<br />Operates
+                                on a value to a list or a single - columns set of values
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">SOME</span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">compare a
+                                value to each value in a list or results from a query and evaluate to true if the result
+                                of an inner query contains at least one row;<br />Operates on a value to a list
+                                or a single - columns set of values
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">EXISTS</span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">tests whether
+                                a subquery fetches at least one row. When no data is returned then this operator returns
+                                FALSE;<br />Operates on table
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #4f81bd; text-align: center; vertical-align: middle;"
+                                colspan="2" scope="row">
+                                <span style="color: #ffffff;">LIKE Operator</span></th>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">%</span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">represent a
+                                sequence of 0 (zero) or more characters
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">_</span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">represents a
+                                single character
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">[charlist]</span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">represents any
+                                single character within a charlist
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">[^charlist] or [!charlist]</span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">represents any
+                                single character other than the charlist
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; background-color: #47a3b9;" colspan="2">
+                                <h3><span style="color: #ffffff;"><strong>Aggregate Functions</strong></span></h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">COUNT()</span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">
+                                <pre><code class="sql">COUNT(*)
+COUNT( [ALL|DISTINCT] expression )</code></pre>
+                                returns the number of rows in a table satisfying the criteria specified in the WHERE
+                                clause<br />sets the number of rows or non NULL column values<br />returns 0 if there
+                                were no matching rows.<br /><strong>DISTINCT</strong> eliminates the repetitive
+                                appearance of the same data<br /><strong>ALL</strong> counts only NON NULL
+                                value<br /><strong>*</strong> counts the NULL value also
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">SUM()</span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">
+                                <pre><code class="sql">SUM ([ALL | DISTINCT] expression )</code></pre>
+                                returns the SUM of all selected columns<br /><strong>DISTINCT</strong> returns the SUM
+                                of unique values<br /><strong>ALL</strong> applies to all values
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">AVG()</span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">
+                                <pre><code class="sql">AVG ([ALL | DISTINCT] expression )</code></pre>
+                                returns the average of all non NULL values<br /><strong>DISTINCT</strong> returns the
+                                SUM of unique values<br /><strong>ALL</strong> applies to all values
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">MAX()</span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">finds the
+                                maximum value or highest value of a certain column or expression
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">MIN()</span></th>
+                            <td style="background-color: #d3dfee; text-align: left; vertical-align: top;">finds the
+                                minimum value or lowest value of a column or expression
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td style="width: 35%; vertical-align: top;">
+                <table style="background-color: #d3dfee; border-color: #000000; width: 100%;" border="1" cellspacing="0"
+                    cellpadding="5">
+                    <tbody>
+                        <tr>
+                            <td style="text-align: center; background-color: #47a3b9;" colspan="3">
+                                <h3><span style="color: #ffffff;"><strong>DDL</strong></span></h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #4f81bd; text-align: center; vertical-align: middle;"
+                                colspan="3" scope="row"><span style="color: #ffffff;"><strong>SCHEMA</strong></span>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <strong> <span style="color: #ffffff;">CREATE</span></strong></th>
+                            <td>
+                                <pre><code class="sql">CREATE SCHEMA [schema_name] [AUTHORIZATION owner_name]<br />[DEFAULT CHARACTER SET char_set_name]<br />[PATH schema_name[, ...]]<br />[ ANSI CREATE statements [...] ]<br />[ ANSI GRANT statements [...] ];</code></pre>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li><strong>schema_name</strong>: <br />The name of a schema to be created. If this
+                                        is
+                                        omitted, the user_name is used as the schema name.</li>
+                                    <li><strong>AUTHORIZATION owner_name</strong>: <br />Identifies the user who is the
+                                        owner of the schema. If not mentioned the current user is set as the owner.</li>
+                                    <li><strong>DEFAULT CHARACTER SET char_set_name</strong>: <br />Specify the default
+                                        character set, used for all objects created in the schema.</li>
+                                    <li><strong>PATH schema_name[, ...]</strong>: <br />An optional file path and file
+                                        name.
+                                    </li>
+                                    <li><strong>ANSI CREATE statements [...]</strong>: <br />Contains one or more CREATE
+                                        statements.</li>
+                                    <li><strong>ANSI GRANT statements [...]</strong>: <br />Contains one or more GRANT
+                                        statements.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <strong> <span style="color: #ffffff;">ALTER</span></strong></th>
+                            <td>
+                                <pre><code class="sql">ALTER SCHEMA schema_name [RENAME TO new_schema_name] [OWNER TO new_user_name]</code></pre>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li><strong>schema_name</strong>: <br />The name of an existing schema.</li>
+                                    <li><strong>new_schema_name</strong>: <br />The new name of the schema.</li>
+                                    <li><strong>new_owner</strong>: <br />The new owner of the schema.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <strong><span style="color: #ffffff;">DROP</span></strong></th>
+                            <td>
+                                <pre><code class="sql">DROP SCHEMA &lt;schema name&gt;</code></pre>
+                            </td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #4f81bd; text-align: center; vertical-align: middle;"
+                                colspan="3" scope="row"><span style="color: #ffffff;"><strong>DATABASE</strong></span>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <strong><span style="color: #ffffff;">CREATE</span></strong></th>
+                            <td>
+                                <pre><code class="sql">CREATE DATABASE [database_name];</code></pre>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li><strong>database_name</strong>: <br />Name of the database. The maximum length
+                                        of
+                                        the database name depends on upon the vendor of the database.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <strong><span style="color: #ffffff;">ALTER</span></strong></th>
+                            <td>-</td>
+                            <td>Different among DBMSs</td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <strong><span style="color: #ffffff;">DROP</span></strong></th>
+                            <td>
+                                <pre><code class="sql">DROP DATABASE [database name]; </code></pre>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #4f81bd; text-align: center; vertical-align: middle;"
+                                colspan="3" scope="row"><span style="color: #ffffff;"><strong>TABLE</strong></span></th>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <strong><span style="color: #ffffff;">CREATE</span></strong></th>
+                            <td>
+                                <pre><code class="sql">CREATE TABLE &lt;table_name&gt;(
+    column1    data_type[(size)]    constraint,
+    column2    data_type[(size)]    constraint,
+    ...
+    constraint);</code></pre>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li><strong>table_name</strong>: <br />Name of the table where data is stored.</li>
+                                    <li><strong>column1,column2</strong>: <br />Name of the columns of a table.</li>
+                                    <li><strong>data_type</strong>: <br />Char, varchar, integer, decimal, date and
+                                        more.
+                                    </li>
+                                    <li><strong>size</strong>: <br />Maximum length of the column of a table.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <strong><span style="color: #ffffff;">ALTER</span></strong></th>
+                            <td>
+                                <ol>
+                                    <li>
+                                        <pre><code class="sql">ALTER TABLE &lt;table_name&gt;(
+    ADD column1    data_type[(size)]    constraint,
+    ADD column2    data_type[(size)]    constraint,
+    ...);</code></pre>
+                                    </li>
+                                    <li>
+                                        <pre><code class="sql">ALTER TABLE &lt;table_name&gt; 
+    DROP(column1);</code></pre>
+                                    </li>
+                                    <li>
+                                        <pre><code class="sql">ALTER TABLE &lt;table_name&gt; 
+    MODIFY (column1 data_type[(size)] constraint);</code></pre>
+                                    </li>
+                                    <li>
+                                        <pre><code class="sql">ALTER TABLE &lt;table_name&gt; 
+    ADD CONSTRAINT constraint_name constraint_type(column1);</code></pre>
+                                    </li>
+                                    <li>
+                                        <pre><code class="sql">ALTER TABLE &lt;table_name&gt; 
+    DROP CONSTRAINT constraint_name;</code></pre>
+                                    </li>
+                                    <li>
+                                        <pre><code class="sql">ALTER TABLE &lt;table_name&gt; RENAME TO &lt;new_table_name&gt;</code></pre>
+                                    </li>
+                                    <li>
+                                        <pre><code class="sql">ALTER TABLE &lt;table_name&gt; RENAME &lt;column_name&gt; TO &lt;new_column_name&gt;</code></pre>
+                                    </li>
+                                </ol>
+                            </td>
+                            <td>
+                                <ol>
+                                    <li>add column</li>
+                                    <li>remove column</li>
+                                    <li>change datatype, size or constraint</li>
+                                    <li>add constraint to column</li>
+                                    <li>remove constraint</li>
+                                    <li>rename a table</li>
+                                    <li>rename a column</li>
+                                </ol>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <strong><span style="color: #ffffff;">DROP</span></strong></th>
+                            <td>
+                                <pre><code class="sql">DROP TABLE [table name];</code></pre>
+                            </td>
+                            <td>drops the table and all the relationships related to the tables;<br /> A table which has
+                                a
+                                FOREIGN KEY and referenced by another table can not be dropped and if required to drop,
+                                the
+                                foreign key constraint or the referencing table should be dropped first.
+                                <ul>
+                                    <li><strong>table_name</strong>: <br />Name of the table</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <strong><span style="color: #ffffff;">TRUNCATE</span></strong></th>
+                            <td>
+                                <pre><code class="sql">TRUNCATE TABLE [table name];</code></pre>
+                            </td>
+                            <td>remove all data in a table</td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #4f81bd; text-align: center; vertical-align: middle;"
+                                colspan="3" scope="row"><span style="color: #ffffff;"><strong>VIEW</strong></span></th>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <strong><span style="color: #ffffff;">CREATE</span></strong></th>
+                            <td>
+                                <pre><code class="sql">CREATE VIEW view_name [(column_names)]
+    AS select_statement</code></pre>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <strong><span style="color: #ffffff;">CREATE</span></strong></th>
+                            <td>
+                                <pre><code class="sql">CREATE VIEW view_name [(column_names)]
+    AS select_statement
+    WITH [CASCADED | LOCAL] CHECK OPTION</code></pre>
+                            </td>
+                            <td>WITH CHECK OPTION is used only on views that allow updates to their base
+                                tables;<br />ensure that only those
+                                data which may be read by the view can be inserted, updated, or deleted through
+                                the view. <br />CASCADED performs the check option for the current view and all views
+                                upon which it is built<br />LOCAL performs the check option only for the current view,
+                                even when it is built upon other views.</td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <strong><span style="color: #ffffff;">CREATE</span></strong></th>
+                            <td>
+                                <pre><code class="sql">CREATE RECURSIVE VIEW view_name 
+    AS select_statement
+    UNION [all]
+    select_statement</code></pre>
+                            </td>
+                            <td>Create a recursive view</td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <strong><span style="color: #ffffff;">DROP</span></strong></th>
+                            <td>
+                                <pre><code class="sql">DROP VIEW [view_name];</code></pre>
+                            </td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #4f81bd; text-align: center; vertical-align: middle;"
+                                colspan="3" scope="row"><span style="color: #ffffff;"><strong>INDEX</strong></span></th>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <strong><span style="color: #ffffff;">CREATE</span></strong></th>
+                            <td>
+                                <pre><code class="sql">CREATE [UNIQUE] INDEX &lt;index name&gt; ON &lt;table name&gt; (&lt;column(s)&gt;);</code></pre>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li><strong>UNIQUE</strong>: <br />Defines the index as a unique constraint for the
+                                        table and disallows any duplicate values into the indexed column or columns of
+                                        the
+                                        table.</li>
+                                    <li><strong>index_name</strong>: <br />Name of the index table.</li>
+                                    <li><strong>table_name</strong>: <br />Name of a base table.</li>
+                                    <li><strong>column(s)</strong>: <br />Name of the columns of the table.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <strong><span style="color: #ffffff;">ALTER</span></strong></th>
+                            <td>
+                                <pre><code class="sql">ALTER [UNIQUE] INDEX &lt;index name&gt; ON &lt;table name&gt; (&lt;column(s)&gt;);</code></pre>
+                            </td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <strong><span style="color: #ffffff;">DROP</span></strong></th>
+                            <td>
+                                <pre><code class="sql">DROP INDEX &lt;index name&gt;;</code></pre>
+                            </td>
+                            <td>&nbsp;</td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; background-color: #47a3b9;" colspan="3">
+                                <h3><span style="color: #ffffff;"><strong>DCL</strong></span></h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <strong> <span style="color: #ffffff;">GRANT</span></strong></th>
+                            <td>
+                                <pre><code class="sql">GRANT CONNECT TO username IDENTIFIED BY password</code></pre>
+                            </td>
+                            <td>Create user or change password</td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <strong> <span style="color: #ffffff;">CREATE</span></strong></th>
+                            <td>
+                                <pre><code class="sql">CREATE ROLE role_name [WITH ADMIN {CURRENT_USER | CURRENT_ROLE}]</code></pre>
+                            </td>
+                            <td>Creates a set of privileges which may be assigned to users of a database. Once a role is
+                                assigned to a user, (s)he gets all the Privileges of that role.</td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+            <td style="width: 40%; vertical-align: top;">
+                <table style="background-color: #d3dfee; border-color: #000000; width: 100%;" border="1" cellspacing="0"
+                    cellpadding="5">
+                    <tbody>
+                        <tr>
+                            <td style="text-align: center; background-color: #47a3b9;" colspan="3">
+                                <h3><span style="color: #ffffff;"><strong>DML</strong></span></h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #4f81bd; text-align: center; vertical-align: middle;"
+                                colspan="3" scope="row"><span style="color: #ffffff;"><strong>TABLE</strong></span></th>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col" rowspan="2">
+                                <strong> <span style="color: #ffffff;">INSERT</span></strong></th>
+                            <td>
+                                <pre><code class="sql">INSERT INTO &lt;table name&gt; [(col1,col2,col3...col n)]
+    VALUES (value1,value2,value3...value n)[, (value1,value2,value3...value n), ...];</code></pre>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li><strong>table_name</strong>: <br />Name of the table where data will be
+                                        inserted.
+                                    </li>
+                                    <li><strong>col1,col2,col3,col n</strong>: <br />Column of the table. Optional.</li>
+                                    <li><strong>value1,value2,value3,value n</strong>: <br />Values against each
+                                        column;<br>If column names are not provided, insert values into columns by
+                                        order;<br>can insert multiple rows at once.
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <pre><code class="sql">INSERT INTO &lt;table name&gt; [(col1,col2,col3...col n)]
+    select_statement</code></pre>
+                            </td>
+                            <td>
+                                Inserting the result of a query in another table
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <strong> <span style="color: #ffffff;">UPDATE</span></strong></th>
+                            <td>
+                                <pre><code class="sql">UPDATE &lt;table name&gt; 
+    SET &lt;column1&gt;=&lt;value1&gt;,&lt;column2&gt;=&lt;value2&gt;,...
+    [WHERE &lt;condition&gt;];</code></pre>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li><strong>table_name</strong>: <br />Name of the table to be updated.</li>
+                                    <li><strong>column1,column2</strong>: <br />Name of the columns of the table.</li>
+                                    <li><strong>value1,value2</strong>: <br />New values.</li>
+                                    <li><strong>condition</strong>:<br />Condition(s) using various functions and
+                                        operators. Optional.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <strong><span style="color: #ffffff;">DELETE</span></strong></th>
+                            <td>
+                                <pre><code class="sql">DELETE FROM { table_name | ONLY (table_name) }
+    [{ WHERE search_condition | WHERE CURRENT OF cursor_name }]</code></pre>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li><strong>table_name</strong>:<br />Name of the table.</li>
+                                    <li><strong>search_condition</strong>:<br />specify a search condition (logical
+                                        expression) that has one or more conditions.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #4f81bd; text-align: center; vertical-align: middle;"
+                                colspan="3" scope="row"><span style="color: #ffffff;"><strong>VIEW</strong></span></th>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <strong><span style="color: #ffffff;">UPDATE</span></strong></th>
+                            <td>
+                                <pre><code class="sql">UPDATE &lt;view_name&gt; 
+    SET &lt;column1&gt;=&lt;value1&gt;[,&lt;column2&gt;=&lt;value2&gt;,.....]
+    [WHERE &lt;condition&gt;];</code></pre>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li><strong>view_name</strong>: <br />Name of the virtual table or view where data
+                                        will
+                                        be modified.</li>
+                                    <li><strong>column1,column2</strong>: <br />Name of the columns of the table.</li>
+                                    <li><strong>value1,value2</strong>: <br />Values for the columns which are going to
+                                        be
+                                        updated.</li>
+                                    <li><strong>condition</strong>: <br />Condition or criteria.</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td style="text-align: center; background-color: #47a3b9;" colspan="3">
+                                <h3><span style="color: #ffffff;"><strong>DQL</strong></span></h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <strong> <span style="color: #ffffff;">SELECT</span></strong></th>
+                            <td>
+                                <pre><code class="sql">SELECT * | {[ALL | DISTINCT] column | expression [AS alias]...}
+FROM &lt;table_name&gt;
+[WHERE &lt;condition&gt;]
+[GROUP BY &lt;columns&gt;]
+[HAVING &lt;search_condition&gt;]
+[ORDER BY &lt;columns&gt; [ASC | DESC]];
+[LIMIT &lt;n&gt; [OFFSET &lt;offset&gt;]]</code></pre>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li><strong>*</strong>:<br />Specifies all the columns of a table.</li>
+                                    <li><strong>DISTINCT</strong>:<br />Eliminate the repetitive appearance of same
+                                        data.
+                                    </li>
+                                    <li><strong>column</strong>:<br />Column names.</li>
+                                    <li><strong>table_name</strong>:<br />Name of the table.</li>
+                                    <li><strong>WHERE &lt;condition&gt;</strong>:<br />Filter unwanted rows from the
+                                        result.</li>
+                                    <li><strong>GROUP BY &lt;columns&gt;</strong>:<br />The GROUP BY clause is used with
+                                        the SELECT statement to make a group of rows based on the values of a specific
+                                        column or expression. <br />The SQL AGGREGATE function can be used to get
+                                        summary information for every group and these are applied to an individual
+                                        group. <br> The WHERE clause is used to retrieve rows based on a certain
+                                        condition, but it can not be applied to grouped result; use HAVING instead</li>
+                                    <li><strong>HAVING &lt;search_condition&gt;</strong>:<br />Specifies a search
+                                        condition for a group or an aggregate. <br />HAVING is usually used in a GROUP
+                                        BY clause, but even if GROUP BY clause is not used, HAVING can be used to
+                                        function like a WHERE clause</li>
+                                    <li><strong>ORDER BY &lt;columns&gt;</strong>:<br />Sorts the result of a query
+                                        according to the values in one or more specific columns</li>
+                                    <li><strong>LIMIT &lt;n&gt; [OFFSET &lt;offset&gt;]</strong>:<br />skip
+                                        <i>offset</i> rows and return the next <i>n</i> rows</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #4f81bd; text-align: center; vertical-align: middle;"
+                                colspan="3" scope="row">
+                                <span style="color: #ffffff;">JOIN</span><br />
+                                <small style="color: #ffffff;">combines rows from two or more tables if they have at
+                                    least one common field and have a relationship between them</small>
+                            </th>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">CROSS JOIN</span>
+                            </th>
+                            <td>
+                                explicit
+                                <pre><code class="sql">SELECT * 
+FROM table1 
+CROSS JOIN table2;</code></pre>
+                                or implicit
+                                <pre><code class="sql">SELECT *
+FROM table1, table2</code></pre>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>returns Cartesian product of rows from tables</li>
+                                    <li>by using a WHERE clause, CROSS JOIN produces the equivalent of an INNER JOIN
+                                    </li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;" scope="col"
+                                rowspan="2">
+                                <span style="color: #ffffff;">INNER JOIN</span>
+                            </th>
+                            <td>
+                                EQUI JOIN <small>uses only quality (=) as join condition (using other comparison
+                                    operators makes a NON EQUI JOIN)</small>
+                                <pre><code class="sql">SELECT * 
+FROM table1 [INNER] JOIN table2 
+ON table1.column_name = table2.column_name; </code></pre>
+                                or
+                                <pre><code class="sql">SELECT * 
+FROM table1, table2 
+WHERE table1.column_name = table2.column_name; </code></pre>
+                                or if columns used in an equi-join have the same name
+                                <pre><code class="sql">SELECT * 
+FROM table1 [INNER] JOIN table2 USING (column_name)</code></pre>
+                            </td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>
+                                NATURAL JOIN
+                                <pre><code class="sql">SELECT *
+FROM table1
+NATURAL JOIN table2;</code></pre>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>columns with the same name of associated tables will appear once only</li>
+                                    <li>do not need ON clause</li>
+                                </ul>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;" scope="col"
+                                rowspan="3">
+                                <span style="color: #ffffff;">OUTER JOIN</span>
+                            </th>
+                            <td>
+                                LEFT OUTER JOIN
+                                <pre><code class="sql">SELECT * 
+FROM table1 
+LEFT [OUTER] JOIN table2 ON table1.column_name = table2.column_name; </code></pre>
+                            </td>
+                            <td>returns all matching rows plus rows from the frist table that do not match any row in
+                                the second table<br />for unmatching rows, values of columns from second table will be
+                                NULL</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                RIGHT OUTER JOIN
+                                <pre><code class="sql">SELECT * 
+FROM table1 
+RIGHT [OUTER] JOIN table2 ON table1.column_name = table2.column_name; </code></pre>
+                            </td>
+                            <td>returns all matching rows plus rows from the second table that do not match any row in
+                                the first table<br />for unmatching rows, values of columns from first table will be
+                                NULL</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                FULL OUTER JOIN
+                                <pre><code class="sql">SELECT * 
+FROM table1 
+FULL OUTER JOIN table2 ON table1.column_name = table2.column_name; </code></pre>
+                            </td>
+                            <td>returns all matching rows plus rows that do not match<br />for unmatching rows, columns
+                                without values will be filled with NULL</td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">self join (unary)</span>
+                            </th>
+                            <td>
+                                <pre><code class="sql">SELECT a.column_name, b.column_name... 
+FROM table1 a, table1 b 
+WHERE a.common_filed = b.common_field;</code></pre>
+                            </td>
+                            <td>join a table to itself, especially when the table has a FOREIGN KEY which references its
+                                own PRIMARY KEY</td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #4f81bd; text-align: center; vertical-align: middle;"
+                                colspan="3" scope="row">
+                            </th>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">UNION</span>
+                            </th>
+                            <td>
+                                <pre><code class="sql">SELECT column_name(s) FROM table1
+UNION [ALL]
+SELECT column_name(s) FROM table2;</code></pre>
+                            </td>
+                            <td>
+                                <ul>
+                                    <li>Each SELECT statement within UNION must have the same number of columns</li>
+                                    <li>The columns must also have similar data types</li>
+                                    <li>The columns in each SELECT statement must also be in the same order</li>
+                                </ul>
+                                by default, UNION returns only distinct values; ALL allows duplicate values too
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">EXCEPT</span>
+                            </th>
+                            <td>
+                                <pre><code class="sql">SELECT column_name(s) FROM table1
+EXCEPT
+SELECT column_name(s) FROM table2;</code></pre>
+                            </td>
+                            <td>
+                                returns distinct values in the first SELECT that not in the second SELECT
+                            </td>
+                        </tr>
+                        <tr>
+                            <th style="background-color: #3399ff; text-align: left; vertical-align: middle;"
+                                scope="col">
+                                <span style="color: #ffffff;">INTERSECT</span>
+                            </th>
+                            <td>
+                                <pre><code class="sql">SELECT column_name(s) FROM table1
+INTERSECT
+SELECT column_name(s) FROM table2;</code></pre>
+                            </td>
+                            <td>
+                                returns distinct values in both the first SELECT and the second SELECT
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </td>
+        </tr>
+    </table>
+</body>
+
+</html>

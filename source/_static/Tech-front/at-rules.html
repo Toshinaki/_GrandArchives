@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="../bootstrap-4.3.1/css/bootstrap.css">
+    <link rel="stylesheet" href="./css/at-rules-style.css">
+    <link rel="stylesheet" href="../styles/dracula.css">
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+</head>
+
+<body>
+    <div class="flex-container">
+        <div class="flex-item">
+            <header>
+                <h1><code class="css">@[KEYWORD] (RULE);</code></h1>
+                <p>At-Rules, instructs CSS how to behave</p>
+            </header>
+            <section class="flex-group">
+                <div class="flex-row">
+                    <code class="css">@charset</code>
+                    <ul>
+                        <li>
+                            <pre><code class="css">@charset "&lt;charset&gt;";</code></pre>
+                        </li>
+                        <li>specifies the character encoding used in the style sheet</li>
+                        <li>must be the first element in the style sheet and not be preceded by any character</li>
+                    </ul>
+                </div>
+                <div class="flex-row">
+                    <code class="css">@import</code>
+                    <ul>
+                        <li>
+                            <pre><code class="css">@import url;
+@import url list-of-media-queries;</code></pre>
+                        </li>
+                        <li>import style rules from other style sheets</li>
+                        <li>must precede all other types of rules, except <code class="css">@charset</code> rules</li>
+                    </ul>
+                </div>
+                <div class="flex-row">
+                    <code class="css">@namespace</code>
+                    <ul>
+                        <li>
+                            <pre><code class="css">/* Default namespace */
+@namespace url(XML-namespace-URL);
+@namespace "XML-namespace-URL";
+
+/* Prefixed namespace */
+@namespace prefix url(XML-namespace-URL);
+@namespace prefix "XML-namespace-URL";</code></pre>
+                        </li>
+                        <li>defines XML namespaces to be used in a CSS style sheet</li>
+                        <li>The defined namespaces can be used to restrict the universal, type, and attribute selectors
+                            to only select elements within that namespace</li>
+                        <li>generally only useful when dealing with documents containing multiple namespaces—such as
+                            HTML5 with inline SVG or MathML, or XML that mixes multiple vocabularies</li>
+                    </ul>
+                </div>
+            </section>
+            <section class="flex-group">
+                <h2>Nested @rules</h2>
+                <div class="flex-row">
+                    <code class="css">@font-face</code>
+                    <ul>
+                        <li>
+                            <pre><code class="css">@font-face {
+    [ font-family: &lt;family-name&gt;; ] ||
+    [ src: &lt;src&gt;; ] ||
+    [ unicode-range: &lt;unicode-range&gt;; ] ||
+    [ font-variant: &lt;font-variant&gt;; ] ||
+    [ font-feature-settings: &lt;font-feature-settings&gt;; ] ||
+    [ font-variation-settings: &lt;font-variation-settings&gt;; ] ||
+    [ font-stretch: &lt;font-stretch&gt;; ] ||
+    [ font-weight: &lt;font-weight&gt;; ] ||
+    [ font-style: &lt;font-style&gt;; ]
+}</code></pre>
+                        </li>
+                        <li>specifies a custom font with which to display text</li>
+                        <li>the font can be loaded from either a remote server (<code class="css">url()</code>) or a
+                            locally-installed font (<code class="css">local()</code>) on the user's own computer</li>
+                        <li>available font types are: "woff", "woff2", "truetype", "opentype", "embedded-opentype", and
+                            "svg" (specify with <code class="css">format()</code>)</li>
+                        <li>usually used for making icons</li>
+                    </ul>
+                </div>
+                <div class="flex-row">
+                    <code class="css">@keyframes</code>
+                    <ul>
+                        <li>
+                            <pre><code class="css">@keyframes &lt;keyframes-name&gt; {
+    from | percentage {...}
+    ...
+    to | percentage {...}
+}</code></pre>
+                        </li>
+                        <li>controls the intermediate steps in a CSS animation sequence, by defining styles for
+                            keyframes (or waypoints) along the animation sequence</li>
+                        <li>gives more control over the intermediate steps of the animation sequence than <code
+                                class="css">transition</code></li>
+                        <li>contains a style list of keyframe selectors, which specify percentages along the animation
+                            when the keyframe occurs, and a block containing the styles for that keyframe.</li>
+                        <li><code class="css">&lt;keyframes-name&gt;</code> can be used by the <code
+                                class="css">animation-name</code> property to match an animation to its keyframe
+                            declaration</li>
+                        <li>property with <code class="css">!important</code> in a keyframe is ignored</li>
+                    </ul>
+                </div>
+                <div class="flex-row">
+                    <code class="css">@page</code>
+                    <ul>
+                        <li>
+                            <pre><code class="css">@page [:left | :right | :first | :blank] {
+    &lt;page-body&gt;
+}</code></pre>
+                        </li>
+                        <li>modify margins, orphans, widows, and page breaks when printing a document</li>
+                    </ul>
+                </div>
+                <div class="flex-row">
+                    <code class="css">@counter-style</code>
+                    <ul>
+                        <li>
+                            <pre><code class="css">@counter-style &lt;counter-style-name&gt; {
+    [ system: &lt;counter-system&gt;; ] ||
+    [ symbols: &lt;counter-symbols&gt;; ] ||
+    [ additive-symbols: &lt;additive-symbols&gt;; ] ||
+    [ negative: &lt;negative-symbol&gt;; ] ||
+    [ prefix: &lt;prefix&gt;; ] ||
+    [ suffix: &lt;suffix&gt;; ] ||
+    [ range: &lt;range&gt;; ] ||
+    [ pad: &lt;padding&gt;; ] ||
+    [ speak-as: &lt;speak-as&gt;; ] ||
+    [ fallback: &lt;counter-style-name&gt;; ]
+}</code></pre>
+                        </li>
+                        <li>defines counter styles for <code class="css">ul</code> and <code class="css">ol</code></li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+        <div class="flex-item">
+            <section class="flex-group">
+                <h2>CSS Media Queries</h2>
+                <ul>
+                    <li>To conditionally apply styles with the CSS @media and @import at-rules.</li>
+                    <li>To target specific media for the &lt;style&gt;, &lt;link&gt;, &lt;source&gt;, and other HTML
+                        elements with the <code class="html">media=</code> attribute</li>
+                    <li>To test and monitor media states using the <code class="javascript">Window.matchMedia()</code>
+                        and <code class="javascript">MediaQueryList.addListener()</code> JavaScript methods</li>
+                </ul>
+                <h3>Syntax:</h3>
+                <pre><code class="css">[media_type] (media_feature)+ [logical_operators [media_type] (media_feature)+ ...]</code></pre>
+                <div class="flex-row">
+                    <ul>
+                        <li>an optional media type</li>
+                        <li>any number of media feature expressions</li>
+                        <li>multiple queries can be combined by logical operators</li>
+                        <li>case-insensitive</li>
+                    </ul>
+                    <ul>
+                        <li>return true when the media type (if specified) matches the device on which a document is
+                            being
+                            displayed and all media feature expressions compute as true</li>
+                        <li>queries involving unknown media types are always false</li>
+                    </ul>
+                </div>
+                <h3>Media Types</h3>
+                <p>the general category of a device</p>
+                <div class="flex-row">
+                    <ul>
+                        <li><code class="css">all</code></li>
+                        <li><code class="css">print</code></li>
+                    </ul>
+                    <ul>
+
+                        <li><code class="css">screen</code></li>
+                        <li><code class="css">speech</code></li>
+                    </ul>
+                </div>
+                <h3>Media Features</h3>
+                <ul>
+                    <li>specific characteristics of the user agent, output device, or environment</li>
+                    <li>media feature expressions test for their presence or value, and are entirely optional</li>
+                    <li>each media feature expression must be surrounded by parentheses</li>
+                </ul>
+                <table>
+                    <tbody>
+                        <tr>
+                            <th scope="row"><code class="css">width</code></th>
+                            <td>Width of the viewport</td>
+                            <th scope="row"><code class="css">height</code></th>
+                            <td>Height of the viewport</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><code class="css">aspect-ratio</code></th>
+                            <td>Width-to-height aspect ratio of the viewport</td>
+                            <th scope="row"><code class="css">orientation</code></th>
+                            <td>Orientation of the viewport</td>
+                        </tr>
+                        <tr>
+                            <th scope="row">resolution</th>
+                            <td>Pixel density of the output device</td>
+                            <th scope="row">scan</th>
+                            <td>Scanning process of the output device</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><code class="css">grid</code></th>
+                            <td>Does the device use a grid or bitmap screen?</td>
+                            <th scope="row"><code class="css">update</code></th>
+                            <td>How frequently the output device can modify the appearance of content</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><code class="css">overflow-block</code></th>
+                            <td>How does the output device handle content that overflows the viewport along the block
+                                axis?</td>
+                            <th scope="row"><code class="css">overflow-inline</code></th>
+                            <td>Can content that overflows the viewport along the inline axis be scrolled?</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><code class="css">color</code></th>
+                            <td>Number of bits per color component of the output device, or zero if the device isn't
+                                color</td>
+                            <th scope="row"><code class="css">color-gamut</code></th>
+                            <td>Approximate range of colors that are supported by the user agent and output device</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><code class="css">color-index</code></th>
+                            <td>Number of entries in the output device's color lookup table, or zero if the device does
+                                not use such a table</td>
+                            <th scope="row"><code class="css">display-mode</code></th>
+                            <td>The display mode of the application, as specified in the web app manifest's display
+                                member</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><code class="css">monochrome</code></th>
+                            <td>Bits per pixel in the output device's monochrome frame buffer, or zero if the device
+                                isn't monochrome</td>
+                            <th scope="row"><code class="css">inverted-colors</code></th>
+                            <td>Is the user agent or underlying OS inverting colors?</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><code class="css">pointer</code></th>
+                            <td>Is the primary input mechanism a pointing device, and if so, how accurate is it?</td>
+                            <th scope="row"><code class="css">hover</code></th>
+                            <td>Does the primary input mechanism allow the user to hover over elements?</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><code class="css">any-pointer</code></th>
+                            <td>Is any available input mechanism a pointing device, and if so, how accurate is it?</td>
+                            <th scope="row"><code class="css">any-hover</code></th>
+                            <td>Does any available input mechanism allow the user to hover over elements?</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><code class="cs">light-level</code></th>
+                            <td>Light level of the environment</td>
+                            <th scope="row"><code class="css">prefers-reduced-motion</code></th>
+                            <td>The user prefers less motion on the page</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><code class="css">prefers-reduced-transparency</code></th>
+                            <td>The user prefers reduced transparency</td>
+                            <th scope="row"><code class="css">prefers-contrast</code></th>
+                            <td>Detects if the user has requested the system increase or decrease the amount of contrast
+                                between adjacent colors</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><code class="css">prefers-color-scheme</code></th>
+                            <td>Detect if the user prefers a light or dark color scheme</td>
+                            <th scope="row"><code class="css">forced-colors</code></th>
+                            <td>Detect whether user agent restricts color pallete</td>
+                        </tr>
+                        <tr>
+                            <th scope="row"><code class="css">scripting</code></th>
+                            <td>Detects whether scripting (i.e. JavaScript) is available</td>
+                        </tr>
+                    </tbody>
+                </table>
+                <h3>Logical operators</h3>
+                <div class="flex-row">
+                    <ul>
+                        <li><code class="css">and</code></li>
+                        <li><code class="css">or</code></li>
+                    </ul>
+                    <ul>
+                        <li><code class="css">only</code></li>
+                        <li><code class="css">,</code></li>
+                    </ul>
+                </div>
+            </section>
+            <section class="flex-group">
+                <h2>Conditional group rule</h2>
+                <div class="flex-row">
+                    <code class="css">@media</code>
+                    <ul>
+                        <li>
+                            <pre><code class="css">@media &lt;media-query-list&gt; {
+    &lt;group-rule-body&gt;
+}</code></pre>
+                        </li>
+                        <li>apply different styles according to results of media queries</li>
+                    </ul>
+                </div>
+                <div class="flex-row">
+                    <code class="css">@supports</code>
+                    <ul>
+                        <li>
+                            <pre><code class="css">@supports &lt;supports_condition&gt; {
+    /* specific rules */
+}</code></pre>
+                        </li>
+                        <li>specify declarations that depend on a browser's support for one or more specific CSS features (feature query)</li>
+                    </ul>
+                </div>
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>

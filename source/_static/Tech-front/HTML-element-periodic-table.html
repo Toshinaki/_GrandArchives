@@ -1,0 +1,1342 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>HTML Element Periodic Table</title>
+
+    <link rel="stylesheet" href="../bootstrap-4.3.1/css/bootstrap.css">
+    <link rel="stylesheet" href="./css/periodic-table-style.css">
+
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/popper.min.js"></script>
+    <script src="../bootstrap-4.3.1/js/bootstrap.js"></script>
+    <script>
+        $(document).ready(function () {
+            // background color for tooltip
+            var bgcolor;
+            // rgb color to hex
+            function hexc(colorval) {
+                var parts = colorval.match(/^rgb\((\d+),\s*(\d+),\s*(\d+)\)$/);
+                delete(parts[0]);
+                for (var i = 1; i <= 3; ++i) {
+                    parts[i] = parseInt(parts[i]).toString(16);
+                    if (parts[i].length == 1) parts[i] = '0' + parts[i];
+                }
+                return '#' + parts.join('');
+            }
+
+            // init bs4 tooltip
+            $('[data-toggle="tooltip"]').tooltip({
+                html: true,
+                trigger: 'click'
+            });
+
+            // listening on "click" event
+            $(document).on('click', function (e) {
+                // remove grayout
+                $('.grayout').removeClass('grayout');
+
+                // get the clicked element
+                var $clk = $(e.target);
+                // ignore click if tooltip elements got clicked
+                if ($clk.is('div.tooltip, div.tooltip *')) {
+                    return;
+                }
+                // if the clicked element is buttons' child, get button
+                if ($clk.is('button.element span.tagname')) {
+                    $clk = $clk.parent();
+                }
+                // if button clicked
+                if ($clk.is('button.element')) {
+                    // if the button had been clicked, remove the "clicked" class
+                    if ($clk.hasClass('clicked')) {
+                        $clk.removeClass('clicked');
+                        // else, hide currently showing tooltip and 
+                        // remove "clicked" class of buttons that has "clicked" class;
+                        // and add "clicked" class to clicked button
+                    } else {
+                        $('.clicked').tooltip('hide').removeClass('clicked');
+                        $clk.addClass('clicked');
+                    }
+                    // add clicked button's color to tooltip
+                    bgcolor = hexc($clk.css('backgroundColor'));
+                    $('.tooltip-inner').css('background-color', bgcolor);
+                    // somewhere other than buttons got clicked,
+                    // then hide currently showing tooltip and remove "clicked" class
+                } else {
+                    $('.clicked').tooltip('hide').removeClass('clicked');
+
+                    // if a legend clicked, grayout other classes
+                    if ($clk.is('ul#legend li button')) {
+                        $clk = $clk.parent();
+                    }
+                    if ($clk.is('ul#legend li')) {
+                        var cls = $clk.attr('class');
+                        $('#elements td').not('.' + cls).addClass('grayout');
+                    }
+                }
+            });
+
+
+        });
+    </script>
+</head>
+
+<body>
+    <h1>Periodic Table of HTML Elements</h1>
+
+    <div class="element-table">
+        <table id="elements" cellpadding="0" cellspacing="0">
+            <tbody>
+                <tr>
+                    <td class="root">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>The root (top-level element) of an HTML document; <br>all other elements must be descendants of this element.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/html">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/semantics.html#the-html-element-0">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">html</span>
+                        </button>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="tab">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Columns in a table.<br>表格中的列</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/col">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/tabular-data.html#the-col-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">col</span>
+                        </button>
+                    </td>
+                    <td class="tab">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Table of multi-dimensional data.<br>表格</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/table">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/tabular-data.html#the-table-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">table</span>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="meta">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>First element of the HTML document. <br>Contains contains machine-readable information (metadata) about the document.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/head">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/semantics.html#the-head-element-0">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">head</span>
+                        </button>
+                    </td>
+                    <td class="text">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>A generic inline container for phrasing content, which does not inherently represent anything.<br>It should be used only when no other semantic element is appropriate.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/span">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-span-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">span</span>
+                        </button>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="grouping">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>The generic container for flow content. It has no effect on the content or layout until styled using CSS.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/div">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/grouping-content.html#the-div-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">div</span>
+                        </button>
+                    </td>
+                    <td class="form">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Set of form controls grouped by theme.<br>按用途组合的一组表单控制元素</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/fieldset">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/rendering.html#the-fieldset-element-0">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">fieldset</span>
+                        </button>
+                    </td>
+                    <td class="form">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Form.<br>表单</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/form">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/forms.html#the-form-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">form</span>
+                        </button>
+                    </td>
+                    <td class="section">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Document content.<br>文档的主体</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/body">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/sections.html#the-body-element-0">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">body</span>
+                        </button>
+                    </td>
+                    <td class="section">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Level 1 heading for the current section.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/hn/">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/sections.html#the-h1-h2-h3-h4-h5-and-h6-elements">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">h1</span>
+                        </button>
+                    </td>
+                    <td class="section">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>represents a standalone section — which doesn&apos;t have a more specific semantic element to represent it — contained within an HTML document.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/section">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/sections.html#the-section-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">section</span>
+                        </button>
+                    </td>
+                    <td class="tab">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Defines a group of columns in a table.<br>对表格中的若干列进行组合</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/colgroup">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/tabular-data.html#the-colgroup-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname" style="font-size: 0.7em;">colgroup</span>
+                        </button>
+                    </td>
+                    <td class="tab">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>A row of cells.<br>表格中的一行单元</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/tr">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/tabular-data.html#the-tr-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">tr</span>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="meta">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Document title.<br>文档标题</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/title">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/semantics.html#the-title-element-0">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">title</span>
+                        </button>
+                    </td>
+                    <td class="text">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Anchor element, along with it&apos;s href attribute, creates a hyperlink to other web pages, files, locations within the same page, email addresses, or any other URL;<br> or run some scripts.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/a">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-a-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">a</span>
+                        </button>
+                    </td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="grouping">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>represents preformatted text which is to be presented exactly as written in the HTML file. <br>The text is typically rendered using a non-proportional ("monospace") font. <br>Whitespace inside this element is displayed as written.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/pre">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/grouping-content.html#the-pre-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">pre</span>
+                        </button>
+                    </td>
+                    <td class="form">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Control for entering a numeric value in a known range.<br>控制在已知范围内输入度量值</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/meter">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/rendering.html#the-meter-element-0">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">meter</span>
+                        </button>
+                    </td>
+                    <td class="form">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Control for selecting from multiple options.<br>有多选值的下拉列表</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/select">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/rendering.html#the-select-element-0">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">select</span>
+                        </button>
+                    </td>
+                    <td class="section">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Represents a portion of a document whose content is only indirectly related to the document&apos;s main content. <br>Asides are frequently presented as sidebars or call-out boxes.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/aside">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/sections.html#the-aside-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">aside</span>
+                        </button>
+                    </td>
+                    <td class="section">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Level 2 heading for the current section.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/hn/">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/sections.html#the-h1-h2-h3-h4-h5-and-h6-elements">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">h2</span>
+                        </button>
+                    </td>
+                    <td class="section">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Represents introductory content, typically a group of introductory or navigational aids.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/header">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/sections.html#the-header-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">header</span>
+                        </button>
+                    </td>
+                    <td class="tab">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Title of a table.<br>表格的标题</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/caption">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/tabular-data.html#the-caption-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">caption</span>
+                        </button>
+                    </td>
+                    <td class="tab">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Table cell.<br>表格单元格</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/td">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/tabular-data.html#the-td-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">td</span>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="meta">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Document metadata that cannot be represented by other HTML meta-related elements.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/meta">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/semantics.html#meta">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">meta</span>
+                        </button>
+                    </td>
+                    <td class="text">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Annotation of preceding text.<br>文本的解释<br></p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/rt">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-rt-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">rt</span>
+                        </button>
+                    </td>
+                    <td class="text">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Term being defined by the parent section.<br>由父级章节定义的项<br></p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/phrase_elements">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-dfn-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">dfn</span>
+                        </button>
+                    </td>
+                    <td class="text">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Marks text that has stress emphasis.<br>Usually displayed as italic.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/phrase_elements">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-em-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">em</span>
+                        </button>
+                    </td>
+                    <td class="text">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Represents a range of text that is set off from the normal text for some reason. <br>e.g. technical terms, foreign language phrases, .etc. <br>Typically displayed in italic type. <br>Usually used as an icon</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/i">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-i-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">i</span>
+                        </button>
+                    </td>
+                    <td class="text">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>An aside, such as fine print.<br>更小的旁注信息</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/small">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-small-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">small</span>
+                        </button>
+                    </td>
+                    <td class="text">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Represents a range of text that has been added to a document.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/ins">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/edits.html#the-ins-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">ins</span>
+                        </button>
+                    </td>
+                    <td class="text">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Renders text with a strikethrough, or a line through it. <br>Represents things that are no longer relevant or no longer accurate. </p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/s">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-s-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">s</span>
+                        </button>
+                    </td>
+                    <td class="grouping">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Line break.<br>换行符</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/br">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-br-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">br</span>
+                        </button>
+                    </td>
+                    <td class="grouping">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Paragraph content.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/p">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/grouping-content.html#the-p-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">p</span>
+                        </button>
+                    </td>
+                    <td class="grouping">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Quote from another source.<br>从其它源引用的内容</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/blockquote">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/grouping-content.html#the-blockquote-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname" style="font-size: 0.6em;">blockquote</span>
+                        </button>
+                    </td>
+                    <td class="form">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Define a name for a fieldset.<br>图例或表的说明</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/legend">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/forms.html#the-legend-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">legend</span>
+                        </button>
+                    </td>
+                    <td class="form">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Group of option.<br>选项组</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/optgroup">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/the-button-element.html#the-optgroup-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname" style="font-size: 0.7em;">optgroup</span>
+                        </button>
+                    </td>
+                    <td class="section">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Contact information for the current article.<br>当前文章的联系信息</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/address">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/sections.html#the-address-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">address</span>
+                        </button>
+                    </td>
+                    <td class="section">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Level 3 heading for the current section.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/hn/">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/sections.html#the-h1-h2-h3-h4-h5-and-h6-elements">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">h3</span>
+                        </button>
+                    </td>
+                    <td class="section">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Contains a collection of links.<br>导航链接的容器</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/nav">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/sections.html#the-nav-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">nav</span>
+                        </button>
+                    </td>
+                    <td class="interactive">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Set of commands.<br>菜单列表</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/menu">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/interactive-elements.html#menus">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">menu</span>
+                        </button>
+                    </td>
+                    <td class="tab">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Table heading.<br>表头</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/th">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/tabular-data.html#the-th-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">th</span>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="meta">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Specifies the base URL to use for all relative URLs contained within a document. <br>Only one can exists in a document.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/base">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/semantics.html#the-base-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">base</span>
+                        </button>
+                    </td>
+                    <td class="text">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Contains semantically meaningless markup for browsers that donot understand ruby annotations.<br>针对不支持ruby 注音的浏览器，用于注释信息</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/rp">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-rp-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">rp</span>
+                        </button>
+                    </td>
+                    <td class="text">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Abbreviation or acronym.<br>缩写或缩略词</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/abbr">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-abbr-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">abbr</span>
+                        </button>
+                    </td>
+                    <td class="text">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Time defined in a machine readable format.<br>时间<br></p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/time">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/rendering.html#the-time-element-0">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">time</span>
+                        </button>
+                    </td>
+                    <td class="text">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Stylistically separated text of equal importance, such as a product name.<br>粗体文本，用于强调</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/b">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-b-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">b</span>
+                        </button>
+                    </td>
+                    <td class="text">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Indicates that its contents have strong importance, seriousness, or urgency. <br>Browsers typically render the contents in bold type.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/phrase_elements">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-strong-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">strong</span>
+                        </button>
+                    </td>
+                    <td class="text">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Represents a range of text that has been deleted from a document.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/del">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/edits.html#the-del-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">del</span>
+                        </button>
+                    </td>
+                    <td class="text">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Example input (usually keyboard) for a program.<br>由键盘输入的文本</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/phrase_elements">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-kbd-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">kbd</span>
+                        </button>
+                    </td>
+                    <td class="grouping">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Thematic break within a paragraph.<br>水平线/内容主题的变化</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/hr">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/rendering.html#the-hr-element-0">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">hr</span>
+                        </button>
+                    </td>
+                    <td class="grouping">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Ordered list.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/ol">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/grouping-content.html#the-ol-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">ol</span>
+                        </button>
+                    </td>
+                    <td class="grouping">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>List of term-description pairs.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/dl">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/grouping-content.html#the-dl-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">dl</span>
+                        </button>
+                    </td>
+                    <td class="form">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Caption for a form control.<br>表单控件的标题（标签）</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/label">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/forms.html#the-label-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">label</span>
+                        </button>
+                    </td>
+                    <td class="form">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Single option within a select control.<br>下拉列表中的单一选项</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/option">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/the-button-element.html#the-option-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">option</span>
+                        </button>
+                    </td>
+                    <td class="form">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Define sets of options.<br>定义选项列表</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/datalist">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/the-button-element.html#the-datalist-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">datalist</span>
+                        </button>
+                    </td>
+                    <td class="section">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Level 4 heading for the current section.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/hn/">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/sections.html#the-h1-h2-h3-h4-h5-and-h6-elements">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">h4</span>
+                        </button>
+                    </td>
+                    <td class="section">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Represents a self-contained composition in a document, page, application, or site, which is intended to be independently distributable or reusable.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/article">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/sections.html#the-article-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">article</span>
+                        </button>
+                    </td>
+                    <td class="interactive">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Command the user can perform, such as publishing an article.<br>用户可以执行的命令，如发表一篇文章</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/command">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/interactive-elements.html#the-command">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname" style="font-size: 0.7em;">command</span>
+                        </button>
+                    </td>
+                    <td class="tab">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Contains rows that hold the table&apos;s data.<br>表格主体</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/tbody">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/tabular-data.html#the-tbody-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">tbody</span>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="meta">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Specifies relationships between the current document and an external resource.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/link">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/semantics.html#the-link-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">link</span>
+                        </button>
+                    </td>
+                    <td class="meta">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Contains elements that are part of the document only if scripting is disabled.<br>当脚本被禁用时显示的一部分文档内容</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/noscript">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/scripting-1.html#the-noscript-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname" style="font-size: 0.8em;">noscript</span>
+                        </button>
+                    </td>
+                    <td class="text">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Quoted text.<br>引用的文本</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/q">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-q-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">q</span>
+                        </button>
+                    </td>
+                    <td class="text">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Mathematical or programming variable.<br>数学或程序变量</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/phrase_elements">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-var-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">var</span>
+                        </button>
+                    </td>
+                    <td class="text">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Subscript text.<br>上标</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/sup">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-sub-and-sup-elements">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">sub</span>
+                        </button>
+                    </td>
+                    <td class="text">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Text highlighted for referencing elsewhere.<br>突出显示的文本</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/mark">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-mark-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">mark</span>
+                        </button>
+                    </td>
+                    <td class="text">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Text that is separated from directional formatting of its surroundings.<br>从周围内容分开，而设置不同的文本方向</p>
+                                <ul class="links">
+                                    <li><a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-bdi-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">bdi</span>
+                        </button>
+                    </td>
+                    <td class="text">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Opportunity for a line break.<br>软回车（必要时才回车）</p>
+                                <ul class="links">
+                                    <li><a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-wbr-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">wbr</span>
+                        </button>
+                    </td>
+                    <td class="grouping">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Caption for a figure.<br>图片的标题，图题</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/figcaption">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/grouping-content.html#the-figcaption-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname" style="font-size: 0.6em;">figcaption</span>
+                        </button>
+                    </td>
+                    <td class="grouping">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Unordered list.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/ul">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/grouping-content.html#the-ul-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">ul</span>
+                        </button>
+                    </td>
+                    <td class="grouping">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Term which will be described.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/dt">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/grouping-content.html#the-dt-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">dt</span>
+                        </button>
+                    </td>
+                    <td class="form">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Generic form input.<br>表单中的输入字段</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/input">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/the-input-element.html#the-input-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">input</span>
+                        </button>
+                    </td>
+                    <td class="form">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Contains the results of a calculation.<br>输出的结果</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/output">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/the-button-element.html#the-output-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">output</span>
+                        </button>
+                    </td>
+                    <td class="form">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Generates private-public key pairs.<br>生成密钥对</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/keygen">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/rendering.html#the-keygen-element-0">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">keygen</span>
+                        </button>
+                    </td>
+                    <td class="section">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Level 5 heading for the current section.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/hn/">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/sections.html#the-h1-h2-h3-h4-h5-and-h6-elements">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">h5</span>
+                        </button>
+                    </td>
+                    <td class="section">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Represents a footer for its nearest sectioning content or sectioning root element. <br>A footer typically contains information about the author of the section, copyright data or links to related documents.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/footer">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/sections.html#the-footer-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">footer</span>
+                        </button>
+                    </td>
+                    <td class="interactive">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Caption of a details element.<br>dedails元素的标题</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/summary">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/interactive-elements.html#the-summary-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname" style="font-size: 0.7em;">summary</span>
+                        </button>
+                    </td>
+                    <td class="tab">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Contains rows with table headings.<br>表格中的表头行</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/thead">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/tabular-data.html#the-thead-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">thead</span>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="meta">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Styling defined inline data.<br>在文档中定义的样式</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/style">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/semantics.html#the-style-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">style</span>
+                        </button>
+                    </td>
+                    <td class="meta">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Inline or linked client side scripts.<br>内部或外部链接的脚本</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/script">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/scripting-1.html#script">W3C Reference</a>
+                                    </li>
+                                </ul>'>
+                            <span class="tagname">script</span>
+                        </button>
+                    </td>
+                    <td class="text">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Title of a referenced piece of work.<br>对参考文献等的引用</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/phrase_elements">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-cite-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">cite</span>
+                        </button>
+                    </td>
+                    <td class="text">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Sample output of a program.<br>程序的样本</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/phrase_elements">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-samp-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">samp</span>
+                        </button>
+                    </td>
+                    <td class="text">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Superscript text.<br>下标</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/sup">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-sub-and-sup-elements">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">sup</span>
+                        </button>
+                    </td>
+                    <td class="text">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Contains text with annotations, such as pronounciation hints. Commonly used in East Asian text.<br>东亚文字的注音，如中文的拼音</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/ruby">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-ruby-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">ruby</span>
+                        </button>
+                    </td>
+                    <td class="text">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Defines directional formatting for content.<br>定义内容的排版方向</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/bdo">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-bdo-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">bdo</span>
+                        </button>
+                    </td>
+                    <td class="text">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Displays its contents styled in a fashion intended to indicate that the text is a short fragment of computer code.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/phrase_elements">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/text-level-semantics.html#the-code-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">code</span>
+                        </button>
+                    </td>
+                    <td class="grouping">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Contains elements related to single concept, such as an illustration or code example.<br>独立的内容，如图像、代码等</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/figure">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/grouping-content.html#the-figure-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">figure</span>
+                        </button>
+                    </td>
+                    <td class="grouping">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>List item.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/li">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/grouping-content.html#the-li-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">li</span>
+                        </button>
+                    </td>
+                    <td class="grouping">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Description for the preceding term.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/dd">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/grouping-content.html#the-dd-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">dd</span>
+                        </button>
+                    </td>
+                    <td class="form">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Multiline free-form text input.<br>多行的文本输入区域</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/textarea">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/rendering.html#the-textarea-element-0">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">textarea</span>
+                        </button>
+                    </td>
+                    <td class="form">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>A button.<br>按钮</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/button">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/rendering.html#the-button-element-0">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">button</span>
+                        </button>
+                    </td>
+                    <td class="form">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Control for displaying progress of a task.<br>运行中的进度控制</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/progress">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/rendering.html#the-progress-element-0">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">progress</span>
+                        </button>
+                    </td>
+                    <td class="section">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Level 6 heading for the current section.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/hn/">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/sections.html#the-h1-h2-h3-h4-h5-and-h6-elements">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">h6</span>
+                        </button>
+                    </td>
+                    <td class="section">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Collection of headings for the current section. The highest ranked heading represents the group in the document outline.<br>当前章节各标题的组合</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/hgroup">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/sections.html#the-hgroup-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">hgroup</span>
+                        </button>
+                    </td>
+                    <td class="interactive">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Contains additional information, such as the contents of an accordian view.<br>附加的详细信息</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/details">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/rendering.html#the-details-element-0">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">details</span>
+                        </button>
+                    </td>
+                    <td class="tab">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Contains rows with summary of data.<br>表格的页脚/脚注行</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/tfoot">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/tabular-data.html#the-tfoot-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">tfoot</span>
+                        </button>
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="18" style="height: 1.5em;"></td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td></td>
+                    <td class="embed">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Embeds an image into the document.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/img">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/embedded-content-1.html#the-img-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">img</span>
+                        </button>
+                    </td>
+                    <td class="embed">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Defines a hot-spot region on an image, and optionally associates it with a hypertext link. <br>This element is used only within a &amp;lt;map&amp;gt; element.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/area">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/the-map-element.html#the-area-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">area</span>
+                        </button>
+                    </td>
+                    <td class="embed">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Used with "area" elements to define an image map (a clickable link area).</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/map">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/the-map-element.html#the-map-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">map</span>
+                        </button>
+                    </td>
+                    <td class="embed">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Reference to non-HTML content.<br>嵌入的非HTML内容</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/embed">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/the-iframe-element.html#the-embed-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">embed</span>
+                        </button>
+                    </td>
+                    <td class="embed">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>External resource such as an image, iframe or plugin.<br>嵌入的外部资源，如图像、iframe或插件</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/object">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/the-iframe-element.html#the-object-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">object</span>
+                        </button>
+                    </td>
+                    <td class="embed">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Parameters for the parent object.<br>父级对象的参数</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/param">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/the-iframe-element.html#the-param-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">param</span>
+                        </button>
+                    </td>
+                    <td class="embed">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Specifies multiple media resources for the &amp;lt;picture&amp;gt;, the &amp;lt;audio&amp;gt element, or the &amp;lt;video&amp;gt element. <br>It is an empty element, meaning that it has no content and does not have a closing tag. <br>It is commonly used to serve the same media content in multiple formats supported by different browsers.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/source">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/video.html#the-source-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">source</span>
+                        </button>
+                    </td>
+                    <td class="embed">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Nested browser frame.<br>嵌套的框架</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/iframe">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/the-iframe-element.html#the-iframe-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">iframe</span>
+                        </button>
+                    </td>
+                    <td class="embed">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Bitmap which is editable by client side scripts.<br>可以通过客户端脚本编辑的图形（画布）</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/canvas">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/the-canvas-element.html#the-canvas-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">canvas</span>
+                        </button>
+                    </td>
+                    <td class="embed">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Specifies external timing track for media elements.<br>媒体类元素的外部轨道</p>
+                                <ul class="links">
+                                    <li><a href="http://www.w3.org/TR/html5/the-iframe-element.html#the-track-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">track</span>
+                        </button>
+                    </td>
+                    <td class="embed">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Embeds sound content in documents.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/audio">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/the-iframe-element.html#the-audio-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">audio</span>
+                        </button>
+                    </td>
+                    <td class="embed">
+                        <button type="button" class="btn element text-light font-weight-bold" data-toggle="tooltip"
+                            data-placement="bottom" title='
+                                <p>Embeds a media player which supports video playback into the document.</p>
+                                <ul class="links">
+                                    <li><a href="https://developer.mozilla.org/en/HTML/Element/video">Mozilla</a></li>
+                                    <li><a href="http://www.w3.org/TR/html5/the-iframe-element.html#the-video-element">W3C Reference</a></li>
+                                </ul>'>
+                            <span class="tagname">video</span>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+
+        <ul id="legend">
+            <li class="root"><button class="btn text-light"></button>Main rootSection</li>
+            <li class="meta"><button class="btn text-light"></button>Document metadataSection</li>
+            <li class="text"><button class="btn text-light"></button>Text-level Semantics</li>
+            <li class="grouping"><button class="btn text-light"></button>Grouping Content</li>
+            <li class="form"><button class="btn text-light"></button>Forms</li>
+            <li class="section"><button class="btn text-light"></button>Document Sections</li>
+            <li class="interactive"><button class="btn text-light"></button>Interactive Elements</li>
+            <li class="tab"><button class="btn text-light"></button>Tabular Data</li>
+            <li class="embed"><button class="btn text-light"></button>Embedding Content</li>
+        </ul>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,134 @@
+body {
+    background-color: #000000;
+    background-image: url("../../imgs/black-twill.png");
+}
+
+h1 {
+    color: #FFFFFF;
+    margin: 0.5em auto;
+    text-align: center;
+}
+
+a {
+    color: inherit;
+}
+
+table#elements {
+    table-layout: fixed;
+    width: 1080;
+    margin: auto;
+}
+
+table#elements td,
+table#elements button.element {
+    width: 3.5em;
+    height: 3.5em;
+    margin: 0;
+}
+
+table#elements td {
+    padding: 2px;
+}
+table#elements td button {
+    opacity: 0.8;
+}
+table#elements td:hover button, table#elements td button.clicked {
+    opacity: 1;
+    left: -1px;
+    top: -1px;
+    box-shadow: rgba(0, 0, 0, 0.75) 0 0 8px 2px;
+}
+
+table#elements td.grayout button {
+    opacity: 0.4;
+}
+
+table#elements button.element {
+    border: 0;
+    border-radius: 0.5em;
+    padding: 0;
+}
+
+.tagname {
+    font-size: smaller;
+}
+
+.tooltip * {
+    text-align: left;
+}
+
+ul.links {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+}
+ul.links li {
+    display: inline;
+}
+ul.links li:nth-child(1):after {
+    content: ", ";
+}
+
+ul#legend {
+    list-style: none;
+    margin-top: 0.5em;
+    cursor: pointer;
+    /* margin: 1em auto; */
+    /* text-align: center; */
+}
+ul#legend li {
+    color: #FFFFFF;
+    font-size: smaller;
+    float: left;
+    width: 20%;
+    margin-bottom: 3px;
+}
+ul#legend li button {
+    width: 1.5em;
+    height: 1.5em;
+    margin-right: 3px;
+}
+
+div.tooltip-inner {
+    border: 1px solid  #FFFFFF;
+}
+div.tooltip-inner p {
+    text-indent: 10px;
+}
+div.tooltip-inner p,
+div.tooltip-inner ul {
+    font-size: smaller;
+    font-weight: bold;
+    text-shadow: 1px 0 2px #000000;
+}
+div.tooltip-inner p br::after {
+    content: " ";
+}
+
+.root button {
+    background-color: #0074D9; /* BLUE */
+}
+.meta button {
+    background-color: #FF851B; /* ORANGE */
+}
+.text button {
+    background-color: #2ECC40; /* GREEN */
+}
+.grouping button {
+    background-color: #85144b; /* MAROON */
+}
+.form button {
+    background-color: #3D9970; /* OLIVE */
+}
+.section button {
+    background-color: #B10DC9; /* PURPLE */
+}
+.interactive button {
+    background-color: #FF4136; /* RED */
+}
+.tab button {
+    background-color: #39CCCC; /* TEAL */
+}
+.embed button {
+    background-color: #064686; /* NAVY (light?) */
+}

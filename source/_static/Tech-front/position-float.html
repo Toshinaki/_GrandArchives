@@ -1,0 +1,370 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Positioning & Float</title>
+
+    <link rel="stylesheet" href="../bootstrap-4.3.1/css/bootstrap.css">
+    <link rel="stylesheet" href="./css/pos-float.css">
+    <link rel="stylesheet" href="../styles/dracula.css">
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+    </script>
+</head>
+
+<body>
+    <div class="float-container">
+        <div class="float-item">
+            <header>
+                <h1>Float</h1>
+                <div class="float-example">
+                    <div id="left">float: left;</div>
+                    <div id="none">
+                        float: none; a div that ignores the floating-div before<br>
+                        but not ignored by following floating-div
+                    </div>
+                    <span id="right">span<br>float: right;</span>
+                    <div id="right-width">width: auto;</div>
+                    <ul>
+                        <li><code class="css">float</code> places an element on the left or right side of its container,
+                            allowing text and inline elements to wrap around it. </li>
+                        <li>The element is removed from the normal flow of the page, though still remaining a part of
+                            the flow</li>
+                    </ul>
+                </div>
+            </header>
+            <section>
+                <h2>
+                    display, width & margin
+                </h2>
+                <ul>
+                    <li>Elements' <code class="css">display</code> property becomes <code class="css">block</code>
+                        when <code class="css">float</code> is applied</li>
+                    <li>If <code class="css">width: auto;</code>, element's width is adjusted by content's width
+                    </li>
+                    <li><code class="css">margin: auto</code> means 0</li>
+                    <li>no margin collapsing</li>
+                </ul>
+            </section>
+            <section>
+                <h2>with normal box</h2>
+                <ul>
+                    <li>floating boxes <b>avoid</b> block boxes before</li>
+                    <li>block boxes <b>ignore</b> floating boxes before</li>
+                    <li>inline boxes <b>avoid</b> floating boxes (browser generates inline boxes around text if none;
+                        called
+                        anonymous inline box)</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Collapsing & clear</h2>
+                <p>When calculating <code class="css">height</code> of a box in normal flow, the floating boxes inside
+                    it are ignored.</p>
+                <div class="float-group">
+                    <div class="float-row">
+                        <div>clear: <span class="default">none;</span></div>
+                        <div class="float-example">
+                            <div id="example-container">
+                                <div class="left">l</div>
+                                <div class="left">l</div>
+                                <div class="left">l</div>
+                                <div class="right">r</div>
+                                <div class="right">r</div>
+                            </div>
+                        </div>
+                        <div class="float-example">
+                            <div id="example-container">
+                                <div class="left">l</div>
+                                <div class="left">l</div>
+                                <div class="left">l</div>
+                                <div class="right">r</div>
+                                <div class="right">r</div>
+                                <div class="clear" style="clear: none;">c</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="float-row">
+                        <div>clear: left;</div>
+                        <div class="float-example">
+                            <div id="example-container">
+                                <div class="left">l</div>
+                                <div class="left">l</div>
+                                <div class="left">l</div>
+                                <div class="right">r</div>
+                                <div class="right">r</div>
+                                <div class="clear" style="clear: left;">c</div>
+                            </div>
+                        </div>
+                        <div class="float-example">
+                            <div id="example-container">
+                                <div class="right">r</div>
+                                <div class="right">r</div>
+                                <div class="right">r</div>
+                                <div class="right">r</div>
+                                <div class="right">r</div>
+                                <div class="clear" style="clear: left;">c</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="float-row">
+                        <div>clear:right;</div>
+                        <div class="float-example">
+                            <div id="example-container">
+                                <div class="left">l</div>
+                                <div class="left">l</div>
+                                <div class="left">l</div>
+                                <div class="right">r</div>
+                                <div class="right">r</div>
+                                <div class="clear" style="clear: right;">c</div>
+                            </div>
+                        </div>
+                        <div class="float-example">
+                            <div id="example-container">
+                                <div class="left">l</div>
+                                <div class="left">l</div>
+                                <div class="left">l</div>
+                                <div class="left">l</div>
+                                <div class="left">l</div>
+                                <div class="clear" style="clear: right;">c</div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="float-row">
+                        <div>clear: both;</div>
+                        <div class="float-example">
+                            <div id="example-container">
+                                <div class="left">l</div>
+                                <div class="left">l</div>
+                                <div class="left">l</div>
+                                <div class="left">l</div>
+                                <div class="left">l</div>
+                                <div class="clear" style="clear: both;">c</div>
+                            </div>
+                        </div>
+                        <div class="float-example">
+                            <div id="example-container">
+                                <div class="right">r</div>
+                                <div class="right">r</div>
+                                <div class="right">r</div>
+                                <div class="right">r</div>
+                                <div class="right">r</div>
+                                <div class="clear" style="clear: both;">c</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <h2>clear techniques</h2>
+                <ul>
+                    <li>empty div: <code class="html">&lt;div style="clear: both;"&gt;&lt;/div&gt;</code></li>
+                    <li>overflow: <code class="css">.container {overflow: auto/hidden;}</code></li>
+                    <li>::after:
+                        <pre><code class="css">.container::after {
+    content: "";
+    display: block;
+    clear: both;
+}</code></pre>
+                    </li>
+                    <li><code class="css">display: flow-root</code></li>
+                </ul>
+            </section>
+            <header>
+                <h1>Stacking Context</h1>
+                <ul>
+                    <li>The stacking context is a 3D conceptualization of HTML elements along an imaginary z-axis</li>
+                    <li>Elements occupy this space in priority order based on their attributes</li>
+                </ul>
+            </header>
+            <section>
+                <div class="float-group">
+                    <div class="float-row">
+                        <div style="flex: 0 0 60%;">
+                            <p>Stack Order in a Stacking Context:</p>
+                            <img src="./imgs/stack-order.png" style="max-width: 100%;">
+                        </div>
+                        <ul>
+                            <li>Stacking contexts can be contained in other stacking contexts, and together create a
+                                <u>hierarchy of stacking contexts</u>.</li>
+                            <li>Each stacking context is completely <u>independent</u> of its siblings: only descendant
+                                elements are considered when stacking is processed.</li>
+                            <li>Each stacking context is <u>self-contained</u>: after the element's contents are
+                                stacked, the whole element is considered in the stacking order of the parent stacking
+                                context.</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <h3>Form a stacking context</h3>
+                <ul>
+                    <li>Root element (&lt;html&gt;).</li>
+                    <li><code class="css">position</code> == <code class="css">absolute/relative</code> and <code class="css">z-index</code> value != <code class="css">auto</code>.</li>
+                    <li><code class="css">position</code> ==  <code class="css">fixed/sticky</code>.</li>
+                    <li>children of a flex container, with <code class="css">z-index</code> != <code class="css">auto</code>.</li>
+                    <li>children of a grid container, with <code class="css">z-index</code> != <code class="css">auto</code>.</li>
+                    <li><code class="css">opacity</code> &lt; 1.</li>
+                    <li><code class="css">mix-blend-mode</code> != <code class="css">normal</code>.</li>
+                    <li><code class="css">transform/filter/perspective/clip-path/mask/mask-image/mask-border</code> != <code class="css">none</code></li>
+                    <li><code class="css">isolation</code> == <code class="css">isolate</code>.</li>
+                    <li><code class="css">-webkit-overflow-scrolling</code> == <code class="css">touch</code>.</li>
+                    <li>Element with a <code class="css">will-change</code> value specifying any property that would create a stacking context on non-initial value.</li>
+                    <li><code class="css">contain</code> == <code class="css">layout/paint/strict/content</code>.</li>
+                </ul>
+            </section>
+            <section>
+                <h2>Z-INDEX</h2>
+                <div class="float-group">
+                    <div class="float-row">
+                        <img src="./imgs/z-index.png" style="max-width: 48%;">
+                        <ul>
+                            <li>all element default to <code class="css">auto</code>, which means 0.</li>
+                            <li>control the depth of elements (with <code class="css">position</code> != <code
+                                    class="css">static</code> ) on the page</li>
+                            <li>elements with higher values will go above those with lower values</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+        </div>
+        <div class="float-item">
+            <header>
+                <h1>Positioning</h1>
+                <div class="float-group">
+                    <div class="float-row">
+                        <figure class="position-fig before">
+                            <img src="./imgs/pos-init.png">
+                            <figcaption>before</figcaption>
+                        </figure>
+                        <figure class="position-fig after">
+                            <img src="./imgs/pos-after.png">
+                            <figcaption>after</figcaption>
+                        </figure>
+                    </div>
+                </div>
+            </header>
+            <section>
+                <div class="float-group">
+                    <div class="float-row"></div>
+                    <div class="float-row">
+                        <div>position: <span class="default">static;</span></div>
+                        <div>the normal flow</div>
+                    </div>
+                </div>
+                <ul>
+                    <li><b>positioned element</b>: an element whose computed position value is either <code
+                            class="css">relative</code>, <code class="css">absolute</code>, <code
+                            class="css">fixed</code>, or <code class="css">sticky</code>. (In other words, it's
+                        anything except <code class="css">static</code>.)</li>
+                </ul>
+            </section>
+            <section>
+                <div class="float-group">
+                    <div class="float-row">
+                        <div>position: relative;</div>
+                        <img src="./imgs/pos-relative.png" class="position-img">
+                    </div>
+                </div>
+                <img src="./imgs/pos-relative2.png" style="float: right; width: 55%;">
+                <ul>
+                    <li><b>relatively positioned element</b>: an element whose computed position value is <code
+                            class="css">relative</code>. </li>
+                    <li><code class="css">top</code> and <code class="css">bottom</code> properties specify the
+                        vertical offset from its normal position;</li>
+                    <li><code class="css">left</code> and <code class="css">right</code> properties specify the
+                        horizontal offset.</li>
+                    <li>the element is still <b>IN</b> the flow</li>
+                </ul>
+            </section>
+            <section>
+                <div class="float-group">
+                    <div class="float-row">
+                        <div>position: absolute;</div>
+                        <img src="./imgs/pos-absolute.png" class="position-img">
+                        <img src="./imgs/pos-absolute2.png" class="position-img">
+                    </div>
+                    <div class="float-row">
+                        <div>position: fixed;</div>
+                        <img src="./imgs/pos-fixed.png" class="position-img">
+                    </div>
+                </div>
+                <ul>
+                    <li><b>absolutely positioned element</b>: an element whose computed position value is <code
+                            class="css">absolute</code> or <code class="css">fixed</code>.</li>
+                    <li><code class="css">top</code>, <code class="css">right</code>, <code class="css">bottom</code>,
+                        and <code class="css">left</code> properties specify offsets from the edges of the element's
+                        containing block (padding box of parent).</li>
+                    <li>if <code class="css">width: auto;</code>, the element's size is determined by content.</li>
+                    <li>if the element has margins, they are added to the offset.</li>
+                    <li>if <code class="css">margin: auto</code>, then margins take in all remaining spaces (both
+                        horizontally and vertically)</li>
+                    <li>element becomes block box and will never float.</li>
+                </ul>
+                <h2>containing box of absolutely positioned element</h2>
+                <div class="float-group">
+                    <div class="float-row">
+                        <code class="css">position: absolute;</code>
+                        <ul>
+                            <li>the <b>padding box</b> of <b>nearest positioned element</b> in its ancestors</li>
+                            <li>if none, then containing box is the <b>full page</b></li>
+                        </ul>
+                    </div>
+                    <div class="float-row">
+                        <code class="css">position: fixed;</code>
+                        <ul>
+                            <li>the <b>viewport</b>, currently visible area of a web page</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+            <section>
+                <div class="float-group">
+                    <div class="float-row">
+                        <div>position: sticky;</div>
+                    </div>
+                    <div class="float-row">
+                        <ul>
+                            <li><b>stickily positioned element</b>: an element whose computed position value is <code
+                                    class="css">sticky</code>.</li>
+                            <li>treated as relatively positioned until its containing block <u>crosses a specified
+                                    threshold</u>
+                                (such as setting top to value other than auto) within its flow root (or the container it
+                                scrolls
+                                within), at which point it is treated as "stuck" until meeting the opposite edge of its
+                                containing block.</li>
+                        </ul>
+                        <div style="height: 250px; overflow-y: scroll; flex: 1 0 250px;">
+                            <div style="position: relative;">
+                                <p style="position: sticky; top: 0; background-color: #d600ff;">STICKY1</p>
+                                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. </p>
+                                <p>Facilis reprehenderit nulla dolorum sed totam nemo veritatis provident animi.</p>
+                                <p>Eum laboriosam, rerum esse nemo consequuntur ex repellat .</p>
+                            </div>
+                            <div style="position: relative;">
+                                <p style="position: sticky; top: 0; background-color: #d600ff;">STICKY2</p>
+                                <p>Pariatur voluptatibus voluptatem soluta porro obcaecati tempora delectus?</p>
+                                <p>Architecto minima porro, asperiores perferendis mollitia esse.</p>
+                                <p>Magnam eos officiis neque doloribus alias velit debitis architecto cumque.</p>
+                            </div>
+                            <div style="position: relative;">
+                                <p style="position: sticky; top: 0; background-color: #d600ff;">STICKY3</p>
+                                <p>Totam hic dolorem perferendis aliquam doloremque iure iste expedita explicabo.</p>
+                                <p>Velit ratione asperiores inventore exercitationem, quibusdam sequi?</p>
+                                <p>Laboriosam sed, nesciunt similique nobis blanditiis sapiente porro! </p>
+                                <p>Consectetur explicabo quo possimus voluptates architecto.</p>
+                            </div>
+                        </div>
+                    </div>
+
+
+            </section>
+        </div>
+    </div>
+</body>
+
+</html>

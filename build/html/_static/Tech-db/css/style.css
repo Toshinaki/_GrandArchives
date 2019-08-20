@@ -1,0 +1,27 @@
+#container {
+    width: 3000px;
+}
+#container>tbody {
+    width: 100%;
+}
+#container>tbody>tr>td {
+    vertical-align: top;
+}
+#container>tbody>tr>td:nth-child(1) {
+    width: 25%;
+}
+#container>tbody>tr>td:nth-child(2) {
+    width: 35%;
+}
+#container>tbody>tr>td:nth-child(3) {
+    width: 40%;
+}
+
+th {
+    text-align: center;
+    vertical-align: middle;
+}
+
+th:not([class*="bg-"]) {
+    background-color: #252d35;
+}

@@ -1,0 +1,404 @@
+
+Introduction
+=============
+
+运行在客户端的脚本语言; 基于 Node.js 也可进行服务端编程
+
+脚本语言
+    不需要编译, 运行过程中由 js 解释器 (引擎) 将源码逐行转换为机器语言, 然后由计算机执行
+
+浏览器如何执行 JS
+-------------------------
+
+浏览器分为 **渲染引擎** 和 **JS 引擎**
+
+渲染引擎
+    用来解析 HTML 和 CSS, 也称内核
+
+JS 引擎
+    也称为 JS 解释器, 用于读取网页中的 Javascript 代码, 对其处理后运行
+
+    浏览器本身并不会执行 JS 代码, 而是通过内置的 Javascript 引擎来执行
+
+JS 的组成
+------------
+
+- ECMAScript
+- DOM
+- BOM
+
+
+JS 的写法
+-----------
+
+行内 JS
+~~~~~~~~~~~~~
+
+.. code-block:: html
+
+    <input type="button" value="click" onclick="alert('Hello World!')">
+
+内嵌 JS
+~~~~~~~~~~~~
+
+.. code-block:: html
+
+    <script>
+        alert('Hello World!');
+    </script>
+
+外部 JS
+~~~~~~~~~~~
+
+.. code-block:: html
+
+    <script src="my.js"></script>
+
+JS 注释
+~~~~~~~~~~~
+
+.. code-block:: javascript
+
+    // 单行注释
+
+    /* 多行
+       注释
+    */
+
+
+变量的使用
+--------------
+
+.. code-block:: javascript
+
+    // 使用步骤
+    // 1. 声明变量
+    var test;
+    
+    // 2. 赋值
+    test = 10;
+
+    // 变量的初始化: 声明的同时赋值
+    var test = 10;
+
+    // 变量名声明后, 未赋值时其值为 "undefined"
+    // 变量名不声明, 只赋值时会成为全局变量
+    // 变量名不声明, 不赋值会报错
+
+更新变量
+~~~~~~~~~~~~
+
+.. code-block:: javascript
+
+    var test = 10;
+    // 对变量名重新赋值
+    test = 11;
+
+声明多个变量
+~~~~~~~~~~~~~~~
+
+.. code-block:: javascript
+
+    // 只写一个 var, 变量名之间用 "," 隔开
+    var test1 = 1, test2 = 2, test3 = 3;
+
+
+数据类型
+-----------
+
+不同数据所需占用的存储空间不同, 为了充分利用存储空间, 需要定义不同的数据类型
+
+Javascript 是一种弱类型/动态语言, 变量的数据类型不需要提前声明, 在运行过程中根据所赋的值自动确定
+
+数据类型的分类
+~~~~~~~~~~~~~~~~~~~~
+
+- 简单数据类型
+    - Number
+
+        - 默认为十进制
+        - 数字前加 "0" 表示八进制
+        - 数字前加 "0x" 表示十六进制
+
+        范围:
+
+        - 最大值: `Number.MAX_VALUE`
+        - 最小值: `Number.MIN_VALUE`
+
+        特殊值:
+
+        - 正无穷: `Infinity`
+        - 负无穷: `-Infinity`
+        - 非数字: `NaN` (使用 `isNaN()` 判断是否为 NaN, 返回 boolean)
+
+    - String
+
+        转义符:
+
+        - 换行: `\n`
+        - 斜杠: `\\`
+        - 单引号: `\'`
+        - 双引号: `\"`
+        - tab 缩进: `\t`
+        - 空格: `\b`
+
+        长度: `str.length`
+
+        拼接: 字符串 + 任何类型 = 新字符串
+
+    - Boolean
+
+        - true
+        - false
+
+    - Undefined
+
+        加上数字为 NaN
+
+    - Null
+
+        加上数字结果还是原来的数字
+
+- 复杂数据类型
+
+获取数据类型
+~~~~~~~~~~~~~~~~
+
+.. code-block:: javascript
+
+    var test = 10;
+    console.log(typeof test); // returns "number"
+
+数据类型转换
+~~~~~~~~~~~~~~~~~
+
+.. code-block:: javascript
+
+    // 转换为字符串
+
+    var num = 10;
+
+    // 1. `toString()`
+    var str = num.toString();
+
+    // 2. `String()`
+    var str = String(num);
+
+    // 3. 字符串拼接
+    var str = num + ''; // 隐式转换
+
+
+    // 转换为数字
+    
+    var str = '10.5';
+    // 1. parseInt()
+    var num = parseInt(str); // 取整, 返回整数 "10"
+
+    // 2. parseFloat()
+    var num = parseFloat(str); // 返回浮点数 "10.5"
+
+    // 3. Number()
+    var num = Number(str);
+
+    // 4. 使用 -, /, * 实现隐式转换
+    console.log('12' - 0); // 12
+    console.log('123' - '120'); // 3
+    console.log('12' * 1); // 12
+
+    // 转换为 Boolean
+    // `Boolean()`
+    console.log(Boolean('')); // false
+    console.log(Boolean(0)); // false
+    console.log(Boolean(NaN)); // false
+    console.log(Boolean(null)); // false
+    console.log(Boolean(undefined)); // false
+    // 其余数据均转换为 true
+
+运算符 operator
+----------------------
+
+.. list-table::
+    :widths: auto
+    :header-rows: 1
+    :stub-columns: 1
+
+    * - +
+      - -
+      - *
+      - /
+      - %
+      - ++
+      - --
+      - <
+      - >
+      - <=
+      - >=
+      - ==
+      - !=
+      - ===, !==
+      - &&
+      - ||
+      - !
+      - =
+      - +=, -=
+      - *=, /=, %=
+    * - 加
+      - 减
+      - 乘
+      - 除
+      - 取余
+      - 递增 (前置, 后置; 必须配合变量使用)
+      - 递减 (前置, 后置; 必须配合变量使用)
+      - 小于
+      - 大于
+      - 小于等于
+      - 大于等于
+      - 是否相等 (默认转换数据类型)
+      - 是否不等
+      - 全等, 不全等 (不转换数据类型)
+      - 与 (短路运算/逻辑中断)
+      - 或 (短路运算/逻辑中断)
+      - 非
+      - 加后赋值, 减后赋值
+      - 乘后赋值, 除后赋值, 取余后赋值
+
+优先级
+~~~~~~~~~
+
+.. list-table::
+    :widths: auto
+    :header-rows: 1
+    :stub-columns: 1
+
+    * - 优先级
+      - 1
+      - 2
+      - 3
+      - 4
+      - 5
+      - 6
+      - 7
+      - 8
+    * - 运算符
+      - 小括号
+      - 一元运算符
+      - 算术运算符
+      - 关系运算符
+      - 相等运算符
+      - 逻辑运算符
+      - 赋值运算符
+      - 逗号运算符
+    * - 顺序
+      - ()
+      - ++, --, !
+      - *, /, %, +, -
+      - >, >=, <, <=
+      - &&, ||
+      - =
+      - ,
+
+流程控制
+------------
+
+顺序结构
+~~~~~~~~~~~~~
+
+从上到下顺序执行
+
+分支流程控制
+~~~~~~~~~~~~~~~
+
+根据不同的条件, 执行不同的路径代码, 得到不同的结果
+
+- if...else
+
+.. code-block:: javascript
+
+    // 双分支
+    if (condition) {
+        // condition is true
+        ...
+    } else {
+        // condition is false
+        ...
+    }
+
+    // 多分支
+    if (condition1) {
+        // condition1 is true
+        ...
+    } else if (condition2) {
+        // condition2 is false
+        ...
+    } ...
+
+- ternary
+
+.. code-block:: javascript
+
+    condition ? true_code : false_code
+
+- switch
+
+.. code-block:: javascript
+
+    // 全等
+    switch(condition) {
+        case value1:
+            code1;
+            break;
+        case value2:
+            code2;
+            break;
+        ...
+        default:
+            last_code;
+    }
+
+循环结构
+~~~~~~~~~~~
+
+- for
+
+.. code-block:: javascript
+
+    for (初始化变量; 条件表达式; 操作表达式) {
+        // 循环执行的代码
+        ...
+    }
+
+- while
+
+.. code-block:: javascript
+
+    while (condition) {
+        // run code if condition is true
+        ...
+    }
+
+- do...while
+
+.. code-block:: javascript
+
+    do {
+        // run code once, then determine by condition
+        ...
+    } while (condition)
+
+- continue
+
+跳出本次循环, 继续下一次循环
+
+- break
+
+跳出整个循环
+
+
+数组
+------
+
+|  一组 **数据的集合**, 其中每个数据被称为 **元素**
+|  数组中可以存放任意类型的元素
+
+创建数组
+~~~~~~~~~~~~~

@@ -1,0 +1,599 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Selectors</title>
+
+    <link rel="stylesheet" href="../bootstrap-4.3.1/css/bootstrap.css">
+    <link rel="stylesheet" href="./css/selectors-style.css">
+    <link rel="stylesheet" href="../styles/dracula.css">
+    <script src="../js/jquery-3.4.1.min.js"></script>
+    <script src="../js/highlight.pack.js"></script>
+    <script>
+        hljs.initHighlightingOnLoad();
+
+        $(document).ready(function () {
+            // collapse table when headers got clicked
+            $('table.container table th[scope="col"]').click(function (e) {
+                // get header element
+                var ele = $(e.target);                
+                if (ele[0].tagName.toLowerCase() == 'th') {
+                    ele = ele.find('>:first-child');
+                }
+                
+                // find closest tr in header's parents,
+                // and loop in sibling trs after the tr
+                var tr = ele.closest('tr');
+                tr.nextAll().each(function (idx, sib) {
+                    // if sibling tr contains header and 
+                    // that header is the same or smaller than clicked header,
+                    // toggle it
+                    var hs = $(sib).find(':header');
+                    if (hs.length == 0) {
+                        if (tr.hasClass('collapsed')) {
+                            $(sib).show('300');
+                        } else {
+                            $(sib).hide('300');
+                        }
+                    } else if (hs.length > 0 && hs[0].tagName.slice(1) > ele[0].tagName.slice(1)) {
+                        if (tr.hasClass('collapsed')) {
+                            $(sib).show('300');
+                            $(sib).removeClass('collapsed').addClass('expanded');
+                        } else {
+                            $(sib).hide('300');
+                            $(sib).removeClass('expanded').addClass('collapsed');
+                        }
+                    } else {
+                        return false;
+                    }
+                });
+                // add class to clicked header's tr as a flag
+                if (tr.hasClass('collapsed')) {
+                    tr.removeClass('collapsed').addClass('expanded');
+                } else {
+                    tr.removeClass('expanded').addClass('collapsed');
+                }
+            });
+        });
+    </script>
+</head>
+
+<body>
+    <table class="table container">
+        <thead>
+            <th colspan="3" scope="col">
+                <h1>Selectors</h1>
+            </th>
+        </thead>
+        <tbody>
+            <tr>
+                <td>
+                    <table class="table table-dark table-hover css">
+                        <thead>
+                            <tr>
+                                <th colspan="2" scope="col">
+                                    <h2>CSS Selectors</h2>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th colspan="2" scope="col">
+                                    <h3>Simple Selecotrs</h3>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th colspan="2" scope="col">
+                                    <h4>Elemental selectors</h4>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th scope="row">Tag Name</th>
+                                <td>
+                                    <p>A type selector, represents an instance of that element type in the document
+                                        tree.</p>
+                                    e.g.
+                                    <pre><code class="css">h1 {...}</code></pre>
+                                    selects &lt;h1&gt; elements in the document.
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">asterisk (*)</th>
+                                <td>
+                                    <p>The universal selector.</p>
+                                    <pre><code class="css">* {...}</code></pre>
+                                    selects all elements.
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Attributes</th>
+                                <td>
+                                    <dl>
+                                        <dt>
+                                            <pre><code class="css">[attr]</code></pre>
+                                        </dt>
+                                        <dd>elements with attribute <code>attr</code></dd>
+                                        <dt>
+                                            <pre><code class="css">[attr=val]</code></pre>
+                                        </dt>
+                                        <dd>elements with attribute <code>attr</code>, whose value is exactly "val".
+                                        </dd>
+                                        <dt>
+                                            <pre><code class="css">[attr~=val]</code></pre>
+                                        </dt>
+                                        <dd>elements with attribute <code>attr</code>, whose value is a
+                                            whitespace-separated
+                                            list of words, <br> and at least one of which is exactly "val".</dd>
+                                        <dt>
+                                            <pre><code class="css">[attr|=val]</code></pre>
+                                        </dt>
+                                        <dd>elements with attribute <code>attr</code>, whose value is exactly "val" or
+                                            starts
+                                            with "val-"</dd>
+                                        <dt>
+                                            <pre><code class="css">[attr^=val]</code></pre>
+                                        </dt>
+                                        <dd>elements with attribute <code>attr</code>, whose value starts with "val"
+                                        </dd>
+                                        <dt>
+                                            <pre><code class="css">[attr$=val]</code></pre>
+                                        </dt>
+                                        <dd>elements with attribute <code>attr</code>, whose value ends with "val"</dd>
+                                        <dt>
+                                            <pre><code class="css">[attr*=val]</code></pre>
+                                        </dt>
+                                        <dd>elements with attribute <code>attr</code>, whose value contains substring
+                                            "val"
+                                        </dd>
+                                        <dt>
+                                            <pre><code class="css">[attr operator val i]</code></pre>
+                                        </dt>
+                                        <dd>ignore the case of attribute <code>attr</code>'s value</dd>
+                                    </dl>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Class</th>
+                                <td>
+                                    <pre><code class="css">.classname {...}</code></pre>
+                                    is the same as
+                                    <pre><code class="css">[class~=classname] {...}</code></pre>
+                                    selects elements with a list of whitespace-separated classes which contains
+                                    <code>classname</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">ID</th>
+                                <td>
+                                    <pre><code class="css">#id-name {...}</code></pre>
+                                    is the same as
+                                    <pre><code class="css">[id=id-name] {...}</code></pre>
+                                    selects elements with id <code>id-name</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="2" scope="col">
+                                    <h4>Pseudo-classes</h4>
+                                    <pre><code class="css">[selector]:pseudo-class {...}</code></pre>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th scope="row">Linguistic</th>
+                                <td>
+                                    <dl>
+                                        <dt>
+                                            <pre><code class="css">:dir()</code></pre>
+                                        </dt>
+                                        <dd>NOT available</dd>
+                                        <dt>
+                                            <pre><code class="css">:lang( &lt;language-code&gt; )</code></pre>
+                                        </dt>
+                                        <dd>selects an element based on its content language</dd>
+                                    </dl>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Location</th>
+                                <td>
+                                    <dl>
+                                        <dt>
+                                            <pre><code class="css">:any-link</code></pre>
+                                        </dt>
+                                        <dd>NOT available</dd>
+                                        <dt>
+                                            <pre><code class="css">:link</code></pre>
+                                        </dt>
+                                        <dd>selects unvisited links</dd>
+                                        <dt>
+                                            <pre><code class="css">:visited</code></pre>
+                                        </dt>
+                                        <dd>selects visited links</dd>
+                                        <dt>
+                                            <pre><code class="css">:local-link</code></pre>
+                                        </dt>
+                                        <dd>NOT available</dd>
+                                        <dt>
+                                            <pre><code class="css">:target</code></pre>
+                                        </dt>
+                                        <dd>selects the element that is pointed to by the document's URL via the URL's
+                                            fragment</dd>
+                                        <dt>
+                                            <pre><code class="css">:target-within</code></pre>
+                                        </dt>
+                                        <dd>NOT available</dd>
+                                        <dt>
+                                            <pre><code class="css">:scope</code></pre>
+                                        </dt>
+                                        <dd>NOT available</dd>
+                                    </dl>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">User Action</th>
+                                <td>
+                                    <dl>
+                                        <dt>
+                                            <pre><code class="css">:hover</code></pre>
+                                        </dt>
+                                        <dd>elements with mouse cursor hovering on</dd>
+                                        <dt>
+                                            <pre><code class="css">:active</code></pre>
+                                        </dt>
+                                        <dd>elements activated by user</dd>
+                                        <dt>
+                                            <pre><code class="css">:focus</code></pre>
+                                        </dt>
+                                        <dd>elements that have the focus(keyboard or mouse events, .etc)</dd>
+                                        <dt>
+                                            <pre><code class="css">:focus-visible</code></pre>
+                                        </dt>
+                                        <dd>NOT available</dd>
+                                        <dt>
+                                            <pre><code class="css">:focus-within</code></pre>
+                                        </dt>
+                                        <dd>selects elements that have the focus or if their descedants have the focus
+                                        </dd>
+                                    </dl>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Time-dimensional</th>
+                                <td>
+                                    <dl>
+                                        <dt>
+                                            <pre><code class="css">:current</code></pre>
+                                        </dt>
+                                        <dd>NOT available</dd>
+                                        <dt>
+                                            <pre><code class="css">:past</code></pre>
+                                        </dt>
+                                        <dd>NOT available</dd>
+                                        <dt>
+                                            <pre><code class="css">:future</code></pre>
+                                        </dt>
+                                        <dd>NOT available</dd>
+                                    </dl>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Resource State</th>
+                                <td>
+                                    <dl>
+                                        <dt>
+                                            <pre><code class="css">:playing</code></pre>
+                                        </dt>
+                                        <dd>selects elements that are playing; <br>e.g. audio, video, or similar
+                                            resources that is capable of being "played" or "paused"</dd>
+                                        <dt>
+                                            <pre><code class="css">:paused</code></pre>
+                                        </dt>
+                                        <dd>selects elements that are paused; <br>e.g. audio, video, or similar
+                                            resources that is capable of being "played" or "paused"</dd>
+                                    </dl>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Input</th>
+                                <td>
+                                    <h5>Input Control States:</h5>
+                                    <dl>
+                                        <dt>
+                                            <pre><code class="css">:enabled</code></pre>
+                                        </dt>
+                                        <dd>selects user interface elements that are in an enabled state; <br>An element
+                                            is enabled if it can be activated (selected, clicked on, typed into, etc.)
+                                            or accept focus;<br>such elements must have a corresponding disabled state.
+                                        </dd>
+                                        <dt>
+                                            <pre><code class="css">:disabled</code></pre>
+                                        </dt>
+                                        <dd>user interface elements that are in a disabled state</dd>
+                                        <dt>
+                                            <pre><code class="css">:read-only</code></pre>
+                                        </dt>
+                                        <dd>elements that not editable</dd>
+                                        <dt>
+                                            <pre><code class="css">:read-write</code></pre>
+                                        </dt>
+                                        <dd>user-alterable elements</dd>
+                                        <dt>
+                                            <pre><code class="css">:placeholder-shown</code></pre>
+                                        </dt>
+                                        <dd>NOT available</dd>
+                                        <dt>
+                                            <pre><code class="css">:default</code></pre>
+                                        </dt>
+                                        <dd>selects one or more UI elements that are the <strong>default</strong> among
+                                            a set of similar elements;<br>typically applies to context menu items,
+                                            buttons and select lists/menus.</dd>
+                                    </dl>
+                                    <hr>
+                                    <h5>Input Value States:</h5>
+                                    <dl>
+                                        <dt>
+                                            <pre><code class="css">:checked</code></pre>
+                                        </dt>
+                                        <dd>selected radio, checkbox or &lt;option&gt; elements</dd>
+                                        <dt>
+                                            <pre><code class="css">:indeterminate</code></pre>
+                                        </dt>
+                                        <dd>UI elements whose value is in an indeterminate state; <br>e.g. radio,
+                                            checkbox or &lt;progress&gt;: <progress></dd>
+                                    </dl>
+                                    <hr>
+                                    <h5>Input Value Checking:</h5>
+                                    <dl>
+                                        <dt>
+                                            <pre><code class="css">:blank</code></pre>
+                                        </dt>
+                                        <dd>NOT available</dd>
+                                        <dt>
+                                            <pre><code class="css">:valid</code></pre>
+                                        </dt>
+                                        <dd>elements that have valid contents or values with respect to data validity
+                                            semantics defined by the document language</dd>
+                                        <dt>
+                                            <pre><code class="css">:invalid</code></pre>
+                                        </dt>
+                                        <dd>elements that have invalid contents or values with respect to data validity
+                                            semantics defined by the document language</dd>
+                                        <dt>
+                                            <pre><code class="css">:in-range</code></pre>
+                                        </dt>
+                                        <dd>elements with range limitations have values in the range</dd>
+                                        <dt>
+                                            <pre><code class="css">:out-of-range</code></pre>
+                                        </dt>
+                                        <dd>elements with range limitations have values out of the range</dd>
+                                        <dt>
+                                            <pre><code class="css">:required</code></pre>
+                                        </dt>
+                                        <dd>required elements in a form before the form can be submitted</dd>
+                                        <dt>
+                                            <pre><code class="css">:optional</code></pre>
+                                        </dt>
+                                        <dd>optional elements in a form before the form can be submitted</dd>
+                                        <dt>
+                                            <pre><code class="css">:user-invalid</code></pre>
+                                        </dt>
+                                        <dd>NOT available</dd>
+                                    </dl>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Tree-Structural</th>
+                                <td>
+                                    <dl>
+                                        <dt>
+                                            <pre><code class="css">:root</code></pre>
+                                        </dt>
+                                        <dd>root element; always used to define global CSS variables</dd>
+                                        <dt>
+                                            <pre><code class="css">:empty</code></pre>
+                                        </dt>
+                                        <dd>elements that donot have children</dd>
+                                    </dl>
+                                    <hr>
+                                    <h5>Child-indexed</h5>
+                                    <dl>
+                                        <dt>
+                                            <pre><code class="css">selector:nth-child(an+b | even | odd [of Selector])</code></pre>
+                                        </dt>
+                                        <dd>selects all <i>an+b</i>th elements from the list of the elements' siblings
+                                            that match the Selector<br>If S is omitted, it defaults to *|*</dd>
+                                        <dt>
+                                            <pre><code class="css">selector:nth-last-child(an+b | even | odd [of Selector])</code></pre>
+                                        </dt>
+                                        <dd>selects all <i>an+b</i>th elements from the REVERSED list of the elements'
+                                            siblings that match the Selector<br>If S is omitted, it defaults to *|*</dd>
+                                        <dt>
+                                            <pre><code class="css">:first-child</code></pre>
+                                        </dt>
+                                        <dd>first element among its inclusive siblings</dd>
+                                        <dt>
+                                            <pre><code class="css">:last-chid</code></pre>
+                                        </dt>
+                                        <dd>last element among its inclusive siblings</dd>
+                                        <dt>
+                                            <pre><code class="css">:only-child</code></pre>
+                                        </dt>
+                                        <dd>elements that have no siblings</dd>
+                                    </dl>
+                                    <hr>
+                                    <h5>Typed Child-indexed</h5>
+                                    <dl>
+                                        <dt>
+                                            <pre><code class="css">selector:nth-of-type(an+b | even | odd)</code></pre>
+                                        </dt>
+                                        <dd>selects all <i>an+b</i>th elements from the list of the elements' siblings
+                                            that are the same type with selector</dd>
+                                        <dt>
+                                            <pre><code class="css">selector:nth-last-of-type(an+b | even | odd)</code></pre>
+                                        </dt>
+                                        <dd>selects all <i>an+b</i>th elements from the REVERSED list of the elements'
+                                            siblings that are the same type with selector</dd>
+                                        <dt>
+                                            <pre><code class="css">selector:first-of-type</code></pre>
+                                        </dt>
+                                        <dd>first element among its inclusive siblings that of same type</dd>
+                                        <dt>
+                                            <pre><code class="css">selector:last-of-type</code></pre>
+                                        </dt>
+                                        <dd>last element among its inclusive siblings that of same type</dd>
+                                        <dt>
+                                            <pre><code class="css">selector:only-of-type</code></pre>
+                                        </dt>
+                                        <dd>element that are the only one of its type among its siblings</dd>
+                                    </dl>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="2" scope="col">
+                                    <h4>Pseudo-elements</h4>
+                                    <small>a keyword added to a selector to style a specific part of the selected
+                                        element(s)</small>
+                                    <pre><code class="css">selector::pseudo-element {...}</code></pre>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <pre><code class="css">::before</code></pre>
+                                </th>
+                                <td>add a pseudo-element to be the first child of selected elements;<br>usually add
+                                    cosmetic contents to the selected elements with the <code>content</code> property
+                                    <pre><code class="css">selector::before {
+    content: "♥";
+}</code></pre>
+                                    the pseudo-element defaults to be an inline element
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <pre><code class="css">::after</code></pre>
+                                </th>
+                                <td>add a pseudo-element to be the last child of selected elements;<br>usually add
+                                    cosmetic contents to the selected elements with the <code>content</code> property
+                                    <pre><code class="css">selector::after {
+    content: "→";
+}</code></pre>
+                                    the pseudo-element defaults to be an inline element
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <pre><code class="css">::first-line</code></pre>
+                                </th>
+                                <td>apply styles to the first line of a <strong>block-level</strong> element (i.e. value
+                                    of <code>display</code> is <code>block</code>, <code>inline-block</code>,
+                                    <code>table-cell</code> or <code>table-caption</code>)
+                                    <pre><code class="css">selector::first-line {
+    text-transform: uppercase;
+}</code></pre>
+                                    only properties about font and background can be used
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <pre><code class="css">::first-letter</code></pre>
+                                </th>
+                                <td>apply styles to the first letter of the first line of a <strong>block-level</strong>
+                                    element (i.e. value of <code>display</code> is <code>block</code>,
+                                    <code>inline-block</code>, <code>table-cell</code>, <code>list-item</code> or
+                                    <code>table-caption</code>)
+                                    <pre><code class="css">selector::first-letter {
+    font-size: 130%;
+}</code></pre>
+                                    only properties about font, background, margin, padding and border can be used
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">
+                                    <pre><code class="css">::selection</code></pre>
+                                </th>
+                                <td>apply styles to the part of a document that has been highlighted by the user
+                                    <pre><code class="css">selector::selection {
+    color: gold;
+    background-color: red;
+}</code></pre>
+                                    available properties: , <code>color</code>, <code>background-color</code>,
+                                    <code>cursor</code>, <code>caret-color</code>, <code>outline</code> and its
+                                    longhands, <code>text-decoration</code> and its associated properties,
+                                    <code>text-emphasis-color</code>, <code>text-shadow</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th colspan="2" scope="col">
+                                    <h3>Combinators</h3>
+                                </th>
+                            </tr>
+                            <tr>
+                                <th scope="row">Descendant ( )</th>
+                                <td>
+                                    <pre><code class="css">selector1 its-descendant {...}</code></pre>
+                                    selects elements with ancestor <code>selector1</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Child (>)</th>
+                                <td>
+                                    <pre><code class="css">selector1 > its-direct-child {...}</code></pre>
+                                    selects elements with direct parent <code>selector1</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Next-sibling (+)</th>
+                                <td>
+                                    <pre><code class="css">selector1 + next-sibling {...}</code></pre>
+                                    selects elements whose previous sibling is <code>selector1</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Subsequent-sibling (~)</th>
+                                <td>
+                                    <pre><code class="css">selector1 ~ all-siblings-after {...}</code></pre>
+                                    selects all sibling elements after <code>selector1</code>
+                                </td>
+                            </tr>
+                            <tr>
+                                <th scope="row">Multiple (,)</th>
+                                <td>
+                                    <pre><code class="css">selector1, selector2[, ...] {...}</code></pre>
+                                    apply same styles for all selectors
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </td>
+                <td>
+                    <table class="table table-dark table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <h2>Jquery Selectors</h2>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </td>
+                <td>
+                    <table class="table table-dark table-hover">
+                        <thead>
+                            <tr>
+                                <th>
+                                    <h2>XPath Selectors</h2>
+                                </th>
+                            </tr>
+                        </thead>
+                        <tbody></tbody>
+                    </table>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</body>
+
+</html>
