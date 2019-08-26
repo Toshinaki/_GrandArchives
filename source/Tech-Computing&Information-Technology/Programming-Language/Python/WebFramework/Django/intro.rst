@@ -41,8 +41,8 @@ Django Template Language (DTL), Django 默认的模板语言
     3. 当做列表或者元组查询, 把 id 当做索引
     4. 在模板中调用方法不能传递参数, 因为模板里面不能写小括号
 
-标签
-^^^^^^
+tag 标签
+^^^^^^^^^^^^
 
 - if 标签
     { %if ...%}
@@ -95,7 +95,6 @@ Django Template Language (DTL), Django 默认的模板语言
     - `forloop.last` boolean, 最后一次循环时为 True
     - `forloop.parentloop` 引用父级循环的 forloop 对象
 
-
 - commnent
     .. code-block:: html
 
@@ -104,6 +103,11 @@ Django Template Language (DTL), Django 默认的模板语言
         {% comment %}
             多行注释
         {% endcomment %}
+
+自定义 tag
+^^^^^^^^^^^^^
+
+// TODO
 
 filter 过滤器
 ^^^^^^^^^^^^^^^^
@@ -161,7 +165,7 @@ filter 过滤器
 
 如在过滤器 `{{ var|foo:"bar" }}` 中, 变量 `var` 和参数 `bar` 会传递给过滤器 `foo`, 第一个参数是要过滤的对象, 第二个参数才是自定义的参数; 最多只能有两个参数
 
-由于模板语言没有提供异常处理，任何从过滤器中抛出的异常都将会显示为服务器错误
+由于模板语言没有提供异常处理, 任何从过滤器中抛出的异常都将会显示为服务器错误
 
 自定义 filter 有两种方式:
 
@@ -196,13 +200,13 @@ filter 过滤器
 模板引用
 ^^^^^^^^^^^
 
-引用其他模板的全部内容
+引用其他模板的全部内容, 常用于页面中多次出现的组件
 
 .. code-block:: html
 
     {% include url %}
 
-url可以是双引号字符串硬编码,也可以是变量
+url可以是双引号字符串硬编码, 也可以是变量
 
 模板继承
 ^^^^^^^^^^^
@@ -222,6 +226,17 @@ url可以是双引号字符串硬编码,也可以是变量
         {% endblock %}
 
 - 继承树中的任何模板都能访问上下文中的每一个模板变量
+
+静态文件路径
+^^^^^^^^^^^^^^
+
+.. code-block:: html
+
+    {% load static %}
+
+1. 使用内置 `static` 方法拼接静态文件路径
+2. 使用内置 `get_static_prefix` 获取静态文件路径别名
+3. 多次用到的路径可以使用 `as` 保存至变量
 
 设计理念
 ~~~~~~~~~~
