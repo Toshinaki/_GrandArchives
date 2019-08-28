@@ -10,7 +10,7 @@
   <meta name="book-type"    content="Manual"/>
 
   
-  <title>Django project 创建步骤 &mdash; gate-of-babylon  documentation</title>
+  <title>1. Django project 创建步骤 &mdash; gate-of-babylon  documentation</title>
   
 
   
@@ -40,7 +40,7 @@
         <link rel="search" title="Search" href="../../../../../search.html"/>
     <link rel="top" title="gate-of-babylon  documentation" href="#"/>
         <link rel="up" title="Django" href="index.html"/>
-        <link rel="next" title="Django Basics" href="intro.html"/>
+        <link rel="next" title="2. Django Basics" href="intro.html"/>
         <link rel="prev" title="Django" href="index.html"/> 
   <script src="../../../../../_static/js/modernizr.min.js"></script>
 </head>
@@ -137,17 +137,76 @@
 <li class="toctree-l3 current"><a class="reference internal" href="../../index.html">Python</a><ul class="current">
 <li class="toctree-l4 current"><a class="reference internal" href="../index.html">Python Web Framworks</a><ul class="current">
 <li class="toctree-l5 current"><a class="reference internal" href="index.html">Django</a><ul class="current">
-<li class="toctree-l6 current"><a class="current reference internal" href="#">Workflow of Django</a></li>
-<li class="toctree-l6"><a class="reference internal" href="intro.html">Django Basics</a><ul>
-<li class="toctree-l7"><a class="reference internal" href="intro.html#mvc-mvt">MVC &amp; MVT</a></li>
-<li class="toctree-l7"><a class="reference internal" href="intro.html#dtl">DTL 模板语言</a><ul>
-<li class="toctree-l8"><a class="reference internal" href="intro.html#id1">语法</a></li>
-<li class="toctree-l8"><a class="reference internal" href="intro.html#id7">设计理念</a></li>
+<li class="toctree-l6 current"><a class="current reference internal" href="#">1. Workflow of Django</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#id1">1.1. 安装</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#project">1.2. 创建 project</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id2">1.3. 配置数据库</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#app">1.4. 创建 app</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id3">1.5. 迁移数据库</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#superuser">1.6. 创建后台管理用的 superuser</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id4">1.7. 启动测试服务器</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id5">1.8. 设置模板路径</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id6">1.9. 设置静态文件路径</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id7">1.10. 扩展用户模型</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="#proxy-model">1.10.1. proxy model</a></li>
+<li class="toctree-l8"><a class="reference internal" href="#relationship">1.10.2. 1-1 Relationship</a></li>
+<li class="toctree-l8"><a class="reference internal" href="#abstractuser">1.10.3. 子类化 <cite>AbstractUser</cite></a></li>
+<li class="toctree-l8"><a class="reference internal" href="#abstractbaseuser">1.10.4. 子类化 <cite>AbstractBaseUser</cite></a></li>
+<li class="toctree-l8"><a class="reference internal" href="#id8">1.10.5. 现有的用户模型</a></li>
 </ul>
 </li>
-<li class="toctree-l7"><a class="reference internal" href="intro.html#orm">ORM</a><ul>
-<li class="toctree-l8"><a class="reference internal" href="intro.html#model">Model</a></li>
-<li class="toctree-l8"><a class="reference internal" href="intro.html#field">Field</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="intro.html">2. Django Basics</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="intro.html#mvc-mvt">2.1. MVC &amp; MVT</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="model.html">3. Model</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="model.html#model">3.1. Model</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="model.html#id1">3.1.1. 定义模型</a></li>
+<li class="toctree-l8"><a class="reference internal" href="model.html#id2">3.1.2. 使用模型</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="model.html#field">3.2. Field</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="model.html#id3">3.2.1. 通用字段参数</a></li>
+<li class="toctree-l8"><a class="reference internal" href="model.html#id4">3.2.2. 字段类型</a></li>
+<li class="toctree-l8"><a class="reference internal" href="model.html#id5">3.2.3. 关联关系字段</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="template.html">4. Template</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="template.html#id1">4.1. 语法</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="template.html#id2">4.1.1. 变量</a></li>
+<li class="toctree-l8"><a class="reference internal" href="template.html#tag">4.1.2. tag 标签</a></li>
+<li class="toctree-l8"><a class="reference internal" href="template.html#id4">4.1.3. 自定义 tag</a></li>
+<li class="toctree-l8"><a class="reference internal" href="template.html#filter">4.1.4. filter 过滤器</a></li>
+<li class="toctree-l8"><a class="reference internal" href="template.html#id5">4.1.5. 自定义 filter</a></li>
+<li class="toctree-l8"><a class="reference internal" href="template.html#id6">4.1.6. 模板引用</a></li>
+<li class="toctree-l8"><a class="reference internal" href="template.html#id7">4.1.7. 模板继承</a></li>
+<li class="toctree-l8"><a class="reference internal" href="template.html#id8">4.1.8. 静态文件路径</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="template.html#id9">4.2. 设计理念</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="extensions.html">5. Extensions</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="extensions.html#install">5.1. Install</a></li>
+<li class="toctree-l7"><a class="reference internal" href="extensions.html#settings-py">5.2. <cite>settings.py</cite></a></li>
+<li class="toctree-l7"><a class="reference internal" href="extensions.html#urls-py">5.3. <cite>urls.py</cite></a><ul>
+<li class="toctree-l8"><a class="reference internal" href="extensions.html#url">5.3.1. 默认 URL</a></li>
+<li class="toctree-l8"><a class="reference internal" href="extensions.html#id1">5.3.2. 其他设置</a></li>
+<li class="toctree-l8"><a class="reference internal" href="extensions.html#templates">5.3.3. 默认 templates</a></li>
+<li class="toctree-l8"><a class="reference internal" href="extensions.html#id2">5.3.4. 添加社交账号登录</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="qa.html">6. Q &amp; A</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="qa.html#static-url-static-root-and-staticfiles-dirs">6.1. 区别: STATIC_URL, STATIC_ROOT AND STATICFILES_DIRS</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="qa.html#static-root">6.1.1. <cite>STATIC_ROOT</cite></a></li>
+<li class="toctree-l8"><a class="reference internal" href="qa.html#staticfiles-dirs">6.1.2. <cite>STATICFILES_DIRS</cite></a></li>
+<li class="toctree-l8"><a class="reference internal" href="qa.html#static-url">6.1.3. <cite>STATIC_URL</cite></a></li>
 </ul>
 </li>
 </ul>
@@ -157,23 +216,111 @@
 </ul>
 </li>
 <li class="toctree-l4"><a class="reference internal" href="../../WebProgramming/index.html">Python Web Programming</a><ul>
-<li class="toctree-l5"><a class="reference internal" href="../../WebProgramming/webspider.html">WebSpider</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="../../WebProgramming/webspider.html#introduction">Introduction</a><ul>
-<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/webspider.html#id1">什么是爬虫</a></li>
-<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/webspider.html#http-https">HTTP/HTTPS</a><ul>
-<li class="toctree-l8"><a class="reference internal" href="../../WebProgramming/webspider.html#request-methods">request methods</a></li>
-<li class="toctree-l8"><a class="reference internal" href="../../WebProgramming/webspider.html#id2">常见请求头</a></li>
-<li class="toctree-l8"><a class="reference internal" href="../../WebProgramming/webspider.html#id3">常见响应状态码</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../WebProgramming/webspider.html">1. WebSpider Basics</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../WebProgramming/webspider.html#id1">1.1. 什么是爬虫</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../WebProgramming/webspider.html#http-https">1.2. HTTP/HTTPS</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/webspider.html#request-methods">1.2.1. request methods</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/webspider.html#id2">1.2.2. 常见请求头</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/webspider.html#id3">1.2.3. 常见响应状态码</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/webspider.html#id4">1.2.4. 常见响应头</a></li>
 </ul>
 </li>
-<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/webspider.html#url">URL</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../WebProgramming/webspider.html#uri-url">1.3. URI &amp; URL</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/webspider.html#id5">1.3.1. 标准格式</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/webspider.html#id6">1.3.2. 完整格式</a></li>
 </ul>
 </li>
-<li class="toctree-l6"><a class="reference internal" href="../../WebProgramming/webspider.html#python">Python 爬虫库</a><ul>
-<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/webspider.html#urllib">urllib</a><ul>
-<li class="toctree-l8"><a class="reference internal" href="../../WebProgramming/webspider.html#urlopen"><cite>urlopen()</cite></a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../WebProgramming/webspider.html#session-cookies">1.4. Session &amp; Cookies</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/webspider.html#session">1.4.1. <strong>Session</strong> 在服务端保存用户的会话信息</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/webspider.html#cookies">1.4.2. <strong>Cookies</strong> 在客户端保存登录的凭证</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/webspider.html#id7">1.4.3. Cookies 属性</a></li>
 </ul>
 </li>
+<li class="toctree-l6"><a class="reference internal" href="../../WebProgramming/webspider.html#proxy-server">1.5. Proxy server</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/webspider.html#id8">1.5.1. 分类</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/webspider.html#id9">1.5.2. 常见代理设置</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../WebProgramming/weblibs.html">2. Web Programming Libraries</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../WebProgramming/weblibs.html#urllib">2.1. urllib</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/weblibs.html#request">2.1.1. request</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../WebProgramming/weblibs.html#urlopen">urlopen</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../WebProgramming/weblibs.html#id1">Request</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../WebProgramming/weblibs.html#basehandler">BaseHandler</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../WebProgramming/weblibs.html#openerdirector">OpenerDirector</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/weblibs.html#error">2.1.2. error</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../WebProgramming/weblibs.html#urlerror">URLError</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../WebProgramming/weblibs.html#httperror">HTTPError</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/weblibs.html#parse">2.1.3. parse</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../WebProgramming/weblibs.html#urlparse-urlunparse">urlparse &amp; urlunparse</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../WebProgramming/weblibs.html#urlsplit-urlunsplit-urljoin">urlsplit, urlunsplit &amp; urljoin</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../WebProgramming/weblibs.html#urlencode-parse-qs-parse-qsl">urlencode, parse_qs &amp; parse_qsl</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../WebProgramming/weblibs.html#quote-unquote">quote &amp; unquote</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/weblibs.html#robots">2.1.4. robots</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../WebProgramming/weblibs.html#id2">Robots 协议</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../WebProgramming/weblibs.html#robotfileparser">RobotFileParser</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../WebProgramming/weblibs.html#requests">2.2. requests</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/weblibs.html#get">2.2.1. GET</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../WebProgramming/scrapy.html">3. Scrapy</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../WebProgramming/scrapy.html#intro">3.1. Intro</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/scrapy.html#id1">3.1.1. 架构</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/scrapy.html#id2">3.1.2. 数据流</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/scrapy.html#id3">3.1.3. 项目结构</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../WebProgramming/scrapy.html#id4">3.2. Scrapy 使用</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/scrapy.html#id5">3.2.1. 创建项目</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/scrapy.html#spider">3.2.2. 创建 spider</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/scrapy.html#item">3.2.3. 创建 Item</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/scrapy.html#parse-response">3.2.4. 在 <cite>parse()</cite> 中解析 Response</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/scrapy.html#parse-item">3.2.5. 在 <cite>parse()</cite> 中实例化自定义 Item 类</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/scrapy.html#parse">3.2.6. 在 <cite>parse()</cite> 中创建下一个请求</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/scrapy.html#id6">3.2.7. 在命令行运行定义的 spider</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/scrapy.html#id7">3.2.8. 保存抓取结果到文件</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/scrapy.html#item-pipeline">3.2.9. 使用 Item Pipeline 进行更复杂的操作</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../WebProgramming/scrapy.html#selector">3.3. Selector</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/scrapy.html#id8">3.3.1. 创建 selector</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../WebProgramming/scrapy.html#id9">Selector</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/scrapy.html#id10">3.3.2. 使用 selector 获取结果</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../WebProgramming/scrapy.html#selectorlist">SelectorList</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/scrapy.html#css">3.3.3. CSS 选择器扩展</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../WebProgramming/scrapy.html#id11">3.4. Spider</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/scrapy.html#id12">3.4.1. Spider</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/scrapy.html#spiders">3.4.2. 通用 Spiders</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../WebProgramming/scrapy.html#crawlspider">CrawlSpider</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../WebProgramming/scrapy.html#xmlfeedspider">XMLFeedSpider</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../WebProgramming/scrapy.html#csvfeedspider">CSVFeedSpider</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../WebProgramming/scrapy.html#sitemapspider">SitemapSpider</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../WebProgramming/scrapy.html#downloader-middleware">3.5. Downloader Middleware</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../WebProgramming/scrapy.html#id13">3.5.1. 自定义 Downloader Middleware</a></li>
 </ul>
 </li>
 </ul>
@@ -886,7 +1033,7 @@
           <li><a href="../../index.html">Python</a> &raquo;</li>
           <li><a href="../index.html">Python Web Framworks</a> &raquo;</li>
           <li><a href="index.html">Django</a> &raquo;</li>
-    <li>Django project 创建步骤</li>
+    <li>1. Django project 创建步骤</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../../../_sources/Tech-Computing&amp;Information-Technology/Programming-Language/Python/WebFramework/Django/flow.rst.txt" rel="nofollow">
                 <span class="fa fa-binoculars"></span>&#32;View page source
@@ -913,28 +1060,26 @@
            <div itemprop="articleBody" class="toBeIndexed">
             
   <div class="section" id="django-project">
-<h1>Django project 创建步骤<a class="headerlink" href="#django-project" title="Permalink to this headline">¶</a></h1>
-<ol class="arabic">
-<li><p>安装</p>
-<blockquote>
-<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install django
+<h1>1. Django project 创建步骤<a class="headerlink" href="#django-project" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="id1">
+<h2>1.1. 安装<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> pip install django
 </pre></div>
 </div>
-</div></blockquote>
-</li>
-<li><p>创建 project</p>
-<blockquote>
-<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> django-admin startproject &lt;project_name&gt; &lt;project_base_dir&gt;
+</div>
+<div class="section" id="project">
+<h2>1.2. 创建 project<a class="headerlink" href="#project" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> django-admin startproject &lt;project_name&gt; &lt;project_base_dir&gt;
 </pre></div>
 </div>
 <p>在指定的文件夹 <cite>project_base_dir</cite> 下创建 project_name</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">project_base_dir</span>
-<span class="go">  └─ project_name</span>
+<span class="go">    └─ project_name</span>
 <span class="go">    └─ __init__.py</span>
 <span class="go">    └─ settings.py</span>
 <span class="go">    └─ urls.py</span>
 <span class="go">    └─ wsgi.py</span>
-<span class="go">  └─ manage.py</span>
+<span class="go">    └─ manage.py</span>
 </pre></div>
 </div>
 <ul>
@@ -974,11 +1119,10 @@
 </dl>
 </li>
 </ul>
-</div></blockquote>
-</li>
-<li><p>配置数据库</p>
-<blockquote>
-<div><p>启动 app之前需要在 <cite>settings.py</cite> 中配置数据库</p>
+</div>
+<div class="section" id="id2">
+<h2>1.3. 配置数据库<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h2>
+<p>启动 app之前需要在 <cite>settings.py</cite> 中配置数据库</p>
 <ol class="arabic">
 <li><p>指定数据库地址</p>
 <blockquote>
@@ -1008,29 +1152,28 @@
 </div></blockquote>
 </li>
 </ol>
-</div></blockquote>
-</li>
-<li><p>创建 app</p>
-<blockquote>
-<div><ol class="arabic">
+</div>
+<div class="section" id="app">
+<h2>1.4. 创建 app<a class="headerlink" href="#app" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
 <li><dl>
 <dt>创建</dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> python manage.py startapp appname
 </pre></div>
 </div>
 <p>在当前文件夹下创建 app</p>
 <div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">project_base_dir</span>
-<span class="go">  └─ project_name</span>
+<span class="go">    └─ project_name</span>
 <span class="go">    ...</span>
-<span class="go">  └─ appname</span>
+<span class="go">    └─ appname</span>
 <span class="go">    └─ migrations</span>
-<span class="go">      └─ __init__.py</span>
+<span class="go">        └─ __init__.py</span>
 <span class="go">    └─ __init__.py</span>
 <span class="go">    └─ admin.py</span>
 <span class="go">    └─ apps.py</span>
 <span class="go">    └─ models.py</span>
 <span class="go">    └─ tests.py</span>
 <span class="go">    └─ views.py</span>
-<span class="go">  └─ manage.py</span>
+<span class="go">    └─ manage.py</span>
 </pre></div>
 </div>
 <ul class="simple">
@@ -1080,11 +1223,10 @@
 </div></blockquote>
 </li>
 </ol>
-</div></blockquote>
-</li>
-<li><p>迁移数据库</p>
-<blockquote>
-<div><ol class="arabic">
+</div>
+<div class="section" id="id3">
+<h2>1.5. 迁移数据库<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
 <li><dl>
 <dt>生成迁移文件</dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> python manage.py makemigrations
 </pre></div>
@@ -1101,35 +1243,32 @@
 </dl>
 </li>
 </ol>
-</div></blockquote>
-</li>
-<li><p>创建后台管理用的 superuser</p>
-<blockquote>
-<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> python manage.py createsuperuser
+</div>
+<div class="section" id="superuser">
+<h2>1.6. 创建后台管理用的 superuser<a class="headerlink" href="#superuser" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> python manage.py createsuperuser
 </pre></div>
 </div>
-</div></blockquote>
-</li>
-<li><p>启动测试服务器</p>
-<blockquote>
-<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> python manage.py runserver <span class="o">[</span>port<span class="o">]</span>
+</div>
+<div class="section" id="id4">
+<h2>1.7. 启动测试服务器<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h2>
+<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> python manage.py runserver <span class="o">[</span>port<span class="o">]</span>
 </pre></div>
 </div>
 <p>默认在 127.0.0.1:8000 启动</p>
-</div></blockquote>
-</li>
-<li><p>设置模板路径</p>
-<blockquote>
-<div><ol class="arabic">
+</div>
+<div class="section" id="id5">
+<h2>1.8. 设置模板路径<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
 <li><dl>
 <dt>在根目录 <cite>project_base_dir</cite> 下创建模板文件夹</dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">project_base_dir</span>
-<span class="go">  └─ project_name</span>
+<span class="go">    └─ project_name</span>
 <span class="go">    └─ ...</span>
-<span class="go">  └─ templates</span>
+<span class="go">    └─ templates</span>
 <span class="go">    └─ ...</span>
-<span class="go">  └─ appname</span>
+<span class="go">    └─ appname</span>
 <span class="go">    └─ ...</span>
-<span class="go">  └─ manage.py</span>
+<span class="go">    └─ manage.py</span>
 </pre></div>
 </div>
 </dd>
@@ -1149,22 +1288,21 @@
 </div></blockquote>
 </li>
 </ol>
-</div></blockquote>
-</li>
-<li><p>设置静态文件路径</p>
-<blockquote>
-<div><ol class="arabic">
+</div>
+<div class="section" id="id6">
+<h2>1.9. 设置静态文件路径<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h2>
+<ol class="arabic">
 <li><dl>
 <dt>在根目录 <cite>project_base_dir</cite> 下创建静态文件夹</dt><dd><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">project_base_dir</span>
-<span class="go">  └─ project_name</span>
+<span class="go">    └─ project_name</span>
 <span class="go">    └─ ...</span>
-<span class="go">  └─ static</span>
+<span class="go">    └─ static</span>
 <span class="go">    └─ ...</span>
-<span class="go">  └─ templates</span>
+<span class="go">    └─ templates</span>
 <span class="go">    └─ ...</span>
-<span class="go">  └─ appname</span>
+<span class="go">    └─ appname</span>
 <span class="go">    └─ ...</span>
-<span class="go">  └─ manage.py</span>
+<span class="go">    └─ manage.py</span>
 </pre></div>
 </div>
 </dd>
@@ -1188,9 +1326,141 @@
 </div></blockquote>
 </li>
 </ol>
+</div>
+<div class="section" id="id7">
+<h2>1.10. 扩展用户模型<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>如果要扩展默认的 <cite>User</cite> 模型, 那么在创建项目后不应该立刻执行数据库迁移</p>
+</div>
+<div class="section" id="proxy-model">
+<h3>1.10.1. proxy model<a class="headerlink" href="#proxy-model" title="Permalink to this headline">¶</a></h3>
+<p>并不会创建新的 table, 因此 <strong>不会对数据库产生影响</strong>
+可以用于添加 <cite>model manager</cite> 或 <cite>model methods</cite>; 不能添加新的属性</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">UserProxy</span><span class="p">(</span><span class="n">User</span><span class="p">):</span>
+    <span class="k">class</span> <span class="nc">Meta</span><span class="p">:</span>
+        <span class="c1"># 通过设置 proxy = True, Django 会将 UserProxy 当做 User</span>
+        <span class="n">proxy</span> <span class="o">=</span> <span class="bp">True</span>
+
+    <span class="c1"># 之后可重写或定义各种方法</span>
+    <span class="k">def</span> <span class="fm">__str__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">first_name</span>
+</pre></div>
+</div>
+</div>
+<div class="section" id="relationship">
+<h3>1.10.2. 1-1 Relationship<a class="headerlink" href="#relationship" title="Permalink to this headline">¶</a></h3>
+<p>新建数据库表, 并和 <cite>User</cite> 模型以 OneToOneField 连接</p>
+<p>可以添加新的属性和新的方法</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">class</span> <span class="nc">Profile</span><span class="p">(</span><span class="n">models</span><span class="o">.</span><span class="n">Model</span><span class="p">):</span>
+    <span class="n">user</span> <span class="o">=</span> <span class="n">models</span><span class="o">.</span><span class="n">OneToOneField</span><span class="p">(</span><span class="n">User</span><span class="p">)</span>
+    <span class="c1"># ...</span>
+</pre></div>
+</div>
+<p>额外的步骤:</p>
+<ol class="arabic simple">
+<li><p>处理用户新建, 修改, 删除</p></li>
+<li><p>在 Django Admin 中显示</p></li>
+</ol>
+</div>
+<div class="section" id="abstractuser">
+<h3>1.10.3. 子类化 <cite>AbstractUser</cite><a class="headerlink" href="#abstractuser" title="Permalink to this headline">¶</a></h3>
+<p>保留默认模型和 auth 方法, 可以添加新的属性等</p>
+<ol class="arabic">
+<li><p>子类化 <cite>AbstractUser</cite></p></li>
+<li><p>在 <cite>settings.py</cite> 中设置 <cite>AUTH_USER_MODEL</cite> 的值为自定义的用户模型:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">AUTH_USER_MODEL</span> <span class="o">=</span> <span class="s1">&#39;myapp.MyUser&#39;</span>
+</pre></div>
+</div>
 </div></blockquote>
 </li>
 </ol>
+</div>
+<div class="section" id="abstractbaseuser">
+<h3>1.10.4. 子类化 <cite>AbstractBaseUser</cite><a class="headerlink" href="#abstractbaseuser" title="Permalink to this headline">¶</a></h3>
+<p>只提供了基础的用户实现和密码处理, 需要自定义其他属性和 auth 方法</p>
+<ol class="arabic">
+<li><p>子类化 <cite>AbstractBaseUser</cite>, 并设置 <cite>USERNAME_FIELD</cite> 来指定用于登录的属性</p></li>
+<li><p>在 <cite>settings.py</cite> 中设置 <cite>AUTH_USER_MODEL</cite> 的值为自定义的用户模型:</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">AUTH_USER_MODEL</span> <span class="o">=</span> <span class="s1">&#39;myapp.MyUser&#39;</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>设置 User Manager</p></li>
+<li><p>设置 Django Admin Form</p></li>
+</ol>
+</div>
+<div class="section" id="id8">
+<h3>1.10.5. 现有的用户模型<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
+<dl>
+<dt>AbstractBaseUser(models.Model)</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">password</span>
+    <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;password&#39;</span><span class="p">),</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">128</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">last_login</span>
+    <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;last login&#39;</span><span class="p">),</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">null</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">is_active</span>
+    <span class="n">Boolean</span>
+<span class="o">-</span> <span class="n">save</span><span class="p">(</span>\<span class="o">*</span><span class="n">args</span><span class="p">,</span> \<span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">get_username</span><span class="p">():</span>
+<span class="o">-</span> <span class="n">clean</span><span class="p">()</span>
+<span class="o">-</span> <span class="n">natural_key</span><span class="p">()</span>
+<span class="o">-</span> <span class="n">is_anonymous</span>
+    <span class="n">Boolean</span>
+<span class="o">-</span> <span class="n">is_authenticated</span>
+    <span class="n">Boolean</span>
+<span class="o">-</span> <span class="n">set_password</span><span class="p">(</span><span class="n">raw_password</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">check_password</span><span class="p">(</span><span class="n">raw_password</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">set_unusable_password</span><span class="p">()</span>
+<span class="o">-</span> <span class="n">has_usable_password</span><span class="p">()</span>
+<span class="o">-</span> <span class="n">get_session_auth_hash</span><span class="p">()</span>
+</pre></div>
+</div>
+</dd>
+<dt>AbstractUser(AbstractBaseUser, PermissionsMixin)</dt><dd><div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="o">-</span> <span class="n">username</span>
+    <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span>
+        <span class="n">_</span><span class="p">(</span><span class="s1">&#39;username&#39;</span><span class="p">),</span>
+        <span class="n">max_length</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span>
+        <span class="n">unique</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">help_text</span><span class="o">=</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Required. 150 characters or fewer. Letters, digits and @/./+/-/_ only.&#39;</span><span class="p">),</span>
+        <span class="n">validators</span><span class="o">=</span><span class="p">[</span><span class="n">username_validator</span><span class="p">],</span>
+        <span class="n">error_messages</span><span class="o">=</span><span class="p">{</span>
+            <span class="s1">&#39;unique&#39;</span><span class="p">:</span> <span class="n">_</span><span class="p">(</span><span class="s2">&quot;A user with that username already exists.&quot;</span><span class="p">),</span>
+        <span class="p">},</span>
+    <span class="p">)</span>
+<span class="o">-</span> <span class="n">first_name</span>
+    <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;first name&#39;</span><span class="p">),</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">last_name</span>
+    <span class="n">models</span><span class="o">.</span><span class="n">CharField</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;last name&#39;</span><span class="p">),</span> <span class="n">max_length</span><span class="o">=</span><span class="mi">150</span><span class="p">,</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">email</span>
+    <span class="n">models</span><span class="o">.</span><span class="n">EmailField</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;email address&#39;</span><span class="p">),</span> <span class="n">blank</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">is_staff</span>
+    <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span>
+        <span class="n">_</span><span class="p">(</span><span class="s1">&#39;staff status&#39;</span><span class="p">),</span>
+        <span class="n">default</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+        <span class="n">help_text</span><span class="o">=</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;Designates whether the user can log into this admin site.&#39;</span><span class="p">),</span>
+    <span class="p">)</span>
+<span class="o">-</span> <span class="n">is_active</span>
+    <span class="n">models</span><span class="o">.</span><span class="n">BooleanField</span><span class="p">(</span>
+        <span class="n">_</span><span class="p">(</span><span class="s1">&#39;active&#39;</span><span class="p">),</span>
+        <span class="n">default</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
+        <span class="n">help_text</span><span class="o">=</span><span class="n">_</span><span class="p">(</span>
+            <span class="s1">&#39;Designates whether this user should be treated as active.&#39;</span>
+            <span class="s1">&#39;Unselect this instead of deleting accounts.&#39;</span>
+        <span class="p">),</span>
+    <span class="p">)</span>
+<span class="o">-</span> <span class="n">date_joined</span>
+    <span class="n">models</span><span class="o">.</span><span class="n">DateTimeField</span><span class="p">(</span><span class="n">_</span><span class="p">(</span><span class="s1">&#39;date joined&#39;</span><span class="p">),</span> <span class="n">default</span><span class="o">=</span><span class="n">timezone</span><span class="o">.</span><span class="n">now</span><span class="p">)</span>
+<span class="o">-</span> <span class="n">get_full_name</span><span class="p">()</span>
+<span class="o">-</span> <span class="n">get_short_name</span><span class="p">()</span>
+<span class="o">-</span> <span class="n">email_user</span><span class="p">(</span><span class="n">subject</span><span class="p">,</span> <span class="n">message</span><span class="p">,</span> <span class="n">from_email</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</div>
+</div>
 </div>
 
 

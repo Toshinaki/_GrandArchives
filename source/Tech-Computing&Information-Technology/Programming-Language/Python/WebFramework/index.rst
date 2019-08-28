@@ -20,7 +20,7 @@ Python 中 web framework 的大致结构:
 
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 3
     :glob:
 
     Django/index

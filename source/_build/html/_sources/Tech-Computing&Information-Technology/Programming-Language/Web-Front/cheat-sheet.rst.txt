@@ -16,6 +16,11 @@ CSS
 - `@-rules <../../../_static/Tech-front/at-rules.html>`_
 - `Vertical align <../../../_static/Tech-front/imgs/vertical-align.png>`_
 
+Javascript
+-----------
+
+- `Keyboard ASCII code <../../../_static/Tech-front/imgs/ascii-codes-table.png>`_
+
 others
 -------
 

@@ -8,4 +8,5 @@ Python
     :maxdepth: 2
     :glob:
 
-    WebFrameworks/index
+    WebFramework/index
+    WebProgramming/index

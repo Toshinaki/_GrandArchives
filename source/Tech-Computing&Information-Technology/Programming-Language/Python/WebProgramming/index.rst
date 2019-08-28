@@ -5,7 +5,10 @@ Python Web Programming
 Python
 
 .. toctree::
-    :maxdepth: 2
+    :maxdepth: 3
+    :numbered: 3
     :glob:
 
-    WebSpider <webspider>
+    WebSpider Basics <webspider>
+    Web Programming Libraries <weblibs>
+    Scrapy <scrapy>

@@ -10,7 +10,7 @@
   <meta name="book-type"    content="Manual"/>
 
   
-  <title>Python Spider &mdash; gate-of-babylon  documentation</title>
+  <title>1. WebSpider Basics &mdash; gate-of-babylon  documentation</title>
   
 
   
@@ -40,7 +40,7 @@
         <link rel="search" title="Search" href="../../../../search.html"/>
     <link rel="top" title="gate-of-babylon  documentation" href="#"/>
         <link rel="up" title="Python Web Programming" href="index.html"/>
-        <link rel="next" title="Javascript" href="../../Javascript/index.html"/>
+        <link rel="next" title="2. Python 网络编程库" href="weblibs.html"/>
         <link rel="prev" title="Python Web Programming" href="index.html"/> 
   <script src="../../../../_static/js/modernizr.min.js"></script>
 </head>
@@ -137,17 +137,76 @@
 <li class="toctree-l3 current"><a class="reference internal" href="../index.html">Python</a><ul class="current">
 <li class="toctree-l4"><a class="reference internal" href="../WebFramework/index.html">Python Web Framworks</a><ul>
 <li class="toctree-l5"><a class="reference internal" href="../WebFramework/Django/index.html">Django</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="../WebFramework/Django/flow.html">Workflow of Django</a></li>
-<li class="toctree-l6"><a class="reference internal" href="../WebFramework/Django/intro.html">Django Basics</a><ul>
-<li class="toctree-l7"><a class="reference internal" href="../WebFramework/Django/intro.html#mvc-mvt">MVC &amp; MVT</a></li>
-<li class="toctree-l7"><a class="reference internal" href="../WebFramework/Django/intro.html#dtl">DTL 模板语言</a><ul>
-<li class="toctree-l8"><a class="reference internal" href="../WebFramework/Django/intro.html#id1">语法</a></li>
-<li class="toctree-l8"><a class="reference internal" href="../WebFramework/Django/intro.html#id8">设计理念</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../WebFramework/Django/flow.html">1. Workflow of Django</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../WebFramework/Django/flow.html#id1">1.1. 安装</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../WebFramework/Django/flow.html#project">1.2. 创建 project</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../WebFramework/Django/flow.html#id2">1.3. 配置数据库</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../WebFramework/Django/flow.html#app">1.4. 创建 app</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../WebFramework/Django/flow.html#id3">1.5. 迁移数据库</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../WebFramework/Django/flow.html#superuser">1.6. 创建后台管理用的 superuser</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../WebFramework/Django/flow.html#id4">1.7. 启动测试服务器</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../WebFramework/Django/flow.html#id5">1.8. 设置模板路径</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../WebFramework/Django/flow.html#id6">1.9. 设置静态文件路径</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../WebFramework/Django/flow.html#id7">1.10. 扩展用户模型</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../WebFramework/Django/flow.html#proxy-model">1.10.1. proxy model</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../WebFramework/Django/flow.html#relationship">1.10.2. 1-1 Relationship</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../WebFramework/Django/flow.html#abstractuser">1.10.3. 子类化 <cite>AbstractUser</cite></a></li>
+<li class="toctree-l8"><a class="reference internal" href="../WebFramework/Django/flow.html#abstractbaseuser">1.10.4. 子类化 <cite>AbstractBaseUser</cite></a></li>
+<li class="toctree-l8"><a class="reference internal" href="../WebFramework/Django/flow.html#id8">1.10.5. 现有的用户模型</a></li>
 </ul>
 </li>
-<li class="toctree-l7"><a class="reference internal" href="../WebFramework/Django/intro.html#orm">ORM</a><ul>
-<li class="toctree-l8"><a class="reference internal" href="../WebFramework/Django/intro.html#model">Model</a></li>
-<li class="toctree-l8"><a class="reference internal" href="../WebFramework/Django/intro.html#field">Field</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../WebFramework/Django/intro.html">2. Django Basics</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../WebFramework/Django/intro.html#mvc-mvt">2.1. MVC &amp; MVT</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../WebFramework/Django/model.html">3. Model</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../WebFramework/Django/model.html#model">3.1. Model</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../WebFramework/Django/model.html#id1">3.1.1. 定义模型</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../WebFramework/Django/model.html#id2">3.1.2. 使用模型</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="../WebFramework/Django/model.html#field">3.2. Field</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../WebFramework/Django/model.html#id3">3.2.1. 通用字段参数</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../WebFramework/Django/model.html#id4">3.2.2. 字段类型</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../WebFramework/Django/model.html#id5">3.2.3. 关联关系字段</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../WebFramework/Django/template.html">4. Template</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../WebFramework/Django/template.html#id1">4.1. 语法</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../WebFramework/Django/template.html#id2">4.1.1. 变量</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../WebFramework/Django/template.html#tag">4.1.2. tag 标签</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../WebFramework/Django/template.html#id4">4.1.3. 自定义 tag</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../WebFramework/Django/template.html#filter">4.1.4. filter 过滤器</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../WebFramework/Django/template.html#id5">4.1.5. 自定义 filter</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../WebFramework/Django/template.html#id6">4.1.6. 模板引用</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../WebFramework/Django/template.html#id7">4.1.7. 模板继承</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../WebFramework/Django/template.html#id8">4.1.8. 静态文件路径</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="../WebFramework/Django/template.html#id9">4.2. 设计理念</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../WebFramework/Django/extensions.html">5. Extensions</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../WebFramework/Django/extensions.html#install">5.1. Install</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../WebFramework/Django/extensions.html#settings-py">5.2. <cite>settings.py</cite></a></li>
+<li class="toctree-l7"><a class="reference internal" href="../WebFramework/Django/extensions.html#urls-py">5.3. <cite>urls.py</cite></a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../WebFramework/Django/extensions.html#url">5.3.1. 默认 URL</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../WebFramework/Django/extensions.html#id1">5.3.2. 其他设置</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../WebFramework/Django/extensions.html#templates">5.3.3. 默认 templates</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../WebFramework/Django/extensions.html#id2">5.3.4. 添加社交账号登录</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../WebFramework/Django/qa.html">6. Q &amp; A</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../WebFramework/Django/qa.html#static-url-static-root-and-staticfiles-dirs">6.1. 区别: STATIC_URL, STATIC_ROOT AND STATICFILES_DIRS</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../WebFramework/Django/qa.html#static-root">6.1.1. <cite>STATIC_ROOT</cite></a></li>
+<li class="toctree-l8"><a class="reference internal" href="../WebFramework/Django/qa.html#staticfiles-dirs">6.1.2. <cite>STATICFILES_DIRS</cite></a></li>
+<li class="toctree-l8"><a class="reference internal" href="../WebFramework/Django/qa.html#static-url">6.1.3. <cite>STATIC_URL</cite></a></li>
 </ul>
 </li>
 </ul>
@@ -157,68 +216,111 @@
 </ul>
 </li>
 <li class="toctree-l4 current"><a class="reference internal" href="index.html">Python Web Programming</a><ul class="current">
-<li class="toctree-l5 current"><a class="current reference internal" href="#">WebSpider</a><ul>
-<li class="toctree-l6"><a class="reference internal" href="#introduction">Introduction</a><ul>
-<li class="toctree-l7"><a class="reference internal" href="#id1">什么是爬虫</a></li>
-<li class="toctree-l7"><a class="reference internal" href="#http-https">HTTP/HTTPS</a><ul>
-<li class="toctree-l8"><a class="reference internal" href="#request-methods">request methods</a></li>
-<li class="toctree-l8"><a class="reference internal" href="#id2">常见请求头</a></li>
-<li class="toctree-l8"><a class="reference internal" href="#id3">常见响应状态码</a></li>
-<li class="toctree-l8"><a class="reference internal" href="#id4">常见响应头</a></li>
+<li class="toctree-l5 current"><a class="current reference internal" href="#">1. WebSpider Basics</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#id1">1.1. 什么是爬虫</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#http-https">1.2. HTTP/HTTPS</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#request-methods">1.2.1. request methods</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id2">1.2.2. 常见请求头</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id3">1.2.3. 常见响应状态码</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id4">1.2.4. 常见响应头</a></li>
 </ul>
 </li>
-<li class="toctree-l7"><a class="reference internal" href="#uri-url">URI &amp; URL</a></li>
-<li class="toctree-l7"><a class="reference internal" href="#session-cookies">Session &amp; Cookies</a><ul>
-<li class="toctree-l8"><a class="reference internal" href="#cookies">Cookies 属性</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#uri-url">1.3. URI &amp; URL</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#id5">1.3.1. 标准格式</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id6">1.3.2. 完整格式</a></li>
 </ul>
 </li>
-<li class="toctree-l7"><a class="reference internal" href="#proxy-server">Proxy server</a><ul>
-<li class="toctree-l8"><a class="reference internal" href="#id5">分类</a></li>
-<li class="toctree-l8"><a class="reference internal" href="#id6">常见代理设置</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#session-cookies">1.4. Session &amp; Cookies</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#session">1.4.1. <strong>Session</strong> 在服务端保存用户的会话信息</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#cookies">1.4.2. <strong>Cookies</strong> 在客户端保存登录的凭证</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id7">1.4.3. Cookies 属性</a></li>
 </ul>
 </li>
-</ul>
-</li>
-<li class="toctree-l6"><a class="reference internal" href="#python">Python 爬虫库</a><ul>
-<li class="toctree-l7"><a class="reference internal" href="#urllib">urllib</a><ul>
-<li class="toctree-l8"><a class="reference internal" href="#request">request</a></li>
-<li class="toctree-l8"><a class="reference internal" href="#error">error</a></li>
-<li class="toctree-l8"><a class="reference internal" href="#parse">parse</a></li>
-<li class="toctree-l8"><a class="reference internal" href="#robots">robots</a></li>
-</ul>
-</li>
-<li class="toctree-l7"><a class="reference internal" href="#requests">requests</a><ul>
-<li class="toctree-l8"><a class="reference internal" href="#get">GET</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#proxy-server">1.5. Proxy server</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#id8">1.5.1. 分类</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#id9">1.5.2. 常见代理设置</a></li>
 </ul>
 </li>
 </ul>
 </li>
-<li class="toctree-l6"><a class="reference internal" href="#scrapy">Scrapy</a><ul>
-<li class="toctree-l7"><a class="reference internal" href="#intro">Intro</a><ul>
-<li class="toctree-l8"><a class="reference internal" href="#id7">架构</a></li>
-<li class="toctree-l8"><a class="reference internal" href="#id8">数据流</a></li>
-<li class="toctree-l8"><a class="reference internal" href="#id9">项目结构</a></li>
+<li class="toctree-l5"><a class="reference internal" href="weblibs.html">2. Web Programming Libraries</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="weblibs.html#urllib">2.1. urllib</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="weblibs.html#request">2.1.1. request</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="weblibs.html#urlopen">urlopen</a></li>
+<li class="toctree-l8"><a class="reference internal" href="weblibs.html#id1">Request</a></li>
+<li class="toctree-l8"><a class="reference internal" href="weblibs.html#basehandler">BaseHandler</a></li>
+<li class="toctree-l8"><a class="reference internal" href="weblibs.html#openerdirector">OpenerDirector</a></li>
 </ul>
 </li>
-<li class="toctree-l7"><a class="reference internal" href="#id10">Scrapy 使用</a></li>
-<li class="toctree-l7"><a class="reference internal" href="#selector">Selector</a><ul>
-<li class="toctree-l8"><a class="reference internal" href="#id11">创建 selector</a></li>
-<li class="toctree-l8"><a class="reference internal" href="#id14">使用 selector 获取结果</a></li>
-<li class="toctree-l8"><a class="reference internal" href="#css">CSS 选择器扩展</a></li>
+<li class="toctree-l7"><a class="reference internal" href="weblibs.html#error">2.1.2. error</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="weblibs.html#urlerror">URLError</a></li>
+<li class="toctree-l8"><a class="reference internal" href="weblibs.html#httperror">HTTPError</a></li>
 </ul>
 </li>
-<li class="toctree-l7"><a class="reference internal" href="#spider">Spider</a></li>
-<li class="toctree-l7"><a class="reference internal" href="#spiders">通用 Spiders</a><ul>
-<li class="toctree-l8"><a class="reference internal" href="#crawlspider">CrawlSpider</a></li>
-<li class="toctree-l8"><a class="reference internal" href="#xmlfeedspider">XMLFeedSpider</a></li>
-<li class="toctree-l8"><a class="reference internal" href="#csvfeedspider">CSVFeedSpider</a></li>
-<li class="toctree-l8"><a class="reference internal" href="#sitemapspider">SitemapSpider</a></li>
+<li class="toctree-l7"><a class="reference internal" href="weblibs.html#parse">2.1.3. parse</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="weblibs.html#urlparse-urlunparse">urlparse &amp; urlunparse</a></li>
+<li class="toctree-l8"><a class="reference internal" href="weblibs.html#urlsplit-urlunsplit-urljoin">urlsplit, urlunsplit &amp; urljoin</a></li>
+<li class="toctree-l8"><a class="reference internal" href="weblibs.html#urlencode-parse-qs-parse-qsl">urlencode, parse_qs &amp; parse_qsl</a></li>
+<li class="toctree-l8"><a class="reference internal" href="weblibs.html#quote-unquote">quote &amp; unquote</a></li>
 </ul>
 </li>
-<li class="toctree-l7"><a class="reference internal" href="#downloader-middleware">Downloader Middleware</a><ul>
-<li class="toctree-l8"><a class="reference internal" href="#id15">自定义 Downloader Middleware</a></li>
+<li class="toctree-l7"><a class="reference internal" href="weblibs.html#robots">2.1.4. robots</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="weblibs.html#id2">Robots 协议</a></li>
+<li class="toctree-l8"><a class="reference internal" href="weblibs.html#robotfileparser">RobotFileParser</a></li>
 </ul>
 </li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="weblibs.html#requests">2.2. requests</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="weblibs.html#get">2.2.1. GET</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="scrapy.html">3. Scrapy</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="scrapy.html#intro">3.1. Intro</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="scrapy.html#id1">3.1.1. 架构</a></li>
+<li class="toctree-l7"><a class="reference internal" href="scrapy.html#id2">3.1.2. 数据流</a></li>
+<li class="toctree-l7"><a class="reference internal" href="scrapy.html#id3">3.1.3. 项目结构</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="scrapy.html#id4">3.2. Scrapy 使用</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="scrapy.html#id5">3.2.1. 创建项目</a></li>
+<li class="toctree-l7"><a class="reference internal" href="scrapy.html#spider">3.2.2. 创建 spider</a></li>
+<li class="toctree-l7"><a class="reference internal" href="scrapy.html#item">3.2.3. 创建 Item</a></li>
+<li class="toctree-l7"><a class="reference internal" href="scrapy.html#parse-response">3.2.4. 在 <cite>parse()</cite> 中解析 Response</a></li>
+<li class="toctree-l7"><a class="reference internal" href="scrapy.html#parse-item">3.2.5. 在 <cite>parse()</cite> 中实例化自定义 Item 类</a></li>
+<li class="toctree-l7"><a class="reference internal" href="scrapy.html#parse">3.2.6. 在 <cite>parse()</cite> 中创建下一个请求</a></li>
+<li class="toctree-l7"><a class="reference internal" href="scrapy.html#id6">3.2.7. 在命令行运行定义的 spider</a></li>
+<li class="toctree-l7"><a class="reference internal" href="scrapy.html#id7">3.2.8. 保存抓取结果到文件</a></li>
+<li class="toctree-l7"><a class="reference internal" href="scrapy.html#item-pipeline">3.2.9. 使用 Item Pipeline 进行更复杂的操作</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="scrapy.html#selector">3.3. Selector</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="scrapy.html#id8">3.3.1. 创建 selector</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="scrapy.html#id9">Selector</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="scrapy.html#id10">3.3.2. 使用 selector 获取结果</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="scrapy.html#selectorlist">SelectorList</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="scrapy.html#css">3.3.3. CSS 选择器扩展</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="scrapy.html#id11">3.4. Spider</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="scrapy.html#id12">3.4.1. Spider</a></li>
+<li class="toctree-l7"><a class="reference internal" href="scrapy.html#spiders">3.4.2. 通用 Spiders</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="scrapy.html#crawlspider">CrawlSpider</a></li>
+<li class="toctree-l8"><a class="reference internal" href="scrapy.html#xmlfeedspider">XMLFeedSpider</a></li>
+<li class="toctree-l8"><a class="reference internal" href="scrapy.html#csvfeedspider">CSVFeedSpider</a></li>
+<li class="toctree-l8"><a class="reference internal" href="scrapy.html#sitemapspider">SitemapSpider</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="scrapy.html#downloader-middleware">3.5. Downloader Middleware</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="scrapy.html#id13">3.5.1. 自定义 Downloader Middleware</a></li>
 </ul>
 </li>
 </ul>
@@ -930,7 +1032,7 @@
           <li><a href="../../index.html">Programming Languages</a> &raquo;</li>
           <li><a href="../index.html">Python</a> &raquo;</li>
           <li><a href="index.html">Python Web Programming</a> &raquo;</li>
-    <li>Python Spider</li>
+    <li>1. WebSpider Basics</li>
       <li class="wy-breadcrumbs-aside">
             <a href="../../../../_sources/Tech-Computing&amp;Information-Technology/Programming-Language/Python/WebProgramming/webspider.rst.txt" rel="nofollow">
                 <span class="fa fa-binoculars"></span>&#32;View page source
@@ -940,7 +1042,7 @@
   
     <hr class="before-stealth-btn clear-both" />
     
-      <a href="../../Javascript/index.html" class="stealth-btn float-right" title="Accesskey Alt(+Shift)+n">
+      <a href="weblibs.html" class="stealth-btn float-right" title="Accesskey Alt(+Shift)+n">
           <span class="stealth-btn-text">Next</span>
           <span class="fa fa-arrow-circle-right"></span>
       </a>
@@ -956,12 +1058,10 @@
           <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
            <div itemprop="articleBody" class="toBeIndexed">
             
-  <div class="section" id="python-spider">
-<h1>Python Spider<a class="headerlink" href="#python-spider" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="introduction">
-<h2>Introduction<a class="headerlink" href="#introduction" title="Permalink to this headline">¶</a></h2>
+  <div class="section" id="webspider-basics">
+<h1>1. WebSpider Basics<a class="headerlink" href="#webspider-basics" title="Permalink to this headline">¶</a></h1>
 <div class="section" id="id1">
-<h3>什么是爬虫<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h3>
+<h2>1.1. 什么是爬虫<a class="headerlink" href="#id1" title="Permalink to this headline">¶</a></h2>
 <p>例子:</p>
 <ol class="arabic simple">
 <li><p>搜索引擎</p></li>
@@ -975,14 +1075,14 @@
 </ul>
 </div>
 <div class="section" id="http-https">
-<h3>HTTP/HTTPS<a class="headerlink" href="#http-https" title="Permalink to this headline">¶</a></h3>
+<h2>1.2. HTTP/HTTPS<a class="headerlink" href="#http-https" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
 <li><p>HTTP: HyperText Transfer Protocol, 超文本传输协议, 用于发布和接收 HTML 网页; 服务器默认端口为 80</p></li>
 <li><p>HTTPS: HTTP over Secure Socket Layer, 在 HTTP 的基础上加入了 SSL 层; 服务器默认端口是 443</p></li>
 </ul>
 <a class="reference internal image-reference" href="../../../../_images/HTTP.jpg"><img alt="../../../../_images/HTTP.jpg" src="../../../../_images/HTTP.jpg" style="width: 422.40000000000003px; height: 520.8000000000001px;" /></a>
 <div class="section" id="request-methods">
-<h4>request methods<a class="headerlink" href="#request-methods" title="Permalink to this headline">¶</a></h4>
+<h3>1.2.1. request methods<a class="headerlink" href="#request-methods" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>GET</p></li>
 <li><p>POST</p></li>
@@ -996,7 +1096,7 @@
 </ul>
 </div>
 <div class="section" id="id2">
-<h4>常见请求头<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h4>
+<h3>1.2.2. 常见请求头<a class="headerlink" href="#id2" title="Permalink to this headline">¶</a></h3>
 <img alt="../../../../_images/http_request.jpg" src="../../../../_images/http_request.jpg" />
 <table class="colwidths-auto docutils align-center">
 <thead>
@@ -1083,7 +1183,7 @@
 </table>
 </div>
 <div class="section" id="id3">
-<h4>常见响应状态码<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h4>
+<h3>1.2.3. 常见响应状态码<a class="headerlink" href="#id3" title="Permalink to this headline">¶</a></h3>
 <table class="colwidths-auto docutils align-center">
 <thead>
 <tr class="row-odd"><th class="head"><p>状态码</p></th>
@@ -1113,7 +1213,7 @@
 </table>
 </div>
 <div class="section" id="id4">
-<h4>常见响应头<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h4>
+<h3>1.2.4. 常见响应头<a class="headerlink" href="#id4" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><strong>Date</strong>: 标识响应产生的时间</p></li>
 <li><p><strong>Last-Modified</strong>: 指定资源的最后修改时间</p></li>
@@ -1126,10 +1226,11 @@
 </div>
 </div>
 <div class="section" id="uri-url">
-<h3>URI &amp; URL<a class="headerlink" href="#uri-url" title="Permalink to this headline">¶</a></h3>
+<h2>1.3. URI &amp; URL<a class="headerlink" href="#uri-url" title="Permalink to this headline">¶</a></h2>
 <p>Uniform Resource Identifier, 统一资源标志符; Uniform Resource Locator, 统一资源定位符</p>
 <p>URL 是 URI 的子集; URI 还包括一个子类叫作 <strong>URN</strong>, Universal Resource Name, 即统一资源名称; URN 只命名资源而不指定如何定位资源, 比如 <cite>urn:isbn:0451450523</cite> 指定了一本书的 ISBN, 可以唯一标识这本书, 但是没有指定到哪里定位这本书</p>
-<p><strong>标准格式</strong>:</p>
+<div class="section" id="id5">
+<h3>1.3.1. 标准格式<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h3>
 <p><cite>[schema]://[host]:[port]/[path]?[query]#[fragment]</cite></p>
 <ul class="simple">
 <li><p>schema: 传送协议</p></li>
@@ -1137,42 +1238,41 @@
 <li><p>authority: 访问资源需要的凭证信息 (可省略)</p></li>
 <li><p>host: 服务器, (通常为域名, 有时为IP地址)</p></li>
 <li><p>port: 端口号, (以数字方式表示, 若为默认值可省略)</p></li>
-<li><p>path: 路径, (以“/”字符区别路径中的每一个目录名称)</p></li>
-<li><p>query: 查询, (GET模式的窗体参数, 以“?”字符为起点, 每个参数以“&amp;”隔开, 再以“=”分开参数名称与数据, 通常以UTF8的URL编码, 避开字符冲突的问题)</p></li>
+<li><p>path: 路径, (以 “/” 字符区别路径中的每一个目录名称)</p></li>
+<li><p>query: 查询, (GET模式的窗体参数, 以 “?” 字符为起点, 每个参数以 “&amp;” 隔开, 再以 “=” 分开参数名称与数据, 通常以UTF8的URL编码, 避开字符冲突的问题)</p></li>
 <li><p>fragment: 片段, 以 “#” 字符为起点</p></li>
 </ul>
-<p><strong>完整格式</strong>:</p>
+</div>
+<div class="section" id="id6">
+<h3>1.3.2. 完整格式<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h3>
 <p><cite>[协议类型]://[访问资源需要的凭证信息]&#64;[服务器地址]:[端口号]/[资源层级UNIX文件路径][文件名]?[查询]#[片段ID]</cite></p>
 <p><cite>scheme:[//authority]path[?query][#fragment]</cite></p>
 </div>
+</div>
 <div class="section" id="session-cookies">
-<h3>Session &amp; Cookies<a class="headerlink" href="#session-cookies" title="Permalink to this headline">¶</a></h3>
+<h2>1.4. Session &amp; Cookies<a class="headerlink" href="#session-cookies" title="Permalink to this headline">¶</a></h2>
 <p>HTTP 的 <strong>无状态</strong> 是指 HTTP 协议对事务处理没有记忆能力, 即服务器不知道客户端是什么状态</p>
 <p>向服务器发送请求后, 服务器解析请求, 然后返回对应的响应; 服务器负责完成这个过程, 而且这个过程是完全独立的, 服务器不会记录前后状态的变化, 也就是缺少状态记录</p>
 <p>这意味着如果后续需要处理前面的信息, 则必须重传, 这导致需要额外传递一些前面的重复请求, 才能获取后续响应</p>
 <p>为了保持前后状态, 需要用到 session 和 cookies</p>
-<ul>
-<li><p><strong>Session</strong> 在服务端保存用户的会话信息</p>
-<blockquote>
-<div><p>会话对象用来存储特定用户会话所需的属性及配置信息</p>
+<div class="section" id="session">
+<h3>1.4.1. <strong>Session</strong> 在服务端保存用户的会话信息<a class="headerlink" href="#session" title="Permalink to this headline">¶</a></h3>
+<p>会话对象用来存储特定用户会话所需的属性及配置信息</p>
 <p>当用户在应用程序的 Web 页之间跳转时, 存储在会话对象中的变量将不会丢失</p>
 <p>服务器会自动创建会话对象; 当会话过期或被放弃后, 服务器将终止该会话</p>
-</div></blockquote>
-</li>
-<li><p><strong>Cookies</strong> 在客户端保存登录的凭证</p>
-<blockquote>
-<div><p>Cookies 指某些网站为了辨别用户身份, 进行会话跟踪而存储在用户本地终端上的数据</p>
-<img alt="Tech-Computing&amp;Information-Technology\Programming-Language\Python\WebProgramming\imgs/cookie.jpg:align:right" src="Tech-Computing&amp;Information-Technology\Programming-Language\Python\WebProgramming\imgs/cookie.jpg:align:right" />
+</div>
+<div class="section" id="cookies">
+<h3>1.4.2. <strong>Cookies</strong> 在客户端保存登录的凭证<a class="headerlink" href="#cookies" title="Permalink to this headline">¶</a></h3>
+<p>Cookies 指某些网站为了辨别用户身份, 进行会话跟踪而存储在用户本地终端上的数据</p>
+<img alt="../../../../_images/cookie.jpg" src="../../../../_images/cookie.jpg" />
 <ol class="arabic simple">
 <li><p>当客户端第一次请求服务器时, 服务器会返回一个响应头中带有 Set-Cookie 字段的响应给客户端, 用来标记是哪一个用户, 客户端浏览器会把 Cookies 保存起来</p></li>
 <li><p>当浏览器下一次再请求该网站时, 浏览器会把此 Cookies 放到请求头一起提交给服务器, Cookies 携带了会话 ID 信息</p></li>
 <li><p>服务器检查该 Cookies 即可找到对应的会话是什么, 然后再判断会话来以此来辨认用户状态</p></li>
 </ol>
-</div></blockquote>
-</li>
-</ul>
-<div class="section" id="cookies">
-<h4>Cookies 属性<a class="headerlink" href="#cookies" title="Permalink to this headline">¶</a></h4>
+</div>
+<div class="section" id="id7">
+<h3>1.4.3. Cookies 属性<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p><strong>Name</strong>: 即该 Cookie 的名称； Cookie 一旦创建, 名称便不可更改</p></li>
 <li><p><strong>Value</strong>: 即该 Cookie 的值; 如果值为 Unicode 字符, 需要为字符编码; 如果值为二进制数据, 则需要使用 BASE64 编码</p></li>
@@ -1186,11 +1286,11 @@
 </div>
 </div>
 <div class="section" id="proxy-server">
-<h3>Proxy server<a class="headerlink" href="#proxy-server" title="Permalink to this headline">¶</a></h3>
+<h2>1.5. Proxy server<a class="headerlink" href="#proxy-server" title="Permalink to this headline">¶</a></h2>
 <p>为了避免同一个 IP 访问过于频繁, 使用代理伪装 IP</p>
 <p>代理服务器, 代理网络用户去取得网络信息</p>
-<div class="section" id="id5">
-<h4>分类<a class="headerlink" href="#id5" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id8">
+<h3>1.5.1. 分类<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h3>
 <ul>
 <li><p>根据协议区分:</p>
 <blockquote>
@@ -1217,879 +1317,13 @@
 </li>
 </ul>
 </div>
-<div class="section" id="id6">
-<h4>常见代理设置<a class="headerlink" href="#id6" title="Permalink to this headline">¶</a></h4>
+<div class="section" id="id9">
+<h3>1.5.2. 常见代理设置<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h3>
 <ul class="simple">
 <li><p>使用网上的免费代理, 最好使用高匿代理, 使用前抓取下来筛选一下可用代理, 也可以进一步维护一个代理池</p></li>
 <li><p>使用付费代理服务, 互联网上存在许多代理商, 可以付费使用, 质量比免费代理好很多</p></li>
 <li><p>ADSL 拨号, 拨一次号换一次 IP, 稳定性高, 也是一种比较有效的解决方案</p></li>
 </ul>
-</div>
-</div>
-</div>
-<div class="section" id="python">
-<h2>Python 爬虫库<a class="headerlink" href="#python" title="Permalink to this headline">¶</a></h2>
-<div class="section" id="urllib">
-<h3>urllib<a class="headerlink" href="#urllib" title="Permalink to this headline">¶</a></h3>
-<p>Python 内置的 HTTP 请求库, 包含 4 个模块:</p>
-<ul class="simple">
-<li><p><strong>request</strong>: 最基本的 HTTP 请求模块, 可以用来模拟发送请求</p></li>
-<li><p><strong>error</strong>: 异常处理模块, 如果出现请求错误, 可以捕获异常, 然后进行重试或其他操作以保证程序不会意外终止</p></li>
-<li><p><strong>parse</strong>: 一个工具模块, 提供了许多 URL 处理方法, 比如拆分, 解析, 合并等</p></li>
-<li><p><strong>robotparser</strong>: 主要用来识别网站的 robots.txt 文件, 然后判断哪些网站可以爬, 哪些网站不可以爬; 用得比较少</p></li>
-</ul>
-<div class="section" id="request">
-<h4>request<a class="headerlink" href="#request" title="Permalink to this headline">¶</a></h4>
-<p>urllib.request 模块提供了最基本的构造 HTTP 请求的方法, 利用它可以模拟浏览器的一个请求发起过程, 同时它还带有处理授权验证（authentication) , 重定向（redirection), 浏览器 Cookies 以及其他内容</p>
-<dl>
-<dt>urllib.request.urlopen(url, data=None, [timeout, ]*, cafile=None, capath=None, cadefault=False, context=None)</dt><dd><p>打开 URL 或 <cite>Request</cite> 对象; urllib.request 模块使用 HTTP/1.1 并在 HTTP 头中包括了 Connection:close</p>
-<dl>
-<dt>PARAMS:</dt><dd><ul>
-<li><p>url: URL 或 <cite>Request</cite> 对象</p></li>
-<li><p>data: 发送给服务端的数据; 未指定则使用 GET, 否则使用 POST; 必须为 bytes 类型</p>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="nb">bytes</span><span class="p">(</span><span class="n">urllib</span><span class="o">.</span><span class="n">parse</span><span class="o">.</span><span class="n">urlencode</span><span class="p">({</span><span class="s1">&#39;word&#39;</span><span class="p">:</span> <span class="s1">&#39;hello&#39;</span><span class="p">}),</span> <span class="n">encoding</span><span class="o">=</span><span class="s1">&#39;utf8&#39;</span><span class="p">)</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s1">&#39;http://httpbin.org/post&#39;</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-<li><p>可选的 <cite>timeout</cite> 指定了阻塞操作 (如尝试连接) 的以秒为单位的 timeout; 只对 HTTP, HTTPS &amp; FTP 连接有效; 默认为 <cite>socket._GLOBAL_DEFAULT_TIMEOUT</cite>; 超时则抛出 <cite>urllib.error.URLError</cite> 异常</p>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">try</span><span class="p">:</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s1">&#39;http://httpbin.org/get&#39;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
-<span class="k">except</span> <span class="n">urllib</span><span class="o">.</span><span class="n">error</span><span class="o">.</span><span class="n">URLError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">reason</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">timeout</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;TIME OUT&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-<li><p>context: <cite>ssl.SSLContext</cite> 实例, 用于指定 SSL 设置</p></li>
-<li><p><cite>cafile</cite> &amp; <cite>capath</cite> (optional): 指定了用于 HTTPS 请求的 CA certificates; <cite>cafile</cite> 包含了 CA certificates 的文件路径; <cite>capath</cite> 指向含有 hashed certificate 文件的路径</p></li>
-<li><p><cite>cadefault</cite>: 已弃用</p></li>
-</ul>
-</dd>
-<dt>RETURN:</dt><dd><p>返回 <cite>http.client.HTTPResponse</cite> 对象 (类文件句柄对象), 可用作 context manager; 属性和方法:</p>
-<blockquote>
-<div><ul class="simple">
-<li><p><cite>status</cite>: 状态码</p></li>
-<li><p><cite>geturl()</cite>: 返回资源的 URL, 可用于判断是否有重定向</p></li>
-<li><p><cite>info()</cite>: return the meta-information of the page, such as headers, in the form of an email.message_from_string() instance</p></li>
-<li><p><cite>getheaders()</cite>: 返回所有 headers</p></li>
-<li><p><cite>getheader(str)</cite>: 返回指定 header</p></li>
-<li><p><cite>getcode()</cite>: 返回 HTTP 状态码</p></li>
-<li><p><cite>read(size)</cite></p></li>
-<li><p><cite>readline()</cite></p></li>
-<li><p><cite>readlines()</cite></p></li>
-</ul>
-</div></blockquote>
-</dd>
-</dl>
-</dd>
-<dt>urllib.request.Request(url, data=None, headers={}, origin_req_host=None, unverifiable=False, method=None)</dt><dd><p>构造 <cite>Reques</cite> 对象</p>
-<dl class="simple">
-<dt>PARAMS:</dt><dd><ul class="simple">
-<li><p>url: 请求的 URL</p></li>
-<li><p>data: 发送给服务端的数据; 必须为 bytes 类型</p></li>
-<li><p>headers: a dict; 请求头; 也可通过 <cite>add_header()</cite> 方法添加</p></li>
-<li><p>origin_req_host: 请求方的 host 名称或者 IP 地址</p></li>
-<li><p>unverifiable: 请求是否是无法验证的</p></li>
-<li><p>method: 请求使用的方法</p></li>
-</ul>
-</dd>
-</dl>
-</dd>
-<dt>urllib.request.BaseHandler</dt><dd><p>Handlers 是对应各种复杂操作的处理器, BaseHandler 类是所有其他 Handler 的父类, 提供了最基本的方法</p>
-</dd>
-<dt>urllib.request.OpenerDirector</dt><dd><p>实现更加底层的操作</p>
-</dd>
-</dl>
-<div class="admonition- admonition">
-<p class="admonition-title">例</p>
-<ul>
-<li><p><strong>验证</strong></p>
-<blockquote>
-<div><p>网站在打开时就会弹出提示框, 提示输入用户名和密码, 验证成功后才能查看页面</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">HTTPPasswordMgrWithDefaultRealm</span><span class="p">,</span> <span class="n">HTTPBasicAuthHandler</span><span class="p">,</span> <span class="n">build_opener</span>
-<span class="kn">from</span> <span class="nn">urllib.error</span> <span class="kn">import</span> <span class="n">URLError</span>
-
-<span class="n">username</span> <span class="o">=</span> <span class="s1">&#39;username&#39;</span>
-<span class="n">password</span> <span class="o">=</span> <span class="s1">&#39;password&#39;</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;http://test.com&#39;</span>
-
-<span class="n">p</span> <span class="o">=</span> <span class="n">HTTPPasswordMgrWithDefaultRealm</span><span class="p">()</span>
-<span class="c1"># 添加用户名和密码</span>
-<span class="n">p</span><span class="o">.</span><span class="n">add_password</span><span class="p">(</span><span class="bp">None</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">username</span><span class="p">,</span> <span class="n">password</span><span class="p">)</span>
-<span class="c1"># 实例化</span>
-<span class="n">auth_handler</span> <span class="o">=</span> <span class="n">HTTPBasicAuthHandler</span><span class="p">(</span><span class="n">p</span><span class="p">)</span>
-<span class="c1"># 构建 Opener</span>
-<span class="n">opener</span> <span class="o">=</span> <span class="n">build_opener</span><span class="p">(</span><span class="n">auth_handler</span><span class="p">)</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">result</span> <span class="o">=</span> <span class="n">opener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-    <span class="n">html</span> <span class="o">=</span> <span class="n">result</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">html</span><span class="p">)</span>
-<span class="k">except</span> <span class="n">URLError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">reason</span><span class="p">)</span>
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-<li><p><strong>代理</strong></p>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">urllib.error</span> <span class="kn">import</span> <span class="n">URLError</span>
-<span class="kn">from</span> <span class="nn">urllib.request</span> <span class="kn">import</span> <span class="n">ProxyHandler</span><span class="p">,</span> <span class="n">build_opener</span>
-
-<span class="c1"># 在本地 9743 端口上搭建了一个代理</span>
-<span class="n">proxy_handler</span> <span class="o">=</span> <span class="n">ProxyHandler</span><span class="p">({</span>
-    <span class="s1">&#39;http&#39;</span><span class="p">:</span> <span class="s1">&#39;http://127.0.0.1:9743&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;https&#39;</span><span class="p">:</span> <span class="s1">&#39;https://127.0.0.1:9743&#39;</span>
-<span class="p">})</span>
-<span class="n">opener</span> <span class="o">=</span> <span class="n">build_opener</span><span class="p">(</span><span class="n">proxy_handler</span><span class="p">)</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">opener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;https://test.com&#39;</span><span class="p">)</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
-<span class="k">except</span> <span class="n">URLError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">reason</span><span class="p">)</span>
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-<li><p><strong>Cookies</strong></p>
-<blockquote>
-<div><p>获取网站 Cookies:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">http.cookiejar</span><span class="o">,</span> <span class="nn">urllib.request</span>
-
-<span class="c1"># 声明一个 CookieJar 对象</span>
-<span class="n">cookie</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">cookiejar</span><span class="o">.</span><span class="n">CookieJar</span><span class="p">()</span>
-<span class="c1"># 构建 Handler</span>
-<span class="n">handler</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">HTTPCookieProcessor</span><span class="p">(</span><span class="n">cookie</span><span class="p">)</span>
-<span class="c1"># 构建 Opener</span>
-<span class="n">opener</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">build_opener</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">opener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;http://test.com&#39;</span><span class="p">)</span>
-<span class="k">for</span> <span class="n">item</span> <span class="ow">in</span> <span class="n">cookie</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">item</span><span class="o">.</span><span class="n">name</span> <span class="o">+</span> <span class="s1">&#39;=&#39;</span> <span class="o">+</span> <span class="n">item</span><span class="o">.</span><span class="n">value</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>以 Mozilla 浏览器的 Cookies 格式保存:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">filename</span> <span class="o">=</span> <span class="s1">&#39;cookies.txt&#39;</span>
-<span class="n">cookie</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">cookiejar</span><span class="o">.</span><span class="n">MozillaCookieJar</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
-<span class="n">handler</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">HTTPCookieProcessor</span><span class="p">(</span><span class="n">cookie</span><span class="p">)</span>
-<span class="n">opener</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">build_opener</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">opener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;http://test.com&#39;</span><span class="p">)</span>
-<span class="n">cookie</span><span class="o">.</span><span class="n">save</span><span class="p">(</span><span class="n">ignore_discard</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">ignore_expires</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-</pre></div>
-</div>
-<p>以 libwww-perl(LWP) 格式保存:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># ...</span>
-<span class="n">cookie</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">cookiejar</span><span class="o">.</span><span class="n">LWPCookieJar</span><span class="p">(</span><span class="n">filename</span><span class="p">)</span>
-<span class="c1"># ...</span>
-</pre></div>
-</div>
-<p>读取 libwww-perl(LWP) 格式的 cookie 文件</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">cookie</span> <span class="o">=</span> <span class="n">http</span><span class="o">.</span><span class="n">cookiejar</span><span class="o">.</span><span class="n">LWPCookieJar</span><span class="p">()</span>
-<span class="n">cookie</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="s1">&#39;cookies.txt&#39;</span><span class="p">,</span> <span class="n">ignore_discard</span><span class="o">=</span><span class="bp">True</span><span class="p">,</span> <span class="n">ignore_expires</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
-<span class="n">handler</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">HTTPCookieProcessor</span><span class="p">(</span><span class="n">cookie</span><span class="p">)</span>
-<span class="n">opener</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">build_opener</span><span class="p">(</span><span class="n">handler</span><span class="p">)</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">opener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="s1">&#39;http://test.com&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="s1">&#39;utf-8&#39;</span><span class="p">))</span>
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-</ul>
-</div>
-</div>
-<div class="section" id="error">
-<h4>error<a class="headerlink" href="#error" title="Permalink to this headline">¶</a></h4>
-<p>异常处理</p>
-<dl>
-<dt>urllib.error.URLError</dt><dd><p>OSError 的子类, 是 error 异常模块的基类, 由 request 模块产生的异常都可以通过捕获这个类来处理</p>
-<p>属性 reason 可以返回错误的原因, 也可能返回一个对象</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">urllib</span> <span class="kn">import</span> <span class="n">request</span><span class="p">,</span> <span class="n">error</span>
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s1">&#39;https://cuiqingcai.com/index.htm&#39;</span><span class="p">)</span>
-<span class="k">except</span> <span class="n">error</span><span class="o">.</span><span class="n">URLError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">reason</span><span class="p">)</span>
-
-<span class="c1"># 返回socket.timeout</span>
-<span class="kn">import</span> <span class="nn">socket</span>
-
-<span class="k">try</span><span class="p">:</span>
-    <span class="n">response</span> <span class="o">=</span> <span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="s1">&#39;https://www.baidu.com&#39;</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="mf">0.01</span><span class="p">)</span>
-<span class="k">except</span> <span class="n">error</span><span class="o">.</span><span class="n">URLError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-    <span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">reason</span><span class="p">))</span>
-    <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">reason</span><span class="p">,</span> <span class="n">socket</span><span class="o">.</span><span class="n">timeout</span><span class="p">):</span>
-        <span class="k">print</span><span class="p">(</span><span class="s1">&#39;TIME OUT&#39;</span><span class="p">)</span>
-</pre></div>
-</div>
-</dd>
-<dt>urllib.error.HTTPError</dt><dd><p>URLError 的子类, 专门用来处理 HTTP 请求错误, 比如认证请求失败等</p>
-<p>属性:</p>
-<ul class="simple">
-<li><p><cite>code</cite>: 返回 HTTP 状态码</p></li>
-<li><p><cite>reason</cite>: 返回错误的原因</p></li>
-<li><p><cite>headers</cite>: 返回请求头</p></li>
-</ul>
-</dd>
-</dl>
-</div>
-<div class="section" id="parse">
-<h4>parse<a class="headerlink" href="#parse" title="Permalink to this headline">¶</a></h4>
-<p>定义了处理 URL 的标准接口, 如实现 URL 各部分的抽取, 合并以及链接转换</p>
-<p>支持如下协议的 URL 处理: file, ftp, gopher, hdl, http, https, imap, mailto,  mms, news, nntp, prospero, rsync, rtsp, rtspu, sftp,  sip, sips, snews, svn, svn+ssh, telnet 和 wais</p>
-<dl>
-<dt>urllib.parse.urlparse(urlstring, scheme=’‘, allow_fragments=True)</dt><dd><p>实现 URL 的识别和分段</p>
-<dl class="simple">
-<dt>PARAMS:</dt><dd><ul class="simple">
-<li><p>urlstring: 待解析的 URL</p></li>
-<li><p>scheme: 默认协议; 假如这个链接没有带协议信息, 会将这个作为默认的协议</p></li>
-<li><p>allow_fragments: 是否忽略 fragment</p></li>
-</ul>
-</dd>
-</dl>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urlparse</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">urlparse</span><span class="p">(</span><span class="s1">&#39;http://www.baidu.com/index.html;user?id=5#comment&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">result</span><span class="p">),</span> <span class="n">result</span><span class="p">)</span>
-
-<span class="c1"># 结果</span>
-<span class="c1"># &lt;class &#39;urllib.parse.ParseResult&#39;&gt; ParseResult(scheme=&#39;http&#39;, netloc=&#39;www.baidu.com&#39;, path=&#39;/index.html&#39;, params=&#39;user&#39;, query=&#39;id=5&#39;, fragment=&#39;comment&#39;)</span>
-</pre></div>
-</div>
-</dd>
-<dt>urllib.parse.urlunparse(parts)</dt><dd><p>构造 URL</p>
-<p>parts 是长度必须为 6 的 iterable</p>
-</dd>
-<dt>urllib.parse.urlsplit(urlstring, scheme=’‘, allow_fragments=True)</dt><dd><p>类似于 urlparse, 但不单独解析 params, 只返回 5 个结果</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urlsplit</span>
-
-<span class="n">result</span> <span class="o">=</span> <span class="n">urlsplit</span><span class="p">(</span><span class="s1">&#39;http://www.baidu.com/index.html;user?id=5#comment&#39;</span><span class="p">)</span>
-<span class="k">print</span><span class="p">(</span><span class="n">result</span><span class="p">)</span>
-
-<span class="c1"># 结果</span>
-<span class="c1"># SplitResult(scheme=&#39;http&#39;, netloc=&#39;www.baidu.com&#39;, path=&#39;/index.html;user&#39;, query=&#39;id=5&#39;, fragment=&#39;comment&#39;)</span>
-</pre></div>
-</div>
-</dd>
-<dt>urllib.parse.urlunsplit(parts)</dt><dd><p>类似于 urlunparse, parts 是长度必须为 5 的 iterable</p>
-</dd>
-<dt>urllib.parse.urljoin(base, url, allow_fragments=True)</dt><dd><p>分析 base_url 的 scheme, netloc 和 path, 并对新链接 url 缺失的部分进行补充, 最后返回结果</p>
-</dd>
-<dt>urllib.parse.urlencode(query, doseq=False, safe=’‘, encoding=None, errors=None, quote_via=quote_plus)</dt><dd><p>多用于构造 GET 参数</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">urlencode</span>
-
-<span class="n">params</span> <span class="o">=</span> <span class="p">{</span>
-    <span class="s1">&#39;name&#39;</span><span class="p">:</span> <span class="s1">&#39;germey&#39;</span><span class="p">,</span>
-    <span class="s1">&#39;age&#39;</span><span class="p">:</span> <span class="mi">22</span>
-<span class="p">}</span>
-<span class="k">print</span><span class="p">(</span><span class="n">urlencode</span><span class="p">(</span><span class="n">params</span><span class="p">))</span>
-
-<span class="c1"># 结果</span>
-<span class="c1"># &#39;name=germey&amp;age=22&#39;</span>
-</pre></div>
-</div>
-</dd>
-<dt>urllib.parse.parse_qs(qs, keep_blank_values=False, strict_parsing=False, encoding=’utf-8’, errors=’replace’, max_num_fields=None)</dt><dd><p>解析参数为 dict</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">parse_qs</span>
-
-<span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;name=germey&amp;amp;age=22&#39;</span>
-<span class="k">print</span><span class="p">(</span><span class="n">parse_qs</span><span class="p">(</span><span class="n">query</span><span class="p">))</span>
-
-<span class="c1"># 结果</span>
-<span class="c1"># {&#39;name&#39;: [&#39;germey&#39;], &#39;age&#39;: [&#39;22&#39;]}</span>
-</pre></div>
-</div>
-</dd>
-<dt>urllib.parse.parse_qsl(qs, keep_blank_values=False, strict_parsing=False, encoding=’utf-8’, errors=’replace’, max_num_fields=None)</dt><dd><p>将参数转化为元组组成的列表</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">urllib.parse</span> <span class="kn">import</span> <span class="n">parse_qsl</span>
-
-<span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;name=germey&amp;amp;age=22&#39;</span>
-<span class="k">print</span><span class="p">(</span><span class="n">parse_qsl</span><span class="p">(</span><span class="n">query</span><span class="p">))</span>
-
-<span class="c1"># 结果</span>
-<span class="c1"># [(&#39;name&#39;, &#39;germey&#39;), (&#39;age&#39;, &#39;22&#39;)]</span>
-</pre></div>
-</div>
-</dd>
-<dt>urllib.parse.quote(string, safe=’/’, encoding=None, errors=None)</dt><dd><p>将字符串转化为 URL 编码 (ASCII)</p>
-</dd>
-<dt>urllib.parse.unquote(string, encoding=’utf-8’, errors=’replace’)</dt><dd><p>将 URL 编码解码为字符串</p>
-</dd>
-</dl>
-</div>
-<div class="section" id="robots">
-<h4>robots<a class="headerlink" href="#robots" title="Permalink to this headline">¶</a></h4>
-<dl>
-<dt>Robots 协议</dt><dd><p>网络爬虫排除标准 (Robots Exclusion Protocol), 也称作爬虫协议, 机器人协议</p>
-<p>用于告诉爬虫和搜索引擎哪些页面可以抓取, 哪些不可以抓取; 它通常是一个叫作 robots.txt 的文本文件, 一般放在网站的根目录下</p>
-<p>当搜索爬虫访问一个站点时, 它首先会检查这个站点根目录下是否存在 robots.txt 文件, 如果存在, 搜索爬虫会根据其中定义的爬取范围来爬取; 如果没有找到这个文件, 搜索爬虫便会访问所有可直接访问的页面</p>
-<div class="admonition- admonition">
-<p class="admonition-title">例</p>
-<p>对所有爬虫只允许爬取 public 目录:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">User-agent: *</span>
-<span class="go">Disallow: /</span>
-<span class="go">Allow: /public/</span>
-</pre></div>
-</div>
-<p>禁止所有爬虫访问任何目录:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">User-agent: *</span>
-<span class="go">Disallow: /</span>
-</pre></div>
-</div>
-<p>允许所有爬虫访问任何目录:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">User-agent: *</span>
-<span class="go">Disallow:</span>
-</pre></div>
-</div>
-<p>只允许某一个爬虫访问:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">User-agent: WebCrawler</span>
-<span class="go">Disallow:</span>
-<span class="go">User-agent: *</span>
-<span class="go">Disallow: /</span>
-</pre></div>
-</div>
-</div>
-</dd>
-<dt>urllib.robotparser.RobotFileParser(url=’‘)</dt><dd><p>根据网站的 robots.txt 文件来判断一个爬虫是否有权限来爬取这个网页</p>
-<p>常用方法:</p>
-<ul class="simple">
-<li><p>set_url: 用来设置 robots.txt 文件的链接; 如果在创建 RobotFileParser 对象时传入了链接, 就不需要使用这个方法设置</p></li>
-<li><p>read: 读取 robots.txt 文件并进行分析; 这个方法执行读取和分析操作, 如果不调用这个方法, 接下来的判断都会为 False; 不返回任何内容, 但是执行了读取操作</p></li>
-<li><p>parse: 用来解析 robots.txt 文件, 传入的参数是 robots.txt 某些行的内容, 它会按照 robots.txt 的语法规则来分析这些内容</p></li>
-<li><p>can_fetch: 该方法传入两个参数, 第一个是 User-agent, 第二个是要抓取的 URL; 返回的内容是该搜索引擎是否可以抓取这个 URL, 返回结果是 True 或 False</p></li>
-<li><p>mtime: 返回的是上次抓取和分析 robots.txt 的时间, 这对于长时间分析和抓取的搜索爬虫是很有必要的, 可能需要定期检查来抓取最新的 robots.txt</p></li>
-<li><p>modified: 同样对长时间分析和抓取的搜索爬虫很有帮助, 将当前时间设置为上次抓取和分析 robots.txt 的时间</p></li>
-</ul>
-</dd>
-</dl>
-</div>
-</div>
-<div class="section" id="requests">
-<h3>requests<a class="headerlink" href="#requests" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="get">
-<h4>GET<a class="headerlink" href="#get" title="Permalink to this headline">¶</a></h4>
-</div>
-</div>
-</div>
-<div class="section" id="scrapy">
-<h2>Scrapy<a class="headerlink" href="#scrapy" title="Permalink to this headline">¶</a></h2>
-<p>Scrapy 是一个基于 Twisted 的异步处理框架, 是纯 Python 实现的爬虫框架</p>
-<p>其架构清晰, 模块之间的耦合程度低, 可扩展性极强, 可以灵活完成各种需求</p>
-<p>只需要定制开发几个模块就可以轻松实现一个爬虫</p>
-<div class="section" id="intro">
-<h3>Intro<a class="headerlink" href="#intro" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="id7">
-<h4>架构<a class="headerlink" href="#id7" title="Permalink to this headline">¶</a></h4>
-<img alt="../../../../_images/scrapy_architecture.jpg" src="../../../../_images/scrapy_architecture.jpg" />
-<ul class="simple">
-<li><p><strong>Engine</strong>: 引擎, 用来处理整个系统的数据流处理, 触发事务, 是整个框架的核心</p></li>
-<li><p><strong>Item</strong>: 项目, 它定义了爬取结果的数据结构, 爬取的数据会被赋值成该对象</p></li>
-<li><p><strong>Scheduler</strong>: 调度器, 用来接受引擎发过来的请求并加入队列中, 并在引擎再次请求的时候提供给引擎</p></li>
-<li><p><strong>Downloader</strong>: 下载器, 用于下载网页内容, 并将网页内容返回给蜘蛛</p></li>
-<li><p><strong>Spiders</strong>: 蜘蛛, 其内定义了爬取的逻辑和网页的解析规则, 它主要负责解析响应并生成提取结果和新的请求</p></li>
-<li><p><strong>Item Pipeline</strong>: 项目管道, 负责处理由蜘蛛从网页中抽取的项目, 它的主要任务是清洗, 验证和存储数据</p></li>
-<li><p><strong>Downloader Middlewares</strong>: 下载器中间件, 位于引擎和下载器之间的钩子框架, 主要是处理引擎与下载器之间的请求及响应</p></li>
-<li><p><strong>Spider Middlewares</strong>: 蜘蛛中间件, 位于引擎和蜘蛛之间的钩子框架, 主要工作是处理蜘蛛输入的响应和输出的结果及新的请求</p></li>
-</ul>
-</div>
-<div class="section" id="id8">
-<h4>数据流<a class="headerlink" href="#id8" title="Permalink to this headline">¶</a></h4>
-<p>Scrapy 中的数据流由引擎控制, 其过程如下:</p>
-<ol class="arabic simple">
-<li><p>Engine 首先打开一个网站, 找到处理该网站的 Spider 并向该 Spider 请求第一个要爬取的 URL</p></li>
-<li><p>Engine 从 Spider 中获取到第一个要爬取的 URL 并通过 Scheduler 以 Request 的形式调度</p></li>
-<li><p>Engine 向 Scheduler 请求下一个要爬取的 URL</p></li>
-<li><p>Scheduler 返回下一个要爬取的 URL 给 Engine, Engine 将 URL 通过 Downloader Middlewares 转发给 Downloader 下载</p></li>
-<li><p>一旦页面下载完毕,  Downloader 生成一个该页面的 Response, 并将其通过 Downloader Middlewares 发送给 Engine</p></li>
-<li><p>Engine 从下载器中接收到 Response 并通过 Spider Middlewares 发送给 Spider 处理</p></li>
-<li><p>Spider 处理 Response 并返回爬取到的 Item 及新的 Request 给 Engine</p></li>
-<li><p>Engine 将 Spider 返回的 Item 给 Item Pipeline, 将新的 Request 给 Scheduler</p></li>
-<li><p>重复第二步到最后一步, 直到  Scheduler 中没有更多的 Request, Engine 关闭该网站, 爬取结束</p></li>
-</ol>
-<p>通过多个组件的相互协作, 不同组件完成工作的不同, 组件对异步处理的支持, Scrapy 最大限度地利用了网络带宽, 大大提高了数据爬取和处理的效率</p>
-</div>
-<div class="section" id="id9">
-<h4>项目结构<a class="headerlink" href="#id9" title="Permalink to this headline">¶</a></h4>
-<p>Scrapy 通过命令行来创建项目, 项目创建之后文件结构如下:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">scrapy.cfg</span>
-<span class="go">project/</span>
-<span class="go">    __init__.py</span>
-<span class="go">    items.py</span>
-<span class="go">    pipelines.py</span>
-<span class="go">    settings.py</span>
-<span class="go">    middlewares.py</span>
-<span class="go">    spiders/</span>
-<span class="go">        __init__.py</span>
-<span class="go">        spider1.py</span>
-<span class="go">        spider2.py</span>
-<span class="go">        ...</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p><strong>scrapy.cfg</strong>: Scrapy 项目的配置文件, 其内定义了项目的配置文件路径, 部署相关信息等内容</p></li>
-<li><p><strong>items.py</strong>: 定义 Item 数据结构, 所有的 Item 的定义都可以放这里</p></li>
-<li><p><strong>pipelines.py</strong>: 定义 Item Pipeline 的实现, 所有的 Item Pipeline 的实现都可以放这里</p></li>
-<li><p><strong>settings.py</strong>: 定义项目的全局配置</p></li>
-<li><p><strong>middlewares.py</strong>: 定义 Spider Middlewares 和 Downloader Middlewares 的实现</p></li>
-<li><p><strong>spiders</strong>: 其内包含一个个 Spider 的实现, 每个 Spider 都有一个文件</p></li>
-</ul>
-</div>
-</div>
-<div class="section" id="id10">
-<h3>Scrapy 使用<a class="headerlink" href="#id10" title="Permalink to this headline">¶</a></h3>
-<ol class="arabic">
-<li><p>创建项目</p>
-<blockquote>
-<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> scrapy startproject projectname
-</pre></div>
-</div>
-<p>生成项目文件夹</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="go">scrapy.cfg          # Scrapy 部署时的配置文件</span>
-<span class="go">projectname         # 项目的模块, 引入的时候需要从这里引入</span>
-<span class="go">    __init__.py</span>
-<span class="go">    items.py        # Items 的定义, 定义爬取的数据结构</span>
-<span class="go">    middlewares.py  # Middlewares 的定义, 定义爬取时的中间件</span>
-<span class="go">    pipelines.py    # Pipelines 的定义, 定义数据管道</span>
-<span class="go">    settings.py     # 配置文件</span>
-<span class="go">    spiders         # 放置 Spiders 的文件夹</span>
-<span class="go">        __init__.py</span>
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-<li><p>创建 spider</p>
-<blockquote>
-<div><p>子类化 <cite>scrapy.Spider</cite>, 定义 Spider 的名称和起始请求, 以及处理爬取结果的方法</p>
-<p>或者在命令行创建:</p>
-<div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> scrapy genspider spider1
-</pre></div>
-</div>
-<p>以上命令会在 spiders 文件夹中创建 <cite>spider1.py</cite>:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># spider1.py</span>
-
-<span class="kn">import</span> <span class="nn">scrapy</span>
-
-<span class="k">class</span> <span class="nc">Spider1Spider</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Spider</span><span class="p">):</span>
-    <span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;spider1&quot;</span>
-    <span class="n">allowed_domains</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;spider1.toscrape.com&quot;</span><span class="p">]</span>
-    <span class="n">start_urls</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;http://spider1.toscrape.com/&#39;</span><span class="p">]</span>
-
-    <span class="k">def</span> <span class="nf">parse</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">response</span><span class="p">):</span>
-        <span class="k">pass</span>
-</pre></div>
-</div>
-<ul class="simple">
-<li><p><strong>name</strong>: 每个项目唯一的名字, 用来区分不同的 Spider</p></li>
-<li><p><strong>allowed_domains</strong>: 允许爬取的域名, 如果初始或后续的请求链接不是这个域名下的, 则请求链接会被过滤掉</p></li>
-<li><p><strong>start_urls</strong>: 包含了 Spider 在启动时爬取的 url 列表, 初始请求是由它来定义的</p></li>
-<li><p><strong>parse(response)</strong>: Spider 的一个方法; 默认情况下, 被调用时 start_urls 里面的链接构成的请求完成下载执行后, 返回的响应就会作为唯一的参数传递给这个函数; 该方法负责解析返回的响应, 提取数据或者进一步生成要处理的请求</p></li>
-</ul>
-</div></blockquote>
-</li>
-<li><p>创建 Item</p>
-<blockquote>
-<div><p>子类化 <cite>scrapy.Item</cite>, 定义类型为 <cite>scrapy.Field</cite> 的字段来创建保存爬取数据的容器; 和字典类似</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scrapy</span>
-
-<span class="k">class</span> <span class="nc">Spider1Item</span><span class="p">(</span><span class="n">scrapy</span><span class="o">.</span><span class="n">Item</span><span class="p">):</span>
-
-    <span class="n">text</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>
-    <span class="n">author</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>
-    <span class="n">tags</span> <span class="o">=</span> <span class="n">scrapy</span><span class="o">.</span><span class="n">Field</span><span class="p">()</span>
-    <span class="c1"># ...</span>
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-<li><p>在 <cite>parse()</cite> 中解析 Response</p></li>
-<li><p>在 <cite>parse()</cite> 中实例化自定义 Item 类</p></li>
-<li><p>在 <cite>parse()</cite> 中创建下一个请求</p>
-<blockquote>
-<div><p>实例化 <cite>scrapy.Request(url, callback)</cite> 并 <cite>yield</cite></p>
-<ul class="simple">
-<li><p>url：请求链接</p></li>
-<li><p>callback：回调函数; 当指定了该回调函数的请求完成之后, 获取到响应, 引擎会将该响应作为参数传递给这个回调函数; 回调函数进行解析或生成下一个请求</p></li>
-</ul>
-</div></blockquote>
-</li>
-<li><p>在命令行运行定义的 spider</p>
-<blockquote>
-<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> scrapy crawl spider1
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-<li><p>保存抓取结果到文件</p>
-<blockquote>
-<div><div class="highlight-console notranslate"><div class="highlight"><pre><span></span><span class="gp">$</span> scrapy crawl quotes -o results.json
-</pre></div>
-</div>
-<p>支持 json, jsonline, csv, xml, pickle, marshal 等格式, 还支持 ftp, s3 等远程输出, 也可自定义 <cite>ItemExporter</cite> 来实现其他输出</p>
-</div></blockquote>
-</li>
-<li><p>使用 Item Pipeline 进行更复杂的操作</p>
-<blockquote>
-<div><p>定义实现了 <cite>process_item(item, spider)</cite> 方法的类即可; 启用 Item Pipeline 后, Item Pipeline 会自动调用这个方法; <cite>process_item()</cite> 方法必须返回包含数据的字典或 Item 对象, 或者抛出 <cite>DropItem</cite> 异常</p>
-<p>其他可定义的方法:</p>
-<ul class="simple">
-<li><p><strong>from_crawler(cls, crawler)</strong>: <cite>&#64;classmethod</cite>, 通过 crawler 可以获取 settings.py 中的设置, 如数据库连接地址和名称等</p></li>
-<li><p><strong>open_spider(self, spider)</strong>: 当 Spider 被开启时调用, 主要进行一些初始化操作</p></li>
-<li><p><strong>close_spider(self, spider)</strong>: 当 Spider 被关闭时调用, 进行清理工作</p></li>
-</ul>
-<p>能够实现如</p>
-<ul class="simple">
-<li><p>清洗 HTML 数据</p></li>
-<li><p>验证爬取数据, 检查爬取字段</p></li>
-<li><p>查重并丢弃重复内容</p></li>
-<li><p>将爬取结果储存到数据库</p></li>
-</ul>
-<p>等操作</p>
-</div></blockquote>
-</li>
-</ol>
-</div>
-<div class="section" id="selector">
-<h3>Selector<a class="headerlink" href="#selector" title="Permalink to this headline">¶</a></h3>
-<p>基于 lxml, 支持 XPath 选择器, CSS 选择器以及正则表达式</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scrapy</span> <span class="kn">import</span> <span class="n">Selector</span>
-</pre></div>
-</div>
-<p>selector 对象可以使用 <cite>xpath()</cite> 或 <cite>css()</cite> 获取元素</p>
-<div class="section" id="id11">
-<h4>创建 selector<a class="headerlink" href="#id11" title="Permalink to this headline">¶</a></h4>
-<ul>
-<li><p><cite>response</cite> 对象的 <cite>selector</cite> 属性是一个 <cite>Selector</cite> 的实例</p>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">response</span><span class="o">.</span><span class="n">selector</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//span/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-<li><p>也可以通过传入 HTML 或 response 实例化 <cite>Selector</cite></p>
-<blockquote>
-<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">scrapy.selector</span> <span class="kn">import</span> <span class="n">Selector</span>
-
-<span class="n">body</span> <span class="o">=</span> <span class="s1">&#39;&lt;html&gt;&lt;body&gt;&lt;span&gt;good&lt;/span&gt;&lt;/body&gt;&lt;/html&gt;&#39;</span>
-
-<span class="n">Selector</span><span class="p">(</span><span class="n">text</span><span class="o">=</span><span class="n">body</span><span class="p">)</span><span class="o">.</span><span class="n">xpath</span><span class="p">(</span><span class="s1">&#39;//span/text()&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">get</span><span class="p">()</span>
-</pre></div>
-</div>
-</div></blockquote>
-</li>
-</ul>
-<p><cite>response.selector.xpath()</cite> 或 <cite>response.selector.css()</cite> 可简写为 <cite>response.xpath()</cite> 或 <cite>response.css()</cite></p>
-<dl>
-<dt>scrapy.selector.Selector(response=None, text=None, type=None, root=None, <a href="#id12"><span class="problematic" id="id13">**</span></a>kwargs)</dt><dd><p>Selector 的实例是 response 的一个 wrapper, 用于选择其内容的一部分</p>
-<ul>
-<li><p><cite>response</cite>: <cite>HtmlResponse</cite> 或 <cite>XmlResponse</cite> 对象</p></li>
-<li><p><cite>text</cite>: unicode 字符串或 utf-8 编码的文本; 不能与 response 一起使用</p></li>
-<li><dl>
-<dt><cite>type</cite>: selector 类型; 可以是”html”, “xml” 或 None (default)</dt><dd><p><cite>type</cite> 为 None 时, 传入 <cite>text</cite> 则默认为 “html”; 传入 <cite>response</cite> 则根据 <cite>response</cite> 类型决定</p>
-<ul class="simple">
-<li><p><cite>HtmlResponse</cite> -&gt; “html”</p></li>
-<li><p><cite>XmlResponse</cite> -&gt; “xml”</p></li>
-<li><p>其他 -&gt; “html”</p></li>
-</ul>
-<p>当 <cite>type</cite> 被设置时, 指定的类型会被强制使用</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><cite>xpath(query, namespaces=None, **kwargs)</cite></dt><dd><p>寻找符合 xpath query 的 nodes 并返回含有所有元素的 <cite>SelectorList</cite> 实例</p>
-<ul class="simple">
-<li><p>query: 包含 XPATH query 的字符串</p></li>
-<li><p>namespaces: 可选的 <cite>prefix: namespace-uri</cite></p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl>
-<dt><cite>css(query)</cite></dt><dd><p>寻找符合 CSS query 的 nodes 并返回含有所有元素的 <cite>SelectorList</cite> 实例</p>
-<ul>
-<li><p>query: 包含 CSS query 的字符串</p>
-<blockquote>
-<div><p>CSS queries 会被转换成 XPath queries (使用 cssselect 库) 并调用 <cite>.xpath()</cite> 方法</p>
-</div></blockquote>
-</li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><cite>get()</cite></dt><dd><p>序列化并返回匹配的 nodes 为 unicode 字符串; 百分号编码 (Percent encoded) 的内容会被解码</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>attrib</dt><dd><p>返回元素的属性字典</p>
-</dd>
-</dl>
-</li>
-<li><dl>
-<dt><cite>re(regex, replace_entities=True)</cite></dt><dd><p>返回匹配正则表达式的 unicode 字符串的列表</p>
-<ul class="simple">
-<li><p>regex: 已编译的正则表达式或能够被 <cite>re.compile(regex)</cite> 编译的字符串</p></li>
-</ul>
-<p>默认情况下, 除了 <cite>&amp;amp;</cite> 和 <cite>&amp;lt;</cite> 以外的字符实体引用会被替换为对应的字符; 设置 <cite>replace_entities=False</cite> 可以关闭替换</p>
-</dd>
-</dl>
-</li>
-<li><dl>
-<dt><cite>re_first(regex, default=None, replace_entities=True)</cite></dt><dd><p>返回匹配正则表达式的 unicode 字符串的而列表的第一个字符串; 如果没有匹配则返回默认值</p>
-<p>默认情况下, 除了 <cite>&amp;amp;</cite> 和 <cite>&amp;lt;</cite> 以外的字符实体引用会被替换为对应的字符; 设置 <cite>replace_entities=False</cite> 可以关闭替换</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><cite>register_namespace(prefix, uri)</cite></dt><dd><p>Register the given namespace to be used in this Selector. Without registering namespaces you can’t select or extract data from non-standard namespaces</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><cite>remove_namespaces()</cite></dt><dd><p>Remove all namespaces, allowing to traverse the document using namespace-less xpaths</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><cite>__bool__()</cite></dt><dd><p>Return True if there is any real content selected or False otherwise. In other words, the boolean value of a Selector is given by the contents it selects.</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><cite>getall()</cite></dt><dd><p>返回只含有 <cite>get()</cite> 的返回值的列表</p>
-</dd>
-</dl>
-</li>
-</ul>
-</dd>
-</dl>
-</div>
-<div class="section" id="id14">
-<h4>使用 selector 获取结果<a class="headerlink" href="#id14" title="Permalink to this headline">¶</a></h4>
-<p><cite>xpath()</cite> 和 <cite>css()</cite> 返回 <cite>SelectorList</cite> 实例, 它是由新的 selectors 组成的列表</p>
-<dl>
-<dt>scrapy.selector.SelectorList</dt><dd><p>内置 <cite>list</cite> 类的子类</p>
-<ul>
-<li><dl class="simple">
-<dt><cite>xpath(xpath, namespaces=None, **kwargs)</cite></dt><dd><p>调用列表中每个元素的 <cite>.xpath()</cite> 方法并返回结果为新的 <cite>SelectorList</cite></p>
-<ul class="simple">
-<li><p>xpath: 包含 XPATH query 的字符串</p></li>
-<li><p>namespaces: 可选的 <cite>prefix: namespace-uri</cite></p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><cite>css(query)</cite></dt><dd><p>调用列表中每个元素的 <cite>.css()</cite> 方法并返回结果为新的 <cite>SelectorList</cite></p>
-<ul class="simple">
-<li><p>query: 包含 CSS query 的字符串</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt><cite>getall()</cite></dt><dd><p>调用列表中每个元素的 <cite>.css()</cite> 方法并返回结果为 unicode 字符串的列表</p>
-</dd>
-</dl>
-</li>
-<li><dl>
-<dt><cite>get(default=None)</cite></dt><dd><p>返回列表中第一个元素的 <cite>.get()</cite> 方法的结果</p>
-<p>若列表为空则返回默认值</p>
-</dd>
-</dl>
-</li>
-<li><dl>
-<dt><cite>re(regex, replace_entities=True)</cite></dt><dd><p>调用列表中每个元素的 <cite>.re()</cite> 方法并返回结果为 unicode 字符串的列表</p>
-<p>默认情况下, 除了 <cite>&amp;amp;</cite> 和 <cite>&amp;lt;</cite> 以外的字符实体引用会被替换为对应的字符; 设置 <cite>replace_entities=False</cite> 可以关闭替换</p>
-</dd>
-</dl>
-</li>
-<li><dl>
-<dt><cite>re_first(regex, default=None, replace_entities=True)</cite></dt><dd><p>返回列表中第一个元素的 <cite>.re()</cite> 方法的结果</p>
-<p>若列表为空或没有匹配则返回默认值</p>
-<p>默认情况下, 除了 <cite>&amp;amp;</cite> 和 <cite>&amp;lt;</cite> 以外的字符实体引用会被替换为对应的字符; 设置 <cite>replace_entities=False</cite> 可以关闭替换</p>
-</dd>
-</dl>
-</li>
-<li><dl>
-<dt>attrib</dt><dd><p>返回列表中第一个元素的属性字典</p>
-<p>若列表为空或没有匹配则返回空字典</p>
-</dd>
-</dl>
-</li>
-</ul>
-</dd>
-</dl>
-</div>
-<div class="section" id="css">
-<h4>CSS 选择器扩展<a class="headerlink" href="#css" title="Permalink to this headline">¶</a></h4>
-<p>原生 CSS 选择器无法选择 text nodes 或属性值</p>
-<ul class="simple">
-<li><p><cite>::text</cite>: 选择文本</p></li>
-<li><p><cite>::attr(name)</cite>: 选择指定属性名</p></li>
-</ul>
-</div>
-</div>
-<div class="section" id="spider">
-<h3>Spider<a class="headerlink" href="#spider" title="Permalink to this headline">¶</a></h3>
-<ul class="simple">
-<li><p>定义爬取网站的动作</p></li>
-<li><p>分析爬取下来的网页</p></li>
-</ul>
-<p>Spider 的工作流程:</p>
-<ol class="arabic simple">
-<li><p>以初始的 URL 初始化 Request, 并设置回调函数; 当该 Request 成功请求并返回时, 将生成 Response, 并作为参数传给该回调函数</p></li>
-<li><p>在回调函数内分析返回的网页内容; 回调函数的返回值为包含数据的 dicts, Item 对象, Request 对象, 或包含了这些对象的可迭代对象; 如果返回的是 Reqeust, 那么 Request 执行成功得到 Response 之后会再次传递给 Request 中定义的回调函数, 可以再次使用选择器来分析新得到的网页</p></li>
-<li><p>在回调函数中解析网页内容并用解析的数据生成 items</p></li>
-<li><p>最后如果返回的是字典或 Item 对象, 可通过 Feed Exports 等形式存入到文件, 如果设置了 Pipeline 的话, 可以经由 Pipeline 处理（如过滤, 修正等) 并保存</p></li>
-</ol>
-<dl>
-<dt>scrapy.spiders.Spider</dt><dd><p>这个类是最简单最基本的 Spider 类, 每个其他的 Spider 必须继承这个类</p>
-<p>这个类里提供了 start_requests() 方法的默认实现, 读取并请求 start_urls 属性, 并根据返回的结果调用 parse() 方法解析结果</p>
-<ul>
-<li><dl>
-<dt>name</dt><dd><p>爬虫名称, 定义 Spider 名字的字符串; Spider 的名字定义了 Scrapy 如何定位并初始化 Spider, 所以其必须是唯一的</p>
-<p>name 是 Spider 最重要的属性, 而且是必须的</p>
-<p>如果该 Spider 爬取单个网站, 通常以该网站的域名名称来命名 Spider</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>allowed_domains</dt><dd><p>允许爬取的域名列表, 可选; 不在此范围的链接不会被跟进爬取</p>
-</dd>
-</dl>
-</li>
-<li><dl>
-<dt>start_urls</dt><dd><p>起始 URL 列表, 当没有实现 start_requests() 方法时, 默认会从这个列表开始抓取</p>
-<p>随后的 <cite>Request</cite> 会由 start_urls 中的 data 生成</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>custom_settings</dt><dd><p>这是一个字典, 是专属于本 Spider 的配置, 此设置会覆盖项目全局的设置; 且此设置必须在初始化前被更新, 所以它必须定义成类变量</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>crawler</dt><dd><p>此属性在类初始化后由 <cite>from_crawler()</cite> 方法设置, 代表的是本 Spider 类对应的 <cite>Crawler</cite> 对象; <cite>Crawler</cite> 对象中包含了很多项目组件, 利用它可以获取项目的一些配置信息, 如最常见的就是获取项目的设置信息, 即 Settings</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>settings</dt><dd><p><cite>Settings</cite> 对象, 可以直接获取项目的全局设置变量</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>logger</dt><dd><p>用 Spider 名创建的 <cite>logger</cite></p>
-</dd>
-</dl>
-</li>
-<li><dl>
-<dt><cite>from_crawler(crawler, *args, **kwargs)</cite></dt><dd><p>Scrapy 用于创建 spiders 的类方法</p>
-<p>You probably won’t need to override this directly because the default implementation acts as a proxy to the __init__() method, calling it with the given arguments args and named arguments kwargs.</p>
-<p>Nonetheless, this method sets the crawler and settings attributes in the new instance so they can be accessed later inside the spider’s code.</p>
-<ul class="simple">
-<li><p>crawler (Crawler instance): crawler to which the spider will be bound</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>start_requests()</dt><dd><p>用于生成初始请求, 必须返回一个可迭代对象, 当开始爬取时由 Scrapy 调用, 且只被调用一次; 默认使用 start_urls 里面的 URL 来构造 GET 请求的 Request(url, dont_filter=True); 如果要在启动时以改变访问方式, 可以重写这个方法</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>parse(response)</dt><dd><p>当 requests 没有指定回调函数时, 该方法会默认被调用, 它负责处理 Response, 处理返回结果, 并从中提取出想要的数据和下一步的请求, 然后返回; 该方法需要返回一个包含 Request 或 Item 的可迭代对象</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>log(message[, level, component])</dt><dd><p>发送 log 信息到 Spider 的 logger</p>
-</dd>
-</dl>
-</li>
-<li><dl class="simple">
-<dt>closed(reason)</dt><dd><p>当 Spider 关闭时, 该方法会被调用, 在这里一般会定义释放资源的一些操作或其他收尾操作</p>
-</dd>
-</dl>
-</li>
-</ul>
-</dd>
-</dl>
-</div>
-<div class="section" id="spiders">
-<h3>通用 Spiders<a class="headerlink" href="#spiders" title="Permalink to this headline">¶</a></h3>
-<div class="section" id="crawlspider">
-<h4>CrawlSpider<a class="headerlink" href="#crawlspider" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="xmlfeedspider">
-<h4>XMLFeedSpider<a class="headerlink" href="#xmlfeedspider" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="csvfeedspider">
-<h4>CSVFeedSpider<a class="headerlink" href="#csvfeedspider" title="Permalink to this headline">¶</a></h4>
-</div>
-<div class="section" id="sitemapspider">
-<h4>SitemapSpider<a class="headerlink" href="#sitemapspider" title="Permalink to this headline">¶</a></h4>
-</div>
-</div>
-<div class="section" id="downloader-middleware">
-<h3>Downloader Middleware<a class="headerlink" href="#downloader-middleware" title="Permalink to this headline">¶</a></h3>
-<p>下载器中间件, 处于 Request 和 Response 之间的处理模块</p>
-<ul class="simple">
-<li><p>在 Scheduler 调度出队列的 Request 发送给 Downloader 下载之前, 处理 requests</p></li>
-<li><p>在下载后生成的 Response 发送给 Spider 之前, 处理 responses</p></li>
-</ul>
-<p>Scrapy 预置了许多 Downloader Middleware, 定义于 <cite>DOWNLOADER_MIDDLEWARES_BASE</cite> 变量中:</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="c1"># key 为 Downloader Middleware 名</span>
-<span class="c1"># value 为调用的优先级, 也代表靠近 Scrapy 引擎的程度</span>
-
-<span class="p">{</span>
-    <span class="s1">&#39;scrapy.downloadermiddlewares.robotstxt.RobotsTxtMiddleware&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span>
-    <span class="s1">&#39;scrapy.downloadermiddlewares.httpauth.HttpAuthMiddleware&#39;</span><span class="p">:</span> <span class="mi">300</span><span class="p">,</span>
-    <span class="s1">&#39;scrapy.downloadermiddlewares.downloadtimeout.DownloadTimeoutMiddleware&#39;</span><span class="p">:</span> <span class="mi">350</span><span class="p">,</span>
-    <span class="s1">&#39;scrapy.downloadermiddlewares.defaultheaders.DefaultHeadersMiddleware&#39;</span><span class="p">:</span> <span class="mi">400</span><span class="p">,</span>
-    <span class="s1">&#39;scrapy.downloadermiddlewares.useragent.UserAgentMiddleware&#39;</span><span class="p">:</span> <span class="mi">500</span><span class="p">,</span>
-    <span class="s1">&#39;scrapy.downloadermiddlewares.retry.RetryMiddleware&#39;</span><span class="p">:</span> <span class="mi">550</span><span class="p">,</span>
-    <span class="s1">&#39;scrapy.downloadermiddlewares.ajaxcrawl.AjaxCrawlMiddleware&#39;</span><span class="p">:</span> <span class="mi">560</span><span class="p">,</span>
-    <span class="s1">&#39;scrapy.downloadermiddlewares.redirect.MetaRefreshMiddleware&#39;</span><span class="p">:</span> <span class="mi">580</span><span class="p">,</span>
-    <span class="s1">&#39;scrapy.downloadermiddlewares.httpcompression.HttpCompressionMiddleware&#39;</span><span class="p">:</span> <span class="mi">590</span><span class="p">,</span>
-    <span class="s1">&#39;scrapy.downloadermiddlewares.redirect.RedirectMiddleware&#39;</span><span class="p">:</span> <span class="mi">600</span><span class="p">,</span>
-    <span class="s1">&#39;scrapy.downloadermiddlewares.cookies.CookiesMiddleware&#39;</span><span class="p">:</span> <span class="mi">700</span><span class="p">,</span>
-    <span class="s1">&#39;scrapy.downloadermiddlewares.httpproxy.HttpProxyMiddleware&#39;</span><span class="p">:</span> <span class="mi">750</span><span class="p">,</span>
-    <span class="s1">&#39;scrapy.downloadermiddlewares.stats.DownloaderStats&#39;</span><span class="p">:</span> <span class="mi">850</span><span class="p">,</span>
-    <span class="s1">&#39;scrapy.downloadermiddlewares.httpcache.HttpCacheMiddleware&#39;</span><span class="p">:</span> <span class="mi">900</span><span class="p">,</span>
-<span class="p">}</span>
-</pre></div>
-</div>
-<p>每个 Downloader Middleware 都可以定义 <cite>process_request()</cite> 和 <cite>process_response()</cite> 方法来分别处理请求和响应:</p>
-<ul class="simple">
-<li><p>对于 process_request(), 优先级数字越小越先被调用</p></li>
-<li><p>对于 process_response(), 优先级数字越大越先被调用</p></li>
-</ul>
-<p>自定义 Downloader Middleware 时, 不能直接修改 <cite>DOWNLOADER_MIDDLEWARES_BASE</cite>; 可以通过修改 <cite>DOWNLOADER_MIDDLEWARES</cite> 变量添加自定义 Downloader Middleware, 或禁用 <cite>DOWNLOADER_MIDDLEWARES_BASE</cite> 中的 Downloader Middlewares</p>
-<div class="section" id="id15">
-<h4>自定义 Downloader Middleware<a class="headerlink" href="#id15" title="Permalink to this headline">¶</a></h4>
-<p>只需定义以下 3 个核心方法中的 1 个即可:</p>
-<ul>
-<li><dl>
-<dt><cite>process_request(request, spider)</cite></dt><dd><p>Request 被 Scrapy 引擎调度给 Downloader 之前, process_request() 方法就会被调用, 也就是在 Request 从队列里调度出来到 Downloader 下载执行之前都可以用 process_request() 方法对 Request 进行处</p>
-<p>方法的返回值必须为 None, Response 对象, Request 对象之一, 或者抛出 <cite>IgnoreRequest</cite> 异常</p>
-<ul class="simple">
-<li><p>request: Request 对象, 即被处理的 Request</p></li>
-<li><p>spider: Spdier 对象, 即此 Request 对应的 Spider</p></li>
-</ul>
-</dd>
-</dl>
-</li>
-<li><p><cite>process_response(request, response, spider)</cite></p></li>
-<li><p><cite>process_exception(request, exception, spider)</cite></p></li>
-</ul>
-</div>
 </div>
 </div>
 </div>
@@ -2101,7 +1335,7 @@
   
     <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
       
-        <a href="../../Javascript/index.html" class="btn btn-neutral float-right" title="Accesskey Alt(+Shift)+n" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+        <a href="weblibs.html" class="btn btn-neutral float-right" title="Accesskey Alt(+Shift)+n" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
       
       
         <a href="index.html" class="btn btn-neutral" title="Accesskey Alt(+Shift)+p" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
