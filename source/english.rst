@@ -18,14 +18,14 @@
 ~~~~~~~~~
 
 ↑
-    suf- 
+    suf-
         sufficient
-    
+
     sup-
         superior
-    
+
     sur-
-    
+
     sus-
         sustain
 
@@ -35,16 +35,16 @@
         upsurge
 
         uproar
-    
+
     over-
         overlap
 
 ↓
     sub-
         substance
-    
+
     suc-
-    
+
     hyp-
         hyp'nosis
 
@@ -62,6 +62,7 @@
         postpone
 
         post-graduate
+
     re-
 
     with-

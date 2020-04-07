@@ -28,15 +28,15 @@ Introduction
         - 提供数据定义语言 (Data Definition Language, DDL)
         - 数据组织, 存储和管理
         - 提供数据操纵语言 (Data Manipulation Language, DML)
-            
+
             查询、插入、删除和修改
 
         - 数据库的事务管理和运行管理
-            
+
             保证数据的安全性, 完整性, 多用户对数据的并发使用
-            
+
             发生故障后的系统恢复
-        
+
         - 数据库的建立, 运行和维护
         - 等等...
 
@@ -54,9 +54,9 @@ Introduction
     :widths: 5 15 20 20 25
     :header-rows: 1
     :stub-columns: 2
-    
-    * - 
-      - 
+
+    * -
+      -
       - 人工管理阶段
       - 文件系统阶段
       - 数据库系统阶段
@@ -85,12 +85,12 @@ Introduction
       - 用户 (程序员)
       - 文件系统
       - 数据库管理系统
-    * - 
+    * -
       - 数据面向的对象
       - 某一应用程序 (一一对应)
       - 某一应用
       - 现实世界
-    * - 
+    * -
       - 数据的共享程度
       - 无共享, 冗余度极大
       - 共享性差, 冗余度大
@@ -105,7 +105,7 @@ Introduction
       - 无结构
       - 记录内有结构, 整体无结构
       - 整体结构化, 用数据模型描述
-    * - 
+    * -
       - 数据控制能力
       - 应用程序自己控制
       - 应用程序自己控制
@@ -174,16 +174,16 @@ Introduction
         :scale: 90 %
 
         数据模型例
-    
+
     .. figure:: imgs/Hierarchical_Model_example2.png
         :align: right
         :scale: 80 %
 
-        模型的一个实例       
+        模型的一个实例
 
     - 层次模型中的基本层次联系为:
-    
-        1. 有且只有一个 node 没有 parent node, 即根节点 root node 
+
+        1. 有且只有一个 node 没有 parent node, 即根节点 root node
         2. 根以外的其他 node 有且只有一个 parent node
 
     - 层次模型中每个节点都表示一个记录类型, 记录类型之间的联系用节点之间的有向线段表示 (这种联系是 parent-children 的一对多的联系, 而联系是唯一的)
@@ -197,10 +197,10 @@ Introduction
 
     .. figure:: imgs/Net_Model_example1.png
         :align: right
-        :scale: 80 %       
+        :scale: 80 %
 
     - 网状模型中的基本层次联系为:
-    
+
         1. 可以有多个 nodes 没有 parent node
         2. 每个 node 可以有多个 parent nodes
 
@@ -218,11 +218,11 @@ Introduction
 .. figure:: imgs/Three-schema_approach.png
     :align: right
     :scale: 80 %
-   
+
 模式 Schema
     - 数据模型是对实体及其关系的整体抽象定义; type-value
     - 而 schema 则是对数据库中所有实体及其所有关系的抽象的具体的代码实现; schema-instance (一个数据库只有一个模式)
-    
+
     模式也称逻辑模式, 是数据库中全体数据的逻辑结构和特征的描述, 是所有用户的公共数据视图
 
     三级模式结构的中间层, 既不涉及数据的物理存储, 也不涉及数据的具体应用
@@ -278,7 +278,7 @@ Introduction
 - 笛卡儿积 Cartesian Product
     给定一组域 :math:`D_1, D_2, ..., D_n`, 它们的笛卡儿积为
 
-    :math:`D_1 \times D_2 \times ... \times D_n = \{ (d_1, d_2, ..., d_n) | d_i \in D_i, i=1, 2, ..., n \}` 
+    :math:`D_1 \times D_2 \times ... \times D_n = \{ (d_1, d_2, ..., d_n) | d_i \in D_i, i=1, 2, ..., n \}`
 
     - 域可以相同
     - 每个元素 :math:`(d_1, d_2, ..., d_n)` 叫做一个 :math:`n` 元组 (n-tuple), 通常用 :math:`t` 表示 (也叫记录 record)
@@ -286,10 +286,10 @@ Introduction
     - 互不重复的元组数为这个域的 **基数** (cardinal number)
 
     .. admonition:: 例
-    
-        - :math:`D_1 = \{ D_{11}, D_{12} \}` 
-        - :math:`D_2 = \{ D_{21}, D_{22} \}` 
-        - :math:`D_3 = \{ D_{31}, D_{32}, D_{33} \}` 
+
+        - :math:`D_1 = \{ D_{11}, D_{12} \}`
+        - :math:`D_2 = \{ D_{21}, D_{22} \}`
+        - :math:`D_3 = \{ D_{31}, D_{32}, D_{33} \}`
 
         则 :math:`D_1, D_2, D_3` 的笛卡儿积为
 
@@ -298,54 +298,54 @@ Introduction
         \quad (D_{11}, D_{22}, D_{31}), (D_{11}, D_{22}, D_{32}), (D_{11}, D_{22}, D_{33}) \\
         \quad (D_{12}, D_{21}, D_{31}), (D_{12}, D_{21}, D_{32}), (D_{12}, D_{21}, D_{33}) \\
         \quad (D_{12}, D_{22}, D_{31}), (D_{12}, D_{22}, D_{32}), (D_{12}, D_{22}, D_{33}) \}`
-        
-        其基数为 :math:`2 \times 2 \times 3 = 12` 
-    
+
+        其基数为 :math:`2 \times 2 \times 3 = 12`
+
     笛卡儿积也可以表示成一个二维表
 
     .. list-table::
         :widths: 5 5 5
         :header-rows: 1
         :stub-columns: 0
-    
+
         * - :math:`D_1`
           - :math:`D_2`
           - :math:`D_3`
-        * - :math:`D_{11}` 
-          - :math:`D_{21}` 
-          - :math:`D_{31}` 
-        * - :math:`D_{11}` 
+        * - :math:`D_{11}`
           - :math:`D_{21}`
-          - :math:`D_{32}` 
-        * - :math:`D_{11}` 
-          - :math:`D_{21}` 
-          - :math:`D_{33}`
-        * - :math:`D_{11}` 
-          - :math:`D_{22}` 
-          - :math:`D_{31}` 
-        * - :math:`D_{11}` 
-          - :math:`D_{22}`
-          - :math:`D_{32}` 
-        * - :math:`D_{11}` 
-          - :math:`D_{22}` 
-          - :math:`D_{33}`
-        * - :math:`D_{12}` 
-          - :math:`D_{21}` 
-          - :math:`D_{31}` 
-        * - :math:`D_{12}` 
+          - :math:`D_{31}`
+        * - :math:`D_{11}`
           - :math:`D_{21}`
-          - :math:`D_{32}` 
-        * - :math:`D_{12}` 
-          - :math:`D_{21}` 
+          - :math:`D_{32}`
+        * - :math:`D_{11}`
+          - :math:`D_{21}`
           - :math:`D_{33}`
-        * - :math:`D_{12}` 
-          - :math:`D_{22}` 
-          - :math:`D_{31}` 
-        * - :math:`D_{12}` 
+        * - :math:`D_{11}`
           - :math:`D_{22}`
-          - :math:`D_{32}` 
-        * - :math:`D_{12}` 
-          - :math:`D_{22}` 
+          - :math:`D_{31}`
+        * - :math:`D_{11}`
+          - :math:`D_{22}`
+          - :math:`D_{32}`
+        * - :math:`D_{11}`
+          - :math:`D_{22}`
+          - :math:`D_{33}`
+        * - :math:`D_{12}`
+          - :math:`D_{21}`
+          - :math:`D_{31}`
+        * - :math:`D_{12}`
+          - :math:`D_{21}`
+          - :math:`D_{32}`
+        * - :math:`D_{12}`
+          - :math:`D_{21}`
+          - :math:`D_{33}`
+        * - :math:`D_{12}`
+          - :math:`D_{22}`
+          - :math:`D_{31}`
+        * - :math:`D_{12}`
+          - :math:`D_{22}`
+          - :math:`D_{32}`
+        * - :math:`D_{12}`
+          - :math:`D_{22}`
           - :math:`D_{33}`
 
 - 关系 Relation
@@ -356,7 +356,7 @@ Introduction
     其中 :math:`R` 表示关系名, :math:`n` 是关系的 **目** 或 **度** (degree)
 
     关系也可以表示成一个二维表, 每行对应一个元组, 每列对应一个域 (域可以相同, 所以为每列起一个名字用于区分, 称为属性 attribute)
-    
+
     - 候选码 candidate key
         关系的属性中可以唯一标识一个元组的一个属性组 (:math:`\geqslant 1` )
 
@@ -379,7 +379,7 @@ Introduction
         六条性质:
 
         1. 列同质 homogeneous
-        
+
             每一列中的分量皆为同一类型的数据, 都来自同一域
         2. 不同的列可以出自同一个域, 此时使用属性名来区分
         3. 候选码的值不能有重复
@@ -448,12 +448,12 @@ Introduction
 |  关系模型必须满足实体完整性和参照完整性
 |  用户定义的完整性是应用领域的约束条件
 
-实体完整性 
+实体完整性
 ^^^^^^^^^^^
 
 若属性 :math:`A` 是基本关系 :math:`R` 的主属性, 则 :math:`A` 不能取空值 null
 
-参照完整性 
+参照完整性
 ^^^^^^^^^^^
 
 外码 Foreign Key
@@ -487,13 +487,13 @@ Introduction
         - :math:`\times` 笛卡儿积
 
         .. figure:: imgs/set_calc.png
-        
+
     - 关系运算
 
         - :math:`\sigma` 选择
-            又称为限制 (restriction), 记作 :math:`\sigma_F(R) = \{ t | t \in R \bigwedge F(t) = \text{TRUE} \}` 
+            又称为限制 (restriction), 记作 :math:`\sigma_F(R) = \{ t | t \in R \bigwedge F(t) = \text{TRUE} \}`
 
-            其中 :math:`F` 表示选择条件, 值为 TRUE 或 FALSE; 其基本形式为 :math:`X_1 \theta Y_1` 
+            其中 :math:`F` 表示选择条件, 值为 TRUE 或 FALSE; 其基本形式为 :math:`X_1 \theta Y_1`
 
             - :math:`\theta` 为比较运算符, 值为 :math:`>, \geqslant, <, \leqslant, =, <>`
             - :math:`X_1, Y_1` 为属性名, 属性序号, 常量或简单函数
@@ -514,7 +514,7 @@ Introduction
 
             .. figure:: imgs/join1.png
                 :scale: 70%
-            
+
             .. figure:: imgs/join2.png
                 :scale: 70%
 
@@ -535,13 +535,13 @@ Introduction
                 在自然连接时所使用的属性上, :math:`R` 中的一些元组没有与 :math:`S` 所对应的值, 则这些元组被舍弃, 叫做悬浮元组
 
             - 外连接 outer join ⟗
-                
+
                 在结果中保留悬浮元组, 其他属性填 null
-            
+
             - 左外连接 left outer join (left join) ⟕
 
                 只保留左边关系中的悬浮元组
-            
+
             右外连接 right outer join (right join) ⟖
 
                 只保留右边关系中的悬浮元组
@@ -550,7 +550,7 @@ Introduction
             用两个关系的相同属性自然连接后, 保留只属于一个关系而不属于另一个关系的属性及其值
 
             .. figure:: imgs/div.png
-            
+
 - 运算结果
     关系
 

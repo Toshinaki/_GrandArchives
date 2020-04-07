@@ -10,7 +10,8 @@ Computing and information technology
 
     Hardware/index
     Operating-System/index
-    Programming-Language/index
+    Programming/index
     Database/index
     Software-Design/index
+    Artificial Intelligence<AI/index>
     Tools/index

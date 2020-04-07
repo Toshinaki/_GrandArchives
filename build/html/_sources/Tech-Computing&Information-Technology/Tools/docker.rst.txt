@@ -40,9 +40,9 @@ Intro
 1. 资源占用多
 
     虚拟机会独占一部分内存和硬盘空间
-    
+
     它运行的时候, 其他程序就不能使用这些资源了
-    
+
     哪怕虚拟机里面的应用程序真正使用的内存只有 1MB, 虚拟机依然需要几百 MB 的内存才能运行
 
 2. 冗余步骤多
@@ -52,7 +52,7 @@ Intro
 3. 启动慢
 
     启动操作系统需要多久, 启动虚拟机就需要多久
-    
+
     可能要等几分钟, 应用程序才能真正运行
 
 
@@ -70,13 +70,13 @@ Linux 容器不是模拟一个完整的操作系统, 而是对进程进行隔离
 1. 启动快
 
     容器里面的应用, 直接就是底层系统的一个进程, 而不是虚拟机内部的进程
-    
+
     所以, 启动容器相当于启动本机的一个进程, 而不是启动一个操作系统, 速度就快很多
 
 2. 资源占用少
 
     容器只占用需要的资源, 不占用那些没有用到的资源; 虚拟机由于是完整的操作系统, 不可避免要占用所有资源
-    
+
     另外, 多个容器可以共享资源, 虚拟机都是独享资源
 
 3. 体积小
@@ -235,7 +235,7 @@ image 文件生成的容器实例本身也是一个文件, 称为容器文件; �
 
     # 删除容器文件
     $ docker container rm [containerID]
-    
+
     # 启动已经生成但停止运行的容器
     $ docker container start [containerID]
 
@@ -279,20 +279,20 @@ Dockerfile 是由一行行命令语句组成, 并且支持以 "#" 开头的注�
 
 大致可分为 4 个部分:
 
-1. FROM: 
-    
+1. FROM:
+
     基础镜像 (父镜像) 信息指令
 
-2. MAINTAINER: 
-    
+2. MAINTAINER:
+
     维护者信息指令
 
-3. RUN, EVN, ADD, WORKDIR, .etc: 
-    
-    镜像操作指令 
+3. RUN, EVN, ADD, WORKDIR, .etc:
 
-4. CMD, ENTRYPOINT, USER, .etc: 
-    
+    镜像操作指令
+
+4. CMD, ENTRYPOINT, USER, .etc:
+
     容器启动指令
 
 
@@ -300,7 +300,7 @@ Dockerfile 是由一行行命令语句组成, 并且支持以 "#" 开头的注�
 
     .. code-block:: console
 
-        # 启动 python flask app 
+        # 启动 python flask app
 
         # 从 Docker Hub 上 pull 下 python 3.6 的基础镜像
         FROM python:3.6
@@ -341,7 +341,7 @@ Docker Compose
 2. 只要一个命令, 就能同时启动/关闭这些容器
 
     .. code-block:: console
-    
+
         # 启动所有服务
         $ docker-compose up
         # 关闭所有服务

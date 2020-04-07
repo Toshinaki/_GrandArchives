@@ -83,7 +83,7 @@
 反函数求导
 ~~~~~~~~~~~~~~~~~
 
-若函数 :math:`x = f(y)` 在区间 :math:`I_y` 内可导且 :math:`f'(y) \neq 0` (单调), 则其反函数 :math:`y = f^{-1}(x)` 在区间 :math:`I_x = \{x|x=f(y), y \in I_y\}` 内也可导, 且 
+若函数 :math:`x = f(y)` 在区间 :math:`I_y` 内可导且 :math:`f'(y) \neq 0` (单调), 则其反函数 :math:`y = f^{-1}(x)` 在区间 :math:`I_x = \{x|x=f(y), y \in I_y\}` 内也可导, 且
 
 .. math:: (f^{-1}(x))' = \frac{1}{f'(y)}
 
@@ -107,6 +107,8 @@
 
 高阶导数
 --------------
+
+二阶及二阶以上的导数称为高阶导数
 
 特殊的高阶导数
 ~~~~~~~~~~~~~~~
@@ -149,7 +151,7 @@ Leibniz公式
 
 变量 :math:`x,y` 满足 :math:`F(x,y)=0`
 
-将 :math:`y` 看作 :math:`x` 的函数, 只对 :math:`x` 求导 
+将 :math:`y` 看作 :math:`x` 的函数, 只对 :math:`x` 求导
 
 参数方程
 ~~~~~~~~~~~~~~~~~
@@ -179,16 +181,16 @@ Leibniz公式
 ---------------
 
 定义
-    设函数 :math:`y=f(x)` 在某区间内有定义, :math:`x_0` 及 :math:`x_0+\Delta{x}` 在此区间内, 
+    设函数 :math:`y=f(x)` 在某区间内有定义, :math:`x_0` 及 :math:`x_0+\Delta{x}` 在此区间内,
 
     如果增量 :math:`\Delta{y} = f(x_0+\Delta{x}) - f(x_0)` 可表示为 :math:`\Delta{y} = A\Delta{x} + o(\Delta{x})` (线性部分与 :math:`\Delta{x}` 的高阶无穷小之和)
 
     其中 :math:`A` 是不依赖于 :math:`\Delta{x}` 的常数, 那么称函数 :math:`y=f(x)` 在点 :math:`x_0` 是 **可微** 的,
 
-    而 :math:`A\Delta{x}` 叫做函数 :math:`y=f(x)` 在点 :math:`x_0` 相应于自变量 :math:`\Delta{x}` 的 **微分** , 记作 :math:`dy`, 即 :math:`dy = A\Delta{x}` 
+    而 :math:`A\Delta{x}` 叫做函数 :math:`y=f(x)` 在点 :math:`x_0` 相应于自变量 :math:`\Delta{x}` 的 **微分** , 记作 :math:`dy`, 即 :math:`dy = A\Delta{x}`
 
 
-- 若函数 :math:`y=f(x)` 在点 :math:`x_0` 可微, 则 :math:`\Delta{y} - dy|_{x=x_0} = o(\Delta{x})` 
+- 若函数 :math:`y=f(x)` 在点 :math:`x_0` 可微, 则 :math:`\Delta{y} - dy|_{x=x_0} = o(\Delta{x})`
 - 函数 :math:`y=f(x)` 在点 :math:`x_0` 可微 :math:`\Leftrightarrow` 函数 :math:`y=f(x)` 在点 :math:`x_0` 可导
 
     .. admonition:: 证明
@@ -199,10 +201,10 @@ Leibniz公式
 
         当 :math:`\Delta{x} \to 0` 时, :math:`\lim_{\Delta{x} \to 0}\frac{\Delta{y}}{\Delta{x}} = A = f'(x_0)`
 
-        反之亦然 
+        反之亦然
 
-- :math:`A = f'(x)`, 即 :math:`df(x)|_{x=x_0} = f'(x_0)dx` 
-- 若函数 :math:`y=f(x)` 处处可微, 则 :math:`dy = df(x) = f'(x)dx` 
+- :math:`A = f'(x)`, 即 :math:`df(x)|_{x=x_0} = f'(x_0)dx`
+- 若函数 :math:`y=f(x)` 处处可微, 则 :math:`dy = df(x) = f'(x)dx`
 - 几何意义
 
     .. image:: imgs/微分.PNG

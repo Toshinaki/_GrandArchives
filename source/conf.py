@@ -18,7 +18,7 @@
 # -- Project information -----------------------------------------------------
 
 project = 'gate-of-babylon'
-copyright = '2019, Toshinaki'
+copyright = 'Toshinaki@2019'
 author = 'Toshinaki'
 
 

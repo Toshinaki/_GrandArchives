@@ -1,0 +1,1744 @@
+<!DOCTYPE html>
+<!--[if IE 8]><html class="no-js lt-ie9" lang="en" > <![endif]-->
+<!--[if gt IE 8]><!--> <html class="no-js" lang="en" > <!--<![endif]-->
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <meta name="book-name"    content="gate-of-babylon"/>
+  <meta name="book-version" content=""/>
+  <meta name="book-release" content=""/>
+  <meta name="book-type"    content="Manual"/>
+
+  
+  <title>3. Performance Metrics &mdash; gate-of-babylon  documentation</title>
+  
+
+  
+  
+
+  
+
+  
+
+  
+
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+
+  
+    <link rel="stylesheet" href="../../../_static/css/theme.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/jquery-ui/jquery-ui.min.css" type="text/css" />
+  
+    <link rel="stylesheet" href="../../../_static/css/t3more.css" type="text/css" />
+  
+
+  
+        <link rel="index" title="Index"
+              href="../../../genindex.html"/>
+        <link rel="search" title="Search" href="../../../search.html"/>
+    <link rel="top" title="gate-of-babylon  documentation" href="#"/>
+        <link rel="up" title="Machine Learning" href="index.html"/>
+        <link rel="next" title="4. Regression Analysis" href="regression.html"/>
+        <link rel="prev" title="2. Data Pre-Processing" href="datapreprocessing.html"/> 
+  <script src="../../../_static/js/modernizr.min.js"></script>
+</head>
+
+<body class="wy-body-for-nav" role="document">
+
+  <div class="wy-grid-for-nav">
+
+    
+    <nav data-toggle="wy-nav-shift" class="wy-nav-side">
+      <div class="wy-side-nav-search">
+        
+
+        <ul class="sidebartop">
+
+          <li class="docsite">
+            <a href="https://docs.typo3.org"><img src="../../../_static/img/typo3-documentation.png" class="logo" /></a>
+          </li><li class="project">
+            <a href="../../../index.html">
+              gate-of-babylon</a>
+          </li>
+          <li class="nolink search"><div role="search">
+  <form id="rtd-search-form" class="wy-form" action="../../../search.html" method="get">
+    <input type="text" name="q" placeholder="Search this project" id="searchinput" />
+    <input type="hidden" name="check_keywords" value="yes" />
+    <input type="hidden" name="area" value="default" />
+  </form>
+</div>
+</li></ul>
+
+        
+      </div>
+
+      <div class="wy-menu wy-menu-vertical" data-spy="affix" role="navigation" aria-label="main navigation">
+        
+          
+          
+              <p class="caption"><span class="caption-text">Technology and Applied Sciences</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="reference internal" href="../../index.html">Computing and information technology</a><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="../../Hardware/index.html">Hardware</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Hardware/Computer/index.html">Computer Science</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Hardware/Computer/computer_memory.html">1. Computer Memory</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Hardware/Computer/computer_memory.html#id1">1.1. 存储器层次结构</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Hardware/Computer/computer_memory.html#register">1.2. Register 寄存器</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Hardware/Computer/computer_memory.html#cache">1.3. cache 高速缓存</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Hardware/Computer/computer_memory.html#ram">1.4. RAM 主存</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Hardware/Computer/computer_memory.html#hard-disk-drive-hdd">1.5. Hard Disk Drive (HDD) 硬盘</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Hardware/Computer/computer_memory.html#id2">1.5.1. 物理结构</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Hardware/Computer/computer_memory.html#id3">1.5.2. 数据编码</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Hardware/Computer/computer_memory.html#id4">1.5.3. 读写数据</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Hardware/Computer/computer_memory.html#id5">1.5.4. 逻辑结构</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Hardware/Computer/computer_memory.html#id6">1.5.5. 磁盘地址管理方式</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Hardware/Computer/computer_memory.html#id7">1.5.6. 磁盘分区信息存储方式</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Hardware/Computer/computer_memory.html#mbr-master-boot-record">MBR (Master Boot Record)</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Hardware/Computer/computer_memory.html#gpt-guid-partition-table">GPT (GUID partition table)</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../Hardware/Computer/computer_memory.html#id8">1.5.7. 数据接口</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Hardware/Computer/computer_memory.html#id9">1.6. 分类</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../Hardware/Computer/Firmware.html">2. Firmware 固件</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Hardware/Computer/Firmware.html#bios">2.1. BIOS</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Hardware/Computer/Firmware.html#id1">2.1.1. BIOS 管理功能</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Hardware/Computer/Firmware.html#post">POST 加电自检</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Hardware/Computer/Firmware.html#id2">BIOS 中断调用</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Hardware/Computer/Firmware.html#id3">BIOS系统设置</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Hardware/Computer/Firmware.html#option-rom">Option ROM 扩展程序</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Hardware/Computer/Firmware.html#uefi">2.2. UEFI</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Operating-System/index.html">Operating System</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Operating-System/General/index.html">OS 101</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Operating-System/Linux/index.html">Linux</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Operating-System/Linux/FHS.html">Filesystem Hierarchy Standard</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Programming/index.html">Programming Languages</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Programming/Python/index.html">Python</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Programming/Python/index.html#basics">Basics</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/Python/basics/basics.html">Python Basics</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Python/basics/basics.html#syntax">Syntax</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/basics/basics.html#statement-blocks">Statement Blocks</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/basics/basics.html#comments">Comments</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/basics/basics.html#identifiers">Identifiers</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Python/basics/basics.html#object">对象 (Object)</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Python/basics/basics.html#variables">Variables</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/basics/basics.html#id1">变量的声明</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/basics/basics.html#variables-assignment">Variables assignment</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/basics/basics.html#id2">常量</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Python/basics/basics.html#types">数据类型 Types</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/basics/basics.html#id3">基础类型</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/basics/basics.html#id4">类型转换</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/basics/basics.html#id5">数字</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/basics/basics.html#id6">运算</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/basics/basics.html#id7">进制</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/basics/basics.html#id8">科学计数法</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/basics/basics.html#boolean-logic">Boolean Logic</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/basics/basics.html#id9">字符串</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/basics/basics.html#id10">编码</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/basics/basics.html#id11">创建字符串</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../Programming/Python/index.html#web-programming">Web Programming</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/Python/index.html#web-frameworks">Web Frameworks</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Python/Frame-Django/index.html">Django</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/Frame-Django/workflow.html">1. Workflow of Django</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/workflow.html#id1">1.1. 安装</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/workflow.html#project">1.2. 创建 project</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/workflow.html#id2">1.3. 配置数据库</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/workflow.html#app">1.4. 创建 app</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/workflow.html#id3">1.5. 迁移数据库</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/workflow.html#superuser">1.6. 创建后台管理用的 superuser</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/workflow.html#id4">1.7. 启动测试服务器</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/workflow.html#id5">1.8. 设置模板路径</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/workflow.html#id6">1.9. 设置静态文件路径</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/workflow.html#id7">1.10. 扩展用户模型</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/Frame-Django/intro.html">2. Django Basics</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/intro.html#mvc-mvt">2.1. MVC &amp; MVT</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/Frame-Django/model.html">3. Model</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/model.html#model">3.1. Model</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/model.html#field">3.2. Field</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/Frame-Django/template.html">4. Template</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/template.html#id1">4.1. 语法</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/template.html#id9">4.2. 设计理念</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/Frame-Django/signal.html">5. Signal</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/signal.html#id1">5.1. 监听信号</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/signal.html#id2">5.2. 发送信号</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/signal.html#id3">5.3. 断开信号</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/signal.html#id4">5.4. Django 内置信号</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/signal.html#id5">5.5. 自定义信号</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/signal.html#id6">5.6. 初始化信号</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/Frame-Django/middleware.html">6. Middleware</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/middleware.html#id1">6.1. 启用中间件</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/middleware.html#id2">6.2. 中间件的顺序</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/middleware.html#id3">6.3. Django 内置中间件</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/middleware.html#id4">6.4. 自定义中间件</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/middleware.html#id7">6.5. 应用实例</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/Frame-Django/fileupload.html">7. File Upload</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/fileupload.html#upload-basics">7.1. Upload Basics</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/fileupload.html#id2">7.2. 上传方法</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/fileupload.html#id3">7.3. 存储方法</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/Frame-Django/deploy.html">8. Deploy to cloud</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/deploy.html#deploy-to-gcp">8.1. Deploy to GCP</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/Frame-Django/extensions.html">9. Extensions</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/extensions.html#django-allauth">9.1. django-allauth</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/Frame-Django/qa.html">10. Q &amp; A</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/Frame-Django/qa.html#static-url-static-root-and-staticfiles-dirs">10.1. 区别: STATIC_URL, STATIC_ROOT AND STATICFILES_DIRS</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/Python/index.html#libraries">Libraries</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/urllib.html">urllib</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/urllib.html#request">request</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/urllib.html#urlopen">urlopen</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/urllib.html#id1">Request</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/urllib.html#basehandler">BaseHandler</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/urllib.html#openerdirector">OpenerDirector</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/urllib.html#error">error</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/urllib.html#urlerror">URLError</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/urllib.html#httperror">HTTPError</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/urllib.html#parse">parse</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/urllib.html#urlparse-urlunparse">urlparse &amp; urlunparse</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/urllib.html#urlsplit-urlunsplit-urljoin">urlsplit, urlunsplit &amp; urljoin</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/urllib.html#urlencode-parse-qs-parse-qsl">urlencode, parse_qs &amp; parse_qsl</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/urllib.html#quote-unquote">quote &amp; unquote</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/urllib.html#robots">robots</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/urllib.html#id2">Robots 协议</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/urllib.html#robotfileparser">RobotFileParser</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/requests.html">requests</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/requests.html#install">Install</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/requests.html#basics">Basics</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/requests.html#id1">发送请求</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/requests.html#url">传递 URL 参数</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/requests.html#response">Response</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/requests.html#request-headers">Request headers</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/scrapy.html">scrapy</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/scrapy.html#intro">Intro</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/scrapy.html#id1">架构</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/scrapy.html#id2">数据流</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/scrapy.html#id3">项目结构</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/scrapy.html#id4">Scrapy 使用</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/scrapy.html#id5">创建项目</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/scrapy.html#spider">创建 spider</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/scrapy.html#item">创建 Item</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/scrapy.html#parse-response">在 <cite>parse()</cite> 中解析 Response</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/scrapy.html#parse-item">在 <cite>parse()</cite> 中实例化自定义 Item 类</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/scrapy.html#parse">在 <cite>parse()</cite> 中创建下一个请求</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/scrapy.html#id6">在命令行运行定义的 spider</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/scrapy.html#id7">保存抓取结果到文件</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/scrapy.html#item-pipeline">使用 Item Pipeline 进行更复杂的操作</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/scrapy.html#selector">Selector</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/scrapy.html#id8">创建 selector</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/scrapy.html#id10">使用 selector 获取结果</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/scrapy.html#css">CSS 选择器扩展</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/scrapy.html#id11">Spider</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/scrapy.html#spiders">通用 Spiders</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/scrapy.html#downloader-middleware">Downloader Middleware</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/scrapy.html#id12">自定义 Downloader Middleware</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/scrapy.html#spider-middleware">Spider Middleware</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/scrapy.html#id13">自定义 Spider Middleware</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/scrapy.html#id14">Item Pipeline</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/scrapy.html#id15">自定义 Item Pipeline</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/WebProgrammingLibraries/scrapy.html#filespipeline-imagespipeline">FilesPipeline &amp; ImagesPipeline</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/Python/index.html#snippet">Snippet</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Python/snippets/proxypool.html">Proxy Pool</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/snippets/proxypool.html#why">Why</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/snippets/proxypool.html#prerequisite">Prerequisite</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/snippets/proxypool.html#structure">Structure</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Python/snippets/proxypool.html#implement">Implement</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/snippets/proxypool.html#id1">存储模块</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/snippets/proxypool.html#id2">获取模块</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/snippets/proxypool.html#id3">检测模块</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/snippets/proxypool.html#id4">接口模块</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/Python/snippets/proxypool.html#id5">调度模块</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Programming/Javascript/index.html">Javascript</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Programming/Javascript/intro.html">1. Introduction</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/Javascript/intro.html#js">1.1. 浏览器如何执行 JS</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/Javascript/intro.html#id1">1.2. JS 的组成</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/Javascript/intro.html#id2">1.3. JS 的写法</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/intro.html#id3">1.3.1. 行内 JS</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/intro.html#id4">1.3.2. 内嵌 JS</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/intro.html#id5">1.3.3. 外部 JS</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/intro.html#id6">1.3.4. JS 注释</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/Javascript/intro.html#id7">1.4. 变量的使用</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/intro.html#id8">1.4.1. 更新变量</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/intro.html#id9">1.4.2. 声明多个变量</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/Javascript/intro.html#id10">1.5. 数据类型</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/intro.html#id11">1.5.1. 数据类型的分类</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/intro.html#id12">1.5.2. 获取数据类型</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/intro.html#id13">1.5.3. 数据类型转换</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/Javascript/intro.html#operator">1.6. 运算符 operator</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/intro.html#id14">1.6.1. 优先级</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/Javascript/intro.html#id15">1.7. 流程控制</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/intro.html#id16">1.7.1. 顺序结构</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/intro.html#id17">1.7.2. 分支流程控制</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/intro.html#id18">1.7.3. 循环结构</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/Javascript/intro.html#id19">1.8. 数组</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/intro.html#id20">1.8.1. 创建数组</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/intro.html#id21">1.8.2. 获取数组元素</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/intro.html#id22">1.8.3. 获取元素索引</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/intro.html#id23">1.8.4. 添加元素</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/intro.html#id24">1.8.5. 删除元素</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/intro.html#id25">1.8.6. 数组排序</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/Javascript/intro.html#id26">1.9. 函数</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/intro.html#id27">1.9.1. 参数</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/intro.html#return">1.9.2. <cite>return</cite> 返回值</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/intro.html#arguments">1.9.3. <cite>arguments</cite></a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/intro.html#id28">1.9.4. 函数表达式</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/intro.html#id29">1.9.5. 立即执行函数</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/Javascript/intro.html#id30">1.10. 作用域</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/Javascript/intro.html#id31">1.11. 预解析</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/Javascript/intro.html#id32">1.12. 对象</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/intro.html#id33">1.12.1. 创建对象</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/intro.html#id34">1.12.2. 调用属性和方法</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/intro.html#id35">1.12.3. 遍历对象属性和方法</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/Javascript/intro.html#javascript">1.13. Javascript 内置对象</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../Programming/Javascript/webapis.html">2. Web APIs</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/Javascript/webapis.html#dom">2.1. DOM</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/webapis.html#id1">2.1.1. 获取元素</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/webapis.html#id2">2.1.2. 操作元素</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/webapis.html#id3">2.1.3. 节点操作</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/Javascript/webapis.html#id4">2.2. 事件</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/webapis.html#id5">2.2.1. 事件基础</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/webapis.html#id6">2.2.2. 绑定/注册事件</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/webapis.html#id7">2.2.3. 移除事件</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/webapis.html#id8">2.2.4. DOM 事件流</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/webapis.html#id9">2.2.5. 事件对象</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/webapis.html#id10">2.2.6. 事件委托</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/Javascript/webapis.html#id11">2.3. 鼠标事件</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/webapis.html#id12">2.3.1. 常用鼠标事件</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/webapis.html#mouseevent">2.3.2. 鼠标事件对象 MouseEvent</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/Javascript/webapis.html#id13">2.4. 键盘事件</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/webapis.html#id14">2.4.1. 常用键盘事件</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/webapis.html#keyboardevent">2.4.2. 键盘事件对象 KeyboardEvent</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/Javascript/webapis.html#bom">2.5. BOM</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/webapis.html#window">2.5.1. window 对象常用事件</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/webapis.html#location">2.5.2. location 对象</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/webapis.html#navigator">2.5.3. navigator 对象</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/webapis.html#history">2.5.4. history 对象</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/webapis.html#id15">2.5.5. 定时器</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/webapis.html#js">2.5.6. JS 执行机制</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/Javascript/webapis.html#id16">同步和异步</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/Javascript/webapis.html#pc">2.6. PC 网页特效</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/webapis.html#offset">2.6.1. offset</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/webapis.html#client">2.6.2. client</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/webapis.html#scroll">2.6.3. scroll</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/Javascript/webapis.html#sp">2.7. SP 网页特效</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/webapis.html#touch">2.7.1. 触屏事件 touch</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/webapis.html#touchevent">2.7.2. 触摸事件对象 TouchEvent</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/Javascript/webapis.html#local-storage">2.8. 本地存储 Local Storage</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/webapis.html#window-sessionstorage">2.8.1. window.sessionStorage</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/webapis.html#window-localstorage">2.8.2. window.localStorage</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../Programming/Javascript/jQuery.html">3. jQuery</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/Javascript/jQuery.html#id1">3.1. 基础</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/jQuery.html#id2">3.1.1. jQuery 入口函数</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/jQuery.html#id3">3.1.2. jQuery 顶级对象 <cite>$</cite></a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/jQuery.html#jquery-dom">3.1.3. jQuery 对象和 DOM 对象</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/Javascript/jQuery.html#jquery-api">3.2. jQuery 常用 API</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/jQuery.html#id4">3.2.1. jQuery 选择器</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/jQuery.html#css">3.2.2. 操作 css</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/jQuery.html#id5">3.2.3. 操作类</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/jQuery.html#id6">3.2.4. jQuery 效果</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/jQuery.html#id7">3.2.5. jQuery 属性</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/jQuery.html#id8">3.2.6. jQuery 操作内容</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/jQuery.html#id9">3.2.7. jQuery 操作元素</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/jQuery.html#id10">3.2.8. jQuery 尺寸 &amp; 位置</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/Javascript/jQuery.html#id11">3.3. jQuery 事件</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/jQuery.html#on">3.3.1. 用 <cite>on()</cite> 绑定事件</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/jQuery.html#id12">3.3.2. 事件委派</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/jQuery.html#off">3.3.3. 用 <cite>off()</cite> 绑定事件</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/jQuery.html#one">3.3.4. 用 <cite>one()</cite> 触发事件一次</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/jQuery.html#trigger">3.3.5. <cite>trigger()</cite> 触发事件</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../Programming/Javascript/ES6.html">4. ECMAScript 6</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/Javascript/ES6.html#id1">4.1. 面向对象</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/ES6.html#id2">4.1.1. 创建类</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/Javascript/ES6.html#id3">4.1.2. 继承类</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Programming/WebFront/index.html">Webpage Front</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Programming/WebFront/CSS.html">1. CSS</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/WebFront/CSS.html#css-selectors">1.1. CSS Selectors 选择器</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/WebFront/CSS.html#id1">1.2. 元素的渲染 - 属性值的计算过程</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/WebFront/CSS.html#css-cascade">1.2.1. CSS Cascade 层叠</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/WebFront/CSS.html#css-inheritance">1.2.2. CSS Inheritance 继承</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/WebFront/CSS.html#css-box-model">1.3. CSS Box Model 盒模型</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/WebFront/CSS.html#box-types">1.3.1. Box Types 盒类型</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/WebFront/CSS.html#box-components">1.3.2. Box Components 组成</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/WebFront/CSS.html#box-sizing">1.3.3. 使用 <cite>box-sizing</cite> 改变宽高适用范围</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/WebFront/CSS.html#background-clip">1.3.4. 使用 <cite>background-clip</cite> 改变背景覆盖范围</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/WebFront/CSS.html#id2">1.3.5. 可替换元素和非可替换元素</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/WebFront/CSS.html#block-format-context-bfc">1.4. Block Format Context (BFC)</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/WebFront/CSS.html#bfc">1.4.1. BFC的创建</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/WebFront/CSS.html#rules">1.5. &#64;-rules</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/WebFront/CSS.html#layout">1.6. Layout</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/WebFront/CSS.html#normal-flow">1.6.1. Normal flow</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/WebFront/CSS.html#margin-collapsing">margin collapsing</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/WebFront/CSS.html#contaning-block">1.6.2. Contaning Block</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/WebFront/CSS.html#id3">确定包含块</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/WebFront/CSS.html#id4">包含块中元素的尺寸</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/WebFront/CSS.html#flexbox">1.6.3. Flexbox</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/WebFront/CSS.html#grid">1.6.4. Grid</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/WebFront/CSS.html#floats-positioning">1.6.5. Floats &amp; Positioning</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/WebFront/CSS.html#table-layout">1.6.6. Table layout</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/WebFront/CSS.html#multiple-column-layout">1.6.7. Multiple-column layout</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../Programming/WebFront/Bootstrap/index.html">2. Bootstrap</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/WebFront/Bootstrap/templates.html">2.1. Templates</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/WebFront/Bootstrap/templates.html#fixed-navbar">2.1.1. Fixed navbar</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../Programming/WebFront/react/index.html">3. React</a><ul class="simple">
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../Programming/WebFront/Recipes/index.html">4. Recipes</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/WebFront/Recipes/centering.html">4.1. CSS centering</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/WebFront/Recipes/centering.html#horizontally-centering">4.1.1. Horizontally Centering</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/WebFront/Recipes/centering.html#inline-inline-block-box">inline / inline-block box</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/WebFront/Recipes/centering.html#block-box">block box</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/WebFront/Recipes/centering.html#normal-flow">normal flow</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/WebFront/Recipes/centering.html#absolute-or-fixed-positioned-element"><cite>absolute</cite> or <cite>fixed</cite> positioned element</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/WebFront/Recipes/centering.html#vertically-centering">4.1.2. Vertically Centering</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/WebFront/Recipes/centering.html#id1">inline / inline-block box</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/WebFront/Recipes/centering.html#id2">block box</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/WebFront/Recipes/centering.html#id3"><cite>absolute</cite> or <cite>fixed</cite> positioned element</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/WebFront/Recipes/Timelines.html">4.2. Timelines</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/WebFront/Recipes/Timelines.html#vertical-timelines">4.2.1. Vertical Timelines</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../Programming/WebFront/cheat-sheet.html">5. Cheat Sheet</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/WebFront/cheat-sheet.html#html">5.1. HTML</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/WebFront/cheat-sheet.html#css">5.2. CSS</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/WebFront/cheat-sheet.html#javascript">5.3. Javascript</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/WebFront/cheat-sheet.html#others">5.4. others</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Programming/WebServer/index.html">Web Server</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Programming/WebServer/google/index.html">Google Cloud Platform</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Programming/WebServer/google/tasks.html">1. Cloud Tasks</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/WebServer/google/tasks.html#cloud-tasks-overview">1.1. Cloud Tasks Overview</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/WebServer/google/tasks.html#id2">任务组成</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/WebServer/google/tasks.html#id3">工作流程</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/WebServer/google/tasks.html#id4">任务处理</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/WebServer/google/tasks.html#http-targets">使用 HTTP targets</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/WebServer/google/tasks.html#app-engine-targets">使用 App Engine targets</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/WebServer/google/tasks.html#cloud-tasks">1.2. 创建和配置 Cloud Tasks 队列</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/WebServer/google/tasks.html#gcloud">使用 <cite>gcloud</cite> 命令创建和配置队列</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/WebServer/google/tasks.html#id6">配置 Cloud Tasks 队列</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/WebServer/google/tasks.html#app-engine">配置路由 (仅适用于 App Engine 队列)</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/WebServer/google/tasks.html#id7">建立速率限制</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/WebServer/google/tasks.html#id8">设置重试参数</a></li>
+</ul>
+</li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/WebServer/google/tasks.html#id9">日志记录功能</a><ul>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/WebServer/google/tasks.html#id10">启用和停用</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/WebServer/google/tasks.html#id11">被记录的操作</a></li>
+<li class="toctree-l8"><a class="reference internal" href="../../Programming/WebServer/google/tasks.html#id12">查看日志</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/WebServer/google/tasks.html#id13">1.3. 创建任务和处理程序</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/WebServer/google/tasks.html#http-target">创建 HTTP Target 任务</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/WebServer/google/tasks.html#id14">创建 App Engine 任务</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/WebServer/google/tasks.html#id15">创建 App Engine 任务处理程序</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/WebServer/google/tasks.html#id16">超时</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/WebServer/google/tasks.html#request-headers">request headers</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/WebServer/google/tasks.html#id17">目标路由</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../Programming/WebServer/google/tasks.html#id18">1.4. 管理队列和任务</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/WebServer/google/tasks.html#id19">从队列中删除任务</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/WebServer/google/tasks.html#id21">从队列中完全清除所有任务</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/WebServer/google/tasks.html#id23">暂停/继续队列</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Programming/WebServer/google/tasks.html#id25">删除队列</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Database/index.html">Database</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Database/Basics.html">1. Database Bascis</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Database/Basics.html#introduction">1.1. Introduction</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Database/Basics.html#id1">1.1.1. 数据库系统概述</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Database/Basics.html#id2">1.1.1.1. 数据库的4个基本概念</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Database/Basics.html#id3">1.1.1.2. 数据管理的三个阶段</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Database/Basics.html#data-model">1.1.2. 数据模型 Data Model</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Database/Basics.html#id4">1.1.2.1. 目的不同的两类模型</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Database/Basics.html#id5">1.1.2.2. 数据模型的组成要素</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Database/Basics.html#id6">1.1.2.3. 格式化模型</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Database/Basics.html#id7">1.1.3. 数据库系统的结构</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Database/Basics.html#id8">1.1.3.1. 三级模式结构</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Database/Basics.html#id9">1.1.4. 数据库系统的组成</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../Database/Basics.html#id10">1.2. 关系数据库</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Database/Basics.html#id11">1.2.1. 关系模型的数据结构</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Database/Basics.html#id12">1.2.1.1. 基本概念</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Database/Basics.html#id13">1.2.1.2. 关系模式</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Database/Basics.html#id14">1.2.2. 关系操作</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Database/Basics.html#id15">1.2.2.1. 基本操作</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Database/Basics.html#id16">1.2.2.2. 关系数据语言的分类</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Database/Basics.html#id17">1.2.3. 关系的完整性</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Database/Basics.html#id18">1.2.3.1. 实体完整性</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Database/Basics.html#id19">1.2.3.2. 参照完整性</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Database/Basics.html#id20">1.2.4. 关系代数</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../Database/Basics.html#sql">1.3. SQL</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Database/Basics.html#cheat-sheet">1.3.1. Cheat Sheet</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Software-Design/index.html">Software Design</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/index.html">中级软件设计师考试</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html">1. 计算机组成与体系结构</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id2">1.1. 数据的表示</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id3">1.1.1. 进制转换</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#r"><span class="math notranslate nohighlight">\(R\)</span> 进制转十进制</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id4">十进制转 <span class="math notranslate nohighlight">\(R\)</span> 进制</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id5">二进制与八进制与十六进制</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id6">1.1.2. 编码</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id7">原码</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id8">反码</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id9">补码</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id10">移码</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id11">取值范围</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id12">1.1.3. 浮点数运算</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id13">1.2. 计算机结构</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#flynn">1.3. Flynn分类法</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#cisicrisc">1.4. CISIC和RISC</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#pipelining">1.5. 流水线 (Pipelining) 及其计算</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id14">1.5.1. 概念</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id15">1.5.2. 执行时长的计算</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#throughput-rate">1.5.3. 流水线吞吐率 (Throughput rate)</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id16">1.5.4. 流水线的加速比</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id17">1.5.5. 流水线的效率</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id18">1.6. 层次化存储结构</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#cache">1.6.1. 高速缓冲存储器 Cache</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id19">概念</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id20">命中率</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id21">1.6.2. 局部性原理</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#temporal-locality">时间局部性 (temporal locality)</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#spatial-locality">空间局部性 (spatial locality)</a></li>
+<li class="toctree-l7"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id22">工作集理论</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#main-memory">1.6.3. 主存储器 Main memory</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id23">编址</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="../../Software-Design/中级软件设计师考试/01_计算机组成与体系结构.html#id24">1.6.4. 磁盘结构与参数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2 current"><a class="reference internal" href="../index.html">Artificial Intelligence</a><ul class="current">
+<li class="toctree-l3 current"><a class="reference internal" href="index.html">Machine Learning</a><ul class="current">
+<li class="toctree-l4"><a class="reference internal" href="Basics.html">1. Machine Learning Basics</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="Basics.html#id1">1.1. 概念</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Basics.html#id2">1.2. 类型</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Basics.html#human-supervision">1.2.1. 以是否有人类监督 (human supervision) 划分</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="Basics.html#supervised">监督学习 supervised</a></li>
+<li class="toctree-l7"><a class="reference internal" href="Basics.html#unsupervised">无监督学习 unsupervised</a></li>
+<li class="toctree-l7"><a class="reference internal" href="Basics.html#semisupervised">半监督学习 semisupervised</a></li>
+<li class="toctree-l7"><a class="reference internal" href="Basics.html#reinforcement-learning">强化学习 reinforcement learning</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="Basics.html#learn-on-the-fly">1.2.2. 以是否实时学习 (learn on the fly) 划分</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="Basics.html#online-learning">Online Learning</a></li>
+<li class="toctree-l7"><a class="reference internal" href="Basics.html#batch-learning-offline">Batch Learning (offline)</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="Basics.html#id3">1.2.3. 以训练方式划分</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="Basics.html#instance-based">基于实例 instance-based</a></li>
+<li class="toctree-l7"><a class="reference internal" href="Basics.html#model-based">基于模型 model-based</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="Basics.html#id4">1.3. 目标</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Basics.html#id5">1.4. 步骤</a></li>
+<li class="toctree-l5"><a class="reference internal" href="Basics.html#id6">1.5. 常见问题</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="Basics.html#bad-data">1.5.1. Bad data</a></li>
+<li class="toctree-l6"><a class="reference internal" href="Basics.html#bad-algorithm">1.5.2. Bad algorithm</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="Basics.html#overfitting">Overfitting</a></li>
+<li class="toctree-l7"><a class="reference internal" href="Basics.html#underfitting">Underfitting</a></li>
+<li class="toctree-l7"><a class="reference internal" href="Basics.html#model">判断 model 是否过拟合或欠拟合</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="Basics.html#id7">1.5.3. 偏差方差权衡</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="datapreprocessing.html">2. Data Pre-Processing</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="datapreprocessing.html#id1">2.1. 数据清理</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="datapreprocessing.html#id2">2.1.1. 处理数据丢失</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="datapreprocessing.html#id3">为什么会发生数据丢失</a></li>
+<li class="toctree-l7"><a class="reference internal" href="datapreprocessing.html#id4">如何处理</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="datapreprocessing.html#id5">2.1.2. 处理离群值</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="datapreprocessing.html#id6">找出离群值</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="datapreprocessing.html#id7">2.1.3. 处理不均衡数据</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="datapreprocessing.html#feature-engineering">2.2. 数据预处理 Feature Engineering</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="datapreprocessing.html#categorical-attributes">2.2.1. 处理 Categorical Attributes</a></li>
+<li class="toctree-l6"><a class="reference internal" href="datapreprocessing.html#id8">2.2.2. 将连续的数字值分段</a></li>
+<li class="toctree-l6"><a class="reference internal" href="datapreprocessing.html#feature-scaling">2.2.3. Feature Scaling</a></li>
+<li class="toctree-l6"><a class="reference internal" href="datapreprocessing.html#transformation-pipelines">2.2.4. Transformation Pipelines</a></li>
+<li class="toctree-l6"><a class="reference internal" href="datapreprocessing.html#id9">2.2.5. 展示数据的方法</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="datapreprocessing.html#id10">2.3. 数据分割</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="datapreprocessing.html#id11">2.3.1. 用于分割数据的函数</a></li>
+<li class="toctree-l6"><a class="reference internal" href="datapreprocessing.html#cross-validation">2.3.2. 交叉验证 Cross-validation</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="datapreprocessing.html#leave-one-out-loo">Leave-One-Out (LOO)</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4 current"><a class="current reference internal" href="#">3. Performance Measure</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="#confusion-matrix">3.1. Confusion Matrix</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#precision-recall-tradeoff">3.1.1. Precision / Recall Tradeoff</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#precision-recall-curve">Precision-Recall Curve 如何决定阈值</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#roc-curve">3.1.2. ROC Curve</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="#distance-metrics">3.2. Distance Metrics</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="#minkowski-distance">3.2.1. Minkowski Distance</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="#l-0-norm-distance"><span class="math notranslate nohighlight">\(L_0\)</span> norm distance</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#l-1-norm-distance"><span class="math notranslate nohighlight">\(L_1\)</span> norm distance</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#mean-absolute-error-mae">Mean-Absolute Error (MAE)</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#canberra-distance">Canberra Distance</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#l-2-norm-distance"><span class="math notranslate nohighlight">\(L_2\)</span> norm distance</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#sum-of-squared-difference-ssd">Sum of Squared Difference (SSD)</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#mean-squared-error-mse">Mean-Squared Error (MSE)</a></li>
+<li class="toctree-l7"><a class="reference internal" href="#l-infty-norm-distance"><span class="math notranslate nohighlight">\(L_\infty\)</span> norm distance</a></li>
+</ul>
+</li>
+<li class="toctree-l6"><a class="reference internal" href="#cosine-distance">3.2.2. Cosine Distance</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#pearson-s-distance">3.2.3. Pearson’s Distance</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#hamming-distance">3.2.4. Hamming Distance</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#r-squared-r-2">3.2.5. R Squared (<span class="math notranslate nohighlight">\(R^2\)</span>)</a></li>
+<li class="toctree-l6"><a class="reference internal" href="#entropy">3.2.6. Entropy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="regression.html">4. Regression</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="regression.html#linear-regression">4.1. Linear Regression</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="regression.html#id1">4.1.1. 最小化损失函数</a><ul>
+<li class="toctree-l7"><a class="reference internal" href="regression.html#normal-equation">Normal Equation</a></li>
+<li class="toctree-l7"><a class="reference internal" href="regression.html#gradient-descent">Gradient Descent</a></li>
+<li class="toctree-l7"><a class="reference internal" href="regression.html#batch-gradient-descent">Batch Gradient Descent</a></li>
+<li class="toctree-l7"><a class="reference internal" href="regression.html#stochastic-gradient-descent">Stochastic Gradient Descent</a></li>
+<li class="toctree-l7"><a class="reference internal" href="regression.html#mini-batch-gradient-descent">Mini-batch Gradient Descent</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="regression.html#polynomial-regression">4.2. Polynomial regression</a></li>
+<li class="toctree-l5"><a class="reference internal" href="regression.html#regularized-linear-models">4.3. Regularized Linear Models</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="regression.html#l1">4.3.1. L1 正则化</a></li>
+<li class="toctree-l6"><a class="reference internal" href="regression.html#l2">4.3.2. L2 正则化</a></li>
+<li class="toctree-l6"><a class="reference internal" href="regression.html#lasso-ridge">4.3.3. Lasso 和 Ridge 的差异</a></li>
+<li class="toctree-l6"><a class="reference internal" href="regression.html#elastic-net">4.3.4. Elastic Net</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="regression.html#logistic-regression">4.4. Logistic Regression</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="regression.html#id2">4.4.1. 概率评估</a></li>
+<li class="toctree-l6"><a class="reference internal" href="regression.html#id3">4.4.2. 损失函数</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="regression.html#softmax-regression">4.5. Softmax Regression</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="regression.html#id4">4.5.1. 概率评估</a></li>
+<li class="toctree-l6"><a class="reference internal" href="regression.html#id5">4.5.2. 损失函数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../Tools/index.html">Tools</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../Tools/git&amp;github.html">1. Git &amp; Github</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Tools/git&amp;github.html#id1">1.1. 基本概念</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tools/git&amp;github.html#version-control-system-vcs">1.2. Version Control System (VCS)</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Tools/git&amp;github.html#distributed-version-control-system-dvcs">1.2.1. Distributed version control system (DVCS)</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tools/git&amp;github.html#git-commands">1.3. Git commands</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tools/git&amp;github.html#the-github-flow">1.4. The GitHub flow</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tools/git&amp;github.html#models-for-collaborative-development">1.5. Models for collaborative development</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tools/docker.html">2. Docker</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Tools/docker.html#intro">2.1. Intro</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Tools/docker.html#id1">2.1.1. 为什么需要 Docker</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Tools/docker.html#id2">2.1.1.1. 环境配置的难题</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Tools/docker.html#id3">2.1.1.2. 虚拟机</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Tools/docker.html#linux">2.1.1.3. Linux 容器</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Tools/docker.html#id4">2.1.2. Docker</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Tools/docker.html#id5">2.1.2.1. Docker 架构</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Tools/docker.html#id6">2.1.2.2. 用途</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tools/docker.html#detailed">2.2. Detailed</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Tools/docker.html#id7">2.2.1. Docker 体系结构</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Tools/docker.html#id8">2.2.2. 内部组件</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Tools/docker.html#id9">2.2.3. Docker 核心组件</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Tools/docker.html#docker-client">2.2.3.1. Docker Client</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Tools/docker.html#docker-daemon">2.2.3.2. Docker Daemon</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Tools/docker.html#image">2.2.3.3. image 文件</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Tools/docker.html#container">2.2.3.4. Container 容器文件</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Tools/docker.html#repository">2.2.3.5. Repository 仓库</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Tools/docker.html#dockerfile">2.2.4. Dockerfile 文件</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Tools/docker.html#id10">2.2.5. 应用程序数据</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Tools/docker.html#docker-compose">2.2.6. Docker Compose</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../Tools/docker.html#id11">2.3. Docker 使用</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../Tools/gcp.html">3. Google Cloud Platform</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../Tools/gcp.html#introduction">3.1. Introduction</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../Tools/gcp.html#overview-of-google-s-infrastructure">3.1.1. Overview of Google’s infrastructure</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Tools/gcp.html#physical-level">3.1.1.1. Physical Level</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Tools/gcp.html#abstract-level">3.1.1.2. Abstract Level</a></li>
+</ul>
+</li>
+<li class="toctree-l5"><a class="reference internal" href="../../Tools/gcp.html#ways-for-pricing-reducing">3.1.2. 4 ways for pricing reducing</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../Tools/gcp.html#terms">3.1.3. Terms</a><ul>
+<li class="toctree-l6"><a class="reference internal" href="../../Tools/gcp.html#waves-of-cloud-computing">3.1.3.1. 3 waves of Cloud Computing</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Tools/gcp.html#iaas-paas">3.1.3.2. IaaS &amp; PaaS</a></li>
+<li class="toctree-l6"><a class="reference internal" href="../../Tools/gcp.html#main-categories-of-products-and-services">3.1.3.3. Main Categories of products and services</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Mathematics and Logic</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Math-Calculus/index.html">Calculus 微积分</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html">1. 函数与极限</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id2">1.1. 映射与函数</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id3">1.1.1. 集合</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id4">概念</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id5">表示集合的方法</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id6">集合间的关系</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id7">集合间的运算</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id8">运算法</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id9">1.1.2. 区间</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id10">邻域</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id11">1.1.3. 映射</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id12">1.1.4. 函数</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id13">一些特殊的函数</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id14">函数的表示方法</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id15">函数的特性</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id16">反函数, 复合函数</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id17">基本初等函数</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id18">双曲函数和反双曲函数</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id19">1.2. 数列极限</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id20">1.2.1. 定义</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id21">1.2.2. 收敛数列的性质</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id22">1.3. 函数极限</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id23">1.3.1. 定义</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id24">1.3.2. 函数极限的性质</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id25">1.4. 无穷小和无穷大</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id26">1.4.1. 无穷小</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id27">1.4.2. 无穷大</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id28">1.4.3. 无穷大和无穷小的关系</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id29">1.5. 极限运算法则</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id30">1.5.1. 定理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id31">1.5.2. 四则运算</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id32">1.5.3. 复合函数</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id33">1.6. 极限存在准则</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id34">1.6.1. 夹逼定理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id35">1.6.2. 单调有界的数列必有极限</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id36">1.7. 无穷小的比较</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id37">1.7.1. 等价无穷小的性质</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#x-to-0">1.7.2. <span class="math notranslate nohighlight">\(x \to 0\)</span> 时的常见无穷小</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id38">1.8. 函数的连续性与间断点</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id39">1.8.1. 函数的连续性</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id40">1.8.2. 函数的间断点</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id41">1.9. 连续函数的运算与初等函数的连续性</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id42">1.10. 闭区间上连续函数的性质</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/01_函数与极限.html#id43">1.11. 极限计算技巧和方法</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html">2. 导数与微分</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id2">2.1. 导数概念</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id3">2.1.1. 几何意义</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id4">2.2. 求导基本公式</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id5">2.2.1. 四则求导</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id6">2.2.2. 反函数求导</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id7">2.2.3. 复合函数求导</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id8">2.2.4. 其他求导方法</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id9">2.3. 高阶导数</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id10">2.3.1. 特殊的高阶导数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#leibniz">2.3.2. Leibniz公式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id11">2.3.3. 高阶导数求导</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id12">2.4. 隐函数及参数方程的导数</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id13">2.4.1. 隐函数</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id14">函数的表达方法</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id15">隐函数的求导</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id16">2.4.2. 参数方程</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id17">2.5. 函数的微分</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id18">2.5.1. 公式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/02_导数与微分.html#id19">2.5.2. 微分在近似计算中的应用</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html">3. 微分中值定理与导数的应用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id2">3.1. 微分中值定理</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#rolle">3.1.1. 罗尔Rolle定理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#lagrange">3.1.2. 拉格朗日Lagrange中值定理</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#cauchy">3.1.3. 柯西Cauchy中值定理</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#l-hospital">3.2. 洛必达L’Hospital法则</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#taylor">3.3. 泰勒Taylor公式</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id3">3.3.1. 泰勒公式</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id4">3.3.2. 常用函数的泰勒展开</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id5">3.4. 中值定理常见题型</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#f-n-xi-0">3.4.1. 证明<span class="math notranslate nohighlight">\(f^{(n)}(\xi) = 0\)</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#xi">3.4.2. 结论中仅有 <span class="math notranslate nohighlight">\(\xi\)</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#xi-a-b">3.4.3. 结论中有 <span class="math notranslate nohighlight">\(\xi\)</span> 和区间 <span class="math notranslate nohighlight">\(a,b\)</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#xi-eta">3.4.4. 结论中有 <span class="math notranslate nohighlight">\(\xi\)</span> 和 <span class="math notranslate nohighlight">\(\eta\)</span></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id6">3.4.5. 泰勒</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id7">3.5. 单调性, 凹凸性和极值</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id8">3.5.1. 极值定义</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id9">3.5.2. 求极值步骤</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id10">3.5.3. 最大值与最小值</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id11">3.5.4. 凹凸性</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id12">3.5.5. 拐点</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id13">3.5.6. 常见题型</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id14">极值点判断</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id15">不等式证明</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id16">函数零点</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id17">3.6. 函数图像绘制</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id18">3.6.1. 步骤</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id19">3.6.2. 渐近线</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id20">水平渐近线</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id21">铅直渐近线</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id22">斜渐近线</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id23">3.7. 曲率</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id24">3.7.1. 弧微分</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id25">3.7.2. 曲率</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/03_微分中值定理与导数的应用.html#id26">3.7.3. 曲率半径</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Math-Calculus/04_不定积分.html">4. 不定积分</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/04_不定积分.html#id2">4.1. 不定积分定义</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/04_不定积分.html#id3">4.1.1. 基本性质</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/04_不定积分.html#id4">4.1.2. 积分基本公式</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/04_不定积分.html#id5">4.2. 换元积分法</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/04_不定积分.html#id6">4.2.1. 第一类换元积分法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/04_不定积分.html#id7">4.2.2. 第二类换元积分法</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/04_不定积分.html#id8">4.3. 分部积分法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/04_不定积分.html#id9">4.4. 重要类型 - 有理函数</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/04_不定积分.html#id10">4.4.1. 不定积分的步骤</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/04_不定积分.html#id11">4.5. 重要类型 - 三角有理函数</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html">5. 定积分</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id2">5.1. 定积分的概念与性质</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id3">5.1.1. 背景</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id4">曲边梯形的面积</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id5">5.1.2. 定积分的定义</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id6">5.1.3. 定积分的一般性质</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id7">5.2. 定积分基本公式</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id8">5.2.1. 积分上限函数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id9">5.2.2. 牛顿-莱布尼茨公式</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id10">5.3. 定积分的积分法</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id11">5.3.1. 换元积分法</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id12">5.3.2. 定积分的特殊性质</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id13">对称区间定积分性质</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id14">三角函数定积分性质</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id15">周期函数定积分性质</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id16">5.3.3. 分部积分法</a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id17">5.4. 反常积分 (广义积分)</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id18">5.4.1. 区间无限 (函数正常)</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id19">5.4.2. 无界函数</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#gamma">5.4.3. <span class="math notranslate nohighlight">\(\Gamma\)</span> 函数</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/05_定积分.html#id20">特性</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Math-Calculus/06_定积分的应用.html">6. 定积分的应用</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/06_定积分的应用.html#id2">6.1. 元素法</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/06_定积分的应用.html#id3">6.2. 几何应用</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/06_定积分的应用.html#id4">6.2.1. 面积</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/06_定积分的应用.html#id5">6.2.2. 体积</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/06_定积分的应用.html#id6">旋转体的体积</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/06_定积分的应用.html#id7">截面面积已知的几何体体积</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Calculus/06_定积分的应用.html#id8">弧长</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Calculus/06_定积分的应用.html#id9">6.3. 物理应用</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/06_定积分的应用.html#id10">6.3.1. 做功</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Calculus/06_定积分的应用.html#id11">6.3.2. 力</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../../../Math-Calculus/07_微分方程.html">7. 微分方程</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Math-Geometry/index.html">Geometry 几何学</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Math-Geometry/Trigonometry/index.html">Trigonometry 三角学</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../../../Math-Geometry/Trigonometry/01_三角函数.html">1. 三角函数</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Geometry/Trigonometry/01_三角函数.html#id2">1.1. 弧度和角度</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Geometry/Trigonometry/01_三角函数.html#id3">1.1.1. 概念</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Geometry/Trigonometry/01_三角函数.html#id4">1.1.2. 弧度和角度的换算</a></li>
+</ul>
+</li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Geometry/Trigonometry/01_三角函数.html#id5">1.2. 角的概念的推广</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../../../Math-Geometry/Trigonometry/01_三角函数.html#id6">1.3. 三角函数</a><ul>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Geometry/Trigonometry/01_三角函数.html#id7">1.3.1. 图像和性质</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Geometry/Trigonometry/01_三角函数.html#id8">1.3.2. 公式</a></li>
+<li class="toctree-l5"><a class="reference internal" href="../../../Math-Geometry/Trigonometry/01_三角函数.html#y-a-sin-bx-c-d">1.3.3. <span class="math notranslate nohighlight">\(y = a\sin{(bx + c)} + d\)</span></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../../../Math-InformationTheory/index.html">Information Theory 信息论</a><ul class="simple">
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Philosophy and Thinking</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../../../Philo-history/index.html">Philosophy</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../../../Philo-history/timeline.html">Timeline of Philosophy</a></li>
+</ul>
+</li>
+</ul>
+
+          
+        
+      </div>
+      &nbsp;
+    </nav>
+
+    <section data-toggle="wy-nav-shift" class="wy-nav-content-wrap">
+
+      
+      <nav class="wy-nav-top" role="navigation" aria-label="top navigation">
+        <i data-toggle="wy-nav-top" class="fa fa-bars"></i>
+        <a href="../../../index.html">gate-of-babylon</a>
+      </nav>
+
+
+      
+      <div class="wy-nav-content">
+        <div class="rst-content">
+          <div role="navigation" aria-label="breadcrumbs navigation">
+  <ul class="wy-breadcrumbs">
+    <li><a href="../../../index.html">Docs</a> &raquo;</li>
+          <li><a href="../../index.html">Computing and information technology</a> &raquo;</li>
+          <li><a href="../index.html">Artificial Intelligence</a> &raquo;</li>
+          <li><a href="index.html">Machine Learning</a> &raquo;</li>
+    <li><span class="section-number">3. </span>Performance Metrics</li>
+      <li class="wy-breadcrumbs-aside">
+            <a href="../../../_sources/Tech-Computing&amp;Information-Technology/AI/ML/performancemeasure.rst.txt" rel="nofollow">
+                <span class="fa fa-binoculars"></span>&#32;View page source
+            </a>
+      </li>
+  </ul>
+  
+    <hr class="before-stealth-btn clear-both" />
+    
+      <a href="regression.html" class="stealth-btn float-right" title="Accesskey Alt(+Shift)+n">
+          <span class="stealth-btn-text">Next</span>
+          <span class="fa fa-arrow-circle-right"></span>
+      </a>
+    
+    
+      <a href="datapreprocessing.html" class="stealth-btn" title="Accesskey Alt(+Shift)+p">
+          <span class="fa fa-arrow-circle-left"></span>
+          <span class="stealth-btn-text">Previous</span>
+      </a>
+    
+
+</div>
+          <div role="main" class="document" itemscope="itemscope" itemtype="http://schema.org/Article">
+           <div itemprop="articleBody" class="toBeIndexed">
+            
+  <div class="section" id="performance-metrics">
+<h1><span class="section-number">3. </span>Performance Metrics<a class="headerlink" href="#performance-metrics" title="Permalink to this headline">¶</a></h1>
+<p>机器学习中有许多度量可以用于评价模型的好坏, 使用某些度量也可以对模型进行优化</p>
+<div class="section" id="confusion-matrix">
+<h2><span class="section-number">3.1. </span>Confusion Matrix<a class="headerlink" href="#confusion-matrix" title="Permalink to this headline">¶</a></h2>
+<p>通常用于 classification</p>
+<table align="center" style="text-align:center; border:none; background:transparent;">
+    <tbody>
+        <caption>二元分类的 Confusion Matrix</caption>
+        <tr>
+            <td style="border:none;" colspan="2"></td>
+            <td style="border:1px solid;" colspan="2"><b>Ground Truth</b></td>
+        </tr>
+        <tr>
+            <td style="border:none;"></td>
+            <td style="border:none;"></td>
+            <td style="border:1px solid;">actual positive</td>
+            <td style="border:1px solid;">actual negative</td>
+        </tr>
+        <tr>
+            <td style="border:1px solid;" rowspan="2"><b>Predicted</b></td>
+            <td style="border:1px solid;">Predicted positive</td>
+            <td style="border:1px solid;"><b>True Positive</b>,<br>Power</td>
+            <td style="border:1px solid;"><b>False Positive</b>,<br>Type I error</span></td>
+        </tr>
+        <tr>
+            <td style="border:1px solid;">Predicted negative</td>
+            <td style="border:1px solid;"><b>False Negative</b>,<br>Type II error</td>
+            <td style="border:1px solid;"><b>True Negative</b></td>
+        </tr>
+    </tbody>
+</table><table class="colwidths-auto docutils align-default">
+<thead>
+<tr class="row-odd"><th class="head stub"><p>Rates from confusion matrix</p></th>
+<th class="head"><p>Description</p></th>
+<th class="head"><p>euqation</p></th>
+</tr>
+</thead>
+<tbody>
+<tr class="row-even"><th class="stub"><p><strong>PRECISION</strong> or <strong>positive predictive value</strong> (<strong>PPV</strong>)</p></th>
+<td><p>预测为 positive 的结果中正确的比例</p></td>
+<td><div class="math notranslate nohighlight">
+\[PPV = \frac{TP}{TP + FP}\]</div>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><strong>negative predictive value</strong> (<strong>NPV</strong>)</p></th>
+<td><p>预测为 negative 的结果中正确的比例</p></td>
+<td><div class="math notranslate nohighlight">
+\[NPV = \frac{TN}{TN + FN}\]</div>
+</td>
+</tr>
+<tr class="row-even"><th class="stub"><p><strong>false discovery rate</strong> (<strong>FDR</strong>)</p></th>
+<td><p>预测为 positive 的结果中错误的比例</p></td>
+<td><div class="math notranslate nohighlight">
+\[FDR = \frac{FP}{FP + TP} = 1 - PPV\]</div>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><strong>false omission rate</strong> (<strong>FOR</strong>)</p></th>
+<td><p>预测为 negative 的结果中错误的比例</p></td>
+<td><div class="math notranslate nohighlight">
+\[FOR = \frac{FN}{FN + TN} = 1 - NPV\]</div>
+</td>
+</tr>
+<tr class="row-even"><th class="stub"><p><strong>sensitivity</strong>, <strong>RECALL</strong>, <strong>hit rate</strong>, or <strong>true positive rate</strong> (<strong>TPR</strong>)</p></th>
+<td><p>positive 实例中正确检测出的比例</p></td>
+<td><div class="math notranslate nohighlight">
+\[TPR = \frac{TP}{P} = \frac{TP}{TP + FN}\]</div>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><strong>SPECIFICITY</strong> or <strong>true negative rate</strong> (TNR)</p></th>
+<td><p>negative 实例中正确检测出的比例</p></td>
+<td><div class="math notranslate nohighlight">
+\[TNR = \frac{TN}{N} = \frac{TN}{TN + FP}\]</div>
+</td>
+</tr>
+<tr class="row-even"><th class="stub"><p><strong>miss rate</strong> or <strong>false negative rate</strong> (<strong>FNR</strong>)</p></th>
+<td><p>将 positive 错认为 negative 的比例</p></td>
+<td><div class="math notranslate nohighlight">
+\[FNR = \frac{FN}{P} = \frac{FN}{FN + TP} = 1 - TPR\]</div>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><strong>fall-out</strong> or <strong>false positive rate</strong> (<strong>FPR</strong>)</p></th>
+<td><p>将 negative 错认为 positive 的比例</p></td>
+<td><div class="math notranslate nohighlight">
+\[FPR = \frac{FP}{N} = \frac{FP}{FP + TN} = 1 - TNR\]</div>
+</td>
+</tr>
+<tr class="row-even"><th class="stub"><p><strong>accuracy</strong> (<strong>ACC</strong>)</p></th>
+<td><p>预测正确的比例</p></td>
+<td><div class="math notranslate nohighlight">
+\[ACC = \frac{TP + TN}{P + N} = \frac{TP + TN}{TP + TN + FP + FN}\]</div>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><strong>F1 score</strong></p></th>
+<td><p>the harmonic mean of precision and recall</p></td>
+<td><div class="math notranslate nohighlight">
+\[F_1 = 2 \cdot \frac{PPV \cdot TPR}{PPV + TPR} = \frac{2TP}{2TP + FP + FN}\]</div>
+</td>
+</tr>
+<tr class="row-even"><th class="stub"><p><strong>Matthews correlation coefficient</strong> (<strong>MCC</strong>)</p></th>
+<td></td>
+<td><div class="math notranslate nohighlight">
+\[MCC = \frac{TP \times TN - FP \times FN}{\sqrt{(TP + FP)(TP + FN)(TN + FP)(TN + FN)}}\]</div>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><strong>Informedness</strong> or <strong>Bookmaker Informedness</strong> (<strong>BM</strong>)</p></th>
+<td></td>
+<td><div class="math notranslate nohighlight">
+\[BM = TPR + TNR - 1\]</div>
+</td>
+</tr>
+<tr class="row-even"><th class="stub"><p><strong>Markedness</strong> (<strong>MK</strong>)</p></th>
+<td></td>
+<td><div class="math notranslate nohighlight">
+\[MK = PPV + NPV - 1\]</div>
+</td>
+</tr>
+<tr class="row-odd"><th class="stub"><p><strong>Prevalence</strong></p></th>
+<td><p>positive 在总体中的比例</p></td>
+<td><div class="math notranslate nohighlight">
+\[\frac{P}{P + N} = \frac{TP + FN}{TP + FN + FP + TN}\]</div>
+</td>
+</tr>
+</tbody>
+</table>
+<p>Accuracy 通常并不适合用作 classifiers 的评价指标, 特别是当数据分布十分倾斜的时候 (skewed dataset)</p>
+<div class="admonition- admonition">
+<p class="admonition-title">例</p>
+<p>在 1 0000 人的样本中, 使用算法检测患病率 1% 的疾病, 结果:</p>
+<ul class="simple">
+<li><p>TN - 9800</p></li>
+<li><p>TP - 12</p></li>
+<li><p>FN - 100</p></li>
+<li><p>FP - 88</p></li>
+</ul>
+<p>可以得到 <span class="math notranslate nohighlight">\(ACC = (9800 + 12) / 10000 = 0.9812\)</span></p>
+<p>然而 <span class="math notranslate nohighlight">\(TPR = 12 / 100 = 0.12\)</span></p>
+</div>
+<ul>
+<li><p>使用 <cite>sklearn.metrics</cite> 可以计算上述指标</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">precision_score</span><span class="p">,</span> <span class="n">recall_score</span><span class="p">,</span> <span class="n">f1_score</span><span class="p">,</span>
+    <span class="c1"># ...</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>没有哪个度量是绝对的, 具体情况具体对待</p></li>
+</ul>
+<div class="section" id="precision-recall-tradeoff">
+<h3><span class="section-number">3.1.1. </span>Precision / Recall Tradeoff<a class="headerlink" href="#precision-recall-tradeoff" title="Permalink to this headline">¶</a></h3>
+<p>Precision 和 Recall 是 classification 中常用的两个度量, 然而无法同时提升 (或降低) 二者, 这被称作 <em>Precision / Recall Tradeoff</em></p>
+<p>比如使用 Stochastic Gradient Descent (SGD) 的线性 classifier, <cite>SGCClassifier</cite>:</p>
+<p>算法基于一个决策函数 (decision function) 对每个实例计算一个分数, 若分数高于特定的阈值, 则将实例划为 positive, 反之划为 negative</p>
+<img alt="../../../_images/precision_recall_tradeoff.png" src="../../../_images/precision_recall_tradeoff.png" />
+<p>上图判断一个数字是否为 “5”, 按分数从低到高从左向右排列;</p>
+<p>可以看到, 通过调整阈值, Precision 和 Recall 会随之朝着各自相反的方向改变</p>
+<div class="section" id="precision-recall-curve">
+<h4>Precision-Recall Curve 如何决定阈值<a class="headerlink" href="#precision-recall-curve" title="Permalink to this headline">¶</a></h4>
+<p>通过同时画出 Precision 和 Recall 相对于阈值的曲线, 可以直观地看出并选择合适的阈值</p>
+<ul>
+<li><p>使用 scikit-learn 设置阈值</p>
+<blockquote>
+<div><p>scikit-learn 中的 classifiers 无法直接设置阈值, 但可以通过获取决策分数来自由设置阈值</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">y_scores</span> <span class="o">=</span> <span class="n">sgd_clf</span><span class="o">.</span><span class="n">decision_function</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">threshold</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">y_pred</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_scores</span> <span class="o">&gt;</span> <span class="n">threshold</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>使用 scikit-learn 绘制曲线</p>
+<blockquote>
+<div><ol class="arabic">
+<li><p>获取所有数据实例的分数</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">cross_val_predict</span>
+
+<span class="n">y_scores</span> <span class="o">=</span> <span class="n">cross_val_predict</span><span class="p">(</span><span class="n">model</span><span class="p">,</span> <span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">method</span><span class="o">=</span><span class="s1">&#39;decision_function&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>对所有可能的阈值, 计算 Precision 和 Recall</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">precision_recall_curve</span>
+
+<span class="n">precisions</span><span class="p">,</span> <span class="n">recalls</span><span class="p">,</span> <span class="n">thresholds</span> <span class="o">=</span> <span class="n">precision_recall_curve</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_scores</span><span class="p">)</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+<li><p>绘图</p>
+<blockquote>
+<div><div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_precision_recall_vs_threshold</span><span class="p">(</span><span class="n">precisions</span><span class="p">,</span> <span class="n">recalls</span><span class="p">,</span> <span class="n">thresholds</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">thresholds</span><span class="p">,</span> <span class="n">precisions</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;b--&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Precision&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">thresholds</span><span class="p">,</span> <span class="n">recalls</span><span class="p">[:</span><span class="o">-</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;g-&#39;</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Recall&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Threshold&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="s1">&#39;upper left&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div></blockquote>
+</li>
+</ol>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../../_images/precision_recall_curve.png"><img alt="../../../_images/precision_recall_curve.png" src="../../../_images/precision_recall_curve.png" style="width: 720.0px; height: 341.0px;" /></a>
+</div>
+<p>或者可以直接以 Precision / Recall 分别为纵坐标 / 横坐标:</p>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../../_images/precision_vs_recall.png"><img alt="../../../_images/precision_vs_recall.png" src="../../../_images/precision_vs_recall.png" style="width: 720.0px; height: 530.5px;" /></a>
+</div>
+</div></blockquote>
+</li>
+</ul>
+</div>
+</div>
+<div class="section" id="roc-curve">
+<h3><span class="section-number">3.1.2. </span>ROC Curve<a class="headerlink" href="#roc-curve" title="Permalink to this headline">¶</a></h3>
+<p>Receiver Operating Characteristic (ROC) 曲线也是二元 classifiers 的常用工具, 是 true positive rate (recall) 相对于 false positive rate 的曲线</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_curve</span>
+
+<span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">thresholds</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_scores</span><span class="p">)</span>
+
+<span class="k">def</span> <span class="nf">plot_roc_curve</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">linewidth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="s1">&#39;k--&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">axis</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">])</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;False Positive Rate&#39;</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;True Positive Rate&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="figure align-default">
+<a class="reference internal image-reference" href="../../../_images/roc_curve.png"><img alt="../../../_images/roc_curve.png" src="../../../_images/roc_curve.png" style="width: 720.0px; height: 528.5px;" /></a>
+</div>
+<p>虚线代表完全随机的算法; 好的算法应当朝着左上角尽量远离虚线</p>
+<p>比较算法好坏的方法之一是 AUC (Area Under the Curve):</p>
+<ul class="simple">
+<li><p>完美算法的 ROC AUC 为 1</p></li>
+<li><p>完全随机的算法的 ROC AUC 为 0.5</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_auc_score</span>
+<span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">y_scores</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="section" id="distance-metrics">
+<h2><span class="section-number">3.2. </span>Distance Metrics<a class="headerlink" href="#distance-metrics" title="Permalink to this headline">¶</a></h2>
+<p>距离度量是一个函数 <span class="math notranslate nohighlight">\(d(x,y)\)</span>, 用于定义两个元素 (数字, 向量, 矩阵等) 之间的距离; 通常被用作优化问题 (optimization problem) 的损失函数 (error/cost function), 函数的优化即是损失函数的最小化</p>
+<p>如果距离是 0, 则表示两个元素在特定度量下完全相等</p>
+<p>使用 <cite>sklearn.metrics</cite> 可以计算:</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="p">(</span>
+    <span class="n">mean_absolute_error</span><span class="p">,</span> <span class="n">mean_squared_error</span><span class="p">,</span> <span class="n">r2_score</span><span class="p">,</span>
+    <span class="c1"># ...</span>
+<span class="p">)</span>
+</pre></div>
+</div>
+<div class="section" id="minkowski-distance">
+<h3><span class="section-number">3.2.1. </span>Minkowski Distance<a class="headerlink" href="#minkowski-distance" title="Permalink to this headline">¶</a></h3>
+<img alt="../../../_images/DistanceMinkowski3.png" src="../../../_images/DistanceMinkowski3.png" />
+<p>明氏距离又叫做明可夫斯基距离, 是赋范向量空间中的一种测度, 被看做是欧氏距离和曼哈顿距离的一种推广 (generalized <span class="math notranslate nohighlight">\(L_p\)</span>-norm)</p>
+<div class="math notranslate nohighlight">
+\[d_p:(x,y) \mapsto \| x-y \|_p=(\sum_{i=1}^n|x_i-y_i|^p)^{\frac{1}{p}}\]</div>
+<div class="section" id="l-0-norm-distance">
+<h4><span class="math notranslate nohighlight">\(L_0\)</span> norm distance<a class="headerlink" href="#l-0-norm-distance" title="Permalink to this headline">¶</a></h4>
+<p><span class="math notranslate nohighlight">\(L_0\)</span> 范数计算向量中的非 0 元素个数
+<span class="math notranslate nohighlight">\(L_0\)</span> 范数距离计算两个向量中不同元素的个数</p>
+<div class="math notranslate nohighlight">
+\[d_0:(x,y) \mapsto \| x-y \|_0=\sum_{i=1}^n|x_i-y_i|^0\]</div>
+<p>&gt; (1, 1) 和 (2, 2) 之间的 $L_0$ distance 是 2</p>
+</div>
+<div class="section" id="l-1-norm-distance">
+<h4><span class="math notranslate nohighlight">\(L_1\)</span> norm distance<a class="headerlink" href="#l-1-norm-distance" title="Permalink to this headline">¶</a></h4>
+<img alt="../../../_images/DistanceManhattan.png" src="../../../_images/DistanceManhattan.png" />
+<p><span class="math notranslate nohighlight">\(L_1\)</span> norm 又称 <strong>Manhattan-</strong> 或 <strong>Taxicab-norm</strong></p>
+<p><span class="math notranslate nohighlight">\(L_1\)</span> norm distance 又称 <strong>Manhattan Distance</strong> 或 <strong>Sum of Absoulte Difference</strong> (SAD)</p>
+<div class="math notranslate nohighlight">
+\[d_{SAD}:(x,y) \mapsto \|x-y\|_1=\sum_{i=1}^n|x_i-y_i|\]</div>
+<img alt="../../../_images/Manhattan.png" src="../../../_images/Manhattan.png" />
+<p>曼哈顿距离在二维平面上表现为两点在南北方向上的距离加上在东西方向上的距离</p>
+</div>
+<div class="section" id="mean-absolute-error-mae">
+<h4>Mean-Absolute Error (MAE)<a class="headerlink" href="#mean-absolute-error-mae" title="Permalink to this headline">¶</a></h4>
+<img alt="../../../_images/DistanceMAE.png" src="../../../_images/DistanceMAE.png" />
+<p>平均绝对误差, SAD 的归一化版本 (normalized version)</p>
+<div class="math notranslate nohighlight">
+\[d_{MAE}:(x,y) \mapsto \frac{d_{SAD}}{n}=\frac{\|x-y\|_1}{n}=\frac{1}{n}\sum_{i=1}^n|x_i-y_i|\]</div>
+</div>
+<div class="section" id="canberra-distance">
+<h4>Canberra Distance<a class="headerlink" href="#canberra-distance" title="Permalink to this headline">¶</a></h4>
+<img alt="../../../_images/DistanceCanberra.png" src="../../../_images/DistanceCanberra.png" />
+<p>曼哈顿距离的加权 (weighted) 版本</p>
+<p>It is often used for data scattered around an origin, as it is biased for measures around the origin and very sensitive for values close to zero.</p>
+<div class="math notranslate nohighlight">
+\[d_{CAD}:(x,y) \mapsto \sum_{i=1}^{n}\frac{|x_i-y_i|}{|x_i|+|y_i|}\]</div>
+</div>
+<div class="section" id="l-2-norm-distance">
+<h4><span class="math notranslate nohighlight">\(L_2\)</span> norm distance<a class="headerlink" href="#l-2-norm-distance" title="Permalink to this headline">¶</a></h4>
+<img alt="../../../_images/DistanceEuclidean.png" src="../../../_images/DistanceEuclidean.png" />
+<p>又称 <strong>Euclidean Distance</strong>, 代表了欧氏空间中两点间的距离</p>
+<div class="math notranslate nohighlight">
+\[d_2:(x,y) \mapsto \| x-y \|_2=\sqrt{\sum_{i=1}^n(x_i-y_i)^2}\]</div>
+</div>
+<div class="section" id="sum-of-squared-difference-ssd">
+<h4>Sum of Squared Difference (SSD)<a class="headerlink" href="#sum-of-squared-difference-ssd" title="Permalink to this headline">¶</a></h4>
+<img alt="../../../_images/DistanceSSD.png" src="../../../_images/DistanceSSD.png" />
+<p><span class="math notranslate nohighlight">\(L_2\)</span> norm distance 的平方; 对值很大的离群值很敏感</p>
+<div class="math notranslate nohighlight">
+\[d_{SSD}:(x,y) \mapsto \|x-y\|_2^2=\langle x-y,x-y\rangle=\sum_{i=1}^{n}(x_i-y_i)^2\]</div>
+</div>
+<div class="section" id="mean-squared-error-mse">
+<h4>Mean-Squared Error (MSE)<a class="headerlink" href="#mean-squared-error-mse" title="Permalink to this headline">¶</a></h4>
+<img alt="../../../_images/DistanceMSE.png" src="../../../_images/DistanceMSE.png" />
+<p>均方误差 (残差平方和), SSD 的归一化版本 (normalized version)</p>
+<div class="math notranslate nohighlight">
+\[d_{MSE}:(x,y) \mapsto \frac{d_{SSD}}{n}=\frac{\|x-y\|_2^2}{n}=\frac{1}{n}\sum_{i=1}^{n}(x_i-y_i)^2\]</div>
+<ul>
+<li><p>当误差位数过高时, 可通过加上根号使得误差与数据处于同一级别</p>
+<blockquote>
+<div><p><strong>均方根误差 Root Mean Square Error (RMSE)</strong></p>
+<div class="math notranslate nohighlight">
+\[RMSE = \sqrt{MSE}\]</div>
+</div></blockquote>
+</li>
+</ul>
+</div>
+<div class="section" id="l-infty-norm-distance">
+<h4><span class="math notranslate nohighlight">\(L_\infty\)</span> norm distance<a class="headerlink" href="#l-infty-norm-distance" title="Permalink to this headline">¶</a></h4>
+<img alt="../../../_images/DistanceChebyshev.png" src="../../../_images/DistanceChebyshev.png" />
+<p>又称 <strong>Chebyshev Distance</strong> 或 <strong>chessboard distance</strong></p>
+<p>切比雪夫距离, 兩个点之间的距离定义为其各座标数值差的最大值</p>
+<img alt="../../../_images/Chess.png" src="../../../_images/Chess.png" />
+<div class="math notranslate nohighlight">
+\[d_\infty:(x,y) \mapsto \|x-y\|_\infty=\lim_{p \to \infty}(\sum_{i=1}^ {n}|x_i-y_i|^p)^{\frac{1}{p}}=\max_i|x_i-y_i|\]</div>
+</div>
+</div>
+<div class="section" id="cosine-distance">
+<h3><span class="section-number">3.2.2. </span>Cosine Distance<a class="headerlink" href="#cosine-distance" title="Permalink to this headline">¶</a></h3>
+<img alt="../../../_images/DistanceCosine.png" src="../../../_images/DistanceCosine.png" />
+<p>通过测量两个向量的夹角的余弦值来度量它们之间的相似性 (被1減即爲距離)</p>
+<div class="math notranslate nohighlight">
+\[d_{cos}:(x,y) \mapsto 1-\frac{\langle x,y\rangle}{\|x\|_2\|y\|_2} = 1-\frac{\sum_{i=1}^nx_iy_i}{\sqrt{\sum_{i=1}^nx_i^2}\sqrt{\sum_{i=1}^ny_i^2}}\]</div>
+</div>
+<div class="section" id="pearson-s-distance">
+<h3><span class="section-number">3.2.3. </span>Pearson’s Distance<a class="headerlink" href="#pearson-s-distance" title="Permalink to this headline">¶</a></h3>
+<img alt="../../../_images/DistancePearson.png" src="../../../_images/DistancePearson.png" />
+<p>Pearson distance 是基于 Pearson’s product-momentum correlation coefficient 的 correlation distance</p>
+<p>相关系数取值范围为 <span class="math notranslate nohighlight">\([-1, 1]\)</span>, 因此 Pearson distance 取值范围为 <span class="math notranslate nohighlight">\([0, 2]\)</span>, 表示了两个向量之间的线性关系</p>
+<div class="math notranslate nohighlight">
+\[d_{Pearson}:(x,y) \mapsto 1-Corr(x,y)\]</div>
+</div>
+<div class="section" id="hamming-distance">
+<h3><span class="section-number">3.2.4. </span>Hamming Distance<a class="headerlink" href="#hamming-distance" title="Permalink to this headline">¶</a></h3>
+<p>两个等长字符串对应位置的不同字符的个数; 即将一个字符串变换成另外一个字符串所需要替换的字符个数</p>
+<div class="admonition- admonition">
+<p class="admonition-title">例</p>
+<ul class="simple">
+<li><p>1011101与1001001之间的汉明距离是 2</p></li>
+<li><p>2143896与2233796之间的汉明距离是 3</p></li>
+<li><p>“toned”与”roses”之间的汉明距离是 3</p></li>
+</ul>
+</div>
+</div>
+<div class="section" id="r-squared-r-2">
+<h3><span class="section-number">3.2.5. </span>R Squared (<span class="math notranslate nohighlight">\(R^2\)</span>)<a class="headerlink" href="#r-squared-r-2" title="Permalink to this headline">¶</a></h3>
+<p>决定系数 <span class="math notranslate nohighlight">\(R^2\)</span> 表示由回归模型中的一个或多个自变量所解释的方差占因变量总方差的比例; 相关性说明了自变量和因变量之间关系的强度, 而 <span class="math notranslate nohighlight">\(R^2\)</span> 说明了一个变量的方差在多大程度上解释了第二个变量的方差</p>
+<p>其值一般在 0 ~ 1 之間:
+- 0 表示預測無法解釋任何誤差
+- 1 表示預測可以解釋所有的誤差</p>
+<div class="math notranslate nohighlight">
+\[R^2 = \frac{SS_{reg}}{SS_{tot}} = \frac{\sum_{i=1}^{m}(\theta^T \cdot X^{(i)} - \bar{y})^2}{\sum_{i=1}^{m}(y^{(i)} - \bar{y})^2} = 1 - \frac{SS_{res}}{SS_{tot}} = 1 - \frac{\sum_{i=1}^{m}(\theta^T \cdot X^{(i)} - y^{(i)})^2}{\sum_{i=1}^{m}(y^{(i)} - \bar{y})^2}\]</div>
+<p>其中:</p>
+<ul class="simple">
+<li><p><span class="math notranslate nohighlight">\(SS_{tot}\)</span> 為所有數據與平均數之間的誤差的平方和</p></li>
+<li><p><span class="math notranslate nohighlight">\(SS_{reg}\)</span> 為預測的數據與原數據平均數之間的誤差的平方和 (即由預測所解釋的誤差 Explained variation)</p></li>
+<li><p><span class="math notranslate nohighlight">\(SS_{res}\)</span> 為預測的數據與原數據之間的誤差的平方和</p></li>
+<li><p><span class="math notranslate nohighlight">\(SS_{tot} = SS_{reg} + SS_{res}\)</span></p></li>
+</ul>
+</div>
+<div class="section" id="entropy">
+<h3><span class="section-number">3.2.6. </span>Entropy<a class="headerlink" href="#entropy" title="Permalink to this headline">¶</a></h3>
+<p>TODO cross entropy</p>
+</div>
+</div>
+</div>
+
+
+           </div><!-- /.toBeIndexed -->
+          </div>
+          <footer>
+  
+    <div class="rst-footer-buttons" role="navigation" aria-label="footer navigation">
+      
+        <a href="regression.html" class="btn btn-neutral float-right" title="Accesskey Alt(+Shift)+n" accesskey="n">Next <span class="fa fa-arrow-circle-right"></span></a>
+      
+      
+        <a href="datapreprocessing.html" class="btn btn-neutral" title="Accesskey Alt(+Shift)+p" accesskey="p"><span class="fa fa-arrow-circle-left"></span> Previous</a>
+      
+    </div>
+  
+
+  <hr/>
+
+  <div role="contentinfo" class="contentinfo">
+      <p class="show_source">
+        <a href="../../../_sources/Tech-Computing&amp;Information-Technology/AI/ML/performancemeasure.rst.txt" rel="nofollow">
+          <span class="fa fa-binoculars"></span>&#32;View page source
+        </a>
+      </p>
+      <p class="show_copyright">
+            &copy; Copyright Toshinaki@2019
+      </p>
+      <p class="show_sphinx">
+        Built with <a href="http://sphinx-doc.org/" target="_blank">Sphinx</a> and
+        <a href="https://github.com/TYPO3-Documentation/t3SphinxThemeRtd" target="_blank">t3SphinxThemeRtd.</a>
+        Report theme issues <a href="https://github.com/TYPO3-Documentation/t3SphinxThemeRtd/issues" target="_blank">here.</a>
+      </p>
+      <p class="show_legalinfo">
+        <a href="https://typo3.org/legal-info/" rel="nofollow">
+          <span class="fa fa-legal"></span>&#32;Legal Info
+        </a>
+      </p>
+
+
+
+
+  </div>
+
+</footer>
+        </div>
+      </div>
+
+    </section>
+
+  </div>
+  
+
+
+  
+
+    <script type="text/javascript">
+        var DOCUMENTATION_OPTIONS = {
+            URL_ROOT:'../../../',
+            VERSION:'',
+            COLLAPSE_INDEX:false,
+            FILE_SUFFIX:'.html',
+            HAS_SOURCE:  true
+        };
+    </script>
+      <script type="text/javascript" src="../../../_static/jquery.js"></script>
+      <script type="text/javascript" src="../../../_static/underscore.js"></script>
+      <script type="text/javascript" src="../../../_static/doctools.js"></script>
+      <script type="text/javascript" src="../../../_static/language_data.js"></script>
+      <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.5/latest.js?config=TeX-AMS-MML_HTMLorMML"></script>
+      <script type="text/javascript" src="../../../_static/jquery-ui/jquery-ui.min.js"></script>
+      <script type="text/javascript" src="../../../_static/js/theme.js"></script>
+      <script type="text/javascript" src="../../../_static/js/t3autocomplete.js"></script>
+
+  
+
+  
+   
+  
+  <script type="text/javascript">
+      jQuery(function () {
+          SphinxRtdTheme.StickyNav.enable();
+      });
+  </script>
+   <script type="text/javascript" id="idPiwikScriptPlaceholder"></script></body>
+</html>

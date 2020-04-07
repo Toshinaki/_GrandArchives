@@ -8,13 +8,13 @@
 
 - :math:`f'(a) > 0` 函数图像左低右高
 - :math:`f'(a) < 0` 函数图像左高右低
-- :math:`f(x)` 在 :math:`x=a` 处取极值, 则 :math:`f'(a) = 0` 或 :math:`f'(a)` 不存在
+- :math:`f(x)` 在 :math:`x=a` 处取极值, 则 :math:`f'(a) = 0` 或 :math:`f'(a)` 不存在 (反之却不正确; 如 :math:`y=x^3` )
 
 罗尔Rolle定理
 ~~~~~~~~~~~~~~~~~~~
 
 费马引理
-    设函数 :math:`y=f(x)` 在点 :math:`x_0` 的某邻域 :math:`U(x_0)` 内有定义, 且在 :math:`x_0` 处可导, 
+    设函数 :math:`y=f(x)` 在点 :math:`x_0` 的某邻域 :math:`U(x_0)` 内有定义, 且在 :math:`x_0` 处可导,
 
     若对任意的 :math:`x \in U(x_0)`, 都有 :math:`f(x) \leqslant f(x_0)` 或 :math:`f(x) \geqslant f(x_0)`,
 
@@ -32,7 +32,7 @@
     .. image:: imgs/罗尔定理.PNG
 
     .. admonition:: 证明
-    
+
         :math:`f(x) \in c[a,b]` :math:`\Rightarrow` :math:`f(x)` 在 :math:`[a,b]` 上有 :math:`m` 和 :math:`M`
 
         1. :math:`m = M`, 则 :math:`f(x) \equiv C_0`, :math:`\forall \xi \in (a,b), f'(\xi) = 0`
@@ -45,10 +45,10 @@
             设 :math:`\exists \xi \in (a, b)`, 使得 :math:`f(\xi) = M`, 则 :math:`f'(\xi) = 0` 或 :math:`f'(\xi)` 不存在
 
             :math:`\because f(x)` 在 :math:`(a, b)` 内可导, :math:`\therefore f'(\xi) = 0`
-   
+
 拉格朗日Lagrange中值定理
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
-    
+
 若函数\ :math:`y=f(x)`\ 满足
 
 1. :math:`f(x) \in c[a,b]`
@@ -60,10 +60,10 @@
 
 **等价形式**:
 
-:math:`f'(\xi) = \frac{f(b) - f(a)}{b - a} \Leftrightarrow f(b) - f(a) = f'(\xi)(b - a) \Leftrightarrow f(b) - f(a) = f'[a + \theta(b - a)](b - a)`
+:math:`f'(\xi) = \frac{f(b) - f(a)}{b - a} \Leftrightarrow f(b) - f(a) = f'(\xi)(b - a) \Leftrightarrow f(b) - f(a) = f'[a + \theta(b - a)](0 \gt \theta \lt 1)`
 
 .. admonition:: 证明
-   
+
     曲线 :math:`L`: :math:`y = f(x)`
 
     直线 :math:`L_{AB}`: :math:`y - f(a) = \frac{f(b) - f(a)}{b - a}(x - a)`, 即 :math:`y = f(a) + \frac{f(b) - f(a)}{b - a}(x - a)`
@@ -81,9 +81,9 @@
 柯西Cauchy中值定理
 ~~~~~~~~~~~~~~~~~~~~
 
-|  若函数 :math:`f(x), F(x)` 满足 
-|  1. :math:`f(x), F(x) \in c[a,b]` 
-|  2. :math:`f(x), F(x)` 在 :math:`(a,b)` 上可导 
+|  若函数 :math:`f(x), F(x)` 满足
+|  1. :math:`f(x), F(x) \in c[a,b]`
+|  2. :math:`f(x), F(x)` 在 :math:`(a,b)` 上可导
 |  3. :math:`F'(x) \neq 0 (a < x < b)`,
 
 则 :math:`\exists \xi \in (a,b)`, 使得 :math:`\frac{f(b) - f(a)}{F(b) - F(a)} = \frac{f'(\xi)}{F'(\xi)}`
@@ -95,7 +95,7 @@
     当 :math:`F(x) = x` 时, 柯西定理可转化为拉格朗日定理
 
 .. admonition:: 证明
-    
+
     借用拉格朗日定理的证明 :math:`\phi(x) = f(x) - f(a) - \frac{f(b) - f(a)}{b - a}(x - a)`
 
     令 :math:`\phi(x) = f(x) - f(a) - \frac{f(b) - f(a)}{F(b) - F(a)}(F(x) - F(a))`
@@ -117,10 +117,10 @@
 ------------------------
 
 未定式
-    当 :math:`x \to a (或x \to \infty)` 时, :math:`f(x), F(x)` 都趋于0或无穷, 
-    
-    则极限 :math:`\lim_{x \to a / x \to \infty} \frac{f(x)}{F(x)}` 可能存在, 也可能不存在 
-    
+    当 :math:`x \to a (或x \to \infty)` 时, :math:`f(x), F(x)` 都趋于0或无穷,
+
+    则极限 :math:`\lim_{x \to a / x \to \infty} \frac{f(x)}{F(x)}` 可能存在, 也可能不存在
+
     通常把这种极限叫做未定式, 记作 :math:`\frac{0}{0}` 或 :math:`\frac{\infty}{\infty}`
 
 1. 若函数\ :math:`f(x), F(x)`\ 满足
@@ -143,7 +143,7 @@
 泰勒Taylor公式
 ------------------
 
-|  在函数的某点对函数进行近似 
+|  在函数的某点对函数进行近似
 |  通过逐阶求导, 使多项式的高次项逐渐接近原函数, 精度越来越高
 |  (使初始值相同, 一阶导数即变化率相同, 二阶导数即变化率的变化率相同...)
 
@@ -153,18 +153,51 @@
 
 所有多项式都可以写成以某个实数 :math:`a` 为参考点的 **泰勒形式**: :math:`c_0 + c_1(x-a) + c_2(x-a)^2 + ... + c_nx^n` (升幂排列)
 
+- 思想
+
+    :math:`f(x)` 在 :math:`x=x_0` 的领域内 :math:`n+1` 阶可导
+
+    要找到多项式 :math:`P_n(x) = a_0 + a_1(x-x_0) + a_2(x-x_0)^2 + \cdots + a_n(x-x_0)^n` 与 :math:`f(x)` 近似相等, 需满足:
+
+    :math:`\begin{cases}
+    P_n(x_0) = f(x_0) \\
+    P_n'(x_0) = f'(x_0) \\
+    \cdots \\
+    P_n^{(n)}(x_0) = f^{(n)}(x_0) \\
+    \end{cases}`
+
+    而:
+
+    :math:`\begin{cases}
+    P_n(x_0) = a_0 = f(x_0) \\
+    P_n'(x_0) = a_1 + 2a_2(x-x_0) + 3a_3(x-x_0)^2 + \cdots + na_n(x-x_0)^{n-1} = a_1 = f'(x_0) \\
+    P_n'(x_0) = 2a_2 + 3 \times 2a_3(x-x_0) + 3a_3(x-x_0)^2 + \cdots + n(n-1)a_n(x-x_0)^{n-2} = 2a_2 = f'(x_0) \\
+    \cdots \\
+    P_n^{(n)}(x_0) = n(n-1) \cdots 2 \times 1a_n = n!a_n = f^{(n)}(x_0) \\
+    \end{cases}`
+
+    可得:
+
+    :math:`\begin{cases}
+    a_0 = f(x_0) \\
+    a_1 = f'(x_0) \\
+    a_2 = \frac{f'(x_0)}{2!} \\
+    \cdots \\
+    a_n = \frac{f^{(n)}(x_0)}{n!} \\
+    \end{cases}`
+
 泰勒公式
 ~~~~~~~~~~~~~
 
-若函数 :math:`y=f(x)` 在含有 :math:`x_0` 的某个开区间 :math:`(a,b)` 内 :math:`(n+1)` 阶可导, 则有 
+若函数 :math:`y=f(x)` 在含有 :math:`x_0` 的某个开区间 :math:`(a,b)` 内 :math:`(n+1)` 阶可导, 则有
 
-- :math:`f(x) = P_n(x) + R_n(x)` (n阶泰勒公式), 其中 
+- :math:`f(x) = P_n(x) + R_n(x)` (n阶泰勒公式), 其中
 
-    - :math:`P_n(x) = f(x_0) + \frac{f'(x_0)}{1!}(x - x_0) + \frac{f''(x_0)}{2!}(x - x_0)^2 + ... + \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n` (n次泰勒多项式) 
-    - :math:`R_n(x) = \frac{f^{(n+1)}(\xi)}{(n + 1)!}(x - x_0)^{n + 1}, \xi \in (x_0, x)` (拉格朗日型余项) (在不需要余项的精确表达式时, 也可以写成 :math:`o[(x - x_0)^n]`, 叫做皮亚诺Peano型余项) 
+    - :math:`P_n(x) = f(x_0) + \frac{f'(x_0)}{1!}(x - x_0) + \frac{f''(x_0)}{2!}(x - x_0)^2 + ... + \frac{f^{(n)}(x_0)}{n!}(x - x_0)^n` (n次泰勒多项式)
+    - :math:`R_n(x) = \frac{f^{(n+1)}(\xi)}{(n + 1)!}(x - x_0)^{n + 1}, \xi \in (x_0, x)` (拉格朗日型余项) (在不需要余项的精确表达式时, 也可以写成 :math:`o[(x - x_0)^n]`, 叫做皮亚诺Peano型余项)
 
-- 当 :math:`x_0 = 0` 时 
-    
+- 当 :math:`x_0 = 0` 时
+
     - :math:`P_n(x) = f(0) + \frac{f'(0)}{1!}(x) + \frac{f''(0)}{2!}(x)^2 + ... + \frac{f^{(n)}(0)}{n!}(x)^n`
     - :math:`R_n(x) = \frac{f^{(n+1)}(\xi)}{(n + 1)!}(x)^{n + 1}, \xi \in (x_0, x)` 或 :math:`o(x^n)`
     - 此时 :math:`f(x) = P_n(x) + R_n(x)` 叫做麦克劳林Maclaurin公式
@@ -174,13 +207,15 @@
 常用函数的泰勒展开
 ~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-- :math:`e^x = 1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+...+\frac{x^n}{n!}+o(x^n)`
-- :math:`\sin{x} = x-\frac{x^3}{3!}+\frac{x^5}{5!}-...+\frac{(-1)^{n}}{(2n+1)!}(x^{2n+1})+o(x^{2n+1})`
-- :math:`\cos{x} = 1-\frac{x^2}{2!}+\frac{x^4}{4!}-...+\frac{(-1)^n}{(2n)!}(x^{2n})+o(x^{2n})`
-- :math:`\frac{1}{1-x} = 1 + x + x^2 + ... + x^n + o(x^n)` 
-- :math:`\frac{1}{1+x} = 1 - x + x^2 - ... + (-1)^nx^n + o(x^n)` 
-- :math:`\ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - ... + \frac{(-1)^{n-1}}{n}x^n + o(x^n)`
-- :math:`(1+x)^a = 1 + ax + \frac{a(a-1)}{2!}x^2 + ... + \frac{a(a-1)...(a-n+1)}{n!}x^n +  + o(x^n)`
+:math:`x_0=0`
+
+- :math:`e^x = 1+x+\frac{x^2}{2!}+\frac{x^3}{3!}+\cdots+\frac{x^n}{n!}+o(x^n)`
+- :math:`\sin{x} = x-\frac{x^3}{3!}+\frac{x^5}{5!}-\cdots+\frac{(-1)^{n}}{(2n+1)!}(x^{2n+1})+o(x^{2n+1})`
+- :math:`\cos{x} = 1-\frac{x^2}{2!}+\frac{x^4}{4!}-\cdots+\frac{(-1)^n}{(2n)!}(x^{2n})+o(x^{2n})`
+- :math:`\frac{1}{1-x} = 1 + x + x^2 + \cdots + x^n + o(x^n)`
+- :math:`\frac{1}{1+x} = 1 - x + x^2 - \cdots + (-1)^nx^n + o(x^n)`
+- :math:`\ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \cdots + \frac{(-1)^{n-1}}{n}x^n + o(x^n)`
+- :math:`(1+x)^a = 1 + ax + \frac{a(a-1)}{2!}x^2 + \cdots + \frac{a(a-1)\cdots(a-n+1)}{n!}x^n +  + o(x^n)`
 
 中值定理常见题型
 ------------------------
@@ -203,7 +238,7 @@
 
         :math:`\exists c \in [1,2]`, 使得 :math:`f(c) = \frac{f(1) + f(2)}{2}`
 
-        :math:`\Rightarrow f(1) + f(2) = 2f(c) = 2f(0)` 
+        :math:`\Rightarrow f(1) + f(2) = 2f(c) = 2f(0)`
 
         :math:`\because c \neq 0`, 而 :math:`f(0) = f(c)`
 
@@ -225,11 +260,11 @@
         :math:`\Downarrow`
 
         :math:`\frac{f'(x)}{f(x)} + g'(x) = 0`
-       
+
         :math:`\Downarrow`
 
         :math:`[\ln{f(x)}]' + [\ln{e^{g(x)}}]' = 0`
-    
+
     证
         令 :math:`\phi(x) = f(x)e^{g(x)}`
 
@@ -248,7 +283,7 @@
 结论中有 :math:`\xi` 和区间 :math:`a,b`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. :math:`\xi` 和 :math:`a,b` 可分离 分离后使用柯西或拉格朗日 
+1. :math:`\xi` 和 :math:`a,b` 可分离 分离后使用柯西或拉格朗日
 
     .. admonition:: 例
 
@@ -260,7 +295,7 @@
             :math:`\Updownarrow`
 
             :math:`\frac{\frac{e^b}{b} - \frac{e^a}{a}}{\frac{1}{b}-\frac{1}{a}} = (1-\xi)e^{\xi}`
-         
+
         证
             令 :math:`f(x) = \frac{e^x}{x}`, :math:`F(x) = \frac{1}{x}` (:math:`F(x) \neq 0`)
 
@@ -272,10 +307,10 @@
 
             :math:`\Rightarrow ae^b - be^a = (a-b)(1-\xi)e^{\xi}`
 
-2. :math:`\xi` 和 :math:`a,b` 不可分离 去分母移项, 还原, 构造辅助函数 
+2. :math:`\xi` 和 :math:`a,b` 不可分离 去分母移项, 还原, 构造辅助函数
 
     .. admonition:: 例
-        
+
         :math:`f(x), g(x) \in c[a,b]`, 且在 :math:`(a,b)` 内可导, :math:`g'(x) \neq 0`
 
         证明: :math:`\exists \xi \in (a, b)`, 使 :math:`\frac{f(b) - f(\xi)}{g(\xi) - g(a)} = \frac{f'(\xi)}{g'(\xi)}`
@@ -297,7 +332,7 @@
 结论中有 :math:`\xi` 和 :math:`\eta`
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
-1. 结论中仅有 :math:`f'(\xi)` 和 :math:`f'(\eta)`, 找三个点, 两次拉格朗日 
+1. 结论中仅有 :math:`f'(\xi)` 和 :math:`f'(\eta)`, 找三个点, 两次拉格朗日
 
     .. admonition:: 例
 
@@ -325,7 +360,7 @@
 
             :math:`\therefore f'(\xi)f'(\eta)=1`
 
-2. :math:`\xi` 和\ :math:`\eta` 复杂程度不同 
+2. :math:`\xi` 和\ :math:`\eta` 复杂程度不同
 
     两种情况:
 
@@ -366,12 +401,12 @@
 求极值步骤
 ~~~~~~~~~~~~~~~~~~
 
-1. 找出定义域 
+1. 找出定义域
 2. 找出 :math:`f'(x) = 0` (驻点) 或不存在 (但不一定就是极值点)
 3. 判断方法
 
     1. :math:`\begin{cases} x < x_0 \text{时}, f'(x) < 0 \\ x > x_0 \text{时}, f'(x) > 0 \end{cases} \Rightarrow x_0` 为 **极小值**
-        
+
         或 :math:`f'(x_0) = 0, f''(x_0) > 0`
     2. :math:`\begin{cases} x < x_0 \text{时}, f'(x) > 0 \\ x > x_0 \text{时}, f'(x) < 0 \end{cases} \Rightarrow x_0` 为 **极大值**
 
@@ -382,11 +417,11 @@
 
 1. :math:`f(x) \in c[a,b]`, 找出 :math:`x_1, ..., x_n` 使得 :math:`f'(x)=0\text{或不存在}`, 则:
 
-    最大值为 :math:`M = max(f(a), f(x_1), ..., f(x_n), f(b))` 
-    
+    最大值为 :math:`M = max(f(a), f(x_1), ..., f(x_n), f(b))`
+
     最小值为 :math:`m = min(f(a), f(x_1), ..., f(x_n), f(b))`
 
-2. :math:`f(x) \in c(-\infty, +\infty)`, 
+2. :math:`f(x) \in c(-\infty, +\infty)`,
 
     若 :math:`f(x)` 在 :math:`(-\infty, +\infty)` 有唯一的极值, 则一定也为最值
 
@@ -394,11 +429,11 @@
 ~~~~~~~~~~~~~
 
 1. :math:`\forall x_1, x_2 \in D (x_1 \neq x_2)`, 都有 :math:`f(\frac{x_1+x_2}{2}) < \frac{f(x_1)+f(x_2)}{2}`,
-    
+
     则 :math:`f(x)` 在 :math:`D` 上为凹函数, 此时 :math:`f''(x_0) > 0`
 
 2. :math:`\forall x_1, x_2 \in D (x_1 \neq x_2)`, 都有 :math:`f(\frac{x_1+x_2}{2}) > \frac{f(x_1)+f(x_2)}{2}`,
-    
+
     则 :math:`f(x)` 在 :math:`D` 上为凸函数, 此时 :math:`f''(x_0) < 0`
 
 .. image:: imgs/凹凸性.jpg
@@ -469,7 +504,7 @@
 若 :math:`\lim_{x \to +\infty}f(x) - ax - b = 0` 或 :math:`\lim_{x \to -\infty}f(x) - ax - b = 0`, 则称直线 :math:`y = ax + b` 是函数 :math:`f(x)` 的斜渐近线
 
 1. 先求极限 :math:`\lim_{x \to \infty}\frac{f(x)}{x}`, 若极限存在, 其值为 :math:`a`, 则可确定有斜渐近线
-2. 求极限 :math:`\lim_{x \to \infty}\frac{f(x)}{x} - ax`, 若极限为 :math:`b`, 则斜渐近线为 :math:`y = ax + b`
+2. 求极限 :math:`\lim_{x \to \infty}f(x) - ax`, 若极限为 :math:`b`, 则斜渐近线为 :math:`y = ax + b`
 
 
 曲率
@@ -519,4 +554,4 @@
 
 .. image:: imgs/Osculating_circle.svg.png
 
-:math:`r = \frac{1}{k}` 
+:math:`r = \frac{1}{k}`
