@@ -7,7 +7,7 @@ Javascript
     :numbered: 3
     :glob:
 
-    Introduction <intro>
+    Basics <intro>
     Web APIs <webapis>
     jQuery
     ES6
