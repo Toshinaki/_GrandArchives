@@ -1605,13 +1605,19 @@ JavaScript 有两种作用域: 全局作用域和函数作用域. 函数内部�
 
 .. code-block:: javascript
 
-    var arr = new Array();
+    var arr = new Array(ele1, ele2, ...);
+    // [ele1, ele2, ...]
+    
+    // 当只传入一个整数时, 生成整数长度的数组
+    var arr = new Array(10);
+    // [,,,,,,,,,]
 
 - 数组字面量
 
 .. code-block:: javascript
 
-    var arr = [];
+    var arr = [ele1, ele2, ...];
+    // [ele1, ele2]
 
 数组的长度
 ^^^^^^^^^^^^^^
