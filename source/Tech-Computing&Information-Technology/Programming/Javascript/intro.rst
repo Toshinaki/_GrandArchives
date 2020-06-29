@@ -5555,6 +5555,1940 @@ JavaScript 语言的一个特点, 就是允许 "动态绑定", 即某些属性�
 异步操作
 -----------
 
+概述
+~~~~~~
+
+单线程模型
+^^^^^^^^^^^^^^
+
+JavaScript 只在一个线程上运行, 同时只能执行一个任务; JavaScript 引擎可以有多个线程, 单个脚本只在一个线程上运行 (称为主线程), 其他线程都是在后台配合
+
+为了利用多核 CPU 的计算能力, HTML5 提出 Web Worker 标准, 允许 JavaScript 脚本创建多个线程, 但是子线程完全受主线程控制, 且不得操作 DOM; 所以这个新标准并没有改变 JavaScript 单线程的本质
+
+同步任务和异步任务
+^^^^^^^^^^^^^^^^^^^^
+
+- 同步任务 (synchronous) 是没有被引擎挂起, 在主线程上排队执行的任务
+
+    只有前一个任务执行完毕, 才能执行后一个任务
+
+- 异步任务 (asynchronous) 是被引擎放在一边, 不进入主线程, 而进入任务队列的任务
+
+    只有引擎认为某个异步任务可以执行了 (比如 Ajax 操作从服务器得到了结果), 该任务 (采用回调函数的形式) 才会进入主线程执行
+
+    排在异步任务后面的代码, 不用等待异步任务结束会马上运行, 也就是说, 异步任务不具有 "堵塞效应"
+
+任务队列和事件循环
+^^^^^^^^^^^^^^^^^^^
+
+任务队列 (task queue)
+    JavaScript 运行时, 除了一个正在运行的主线程, 引擎还提供一个任务队列, 里面是各种需要当前程序处理的异步任务 (实际上, 根据异步任务的类型, 存在多个任务队列)
+
+    1. 首先, 主线程会去执行所有的同步任务
+    2. 等到同步任务全部执行完, 就会去看任务队列里面的异步任务; 如果满足条件, 那么异步任务就重新进入主线程开始执行, 这时它就变成同步任务了
+    3. 等到上一个异步任务执行完, 下一个异步任务再进入主线程开始执行
+    4. 一旦任务队列清空, 程序就结束执行
+
+    |  异步任务的写法通常是回调函数:
+    |  一旦异步任务重新进入主线程, 就会执行对应的回调函数; 如果一个异步任务没有回调函数, 就不会进入任务队列
+
+事件循环 (Event Loop)
+    一个程序结构, 用于等待和发送消息和事件
+
+    JavaScript 引擎会在同步任务执行完成后, 不停地检查挂起来的异步任务是否返回结果, 是否可以进入主线程
+
+异步操作的三种模式
+^^^^^^^^^^^^^^^^^^^^^
+
+- 回调函数
+
+    - 优点: 简单, 容易理解和实现
+    - 缺点: 不利于代码的阅读和维护, 各个部分之间高度耦合 (coupling), 使得程序结构混乱, 流程难以追踪 (尤其是多个回调函数嵌套的情况) , 而且每个任务只能指定一个回调函数
+
+- 事件监听
+
+    采用事件驱动模式; 异步任务的执行不取决于代码的顺序, 而取决于某个事件是否发生
+
+    - 优点: 比较容易理解, 可以绑定多个事件, 每个事件可以指定多个回调函数, 而且可以 **去耦合** (decoupling), 有利于实现模块化
+    - 缺点: 整个程序都要变成事件驱动型, 运行流程会变得很不清晰; 阅读代码的时候, 很难看出主流程
+
+- 发布/订阅模式 (publish-subscribe pattern)
+
+    又称 **观察者模式** (observer pattern)
+
+    存在一个"信号中心", 某个任务执行完成, 就向信号中心 *发布* (publish) 一个信号, 其他任务可以向信号中心 *订阅* (subscribe) 这个信号, 从而知道什么时候自己可以开始执行
+
+异步操作的流程控制
+^^^^^^^^^^^^^^^^^^^^^^
+
+当有多个异步操作时, 就需要确定异步操作执行的顺序, 并保证遵守这种顺序
+
+.. code-block:: javascript
+
+    function final(value) {
+        console.log('完成: ', value);
+    }
+
+    async(1, function (value) {
+        async(2, function (value) {
+            async(3, function (value) {
+                async(4, function (value) {
+                    async(5, function (value) {
+                        async(6, final);
+                    });
+                });
+            });
+        });
+    });
+    // 参数为 1 , 1秒后返回结果
+    // 参数为 2 , 1秒后返回结果
+    // 参数为 3 , 1秒后返回结果
+    // 参数为 4 , 1秒后返回结果
+    // 参数为 5 , 1秒后返回结果
+    // 参数为 6 , 1秒后返回结果
+    // 完成:  12
+
+- 串行执行
+
+    编写一个流程控制函数, 让它来控制异步任务, 一个任务完成以后, 再执行另一个
+
+    .. code-block:: javascript
+
+        var items = [ 1, 2, 3, 4, 5, 6 ];
+        var results = [];
+
+        function async(arg, callback) {
+            console.log('参数为 ' + arg +' , 1秒后返回结果');
+            setTimeout(function () { callback(arg * 2); }, 1000);
+        }
+
+        function final(value) {
+            console.log('完成: ', value);
+        }
+
+        function series(item) {
+            if(item) {
+                async( item, function(result) {
+                results.push(result);
+                return series(items.shift());
+                });
+            } else {
+                return final(results[results.length - 1]);
+            }
+        }
+
+        series(items.shift());
+
+- 并行执行
+
+    所有异步任务同时执行, 等到全部完成以后, 才执行 `final` 函数
+
+    如果并行的任务较多, 很容易耗尽系统资源, 拖慢运行速度
+
+    .. code-block:: javascript
+
+        var items = [ 1, 2, 3, 4, 5, 6 ];
+        var results = [];
+
+        function async(arg, callback) {
+            console.log('参数为 ' + arg +' , 1秒后返回结果');
+            setTimeout(function () { callback(arg * 2); }, 1000);
+        }
+
+        function final(value) {
+            console.log('完成: ', value);
+        }
+
+        items.forEach(function(item) {
+            async(item, function(result){
+                results.push(result);
+                if(results.length === items.length) {
+                    final(results[results.length - 1]);
+                }
+            })
+        });
+
+- 并行与串行的结合
+
+    设置一个门槛, 每次最多只能并行执行 `n` 个异步任务, 这样就避免了过分占用系统资源
+
+    .. code-block:: javascript
+
+        var items = [ 1, 2, 3, 4, 5, 6 ];
+        var results = [];
+        var running = 0;
+        var limit = 2;
+
+        function async(arg, callback) {
+            console.log('参数为 ' + arg +' , 1秒后返回结果');
+            setTimeout(function () { callback(arg * 2); }, 1000);
+        }
+
+        function final(value) {
+            console.log('完成: ', value);
+        }
+
+        function launcher() {
+            while(running < limit && items.length > 0) {
+                var item = items.shift();
+                async(item, function(result) {
+                    results.push(result);
+                    running--;
+                    if(items.length > 0) {
+                        launcher();
+                    } else if(running == 0) {
+                        final(results);
+                    }
+                });
+                running++;
+            }
+        }
+
+        launcher();
+
+定时器
+~~~~~~~~~~~~
+
+`setTimeout()`
+^^^^^^^^^^^^^^^^^^^
+
+指定某个函数或某段代码在多少毫秒 (默认为 0) 之后执行
+
+返回一个整数, 表示定时器的编号, 可以用来取消这个定时器
+
+.. code-block:: javascript
+
+    var timerId = setTimeout(func|code, delay);
+
+    // 更多的参数将依次传入回调函数
+
+    setTimeout(function (a,b) {
+        console.log(a + b);
+    }, 1000, 1, 1);
+
+`setInterval()`
+^^^^^^^^^^^^^^^^^^^^^
+
+指定某个任务每隔一段时间就执行一次; 其他用法与 `setTimeout()` 完全相同
+
+`setInterval` 指定的是 "开始执行" 之间的间隔, 并不考虑每次任务执行本身所消耗的时间; 因此实际上, 两次执行之间的间隔会小于指定的时间
+
+比如, `setInterval` 指定每 `100ms` 执行一次, 每次执行需要 `5ms`, 那么第一次执行结束后 `95ms`, 第二次执行就会开始; 如果某次执行耗时特别长, 比如需要 `105ms`, 那么它结束后, 下一次执行就会立即开始
+
+为了确保两次执行之间有固定的间隔, 可以不用 `setInterval`, 而是每次执行结束后, 使用 `setTimeout` 指定下一次执行的具体时间:
+
+.. code-block:: javascript
+
+    var i = 1;
+    var timer = setTimeout(function f() {
+        // ...
+        timer = setTimeout(f, 2000);
+    }, 2000);
+
+`clearTimeout()` & `clearInterval()`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+使用 `setTimeout` 和 `setInterval` 返回的定时器编号, 可以取消对应的定时器
+
+定时器编号是连续的, 即第二个 `setTimeout` 方法返回的整数值将比第一个的整数值大 1
+
+.. code-block:: javascript
+
+    function f() {}
+    setTimeout(f, 1000) // 10
+    setTimeout(f, 1000) // 11
+    setTimeout(f, 1000) // 12
+
+    // 利用这一点, 可以写一个函数, 取消当前所有的 setTimeout 定时器
+
+    (function() {
+        // 每轮事件循环检查一次
+        var gid = setInterval(clearAllTimeouts, 0);
+
+        function clearAllTimeouts() {
+            var id = setTimeout(function() {}, 0);
+            while (id > 0) {
+                if (id !== gid) {
+                    clearTimeout(id);
+                }
+                id--;
+            }
+        }
+    })();
+
+    // 先调用 setTimeout, 得到一个定时器编号, 然后把编号比它小的计数器全部取消
+
+运行机制
+^^^^^^^^^^^
+
+将指定的代码移出本轮事件循环, 等到下一轮事件循环, 再检查是否到了指定时间: 如果到了, 就执行对应的代码; 如果不到, 就继续等待
+
+也就是说, `setTimeout` 和 `setInterval` 指定的回调函数, 必须等到本轮事件循环的所有同步任务都执行完, 才会开始执行
+
+由于前面的任务到底需要多少时间执行完是不确定的, 所以没有办法保证 `setTimeout` 和 `setInterval` 指定的任务一定会按照预定时间执行
+
+.. code-block:: javascript
+
+    setTimeout(someTask, 100);
+    veryLongTask();
+
+`setTimeout(f, 0)`
+^^^^^^^^^^^^^^^^^^^^^^
+
+`setTimeout` 的作用是将代码推迟到指定时间执行, 如果指定时间为0, 代码不会立即执行; 必须要等到当前脚本的同步任务全部处理完以后, 才会执行 `setTimeout` 指定的回调函数 f
+
+也就是说, `setTimeout(f, 0)` 会在下一轮事件循环一开始就执行
+
+.. code-block:: javascript
+
+    setTimeout(function () {
+        console.log(1);
+    }, 0);
+    console.log(2);
+    // 2
+    // 1
+
+实际上, `setTimeout(f, 0)` 不会真的在 0 毫秒之后运行, 不同的浏览器有不同的实现
+
+以 Edge 浏览器为例, 会等到 4 毫秒之后运行; 如果电脑正在使用电池供电, 会等到16毫秒之后运行; 如果网页不在当前 Tab 页, 会推迟到 1000 毫秒之后运行; 这样是为了节省系统资源
+
+应用
+    - 调整事件的发生顺序
+
+    .. code-block:: javascript
+
+        // 网页开发中, 某个事件先发生在子元素, 然后冒泡到父元素, 即子元素的事件回调函数, 会早于父元素的事件回调函数触发
+        // 如果想让父元素的事件回调函数先发生, 就要用到 setTimeout(f, 0)
+
+        // <input type="button" id="myButton" value="click">
+
+        var input = document.getElementById('myButton');
+
+        input.onclick = function A() {
+            setTimeout(function B() {
+                input.value +=' input';
+            }, 0)
+        };
+
+        document.body.onclick = function C() {
+            input.value += ' body'
+        };
+
+    - 用户自定义的回调函数, 通常在浏览器的默认动作之前触发
+
+    .. code-block:: javascript
+
+        // 用户在输入框输入文本, keypress 事件会在浏览器接收文本之前触发
+        // 因此下面的回调函数是达不到目的的
+
+        // <input type="text" id="input-box">
+
+        document.getElementById('input-box').onkeypress = function (event) {
+            this.value = this.value.toUpperCase();
+        }
+        // 上面代码想在用户每次输入文本后, 立即将字符转为大写
+        // 但是实际上, 它只能将本次输入前的字符转为大写, 因为浏览器此时还没接收到新的文本, 所以 this.value 取不到最新输入的那个字符
+        // 只有用 setTimeout 改写, 上面的代码才能发挥作用
+
+        document.getElementById('input-box').onkeypress = function() {
+            var self = this;
+            setTimeout(function() {
+                self.value = self.value.toUpperCase();
+            }, 0);
+        }
+
+    - 由于 `setTimeout(f, 0)` 实际上意味着将任务放到浏览器最早可得的空闲时段执行, 所以可以将计算量大, 耗时长的任务拆分为几个小部分, 分别放到 `setTimeout(f, 0)` 里执行
+
+    .. code-block:: javascript
+
+        var div = document.getElementsByTagName('div')[0];
+
+        // 写法一
+        for (var i = 0xA00000; i < 0xFFFFFF; i++) {
+            div.style.backgroundColor = '#' + i.toString(16);
+        }
+        // 会造成浏览器堵塞, 因为 JavaScript 执行速度远高于 DOM, 会造成大量 DOM 操作堆积
+
+        // 写法二
+        var timer;
+        var i=0x100000;
+
+        function func() {
+            timer = setTimeout(func, 0);
+            div.style.backgroundColor = '#' + i.toString(16);
+            if (i++ == 0xFFFFFF) clearTimeout(timer);
+        }
+
+        timer = setTimeout(func, 0);
+
+Promise 对象
+~~~~~~~~~~~~~~~
+
+|  `Promise` 简单说就是一个容器, 里面保存着某个未来才会结束的事件 (通常是一个异步操作) 的结果
+|  从语法上说, `Promise` 是一个对象, 从它可以获取异步操作的消息
+|  `Promise` 提供统一的 API, 各种异步操作都可以用同样的方法进行处理
+
+特点:
+
+1. 对象的状态不受外界影响
+
+    `Promise` 对象代表一个异步操作, 有三种状态:
+
+    - pending (进行中)
+    - fulfilled (已成功)
+    - rejected (已失败)
+
+    只有异步操作的结果, 可以决定当前是哪一种状态, 任何其他操作都无法改变这个状态
+
+2. 一旦状态改变, 就不会再变, 任何时候都可以得到这个结果
+
+    `Promise` 对象的状态改变只有两种可能:
+
+    1. 从 `pending` 变为 `fulfilled`
+    2. 从 `pending` 变为 `rejected`
+
+    只要这两种情况发生, 状态就凝固了, 不会再变了, 会一直保持这个结果, 这时就称为 **resolved** (已定型)
+
+    如果改变已经发生了, 再对 `Promise` 对象添加回调函数, 也会立即得到这个结果
+
+    这与事件 (Event) 完全不同; 事件的特点是, 如果错过了事件, 再去监听, 是得不到结果的
+
+优点:
+
+- 可以将异步操作以同步操作的流程表达出来, 避免了层层嵌套的回调函数
+- `Promise` 对象提供统一的接口, 使得控制异步操作更加容易
+
+缺点:
+
+- 无法取消 `Promise`, 一旦新建就会立即执行, 无法中途取消
+- 如果不设置回调函数, `Promise` 内部抛出的错误, 不会反应到外部
+- 当处于 `pending` 状态时, 无法得知目前进展到哪一个阶段 (刚刚开始还是即将完成)
+
+如果某些事件不断地反复发生, 一般来说, 使用 Stream 模式是比部署 `Promise` 更好的选择
+
+基本用法
+^^^^^^^^^^^^^^
+
+ES6 规定, `Promise` 对象是一个构造函数, 用来生成 `Promise` 实例
+
+- `Promise` 构造函数接受一个函数作为参数, 该函数的两个参数分别是 `resolve` 和 `reject`; 它们是两个函数, 由 JavaScript 引擎提供, 不用自己部署
+
+    `resolve` 函数
+        将 `Promise` 对象的状态从"未完成"变为"成功" (即从 `pending` 变为 `resolved`)
+
+        在异步操作成功时调用, 并将异步操作的结果, 作为参数传递出去
+
+    `reject` 函数
+        将 `Promise` 对象的状态从"未完成"变为"失败" (即从 `pending` 变为 `rejected`)
+
+        在异步操作失败时调用, 并将异步操作报出的错误, 作为参数传递出去
+
+    .. code-block:: javascript
+
+        const promise = new Promise(function(resolve, reject) {
+            // ... some code
+
+            if (/* 异步操作成功 */){
+                resolve(value);
+            } else {
+                reject(error);
+            }
+        });
+
+- `Promise` 实例生成以后, 可以用 `then` 方法分别指定 `resolved` 状态和 `rejected` 状态的回调函数
+
+    `then` 方法
+        接受两个回调函数作为参数: 状态变为 `resolved` 时调用的回调函数, 和状态变为 `rejected` 时调用的回调函数 (可选)
+
+        这两个函数都接受 `Promise` 对象传出的值作为参数
+
+    .. code-block:: javascript
+
+        promise.then(function(value) {
+            // success
+        }, function(error) {
+            // failure
+        });
+
+    .. admonition:: 例
+
+        .. code-block:: javascript
+
+            function timeout(ms) {
+                return new Promise((resolve, reject) => {
+                    setTimeout(resolve, ms, 'done');
+                });
+            }
+
+            timeout(100).then((value) => {
+                console.log(value);
+            });
+            // timeout 方法返回一个 Promise 实例, 表示一段时间以后才会发生的结果
+            // 过了指定的时间 (ms参数) 以后, Promise 实例的状态变为 resolved, 就会触发 then 方法绑定的回调函数
+
+- `Promise` 新建后就会立即执行
+
+    .. code-block:: javascript
+
+        let promise = new Promise(function(resolve, reject) {
+            console.log('Promise');
+            resolve();
+        });
+
+        promise.then(function() {
+            console.log('resolved.');
+        });
+
+        console.log('Hi!');
+
+        // Promise
+        // Hi!
+        // resolved
+
+        // Promise 新建后立即执行, 所以首先输出的是 Promise
+        // 然后, then 方法指定的回调函数, 将在当前脚本所有同步任务执行完才会执行, 所以 resolved 最后输出
+
+.. admonition:: 例
+
+    异步加载图片
+
+    .. code-block:: javascript
+
+        function loadImageAsync(url) {
+            return new Promise(function(resolve, reject) {
+                const image = new Image();
+
+                image.onload = function() {
+                    resolve(image);
+                };
+
+                image.onerror = function() {
+                    reject(new Error('Could not load image at ' + url));
+                };
+
+                image.src = url;
+            });
+        }
+
+    Ajax 操作
+
+    .. code-block:: javascript
+
+        const getJSON = function(url) {
+            const promise = new Promise(function(resolve, reject){
+                const handler = function() {
+                    if (this.readyState !== 4) {
+                        return;
+                    }
+                    if (this.status === 200) {
+                        resolve(this.response);
+                    } else {
+                        reject(new Error(this.statusText));
+                    }
+                };
+                const client = new XMLHttpRequest();
+                client.open("GET", url);
+                client.onreadystatechange = handler;
+                client.responseType = "json";
+                client.setRequestHeader("Accept", "application/json");
+                client.send();
+
+            });
+
+            return promise;
+        };
+
+        getJSON("/posts.json").then(function(json) {
+            console.log('Contents: ' + json);
+        }, function(error) {
+            console.error('出错了', error);
+        });
+
+- `resolve` 函数和 `reject` 函数的参数会被传递给回调函数
+
+    `reject` 函数的参数通常是 `Error` 对象的实例, 表示抛出的错误
+
+    `resolve` 函数的参数除了正常的值以外, 还可能是另一个 `Promise` 实例
+
+    .. code-block:: javascript
+
+        const p1 = new Promise(function (resolve, reject) {
+            // ...
+        });
+
+        const p2 = new Promise(function (resolve, reject) {
+            // ...
+            resolve(p1);
+        })
+        // p1 和 p2 都是 Promise 的实例, 但是 p2 的 resolve 方法将 p1 作为参数, 即一个异步操作的结果是返回另一个异步操作
+        // 这时 p1 的状态就会传递给 p2, 也就是说, p1 的状态决定了 p2 的状态
+        // 如果 p1 的状态是 pending, 那么 p2 的回调函数就会等待 p1 的状态改变
+        // 如果 p1 的状态已经是 resolved 或者 rejected, 那么 p2 的回调函数将会立刻执行
+
+        const p1 = new Promise(function (resolve, reject) {
+            setTimeout(() => reject(new Error('fail')), 3000)
+        })
+
+        const p2 = new Promise(function (resolve, reject) {
+            setTimeout(() => resolve(p1), 1000)
+        })
+
+        p2
+            .then(result => console.log(result))
+            .catch(error => console.log(error))
+        // Error: fail
+
+        // p1 3 秒之后变为 rejected
+        // p2 的状态在 1 秒之后改变, resolve 方法返回的是p1
+        // 由于 p2 返回的是另一个 Promise, 导致 p2 自己的状态无效了, 由 p1 的状态决定 p2 的状态
+        // 所以, 后面的 then 语句都变成针对 p1
+        // 又过了 2 秒, p1 变为 rejected, 导致触发 catch 方法指定的回调函数
+
+- 调用 `resolve` 或 `reject` 并不会终结 `Promise` 的参数函数的执行
+
+    .. code-block:: javascript
+
+        new Promise((resolve, reject) => {
+            resolve(1);
+            console.log(2);
+        }).then(r => {
+            console.log(r);
+        });
+        // 2
+        // 1
+
+        // 立即 resolved 的 Promise 是在本轮事件循环的末尾执行, 总是晚于本轮循环的同步任务
+
+    一般来说, 调用 `resolve` 或 `reject` 以后, `Promise` 的使命就完成了, 后继操作应该放到 `then` 方法里面, 而不应该直接写在 `resolve` 或 `reject` 的后面
+
+    所以, 最好在它们前面加上 `return` 语句:
+
+    .. code-block:: javascript
+
+        new Promise((resolve, reject) => {
+            return resolve(1);
+            // 后面的语句不会执行
+            console.log(2);
+        })
+
+`Promise.prototype.then()`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+为 `Promise` 实例添加状态改变时的回调函数; 第一个参数是 `resolved` 状态的回调函数; 第二个参数 (可选) 是 `rejected` 状态的回调函数
+
+返回一个新的 `Promise` 实例; 因此可以采用链式写法, 即 `then` 方法后面再调用另一个 `then` 方法
+
+.. code-block:: javascript
+
+    getJSON("/posts.json").then(function(json) {
+        return json.post;
+    }).then(function(post) {
+        // ...
+    });
+
+采用链式的 `then` 可以指定一组按照次序调用的回调函数; 前一个回调函数有可能返回的还是一个 `Promise` 对象 (即有异步操作), 这时后一个回调函数, 就会等待该 `Promise` 对象的状态发生变化才会被调用
+
+.. code-block:: javascript
+
+    getJSON("/post/1.json").then(function(post) {
+        return getJSON(post.commentURL);
+    }).then(function (comments) {
+        console.log("resolved: ", comments);
+    }, function (err){
+        console.log("rejected: ", err);
+    });
+
+    // 采用箭头函数, 上面的代码可以写得更简洁
+
+    getJSON("/post/1.json").then(
+        post => getJSON(post.commentURL)
+    ).then(
+        comments => console.log("resolved: ", comments),
+        err => console.log("rejected: ", err)
+    );
+
+`Promise.prototype.catch()`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+`.then(null, rejection)` 或 `.then(undefined, rejection)` 的别名, 用于指定发生错误时的回调函数
+
+.. code-block:: javascript
+
+    getJSON('/posts.json').then(function(posts) {
+        // ...
+    }).catch(function(error) {
+        // 处理 getJSON 和 前一个回调函数运行时发生的错误
+        console.log('发生错误！', error);
+    });
+
+    // then() 方法指定的回调函数如果运行中抛出错误, 也会被 catch() 方法捕获
+
+    p.then((val) => console.log('fulfilled:', val))
+        .catch((err) => console.log('rejected', err));
+
+    // 等同于
+    p.then((val) => console.log('fulfilled:', val))
+        .then(null, (err) => console.log("rejected:", err));
+
+.. admonition:: 例
+
+    .. code-block:: javascript
+
+        const promise = new Promise(function(resolve, reject) {
+            throw new Error('test');
+        });
+        promise.catch(function(error) {
+            console.log(error);
+        });
+        // Error: test
+
+        // promise 抛出一个错误, 就被 catch() 方法指定的回调函数捕获
+
+        //上面的写法与下面两种写法是等价的
+
+        // 写法一
+        const promise = new Promise(function(resolve, reject) {
+            try {
+                throw new Error('test');
+            } catch(e) {
+                reject(e);
+            }
+        });
+        promise.catch(function(error) {
+        console.log(error);
+        });
+
+        // 写法二
+        const promise = new Promise(function(resolve, reject) {
+            reject(new Error('test'));
+        });
+        promise.catch(function(error) {
+        console.log(error);
+        });
+
+        // reject() 方法的作用等同于抛出错误
+
+- 如果 `Promise` 状态已经变成 `resolved`, 再抛出错误是无效的
+
+    .. code-block:: javascript
+
+        const promise = new Promise(function(resolve, reject) {
+            resolve('ok');
+            throw new Error('test');
+        });
+        promise
+            .then(function(value) { console.log(value) })
+            .catch(function(error) { console.log(error) });
+        // ok
+
+- `Promise` 对象的错误具有"冒泡"性质, 会一直向后传递, 直到被捕获为止; 也就是说, 错误总是会被下一个 `catch` 语句捕获
+
+    .. code-block:: javascript
+
+        getJSON('/post/1.json').then(function(post) {
+            return getJSON(post.commentURL);
+        }).then(function(comments) {
+            // some code
+        }).catch(function(error) {
+            // 处理前面三个Promise产生的错误
+        });
+
+- 一般来说, 不要在 `then()` 方法里面定义 Reject 状态的回调函数 (即 `then` 的第二个参数) , 总是使用 `catch` 方法
+
+    .. code-block:: javascript
+
+        // bad
+        promise.then(function(data) {
+            // success
+        }, function(err) {
+            // error
+        });
+
+        // good
+        promise
+            .then(function(data) { //cb
+                // success
+            })
+            .catch(function(err) {
+                // error
+            });
+
+        // 第二种写法可以捕获前面 then 方法执行中的错误, 也更接近同步的写法 (try/catch)
+
+- 跟传统的 `try/catch` 代码块不同的是, 如果没有使用 `catch()` 方法指定错误处理的回调函数, `Promise` 对象抛出的错误不会传递到外层代码
+
+    .. code-block:: javascript
+
+        const someAsyncThing = function() {
+            return new Promise(function(resolve, reject) {
+                // 下面一行会报错, 因为x没有声明
+                resolve(x + 2);
+            });
+        };
+
+        someAsyncThing().then(function() {
+            console.log('everything is great');
+        });
+
+        setTimeout(() => { console.log(123) }, 2000);
+        // Uncaught (in promise) ReferenceError: x is not defined
+        // 123
+
+        // 上面代码中, someAsyncThing() 函数产生的 Promise 对象, 内部有语法错误
+        // 浏览器运行到这一行, 会打印出错误提示 ReferenceError: x is not defined, 但是不会退出进程, 终止脚本执行, 2 秒之后还是会输出123
+        // 这就是说, Promise 内部的错误不会影响到 Promise 外部的代码, 通俗的说法就是 "Promise 会吃掉错误"
+
+        // 这个脚本放在服务器执行, 退出码就是0 (即表示执行成功)
+        // 不过, Node.js 有一个 unhandledRejection 事件, 专门监听未捕获的 reject 错误, 上面的脚本会触发这个事件的监听函数, 可以在监听函数里面抛出错误
+
+        process.on('unhandledRejection', function (err, p) {
+            throw err;
+        });
+
+        const promise = new Promise(function (resolve, reject) {
+        resolve('ok');
+        setTimeout(function () { throw new Error('test') }, 0)
+        });
+        promise.then(function (value) { console.log(value) });
+        // ok
+        // Uncaught Error: test
+
+        // 上面代码中, Promise 指定在下一轮事件循环再抛出错误
+        // 到了那个时候, Promise 的运行已经结束了, 所以这个错误是在 Promise 函数体外抛出的, 会冒泡到最外层, 成了未捕获的错误
+
+- 一般总是建议 `Promise` 对象后面要跟 `catch()`, 这样可以处理 `Promise` 内部发生的错误
+
+    `catch()` 方法返回的还是一个 `Promise` 对象, 因此后面还可以接着调用 `then()`
+
+    .. code-block:: javascript
+
+        const someAsyncThing = function() {
+            return new Promise(function(resolve, reject) {
+                // 下面一行会报错, 因为x没有声明
+                resolve(x + 2);
+            });
+        };
+
+        someAsyncThing()
+            .catch(function(error) {
+                console.log('oh no', error);
+            })
+            .then(function() {
+                console.log('carry on');
+            });
+        // oh no [ReferenceError: x is not defined]
+        // carry on
+
+- `catch()`中还能再抛出错误
+
+    .. code-block:: javascript
+
+        const someAsyncThing = function() {
+            return new Promise(function(resolve, reject) {
+                // 下面一行会报错, 因为x没有声明
+                resolve(x + 2);
+            });
+        };
+
+        someAsyncThing().then(function() {
+            return someOtherAsyncThing();
+        }).catch(function(error) {
+            console.log('oh no', error);
+            // 下面一行会报错, 因为 y 没有声明
+            y + 2;
+        }).then(function() {
+            console.log('carry on');
+        });
+        // oh no [ReferenceError: x is not defined]
+
+        // 上面代码中, catch() 抛出一个错误, 因为后面没有别的 catch() 方法了, 导致这个错误不会被捕获, 也不会传递到外层
+
+        someAsyncThing().then(function() {
+            return someOtherAsyncThing();
+        }).catch(function(error) {
+            console.log('oh no', error);
+            // 下面一行会报错, 因为y没有声明
+            y + 2;
+        }).catch(function(error) {
+            console.log('carry on', error);
+        });
+        // oh no [ReferenceError: x is not defined]
+        // carry on [ReferenceError: y is not defined]
+
+`Promise.prototype.finally()`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+指定不管 `Promise` 对象最后状态如何都会执行的操作
+
+.. code-block:: javascript
+
+    promise
+        .then(result => {···})
+        .catch(error => {···})
+        .finally(() => {···});
+
+- `finally` 本质上是 `then` 的特例
+
+    .. code-block:: javascript
+
+        promise
+            .finally(() => {
+                // 语句
+            });
+
+        // 等同于
+        promise
+            .then(
+                result => {
+                    // 语句
+                    return result;
+                },
+                error => {
+                    // 语句
+                    throw error;
+                }
+            );
+
+- `finally` 的实现也很简单
+
+    .. code-block:: javascript
+
+        Promise.prototype.finally = function (callback) {
+            let P = this.constructor;
+            return this.then(
+                value  => P.resolve(callback()).then(() => value),
+                reason => P.resolve(callback()).then(() => { throw reason })
+            );
+        };
+
+- 从 `finally` 的实现可以看出, 其总是会返回原来的值
+
+    .. code-block:: javascript
+
+        // resolve 的值是 undefined
+        Promise.resolve(2).then(() => {}, () => {})
+
+        // resolve 的值是 2
+        Promise.resolve(2).finally(() => {})
+
+        // reject 的值是 undefined
+        Promise.reject(3).then(() => {}, () => {})
+
+        // reject 的值是 3
+        Promise.reject(3).finally(() => {})
+
+`Promise.all()`
+^^^^^^^^^^^^^^^^^
+
+将多个 `Promise` 实例包装成一个新的 `Promise` 实例
+
+接受一个 Promise 实例的数组作为参数; 如果不是 Promise 实例, 就会先调用 `Promise.resolve` 方法将参数转为 `Promise` 实例, 再进一步处理
+
+另外, `Promise.all()` 的参数可以不是数组, 但必须具有 Iterator 接口, 且返回的每个成员都是 `Promise` 实例
+
+.. code-block:: javascript
+
+    const p = Promise.all([p1, p2, p3]);
+
+返回的新的 `Promise` 实例的状态由数组中的 `Promise` 实例决定, 分成两种情况:
+
+1. 只有数组中的 `Promise` 实例的状态都变成 `fulfilled`, 其状态才会变成 `fulfilled`, 此时数组中的 `Promise` 实例的返回值组成一个数组, 传递给新的 `Promise` 实例的回调函数
+2. 只要数组中的 `Promise` 实例之中有一个被 `rejected`, 其状态就变成 `rejected`, 此时第一个被 `reject` 的实例的返回值会传递给新的 `Promise` 实例的回调函数
+
+.. code-block:: javascript
+
+    // 生成一个Promise对象的数组
+    const promises = [2, 3, 5, 7, 11, 13].map(function (id) {
+        return getJSON('/post/' + id + ".json");
+    });
+
+    Promise.all(promises).then(function (posts) {
+        // ...
+    }).catch(function(reason){
+        // ...
+    });
+
+    // promises 是包含 6 个 Promise 实例的数组, 只有这 6 个实例的状态都变成 fulfilled, 或者其中有一个变为 rejected, 才会调用 Promise.all 方法后面的回调函数
+
+如果作为参数的 `Promise` 实例自己定义了 `catch` 方法, 那么它一旦被 `rejected`, 并不会触发 `Promise.all()` 的 `catch` 方法
+
+.. code-block:: javascript
+
+    const p1 = new Promise((resolve, reject) => {
+        resolve('hello');
+    })
+        .then(result => result)
+        .catch(e => e);
+
+    const p2 = new Promise((resolve, reject) => {
+        throw new Error('报错了');
+    })
+        .then(result => result)
+        .catch(e => e);
+
+    Promise.all([p1, p2])
+        .then(result => console.log(result))
+        .catch(e => console.log(e));
+    // ["hello", Error: 报错了]
+
+    // 如果 p2 没有自己的 catch 方法, 就会调用 Promise.all() 的 catch 方法
+
+    const p1 = new Promise((resolve, reject) => {
+        resolve('hello');
+    })
+        .then(result => result);
+
+    const p2 = new Promise((resolve, reject) => {
+        throw new Error('报错了');
+    })
+        .then(result => result);
+
+    Promise.all([p1, p2])
+        .then(result => console.log(result))
+        .catch(e => console.log(e));
+    // Error: 报错了
+
+`Promise.race()`
+^^^^^^^^^^^^^^^^^^^^
+
+将多个 `Promise` 实例包装成一个新的 `Promise` 实例; 参数与 `Promise.all()` 一样
+
+只要数组中的 `Promise` 实例之中有一个实例率先改变状态, 新的 `Promise` 实例的状态就跟着改变; 那个率先改变的 `Promise` 实例的返回值就传递给新的 `Promise` 实例的回调函数
+
+.. code-block:: javascript
+
+    const p = Promise.race([p1, p2, p3]);
+
+.. admonition:: 例
+
+    如果指定时间内没有获得结果, 就将 `Promise` 的状态变为 `reject`, 否则变为 `resolve`
+
+    .. code-block:: javascript
+
+        const p = Promise.race([
+            fetch('/resource-that-may-take-a-while'),
+            new Promise(function (resolve, reject) {
+                setTimeout(() => reject(new Error('request timeout')), 5000)
+            })
+        ]);
+
+        p
+            .then(console.log)
+            .catch(console.error);
+
+`Promise.allSettled()`
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+将多个 `Promise` 实例包装成一个新的 `Promise` 实例; 参数与 `Promise.all()` 一样
+
+只有等到所有这些参数实例都返回结果, 不管是 `fulfilled` 还是 `rejected`, 包装实例才会结束
+
+.. code-block:: javascript
+
+    const promises = [
+        fetch('/api-1'),
+        fetch('/api-2'),
+        fetch('/api-3'),
+    ];
+
+    await Promise.allSettled(promises);
+    removeLoadingIndicator();
+
+    // 上面代码对服务器发出三个请求, 等到三个请求都结束, 不管请求成功还是失败, 加载的滚动图标就会消失
+
+该方法返回的新的 `Promise` 实例, 一旦结束, 状态总是 `fulfilled`, 不会变成 `rejected`; 状态变成 `fulfilled后`, `Promise` 的监听函数接收到的参数是一个数组, 每个成员对应一个传入 `Promise.allSettled()` 的 `Promise` 实例
+
+.. code-block:: javascript
+
+    const resolved = Promise.resolve(42);
+    const rejected = Promise.reject(-1);
+
+    const allSettledPromise = Promise.allSettled([resolved, rejected]);
+
+    allSettledPromise.then(function (results) {
+        console.log(results);
+    });
+    // [
+    //    { status: 'fulfilled', value: 42 },
+    //    { status: 'rejected', reason: -1 }
+    // ]
+
+.. admonition:: 例
+
+    返回值用法
+
+    .. code-block:: javascript
+
+        const promises = [ fetch('index.html'), fetch('https://does-not-exist/') ];
+        const results = await Promise.allSettled(promises);
+
+        // 过滤出成功的请求
+        const successfulPromises = results.filter(p => p.status === 'fulfilled');
+
+        // 过滤出失败的请求, 并输出原因
+        const errors = results
+            .filter(p => p.status === 'rejected')
+            .map(p => p.reason);
+
+`Promise.any()`
+^^^^^^^^^^^^^^^^^^^^^
+
+接受一组 `Promise` 实例作为参数, 包装成一个新的 `Promise` 实例
+
+只要参数实例有一个变成 `fulfilled` 状态, 包装实例就会变成 `fulfilled` 状态; 如果所有参数实例都变成 `rejected` 状态, 包装实例就会变成 `rejected` 状态
+
+`Promise.any()` 跟 `Promise.race()` 很像, 只是不会因为某个 `Promise` 变成 `rejected` 状态而结束
+
+.. code-block:: javascript
+
+    const promises = [
+        fetch('/endpoint-a').then(() => 'a'),
+        fetch('/endpoint-b').then(() => 'b'),
+        fetch('/endpoint-c').then(() => 'c'),
+    ];
+    try {
+        const first = await Promise.any(promises);
+        console.log(first);
+    } catch (error) {
+        console.log(error);
+    }
+
+    // Promise.any() 方法的参数数组包含三个 Promise 操作
+    // 其中只要有一个变成 fulfilled, Promise.any() 返回的 Promise 对象就变成 fulfilled
+    // 如果所有三个操作都变成 rejected, 那么 await 命令就会抛出错误
+
+`Promise.any()` 抛出的错误, 是一个 `AggregateError` 实例; 它相当于一个数组, 每个成员对应一个被 `rejected` 的操作所抛出的错误
+
+.. code-block:: javascript
+
+    new AggregateError() extends Array -> AggregateError
+
+    const err = new AggregateError();
+    err.push(new Error("first error"));
+    err.push(new Error("second error"));
+    throw err;
+
+    // 捕捉错误时, 如果不用 try...catch 结构和 await 命令, 可以像下面这样写:
+    Promise.any(promises).then(
+        (first) => {
+            // Any of the promises was fulfilled.
+        },
+        (error) => {
+            // All of the promises were rejected.
+        }
+    );
+
+    var resolved = Promise.resolve(42);
+    var rejected = Promise.reject(-1);
+    var alsoRejected = Promise.reject(Infinity);
+
+    Promise.any([resolved, rejected, alsoRejected]).then(function (result) {
+        console.log(result); // 42
+    });
+
+    Promise.any([rejected, alsoRejected]).catch(function (results) {
+        console.log(results); // [-1, Infinity]
+    });
+
+`Promise.resolve()`
+^^^^^^^^^^^^^^^^^^^^^
+
+将现有对象转为 Promise 对象
+
+.. code-block:: javascript
+
+    Promise.resolve('foo')
+    // 等价于
+    new Promise(resolve => resolve('foo'))
+
+参数分成四种情况:
+
+1. 参数是一个 `Promise` 实例
+
+    不做任何修改, 原封不动地返回这个实例
+
+2. 参数是一个 `thenable` 对象
+
+    `thenable` 对象指的是具有 `then` 方法的对象, 比如:
+
+    .. code-block:: javascript
+
+        let thenable = {
+            then: function(resolve, reject) {
+                resolve(42);
+            }
+        };
+
+    `Promise.resolve` 方法会将这个对象转为 `Promise` 对象, 然后立即执行 `thenable` 对象的 `then` 方法
+
+    .. code-block:: javascript
+
+        let thenable = {
+            then: function(resolve, reject) {
+                resolve(42);
+            }
+        };
+
+        let p1 = Promise.resolve(thenable);
+        p1.then(function(value) {
+            console.log(value);  // 42
+        });
+
+3. 参数不是具有 `then` 方法的对象, 或根本就不是对象
+
+    返回一个新的 Promise 对象, 状态为 `resolved`
+
+4. 不带有任何参数
+
+    返回一个 `resolved` 状态的 `Promise` 对象
+
+.. attention::
+
+    立即 `resolve()` 的 `Promise` 对象, 是在本轮事件循环的结束时, 而不是在下一轮事件循环的开始时执行
+
+    .. code-block:: javascript
+
+        setTimeout(function () {
+            console.log('three');
+        }, 0);
+
+        Promise.resolve().then(function () {
+            console.log('two');
+        });
+
+        console.log('one');
+
+        // one
+        // two
+        // three
+
+`Promise.reject()`
+^^^^^^^^^^^^^^^^^^^^^
+
+返回一个新的 `Promise` 实例, 该实例的状态为 `rejected`
+
+.. code-block:: javascript
+
+    const p = Promise.reject('出错了');
+    // 等同于
+    const p = new Promise((resolve, reject) => reject('出错了'))
+
+    p.then(null, function (s) {
+        console.log(s)
+    });
+    // 出错了
+
+`Promise.reject()` 方法的参数, 会原封不动地作为 `reject` 的理由, 变成后续方法的参数
+
+.. code-block:: javascript
+
+    const thenable = {
+        then(resolve, reject) {
+            reject('出错了');
+        }
+    };
+
+    Promise.reject(thenable)
+        .catch(e => {
+            console.log(e === thenable)
+        })
+    // true
+
+    // Promise.reject 方法的参数是一个 thenable 对象, 执行以后, 后面 catch 方法的参数不是 reject 抛出的"出错了"这个字符串, 而是 thenable 对象
+
+应用
+^^^^^^^^
+
+- 加载图片
+
+    .. code-block:: javascript
+
+        const preloadImage = function (path) {
+            return new Promise(function (resolve, reject) {
+                const image = new Image();
+                image.onload  = resolve;
+                image.onerror = reject;
+                image.src = path;
+            });
+        };
+
+- `Generator` 函数与 `Promise` 的结合
+
+    使用 `Generator` 函数管理流程, 遇到异步操作的时候, 通常返回一个 `Promise` 对象
+
+    .. code-block:: javascript
+
+        function getFoo () {
+            return new Promise(function (resolve, reject){
+                resolve('foo');
+            });
+        }
+
+        const g = function* () {
+            try {
+                const foo = yield getFoo();
+                console.log(foo);
+            } catch (e) {
+                console.log(e);
+            }
+        };
+
+        function run (generator) {
+            const it = generator();
+
+            function go(result) {
+                if (result.done) return result.value;
+
+                return result.value.then(function (value) {
+                return go(it.next(value));
+                }, function (error) {
+                return go(it.throw(error));
+                });
+            }
+
+            go(it.next());
+        }
+
+        run(g);
+
+`Promise.try()`
+^^^^^^^^^^^^^^^^^^^
+
+实际开发中, 经常遇到一种情况: 不知道或者不想区分函数 `f` 是同步函数还是异步操作, 但是想用 `Promise` 来处理它; 因为这样就可以不管 `f` 是否包含异步操作, 都用 `then` 方法指定下一步流程, 用 `catch` 方法处理 `f` 抛出的错误
+
+一般会采用下面的写法:
+
+.. code-block:: javascript
+
+    Promise.resolve().then(f)
+
+上面的写法有一个缺点, 就是如果 `f` 是同步函数, 那么它会在本轮事件循环的末尾执行
+
+目前的解决方法:
+
+1. `async`
+
+    .. code-block:: javascript
+
+        const f = () => console.log('now');
+        (async () => f())();
+        console.log('next');
+        // now
+        // next
+
+        // 第二行是一个立即执行的匿名函数, 会立即执行里面的 async 函数
+        // 因此如果 f 是同步的, 就会得到同步的结果
+        // 如果 f 是异步的, 就可以用 then 指定下一步:
+
+        (async () => f())()
+        .then(...)
+
+        // async () => f() 会吃掉 f() 抛出的错误; 想捕获错误要使用 promise.catch
+
+        (async () => f())()
+        .then(...)
+        .catch(...)
+
+2. new Promise()
+
+    .. code-block:: javascript
+
+        const f = () => console.log('now');
+        (
+            () => new Promise(
+                resolve => resolve(f())
+            )
+        )();
+        console.log('next');
+        // now
+        // next
+
+鉴于这是一个很常见的需求, 所以现在有一个提案, 提供 `Promise.try` 方法替代上面的写法
+
+.. code-block:: javascript
+
+    const f = () => console.log('now');
+    Promise.try(f);
+    console.log('next');
+    // now
+    // next
+
+
+
+DOM
+-------
+
+Document Object Model 文档对象模型
+
+JavaScript 操作网页的接口, 将网页转为一个 JavaScript 对象, 从而可以用脚本进行各种操作
+
+浏览器会根据 DOM 模型, 将结构化文档 (比如 HTML 和 XML) 解析成一系列的 **节点**, 再由这些节点组成一个 **树状结构** (DOM Tree); 所有的节点和最终的树状结构, 都有规范的对外接口, 而 DOM 只是一个接口规范, 可以用各种语言实现
+
+所以严格地说, DOM 不是 JavaScript 语法的一部分, 但是 DOM 操作是 JavaScript 最常见的任务, 离开了 DOM, JavaScript 就无法控制网页; 另一方面, JavaScript 也是最常用于 DOM 操作的语言
+
+节点
+    DOM 的最小组成单位
+
+    文档的树形结构 (DOM 树) 就是由各种不同类型的节点组成
+
+    每个节点可以看作是文档树的一片叶子
+
+    类型:
+
+    1. `Document`: 整个文档树的顶层节点
+    2. `DocumentType`: `doctype` 标签 (比如 `<!DOCTYPE html>`)
+    3. `Element`: 网页的各种HTML标签 (比如 `<body>`, `<a>` 等)
+    4. `Attr`: 网页元素的属性 (比如 `class="right"` )
+    5. `Text`: 标签之间或标签包含的文本
+    6. `Comment`: 注释
+    7. `DocumentFragment`: 文档的片段
+
+    浏览器提供一个原生的节点对象 `Node`, 上面这七种节点都继承了 `Node`, 因此具有一些共同的属性和方法
+
+节点树
+    浏览器原生提供 `document` 节点, 代表整个文档
+
+    文档的第一层有两个节点:
+
+    - 文档类型节点 `<!doctype html>`
+    - HTML 网页的顶层容器标签 `<html>` (树结构的根节点)
+
+    除了根节点, 其他节点都有三种层级关系:
+
+    - 父节点关系 (parentNode): 直接的上级节点
+    - 子节点关系 (childNodes): 直接的下级节点
+    - 同级节点关系 (sibling): 拥有同一个父节点的节点
+
+Node 接口
+~~~~~~~~~~~~~
+
+属性
+^^^^^^^^^
+
+- `Node.prototype.nodeType`
+    返回一个整数值, 表示节点的类型
+
+    Node 对象定义了几个常量, 对应这些类型值:
+
+    - 文档节点 (document): 9, 对应常量 `Node.DOCUMENT_NODE`
+    - 元素节点 (element): 1, 对应常量 `Node.ELEMENT_NODE`
+    - 属性节点 (attr): 2, 对应常量 `Node.ATTRIBUTE_NODE`
+    - 文本节点 (text): 3, 对应常量 `Node.TEXT_NODE`
+    - 文档片断节点 (DocumentFragment): 11, 对应常量 `Node.DOCUMENT_FRAGMENT_NODE`
+    - 文档类型节点 (DocumentType): 10, 对应常量 `Node.DOCUMENT_TYPE_NODE`
+    - 注释节点 (Comment): 8, 对应常量 `Node.COMMENT_NODE`
+
+- `Node.prototype.nodeName`
+    返回节点的名称
+
+    不同节点的 `nodeName` 属性值:
+
+    - 文档节点 (document): `#document`
+    - 元素节点 (element): 大写的标签名
+    - 属性节点 (attr): 属性的名称
+    - 文本节点 (text): `#text`
+    - 文档片断节点 (DocumentFragment): `#document-fragment`
+    - 文档类型节点 (DocumentType): 文档的类型
+    - 注释节点 (Comment): `#comment`
+
+- `Node.prototype.nodeValue`
+    返回一个字符串, 表示当前节点本身的文本值; 可读写
+
+    只有文本节点 (text), 注释节点 (comment) 和属性节点 (attr) 有文本值, 因此这三类节点的 `nodeValue` 可以读取或设置; 其他类型的节点一律返回 `null`
+
+- `Node.prototype.textContent`
+    返回当前节点和它的所有后代节点的文本内容; 可读写
+
+    - 对于文本节点 (text), 注释节点 (comment) 和属性节点 (attr) , `textContent` 属性的值与 `nodeValue` 属性相同
+    - 对于其他类型的节点, 该属性会将每个子节点 (不包括注释节点) 的内容连接在一起返回
+    - 如果一个节点没有子节点, 则返回空字符串
+    - 文档节点 (document) 和文档类型节点 (doctype) 返回 `null`; 如果要读取整个文档的内容, 可以使用 `document.documentElement.textContent`
+
+    `textContent` 属性自动忽略当前节点内部的 HTML 标签, 返回所有文本内容
+
+    .. code-block:: javascript
+
+        // HTML
+        // <div id="divA">This is <span>some</span> text</div>
+
+        document.getElementById('divA').textContent
+        // This is some text
+
+    设置该属性的值时, 会用一个新的文本节点, 替换所有原来的子节点; 新的属性值中的 HTML 标签会自动转义
+
+- `Node.prototype.baseURI`
+    返回一个字符串, 表示当前网页的绝对路径; 浏览器根据这个属性, 计算网页上的相对路径的 URL; 只读
+
+    如果无法读到网页的 URL 则返回 `null`
+
+    该属性的值一般由当前网址的 URL (即 `window.location` 属性) 决定, 但是可以使用 HTML 的 `<base>` 标签改变属性值
+
+    .. code-block:: javascript
+
+        <base href="http://www.example.com/page.html">
+        // 设置了以后, baseURI属性就返回<base>标签设置的值。
+
+- `Node.prototype.ownerDocument`
+    返回当前节点所在的顶层文档对象, 即 `document` 对象
+
+    `document` 对象本身的 `ownerDocument` 属性返回 `null`
+
+    .. code-block:: javascript
+
+        var d = p.ownerDocument;
+        d === document // true
+
+- `Node.prototype.nextSibling`
+    返回紧跟在当前节点后面的第一个同级节点; 如果当前节点后面没有同级节点, 则返回 `null` (包括文本节点和注释节点; 因此如果当前节点后面有空格, 该属性会返回一个文本节点, 内容为空格)
+
+- `Node.prototype.previousSibling`
+    返回当前节点前面的, 距离最近的一个同级节点; 如果当前节点前面没有同级节点, 则返回 `null` (包括文本节点和注释节点)
+
+- `Node.prototype.parentNode`
+    返回当前节点的父节点
+
+    对于一个节点来说, 它的父节点只可能是: 元素节点 (element), 文档节点 (document), 文档片段节点 (documentfragment)
+
+    文档节点 (document) 和文档片段节点 (documentfragment) 的父节点都是`null`
+
+    生成后还没插入 DOM 树的节点的父节点也是 `null`
+
+- `Node.prototype.parentElement`
+    返回当前节点的父元素节点
+
+    如果当前节点没有父节点, 或者父节点类型不是元素节点, 则返回 `null`
+
+- `Node.prototype.firstChild`, `Node.prototype.lastChild`
+    `firstChild` 属性返回当前节点的第一个子节点, 如果当前节点没有子节点, 则返回 `null` (包括文本节点和注释节点)
+
+    `lastChild` 属性返回当前节点的最后一个子节点, 如果当前节点没有子节点, 则返回 `null` (包括文本节点和注释节点)
+
+- `Node.prototype.childNodes`
+    返回一个类数组对象 (`NodeList` 集合), 成员包括当前节点的所有子节点 (包括文本节点和注释节点)
+
+    如果当前节点不包括任何子节点, 则返回一个空的 `NodeList` 集合
+
+    由于NodeList对象是一个动态集合, 一旦子节点发生变化, 立刻会反映在返回结果之中
+
+- `Node.prototype.isConnected`
+    返回一个布尔值, 表示当前节点是否在文档之中
+
+    .. code-block:: javascript
+
+        var test = document.createElement('p');
+        test.isConnected // false
+
+        document.body.appendChild(test);
+        test.isConnected // true
+
+方法
+^^^^^^^^^^
+
+- `Node.prototype.appendChild()`
+    方法接受一个节点对象作为参数, 将其作为最后一个子节点, 插入当前节点
+
+    返回插入文档的子节点
+
+    .. code-block:: javascript
+
+        var p = document.createElement('p');
+        document.body.appendChild(p);
+
+        // 如果参数节点是 DOM 已经存在的节点, `appendChild()` 方法会将其从原来的位置移动到新位置
+
+        var div = document.getElementById('myDiv');
+        document.body.appendChild(div);
+
+    如果 `appendChild()` 方法的参数是 `DocumentFragment` 节点, 那么插入的是 `DocumentFragment` 的所有子节点, 而不是 `DocumentFragment` 节点本身; 返回值是一个空的 `DocumentFragment` 节点
+
+- `Node.prototype.hasChildNodes()`
+    返回一个布尔值, 表示当前节点是否有子节点
+
+    .. code-block:: javascript
+
+        var foo = document.getElementById('foo');
+
+        if (foo.hasChildNodes()) {
+            foo.removeChild(foo.childNodes[0]);
+        }
+
+    .. attention::
+
+        子节点包括所有类型的节点, 并不仅仅是元素节点; 哪怕节点只包含一个空格, `hasChildNodes` 方法也会返回 `true`
+
+    判断一个节点有没有子节点有许多种方法, 下面是其中三种:
+
+    - `node.hasChildNodes()`
+    - `node.firstChild !== null`
+    - `node.childNodes && node.childNodes.length > 0`
+
+    `hasChildNodes` 方法结合 `firstChild` 属性和 `nextSibling` 属性, 可以遍历当前节点的所有后代节点
+
+    .. code-block:: javascript
+
+        function DOMComb(parent, callback) {
+            if (parent.hasChildNodes()) {
+                for (var node = parent.firstChild; node; node = node.nextSibling) {
+                DOMComb(node, callback);
+                }
+            }
+            callback(parent);
+        }
+
+        // 用法
+        DOMComb(document.body, console.log)
+
+- `Node.prototype.cloneNode()`
+
+    克隆一个节点
+
+    接受一个布尔值作为参数, 表示是否同时克隆子节点; 返回一个克隆出来的新节点
+
+    .. code-block:: javascript
+
+        var cloneUL = document.querySelector('ul').cloneNode(true);
+
+    .. attention::
+
+        1. 克隆一个节点, 会拷贝该节点的所有属性, 但是会丧失 `addEventListener` 方法, `on-` 属性 (e.g. `node.onclick = fn`), 和添加在这个节点上的事件回调函数
+
+        2. 该方法返回的节点不在文档之中, 即没有任何父节点, 必须使用诸如 `Node.appendChild` 之类的方法添加到文档之中
+
+        3. 克隆一个节点之后, DOM 有可能出现两个有相同 `id` 属性的元素, 这时应该修改其中一个元素的 `id` 属性; 如果原节点有 `name` 属性, 可能也需要修改
+
+- `Node.prototype.insertBefore()`
+
+    将某个节点插入父节点内部的指定位置
+
+    接受两个参数, 第一个参数是所要插入的节点 `newNode`, 第二个参数是父节点 `parentNode` 内部的一个子节点 `referenceNode`; `newNode` 将插在 `referenceNode` 这个子节点的前面
+
+    返回插入的新节点 `newNode`
+
+    .. code-block:: javascript
+
+        var p = document.createElement('p');
+        document.body.insertBefore(p, document.body.firstChild);
+
+        // 如果 insertBefore 方法的第二个参数为 null, 则新节点将插在当前节点内部的最后位置, 即变成最后一个子节点
+
+        var p = document.createElement('p');
+        document.body.insertBefore(p, null);
+
+    .. attention::
+
+        如果所要插入的节点是当前 DOM 现有的节点, 则该节点将从原有的位置移除, 插入新的位置
+
+    由于不存在 `insertAfter` 方法, 如果新节点要插在父节点的某个子节点后面, 可以用 `insertBefore` 方法结合 `nextSibling` 属性模拟
+
+    .. code-block:: javascript
+
+        parent.insertBefore(s1, s2.nextSibling);
+
+    如果要插入的节点是 `DocumentFragment` 类型, 那么插入的将是 `DocumentFragment` 的所有子节点, 而不是 `DocumentFragment` 节点本身; 返回一个空的 `DocumentFragment` 节点
+
+- `Node.prototype.removeChild()`
+
+    接受一个子节点作为参数, 用于从当前节点移除该子节点; 返回移除的子节点
+
+    如果参数节点不是当前节点的子节点, `removeChild` 方法将报错
+
+    .. code-block:: javascript
+
+        var divA = document.getElementById('A');
+        divA.parentNode.removeChild(divA);
+
+        // 移除当前节点的所有子节点
+
+        var element = document.getElementById('top');
+        while (element.firstChild) {
+            element.removeChild(element.firstChild);
+        }
+
+    被移除的节点依然存在于内存之中, 但不再是 DOM 的一部分; 所以一个节点移除以后,依然可以使用
+
+
+- `Node.prototype.replaceChild()`
+
+    使用一个新的节点替换当前节点的某一个子节点
+
+    接受两个参数, 第一个参数 `newChild` 是用来替换的新节点, 第二个参数 `oldChild` 是将要替换走的子节点; 返回被替换的节点 `oldChild`
+
+    .. code-block:: javascript
+
+        var divA = document.getElementById('divA');
+        var newSpan = document.createElement('span');
+        newSpan.textContent = 'Hello World!';
+        divA.parentNode.replaceChild(newSpan, divA);
+
+- `Node.prototype.contains()`
+
+    返回一个布尔值, 表示参数节点是否满足以下三个条件之一:
+
+    1. 参数节点为当前节点
+    2. 参数节点为当前节点的子节点
+    3. 参数节点为当前节点的后代节点
+
+- `Node.prototype.compareDocumentPosition()`
+
+    与 `contains` 的用法完全一致; 返回一个六个比特位的二进制值, 表示参数节点与当前节点的关系。
+
+    .. list-table::
+        :widths: auto
+        :header-rows: 1
+        :stub-columns: 0
+
+        * - 二进制值
+          - 十进制值
+          - 含义
+        * - 000000
+          - 0
+          - 两个节点相同
+        * - 000001
+          - 1
+          - 两个节点不在同一个文档 (即有一个节点不在当前文档)
+        * - 000010
+          - 2
+          - 参数节点在当前节点的前面
+        * - 000100
+          - 4
+          - 参数节点在当前节点的后面
+        * - 001000
+          - 8
+          - 参数节点包含当前节点
+        * - 010000
+          - 16
+          - 当前节点包含参数节点
+        * - 100000
+          - 32
+          - 浏览器内部使用
+
+    .. code-block:: javascript
+
+        // HTML 代码如下
+        // <div id="mydiv">
+        //   <form><input id="test" /></form>
+        // </div>
+
+        var div = document.getElementById('mydiv');
+        var input = document.getElementById('test');
+
+        div.compareDocumentPosition(input) // 20
+        input.compareDocumentPosition(div) // 10
+
+- `Node.prototype.isEqualNode()`, `Node.prototype.isSameNode()`
+
+    `isEqualNode` 方法返回一个布尔值, 用于检查两个节点是否相等 (类型相同, 属性相同, 子节点相同)
+
+    .. code-block:: javascript
+
+        var p1 = document.createElement('p');
+        var p2 = document.createElement('p');
+
+        p1.isEqualNode(p2) // true
+
+    `isSameNode` 方法返回一个布尔值, 表示两个节点是否为同一个节点
+
+    .. code-block:: javascript
+
+        var p1 = document.createElement('p');
+        var p2 = document.createElement('p');
+
+        p1.isSameNode(p2) // false
+        p1.isSameNode(p1) // true
+
+- `Node.prototype.normalize()`
+
+    清理当前节点内部的所有文本节点 (text)； 它会去除空的文本节点, 并且将毗邻的文本节点合并成一个
+
+    .. code-block:: javascript
+
+        var wrapper = document.createElement('div');
+
+        wrapper.appendChild(document.createTextNode('Part 1 '));
+        wrapper.appendChild(document.createTextNode('Part 2 '));
+
+        wrapper.childNodes.length // 2
+        wrapper.normalize();
+        wrapper.childNodes.length // 1
+
+- `Node.prototype.getRootNode()`
+
+    返回当前节点所在文档的根节点 `document`, 与 `ownerDocument` 属性的作用相同
+
+    .. code-block:: javascript
+
+        document.body.firstChild.getRootNode() === document
+        // true
+        document.body.firstChild.getRootNode() === document.body.firstChild.ownerDocument
+        // true
+
+        // 该方法可用于document节点自身
+
+        document.getRootNode() // document
+        document.ownerDocument // null
+
+
+NodeList 接口, HTMLCollection 接口
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+DOM 提供两种节点集合, 用于容纳多个节点: `NodeList` 和 `HTMLCollection`
+
+这两种集合都属于接口规范; 许多 DOM 属性和方法返回的结果是 `NodeList` 实例或 `HTMLCollection` 实例; 主要区别是, `NodeList` 可以包含各种类型的节点, `HTMLCollection` 只能包含 HTML 元素节点。
+
+`NodeList` 接口
+^^^^^^^^^^^^^^^^^
+
+`NodeList` 实例是一个类数组对象, 它的成员是节点对象
+
+通过以下方法可以得到 `NodeList` 实例:
+
+- `Node.childNodes`
+- `document.querySelectorAll()` 等节点搜索方法
+
+.. code-block:: javascript
+
+    var children = document.body.childNodes;
+
+    Array.isArray(children) // false
+
+    children.length // 34
+    children.forEach(console.log)
+
+如果 `NodeList` 实例要使用数组方法, 可以将其转为真正的数组:
+
+.. code-block:: javascript
+
+    var children = document.body.childNodes;
+    var nodeArr = Array.prototype.slice.call(children);
+
+    // for 循环
+    var children = document.body.childNodes;
+
+    for (var i = 0; i < children.length; i++) {
+        var item = children[i];
+    }
+
+.. attention::
+
+    `NodeList` 实例可能是 **动态集合**, 也可能是 **静态集合**
+
+    所谓动态集合就是一个活的集合, DOM 删除或新增一个相关节点, 都会立刻反映在 `NodeList` 实例
+
+    目前, 只有 `Node.childNodes` 返回的是一个动态集合, 其他的 `NodeList` 都是静态集合
+
+    .. code-block:: javascript
+
+        var children = document.body.childNodes;
+        children.length // 18
+        document.body.appendChild(document.createElement('p'));
+        children.length // 19
+
+- `NodeList.prototype.length`
+
+    返回 `NodeList` 实例包含的节点数量
+
+- `NodeList.prototype.forEach()`
+
+    遍历 `NodeList` 的所有成员
+
+    接受一个回调函数作为参数, 每一轮遍历就执行一次这个回调函数, 用法与数组实例的 `forEach` 方法完全一致
+
+    .. code-block:: javascript
+
+        var children = document.body.childNodes;
+        children.forEach(function f(item, i, list) {
+            // ...
+        }, this);
+
+    回调函数的三个参数依次是当前成员, 位置和当前 NodeList 实例
+
+    `forEach` 方法的第二个参数用于绑定回调函数内部的 `this`, 可省略
+
+- `NodeList.prototype.item()`
+
+    接受一个整数值作为参数, 表示成员的位置, 返回该位置上的成员
+
+    如果参数值大于实际长度, 或者索引不合法 (比如负数), `item` 方法返回 `null`; 如果省略参数, `item` 方法会报错
+
+    所有类数组对象都可以使用方括号运算符取出成员; 一般情况下不使用 `item` 方法
+
+- `NodeList.prototype.keys()`, `NodeList.prototype.values()`, `NodeList.prototype.entries()`
+
+    这三个方法都返回一个 ES6 的遍历器对象, 可以通过 `for...of` 循环遍历获取每一个成员的信息
+
+    区别在于, `keys()` 返回键名的遍历器, `values()` 返回键值的遍历器, `entries()` 返回的遍历器同时包含键名和键值的信息
+
+    .. code-block:: javascript
+
+        var children = document.body.childNodes;
+
+        for (var key of children.keys()) {
+            console.log(key);
+        }
+        // 0
+        // 1
+        // 2
+        // ...
+
+        for (var value of children.values()) {
+            console.log(value);
+        }
+        // #text
+        // <script>
+        // ...
+
+        for (var entry of children.entries()) {
+            console.log(entry);
+        }
+        // Array [ 0, #text ]
+        // Array [ 1, <script> ]
+        // ...
+
+`HTMLCollection` 接口
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+`HTMLCollection` 是一个节点对象的集合, 只能包含元素节点 (element), 不能包含其他类型的节点
+
+返回一个类数组对象, 但是与 `NodeList` 接口不同, `HTMLCollection` 没有 `forEach` 方法, 只能使用 `for` 循环遍历
+
+返回 `HTMLCollection` 实例的, 主要是一些 `Document` 对象的集合属性, 比如 `document.links`, `document.forms`, `document.images` 等
+
+`HTMLCollection` 实例都是 **动态集合**, 节点的变化会实时反映在集合中
+
+如果元素节点有 `id` 或 `name` 属性, 那么 `HTMLCollection` 实例上面可以使用 `id` 属性或 `name` 属性引用该节点元素; 如果没有对应的节点, 则返回 `null`
+
+.. code-block:: javascript
+
+    // HTML 代码如下
+    // <img id="pic" src="http://example.com/foo.jpg">
+
+    var pic = document.getElementById('pic');
+    document.images.pic === pic // true
+
+- `HTMLCollection.prototype.length`
+
+    返回 `HTMLCollection` 实例包含的成员数量
+
+- `HTMLCollection.prototype.item()`
+
+    接受一个整数值作为参数, 表示成员的位置, 返回该位置上的成员; 一般情况下, 总是使用方括号运算符
+
+    如果参数值超出成员数量或者不合法 (比如小于0), 那么 `item` 方法返回 `null`
+
+- `HTMLCollection.prototype.namedItem()`
+
+    参数是一个字符串, 表示 `id` 属性或 `name` 属性的值, 返回对应的元素节点; 如果没有对应的节点, 则返回 `null`
+
+    .. code-block:: javascript
+
+        // HTML 代码如下
+        // <img id="pic" src="http://example.com/foo.jpg">
+
+        var pic = document.getElementById('pic');
+        document.images.namedItem('pic') === pic // true
+
+ParentNode 接口，ChildNode 接口
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
 
 
