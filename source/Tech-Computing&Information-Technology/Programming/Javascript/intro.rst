@@ -2627,10 +2627,10 @@ Array 的实例方法
 
     .. code-block:: javascript
 
-        var a = ['a', 'b', 'c'];
+        var a = ['a', 'd', 'c'];
 
-        a.reverse() // ["c", "b", "a"]
-        a // ["c", "b", "a"]
+        a.reverse() // ["c", "d", "a"]
+        a // ["c", "d", "a"]
 
 - `slice()`
     提取目标数组的一部分, 返回一个新数组, 原数组不变
