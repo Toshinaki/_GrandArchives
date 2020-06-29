@@ -1706,7 +1706,7 @@ JavaScript 使用一个 32 位整数保存数组的元素个数; 即数组成员
 获取元素索引
 ^^^^^^^^^^^^^^^^
 
-- `indexOf()`
+- `indexOf(item[, start])`
 - `lastIndexOf()`
 
 添加元素
@@ -2776,7 +2776,7 @@ Array 的实例方法
 - `some()`
     接受一个函数作为参数, 所有数组成员依次执行该函数; 该函数接受三个参数: 当前成员, 当前位置和整个数组, 然后返回一个布尔值
 
-    只要一个成员的返回值是 `true`, 则返回 `true`, 否则返回 `false`
+    只要一个成员的返回值是 `true`, 则返回 `true`, 否则返回 `false`; 短路操作
 
     .. code-block:: javascript
 
@@ -3163,7 +3163,7 @@ Number 对象
         ''.concat(one, two, three) // "123"
         one + two + three // "33"
 
-- `String.prototype.slice()`
+- `String.prototype.slice(start[, end])`
     从原字符串取出子字符串并返回, 不改变原字符串
 
     - 第一个参数是子字符串的开始位置
@@ -3184,7 +3184,7 @@ Number 对象
         // 如果第一个参数大于第二个参数, 返回一个空字符串
         'JavaScript'.slice(2, 1) // ""
 
-- `String.prototype.substring()`
+- `String.prototype.substring(start[, end])`
     类似 `slice()`
     .. code-block:: javascript
 
@@ -3202,7 +3202,7 @@ Number 对象
         'JavaScript'.substring(-3) // "JavaScript"
         'JavaScript'.substring(4, -3) // "Java"
 
-- `String.prototype.substr()`
+- `String.prototype.substr(start[, length])`
     类似 `slice` 和 `substring`
 
     .. code-block:: javascript
@@ -3217,7 +3217,7 @@ Number 对象
         'JavaScript'.substr(-6) // "Script"
         'JavaScript'.substr(4, -1) // ""
 
-- `String.prototype.indexOf()`, `String.prototype.lastIndexOf()`
+- `String.prototype.indexOf(subStr[, start])`, `String.prototype.lastIndexOf(subStr)`
     `indexOf` 从左往右, `lastIndexOf` 从右往左确定一个字符串在另一个字符串中第一次出现的位置
 
     返回匹配开始的位置; 如果不匹配, 返回 `-1`
@@ -3270,7 +3270,7 @@ Number 对象
         matches.index // 1
         matches.input // "cat, bat, sat, fat"
 
-- `String.prototype.search()`
+- `String.prototype.search(subStr)`
     基本等同于 `match`, 但是返回匹配的第一个位置; 如果没有找到匹配则返回 `-1`
 
     也可以使用正则表达式作为参数
@@ -3279,7 +3279,7 @@ Number 对象
 
         'cat, bat, sat, fat'.search('at') // 1
 
-- `String.prototype.replace()`
+- `String.prototype.replace(oldStr, newStr)`
     替换匹配的子字符串, 一般情况下只替换第一个匹配 (除非使用带有 `g` 修饰符的正则表达式)
 
     也可以使用正则表达式作为参数
@@ -5327,6 +5327,7 @@ in 运算符返回一个布尔值, 表示一个对象是否具有某个属性; �
 
 使用 `eval` 或者 `arguments` 作为标识名将会报错
 
+.. code-block:: javascript
     'use strict';
     var eval = 17;
     var arguments = 17;
