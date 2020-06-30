@@ -1607,7 +1607,7 @@ JavaScript 有两种作用域: 全局作用域和函数作用域. 函数内部�
 
     var arr = new Array(ele1, ele2, ...);
     // [ele1, ele2, ...]
-    
+
     // 当只传入一个整数时, 生成整数长度的数组
     var arr = new Array(10);
     // [,,,,,,,,,]
@@ -7494,9 +7494,1724 @@ DOM 提供两种节点集合, 用于容纳多个节点: `NodeList` 和 `HTMLColl
         var pic = document.getElementById('pic');
         document.images.namedItem('pic') === pic // true
 
-ParentNode 接口，ChildNode 接口
+ParentNode 接口, ChildNode 接口
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 
+`ParentNode` 接口表示当前节点是一个父节点, 提供一些处理子节点的方法; `ChildNode` 接口表示当前节点是一个子节点, 提供一些相关方法
+
+`ParentNode` 接口
+^^^^^^^^^^^^^^^^^^^^^^
+
+如果当前节点是父节点, 就会混入了 (mixin) `ParentNode` 接口; 由于只有元素节点 (element), 文档节点 (document) 和文档片段节点 (documentFragment) 拥有子节点, 因此只有这三类节点会拥有 `ParentNode` 接口
+
+- `ParentNode.children`
+
+    返回一个 `HTMLCollection` 实例, 成员是当前节点的所有元素子节点; 只读
+
+    .. attention::
+
+        `children` 属性只包括元素子节点, 不包括其他类型的子节点 (比如文本子节点); 如果没有元素类型的子节点, 返回值 `HTMLCollection` 实例的 `length` 属性为 `0`
+
+    `HTMLCollection` 是动态集合, 会实时反映 DOM 的任何变化
+
+- `ParentNode.firstElementChild`
+
+    返回当前节点的第一个元素子节点; 如果没有任何元素子节点, 则返回 `null`
+
+- `ParentNode.lastElementChild`
+
+    返回当前节点的最后一个元素子节点, 如果不存在任何元素子节点, 则返回 `null`
+
+- `ParentNode.childElementCount`
+
+    返回一个整数, 表示当前节点的所有元素子节点的数目; 如果不包含任何元素子节点, 则返回 `0`
+
+- `ParentNode.append()`, `ParentNode.prepend()`
+
+    `append` 方法为当前节点追加一个或多个子节点, 位置是最后一个元素子节点的后面; 该方法不仅可以添加元素子节点, 还可以添加文本子节点
+
+    该方法没有返回值
+
+    .. code-block:: javascript
+
+        var parent = document.body;
+
+        // 添加元素子节点
+        var p = document.createElement('p');
+        parent.append(p);
+
+        // 添加文本子节点
+        parent.append('Hello');
+
+        // 添加多个元素子节点
+        var p1 = document.createElement('p');
+        var p2 = document.createElement('p');
+        parent.append(p1, p2);
+
+        // 添加元素子节点和文本子节点
+        var p = document.createElement('p');
+        parent.append('Hello', p);
+
+    `prepend` 方法为当前节点追加一个或多个子节点, 位置是第一个元素子节点的前面; 它的用法与append方法完全一致, 同样没有返回值
+
+`ChildNode` 接口
+^^^^^^^^^^^^^^^^^^
+
+如果一个节点有父节点, 那么该节点就拥有了 `ChildNode` 接口
+
+- `ChildNode.remove()`
+
+    从父节点移除当前节点
+
+- `ChildNode.before()`, `ChildNode.after()`
+
+    `before` 方法用于在当前节点的前面插入一个或多个同级节点; 两者拥有相同的父节点
+
+    该方法不仅可以插入元素节点, 还可以插入文本节点
+
+    .. code-block:: javascript
+
+        var p = document.createElement('p');
+        var p1 = document.createElement('p');
+
+        // 插入元素节点
+        el.before(p);
+
+        // 插入文本节点
+        el.before('Hello');
+
+        // 插入多个元素节点
+        el.before(p, p1);
+
+        // 插入元素节点和文本节点
+        el.before(p, 'Hello');
+
+    `after` 方法用于在当前节点的后面, 插入一个或多个同级节点, 两者拥有相同的父节点; 用法与 `before` 方法完全相同
+
+- `ChildNode.replaceWith()`
+
+    使用参数节点替换当前节点; 参数可以是元素节点, 也可以是文本节点
+
+Document 节点
+~~~~~~~~~~~~~~~~~
+
+`document` 节点对象代表整个文档, 每张网页都有自己的 `document` 对象; `window.document` 属性就指向这个对象
+
+只要浏览器开始载入 HTML 文档, 该对象就存在了, 可以直接使用
+
+`document` 对象有不同的办法可以获取:
+
+- 正常网页直接使用 `document` 或 `window.document`
+- `iframe` 框架里面的网页, 使用 `iframe` 节点的 `contentDocument` 属性
+- Ajax 操作返回的文档, 使用 `XMLHttpRequest` 对象的 `responseXML` 属性
+- 内部节点的 `ownerDocument` 属性
+
+`document` 对象继承了 `EventTarget` 接口和 `Node` 接口, 并且混入 (mixin) 了 `ParentNode` 接口; 这意味着这些接口的方法都可以在 `document` 对象上调用
+
+属性
+^^^^^^^^^^^^
+
+- 快捷方式属性
+
+    以下属性是指向文档内部的某个节点的快捷方式
+
+    1. `document.defaultView`
+
+        返回 `document` 对象所属的 `window` 对象; 如果当前文档不属于 `window` 对象, 该属性返回 `null`
+
+    2. `document.doctype`
+
+        对于 HTML 文档来说, `document` 对象一般有两个子节点: 第一个子节点是 `document.doctype`, 指向 `<DOCTYPE>` 节点, 即文档类型 (Document Type Declaration, 简写 DTD) 节点
+
+        HTML 的文档类型节点一般写成 `<!DOCTYPE html>`
+
+        `document.firstChild` 通常返回此节点; 如果网页没有声明 DTD, 该属性返回 `null`
+
+        .. code-block:: javascript
+
+            var doctype = document.doctype;
+            doctype // "<!DOCTYPE html>"
+            doctype.name // "html"
+
+    3. `document.documentElement`
+
+        返回当前文档的根元素节点 (root); 它通常是 `document` 节点的第二个子节点, 紧跟在 `document.doctype` 节点后面
+
+        HTML 网页的该属性一般是 `<html>` 节点
+
+    4. `document.body`, `document.head`
+
+        `document.body` 属性指向 `<body>` 节点, `document.head` 属性指向 `<head>` 节点
+
+        这两个属性总是存在的, 如果网页源码里面省略了<head>或<body>, 浏览器会自动创建; 另外, 这两个属性是可写的, 如果改写它们的值, 相当于移除所有子节点
+
+    5. `document.scrollingElement`
+
+        返回文档的滚动元素; 也就是说当文档整体滚动时, 到底是哪个元素在滚动
+
+        标准模式下返回文档的根元素 `document.documentElement` (即 `<html>`); 兼容 (quirk) 模式下, 返回的是 `<body>` 元素, 如果该元素不存在, 返回null
+
+        .. code-block:: javascript
+
+            // 页面滚动到浏览器顶部
+            document.scrollingElement.scrollTop = 0;
+
+    6. `document.activeElement`
+
+        返回获得当前焦点 (focus) 的 DOM 元素
+        通常返回 `<input>`, `<textarea>`, `<select>` 等表单元素; 如果当前没有焦点元素, 返回 `<body>` 元素或 `null`
+
+    7. `document.fullscreenElement`
+
+        返回当前以全屏状态展示的 DOM 元素; 如果不是全屏状态, 该属性返回 `null`
+
+        .. code-block:: javascript
+
+            if (document.fullscreenElement.nodeName == 'VIDEO') {
+                console.log('全屏播放视频');
+            }
+
+- 节点集合属性
+
+    以下属性返回一个 `HTMLCollection` 实例, 表示文档内部特定元素的集合 (除了 `document.styleSheets`)
+
+    这些集合都是动态的, 原节点有任何变化, 立刻会反映在集合中
+
+    1. `document.links`
+
+        返回当前文档所有设定了 `href` 属性的 `<a>` 及 `<area>` 节点
+
+        .. code-block:: javascript
+
+            // 打印文档所有的链接
+            var links = document.links;
+            for(var i = 0; i < links.length; i++) {
+                console.log(links[i]);
+            }
+
+    2. `document.forms`
+
+        返回所有 `<form>` 表单节点
+
+        .. code-block:: javascript
+
+            var selectForm = document.forms[0];
+            // 获取文档第一个表单
+
+            // id 属性和 name 属性也可以用来引用表单
+
+            /* HTML 代码如下
+            <form name="foo" id="bar"></form>
+            */
+            document.forms[0] === document.forms.foo // true
+            document.forms.bar === document.forms.foo // true
+
+    3. `document.images`
+
+        返回页面所有 `<img>` 图片节点
+
+        .. code-block:: javascript
+
+            var imglist = document.images;
+
+            for(var i = 0; i < imglist.length; i++) {
+                if (imglist[i].src === 'banner.gif') {
+                    // ...
+                }
+            }
+            // 在所有 img 标签中寻找某张图片
+
+    4. `document.embeds`, `document.plugins`
+
+        返回所有 `<embed>` 节点
+
+    5. `document.scripts`
+
+        返回所有 `<script>` 节点
+
+        .. code-block:: javascript
+
+            var scripts = document.scripts;
+            if (scripts.length !== 0 ) {
+                console.log('当前网页有脚本');
+            }
+
+    6. `document.styleSheets`
+
+        返回文档内嵌或引入的样式表集合
+
+
+- 文档静态信息属性
+
+    以下属性返回文档信息
+
+    1. `document.documentURI`, `document.URL`
+
+        返回一个字符串表示当前文档的网址
+
+        它们继承自不同的接口: `documentURI` 继承自 `Document` 接口, 可用于所有文档; `URL` 继承自 `HTMLDocument` 接口, 只能用于 HTML 文档。
+
+        如果文档的锚点 (`#anchor`) 变化, 这两个属性都会跟着变化
+
+    2. `document.domain`
+
+        返回当前文档的域名, 不包含协议和端口; 如果无法获取域名, 该属性返回 `null`
+
+        `document.domain` 基本上是一个只读属性, 只有一种情况除外: 次级域名的网页可以把 document.domain 设为对应的上级域名
+
+        比如, 当前域名是 `a.sub.example.com`, 则 `document.domain` 属性可以设置为 `sub.example.com`, 也可以设为 `example.com`
+
+        修改后, `document.domain` 相同的两个网页可以读取对方的资源, 比如设置的 Cookie
+
+        另外, 设置 `document.domain` 会导致端口被改成 `null`; 因此, 如果通过设置 `document.domain` 来进行通信, 双方网页都必须设置这个值, 才能保证端口相同
+
+    3. `document.location`
+
+        `Location` 对象是浏览器提供的原生对象, 提供 URL 相关的信息和操作方法; 通过 `window.location` 和 `document.location` 属性都可以拿到这个对象
+
+    4. `document.lastModified`
+
+        返回一个字符串, 表示当前文档最后修改的时间
+
+        不同浏览器的返回值, 日期格式是不一样的
+
+        如果页面上有 JavaScript 生成的内容, `document.lastModified` 属性返回的总是当前时间
+
+    5. `document.title`
+
+        返回当前文档的标题; 默认情况下, 返回 `<title>` 节点的值
+
+        可写, 一旦被修改, 就返回修改后的值
+
+    6. `document.characterSet`
+
+        返回当前文档的编码, 比如 `UTF-8`, `ISO-8859-1` 等等
+
+    7. `document.referrer`
+
+        返回一个字符串, 表示当前文档的访问者来自哪里
+
+        如果无法获取来源, 或者用户直接键入网址而不是从其他网页点击进入, `document.referrer` 返回一个空字符串
+
+        `document.referrer` 的值总是与 HTTP 头信息的 `Referer` 字段保持一致; 但是, `document.referrer` 的拼写有两个 `r`, 而头信息的 `Referer` 字段只有一个 `r`
+
+    8. `document.dir`
+
+        返回一个字符串, 表示文字方向
+
+        它只有两个可能的值: `rtl` 表示文字从右到左, 阿拉伯文是这种方式; `ltr` 表示文字从左到右, 包括英语和汉语在内的大多数文字采用这种方式
+
+    9. `document.compatMode`
+
+        返回浏览器处理文档的模式, 可能的值为 `BackCompat` (向后兼容模式) 和 `CSS1Compat` (严格模式)
+
+        一般来说, 如果网页代码的第一行设置了明确的 `DOCTYPE` (比如 `<!doctype html>`), `document.compatMode` 的值都为 `CSS1Compat`
+
+- 文档状态属性
+
+    1. `document.hidden`
+
+        返回一个布尔值, 表示当前页面是否可见
+
+        如果窗口最小化, 浏览器切换了 Tab, 都会导致导致页面不可见, 使得 `document.hidden` 返回 `true`
+
+        这个属性是 Page Visibility API 引入的, 一般都是配合这个 API 使用
+
+    2. `document.visibilityState`
+
+        返回文档的可见状态; 有四种可能值:
+
+        1. `visible`: 页面可见; 页面可能是部分可见, 即不是焦点窗口, 前面被其他窗口部分挡住了
+        2. `hidden`: 页面不可见, 有可能窗口最小化, 或者浏览器切换到了另一个 Tab
+        3. `prerender`: 页面处于正在渲染状态, 对于用户来说, 该页面不可见
+        4. `unloaded`: 页面从内存里面卸载了
+
+        这个属性可以用在页面加载时, 防止加载某些资源; 或者页面不可见时, 停掉一些页面功能
+
+    3. `document.readyState`
+
+        返回当前文档的状态, 共有三种可能的值:
+
+        1. `loading`: 加载 HTML 代码阶段 (尚未完成解析)
+        2. `interactive`: 加载外部资源阶段
+        3. `complete`: 加载完成
+
+        这个属性变化的过程如下:
+
+        1. 浏览器开始解析 HTML 文档, `document.readyState` 属性等于 `loading`
+        2. 浏览器遇到 HTML 文档中的 `<script>` 元素, 并且没有 `async` 或 `defer` 属性, 就暂停解析, 开始执行脚本, 这时 `document.readyState` 属性还是等于 `loading`
+        3. HTML 文档解析完成, `document.readyState` 属性变成 `interactive`
+        4. 浏览器等待图片, 样式表, 字体文件等外部资源加载完成, 一旦全部加载完成, `document.readyState` 属性变成 `complete`
+
+        每次状态变化都会触发一个 `readystatechange` 事件
+
+        .. code-block:: javascript
+
+            // 检查网页是否加载成功
+
+            // 基本检查
+            if (document.readyState === 'complete') {
+            // ...
+            }
+
+            // 轮询检查
+            var interval = setInterval(function() {
+            if (document.readyState === 'complete') {
+                clearInterval(interval);
+                // ...
+            }
+            }, 100);
+
+- `document.cookie`
+
+    用来操作浏览器 Cookie
+
+- `document.designMode`
+
+    控制当前文档是否可编辑
+
+    该属性只有两个值 `on` 和 `off` (默认); 一旦设为 `on`, 用户就可以编辑整个文档的内容
+
+    .. code-block:: javascript
+
+        打开iframe元素内部文档的designMode属性, 就能将其变为一个所见即所得的编辑器。
+
+        // HTML 代码如下
+        // <iframe id="editor" src="about:blank"></iframe>
+        var editor = document.getElementById('editor');
+        editor.contentDocument.designMode = 'on';
+
+- `document.currentScript`
+
+    只用在 `<script>` 元素的内嵌脚本或加载的外部脚本之中, 返回当前脚本所在的那个 DOM 节点, 即 `<script>` 元素的 DOM 节点
+
+    .. code-block:: javascript
+
+        <script id="foo">
+        console.log(
+            document.currentScript === document.getElementById('foo')
+        ); // true
+        </script>
+
+- `document.implementation`
+
+    返回一个 `DOMImplementation` 对象
+
+    该对象有三个方法, 主要用于创建独立于当前文档的新的 `Document` 对象:
+
+    - `DOMImplementation.createDocument()`: 创建一个 XML 文档
+    - DOMImplementation.createHTMLDocument(): 创建一个 HTML 文档
+    - DOMImplementation.createDocumentType(): 创建一个 DocumentType 对象
+
+    .. code-block:: javascript
+
+        // 创建 HTML 文档
+
+        var doc = document.implementation.createHTMLDocument('Title');
+        var p = doc.createElement('p');
+        p.innerHTML = 'hello world';
+        doc.body.appendChild(p);
+
+        document.replaceChild(
+            doc.documentElement,
+            document.documentElement
+        );
+
+方法
+^^^^^^^^
+
+- `document.open()`, `document.close()`
+
+    `document.open` 方法清除当前文档所有内容, 使得文档处于可写状态, 供 `document.write` 方法写入内容
+
+    `document.close` 方法用来关闭 `document.open()` 打开的文档
+
+    .. code-block:: javascript
+
+        document.open();
+        document.write('hello world');
+        document.close();
+
+- `document.write()`, `document.writeln()`
+
+    `document.write` 方法用于向当前文档写入内容
+
+    在网页的首次渲染阶段, 只要页面没有关闭写入 (即没有执行 `document.close()`), `document.write` 写入的内容就会追加在已有内容的后面
+
+    .. attention::
+
+        注意, `document.write` 会当作 HTML 代码解析, 不会转义
+
+        .. code-block:: javascript
+
+            document.write('<p>hello world</p>');
+            // document.write 会将 <p> 当作 HTML 标签解释
+
+    如果页面已经解析完成 (`DOMContentLoaded` 事件发生之后), 再调用 `write` 方法, 它会先调用 `open` 方法, 擦除当前文档所有内容, 然后再写入; 如果在页面渲染过程中调用 `write` 方法, 并不会自动调用 `open` 方法
+
+    `document.write` 是 JavaScript 语言标准化之前就存在的方法, 现在完全有更符合标准的方法向文档写入内容 (比如对 `innerHTML` 属性赋值)
+
+    所以, 除了某些特殊情况, 应该尽量避免使用 `document.write`
+
+    `document.writeln` 方法与 `write` 方法完全一致, 除了会在输出内容的尾部添加换行符
+
+    .. code-block:: javascript
+
+        document.write(1);
+        document.write(2);
+        // 12
+
+        document.writeln(1);
+        document.writeln(2);
+        // 1
+        // 2
+        //
+
+    .. attention::
+
+        `writeln` 方法添加的是 ASCII 码的换行符, 渲染成 HTML 网页时不起作用, 即在网页上显示不出换行; 网页上的换行必须显式写入 `<br>`
+
+- `document.querySelector()`, `document.querySelectorAll()`
+
+    `document.querySelector` 接受一个 CSS 选择器作为参数, 返回匹配该选择器的元素节点; 如果有多个节点满足匹配条件, 则返回第一个匹配的节点; 如果没有发现匹配的节点, 则返回` null`
+
+    `document.querySelectorAll` 方法与 `querySelector` 用法类似, 返回一个 `NodeList` 对象, 包含所有匹配给定选择器的节点
+
+    不支持 CSS 伪元素的选择器 (比如 `:first-line` 和 `:first-letter`) 和伪类的选择器 (比如 `:link` 和 `:visited`)
+
+    如果 `querySelectorAll` 方法的参数是字符串 `"*"`, 则会返回文档中的所有元素节点; 另外, `querySelectorAll` 的返回结果不是动态集合, 不会实时反映元素节点的变化
+
+    这两个方法除了定义在document对象上, 还定义在元素节点上, 即在元素节点上也可以调用
+
+- `document.getElementsByTagName()`
+
+    搜索 HTML 标签名, 返回符合条件的元素
+
+    返回一个类数组对象 (`HTMLCollection` 实例), 可以实时反映 HTML 文档的变化; 如果没有任何匹配的元素, 就返回一个空集
+
+    HTML 标签名是大小写不敏感的, 因此 `getElementsByTagName()` 方法的参数也是大小写不敏感的; 返回结果中, 各个成员的顺序就是它们在文档中出现的顺序
+
+    如果传入 `"*"`, 就可以返回文档中所有 HTML 元素
+
+    元素节点本身也定义了 `getElementsByTagName` 方法, 返回该元素的后代元素中符合条件的元素, 即在元素节点上也可以调用
+
+- `document.getElementsByClassName()`
+
+    返回一个类数组对象 (`HTMLCollection` 实例), 包括了所有 `class` 名字符合指定条件的元素, 元素的变化实时反映在返回结果中
+
+    由于 `class` 是保留字, 所以 JavaScript 一律使用 `className` 表示 CSS 的 `class`
+
+    参数可以是多个 `class`, 使用空格分隔
+
+    .. code-block:: javascript
+
+        var elements = document.getElementsByClassName('foo bar');
+        // 返回同时具有 foo 和 bar 两个 class 的元素, foo 和 bar 的顺序不重要
+
+    .. attention::
+
+        正常模式下, CSS 的 `class` 是大小写敏感的 (quirks mode下, 大小写不敏感)
+
+    `getElementsByClassName()` 方法不仅可以在 `document` 对象上调用, 也可以在任何元素节点上调用
+
+- `document.getElementsByName()`
+
+    用于选择拥有 `name` 属性的 HTML 元素, 返回一个类数组对象 (`NodeList` 实例) , 因为 `name` 属性相同的元素可能不止一个
+
+- `document.getElementById()`
+
+    返回匹配指定 `id` 属性的元素节点; 如果没有发现匹配的节点, 则返回 `null`
+
+    参数大小写敏感
+
+    `document.getElementById()` 比 `document.querySelector()` 效率高得多
+
+    这个方法只能在 `document` 对象上使用, 不能在其他元素节点上使用
+
+- `document.elementFromPoint()`, `document.elementsFromPoint()`
+
+    `document.elementFromPoint()` 方法返回位于页面指定位置最上层的元素节点
+
+    `elementFromPoint` 方法的两个参数, 依次是相对于当前视口左上角的横坐标和纵坐标, 单位是像素; 如果位于该位置的 HTML 元素不可返回 (比如文本框的滚动条) , 则返回它的父元素 (比如文本框); 如果坐标值无意义 (比如负值或超过视口大小), 则返回 `null`
+
+    .. code-block:: javascript
+
+        var element = document.elementFromPoint(50, 50);
+        // 选中在 (50, 50) 这个坐标位置的最上层的那个 HTML 元素
+
+    `document.elementsFromPoint()` 返回一个数组, 成员是位于指定坐标 (相对于视口) 的所有元素
+
+    .. code-block:: javascript
+
+        var elements = document.elementsFromPoint(x, y);
+
+- `document.createElement()`
+
+    生成元素节点, 并返回该节点
+
+    `createElement` 方法的参数为元素的标签名, 即元素节点的 `tagName` 属性, 对于 HTML 网页大小写不敏感, 即参数为 `div` 或 `DIV` 返回的是同一种节点; 如果参数里面包含尖括号 (即 `<` 和 `>`) 会报错
+
+    参数可以是自定义的标签名
+
+- `document.createTextNode()`
+
+    生成文本节点 (`Text` 实例), 并返回该节点; 参数是文本节点的内容
+
+    .. code-block:: javascript
+
+        var newDiv = document.createElement('div');
+        var newContent = document.createTextNode('Hello');
+        newDiv.appendChild(newContent);
+
+    这个方法可以确保返回的节点被浏览器当作文本渲染, 而不是当作 HTML 代码渲染, 因此可以用来展示用户的输入, 避免 XSS 攻击
+
+    .. code-block:: javascript
+
+        var div = document.createElement('div');
+        div.appendChild(document.createTextNode('<span>Foo & bar</span>'));
+        console.log(div.innerHTML)
+        // &lt;span&gt;Foo &amp; bar&lt;/span&gt;
+
+        // 该方法不对单引号和双引号转义, 所以不能用来对 HTML 属性赋值
+
+        function escapeHtml(str) {
+            var div = document.createElement('div');
+            div.appendChild(document.createTextNode(str));
+            return div.innerHTML;
+        };
+
+        var userWebsite = '" onmouseover="alert(\'derp\')" "';
+        var profileLink = '<a href="' + escapeHtml(userWebsite) + '">Bob</a>';
+        var div = document.getElementById('target');
+        div.innerHTML = profileLink;
+        // <a href="" onmouseover="alert('derp')" "">Bob</a>
+
+        // 由于 createTextNode 方法不转义双引号, 导致 onmouseover 方法被注入了代码
+
+- `document.createAttribute()`
+
+    生成一个新的属性节点 (`Attr` 实例), 并返回它
+
+    参数为属性的名称
+
+    .. code-block:: javascript
+
+        var node = document.getElementById('div1');
+
+        var a = document.createAttribute('my_attrib');
+        a.value = 'newVal';
+
+        node.setAttributeNode(a);
+        // 或者
+        node.setAttribute('my_attrib', 'newVal');
+
+- `document.createComment()`
+
+    生成一个新的注释节点, 并返回该节点
+
+    参数是一个字符串, 会成为注释节点的内容
+
+- `document.createDocumentFragment()`
+
+    生成一个空的文档片段对象 (`DocumentFragment` 实例)
+
+    `DocumentFragment` 是一个存在于内存的 DOM 片段, 不属于当前文档, 常常用来生成一段较复杂的 DOM 结构, 然后再插入当前文档
+
+    这样做的好处在于, 因为 `DocumentFragment` 不属于当前文档, 对它的任何改动, 都不会引发网页的重新渲染, 比直接修改当前文档的 DOM 有更好的性能表现
+
+    .. code-block:: javascript
+
+        var docfrag = document.createDocumentFragment();
+
+        [1, 2, 3, 4].forEach(function (e) {
+            var li = document.createElement('li');
+            li.textContent = e;
+            docfrag.appendChild(li);
+        });
+
+        var element  = document.getElementById('ul');
+        element.appendChild(docfrag);
+
+- `document.createEvent()`
+
+    生成一个事件对象 (`Event` 实例), 该对象可以被 `element.dispatchEvent` 方法使用, 触发指定事件
+
+    参数是事件类型, 比如`UIEvents`, `MouseEvents`, `MutationEvents`, `HTMLEvents`
+
+    .. code-block:: javascript
+
+        var event = document.createEvent('Event');
+        event.initEvent('build', true, true);
+        document.addEventListener('build', function (e) {
+            console.log(e.type); // "build"
+        }, false);
+        document.dispatchEvent(event);
+
+- `document.addEventListener()`, `document.removeEventListener()`, `document.dispatchEvent()`
+
+    处理 `document` 节点的事件
+
+    它们都继承自 `EventTarget` 接口
+
+    .. code-block:: javascript
+
+        // 添加事件监听函数
+        document.addEventListener('click', listener, false);
+
+        // 移除事件监听函数
+        document.removeEventListener('click', listener, false);
+
+        // 触发事件
+        var event = new Event('click');
+        document.dispatchEvent(event);
+
+- `document.hasFocus()`
+
+    返回一个布尔值, 表示当前文档之中是否有元素被激活或获得焦点
+
+    .. attention::
+
+        有焦点的文档必定被激活 (active)； 反之不成立, 激活的文档未必有焦点
+
+        比如用户点击按钮, 从当前窗口跳出一个新窗口, 该新窗口就是激活的, 但是不拥有焦点
+
+- `document.adoptNode()`
+
+    将某个节点及其子节点从原来所在的文档或 `DocumentFragment` 里面移除, 归属当前 `document` 对象, 返回插入后的新节点; 插入的节点对象的 `ownerDocument` 属性, 会变成当前的 `document` 对象, 而 `parentNode` 属性是 `null`
+
+    .. code-block:: javascript
+
+        var node = document.adoptNode(externalNode);
+        document.appendChild(node);
+
+    `document.adoptNode` 方法只是改变了节点的归属, 并没有将这个节点插入新的文档树; 所以还要再用 `appendChild` 方法或 `insertBefore` 方法, 将新节点插入当前文档树
+
+- `document.importNode()`
+
+    从原来所在的文档或 `DocumentFragment` 里拷贝某个节点及其子节点, 让它们归属当前 `document` 对象; 拷贝的节点对象的 `ownerDocument` 属性会变成当前的 `document` 对象, 而 `parentNode` 属性是`null`
+
+    第一个参数是外部节点, 第二个参数是一个布尔值, 表示对外部节点是深拷贝还是浅拷贝, 默认是浅拷贝 (false)
+
+    虽然第二个参数是可选的, 但是建议总是保留这个参数, 并设为true。
+
+    .. code-block:: javascript
+
+        var node = document.importNode(externalNode, deep);
+
+    `document.importNode` 方法只是拷贝外部节点, 这时该节点的父节点是 `null`; 下一步还必须将这个节点插入当前文档树
+
+    .. code-block:: javascript
+
+        var iframe = document.getElementsByTagName('iframe')[0];
+        var oldNode = iframe.contentWindow.document.getElementById('myNode');
+        var newNode = document.importNode(oldNode, true);
+        document.getElementById("container").appendChild(newNode);
+
+- `document.createNodeIterator()`
+
+    返回一个子节点遍历器
+
+    第一个参数为所要遍历的根节点, 第二个参数为所要遍历的节点类型
+
+    .. code-block:: javascript
+
+        // 返回 <body> 元素子节点的遍历器
+        var nodeIterator = document.createNodeIterator(
+            document.body,
+            NodeFilter.SHOW_ELEMENT
+        );
+
+    几种主要的节点类型:
+
+    - 所有节点: NodeFilter.SHOW_ALL
+    - 元素节点: NodeFilter.SHOW_ELEMENT
+    - 文本节点: NodeFilter.SHOW_TEXT
+    - 评论节点: NodeFilter.SHOW_COMMENT
+
+    返回的 **遍历器** 对象 (`NodeFilter` 实例)的 `nextNode()` 方法和 `previousNode()` 方法可以用来遍历所有子节点
+
+    .. code-block:: javascript
+
+        var nodeIterator = document.createNodeIterator(document.body);
+        var pars = [];
+        var currentNode;
+
+        while (currentNode = nodeIterator.nextNode()) {
+            pars.push(currentNode);
+        }
+
+    遍历器的 `nextNode` 方法将根节点的所有子节点依次读入一个数组; `nextNode` 方法先返回遍历器的内部指针所在的节点, 然后会将指针移向下一个节点; 所有成员遍历完成后, 返回 `null`
+
+    `previousNode` 方法则是先将指针移向上一个节点, 然后返回该节点
+
+    .. code-block:: javascript
+
+        var nodeIterator = document.createNodeIterator(
+            document.body,
+            NodeFilter.SHOW_ELEMENT
+        );
+
+        var currentNode = nodeIterator.nextNode();
+        var previousNode = nodeIterator.previousNode();
+
+        currentNode === previousNode // true
+
+    .. attention::
+
+        遍历器返回的第一个节点, 总是根节点
+
+- `document.createTreeWalker()`
+
+    返回一个 DOM 的子树遍历器
+
+    与 `document.createNodeIterator` 方法基本类似, 区别在于它返回的是 `TreeWalker` 实例; 另外, 它的第一个节点不是根节点
+
+    第一个参数是所要遍历的根节点, 第二个参数指定所要遍历的节点类型 (与 `document.createNodeIterator` 方法的第二个参数相同)
+
+    .. code-block:: javascript
+
+        var treeWalker = document.createTreeWalker(
+            document.body,
+            NodeFilter.SHOW_ELEMENT
+        );
+
+        var nodeList = [];
+
+        while(treeWalker.nextNode()) {
+            nodeList.push(treeWalker.currentNode);
+        }
+
+- `document.execCommand()`, `document.queryCommandSupported()`, `document.queryCommandEnabled()`
+
+    1. `document.execCommand(command, showDefaultUI, input)`
+
+        - `command`: 字符串, 表示所要实施的样式
+        - `showDefaultUI`: 布尔值, 表示是否要使用默认的用户界面, 建议总是设为 `false`
+        - `input`: 字符串, 表示该样式的辅助内容, 比如生成超级链接时, 这个参数就是所要链接的网址; 如果第二个参数设为 `true`, 那么浏览器会弹出提示框, 要求用户在提示框输入该参数; 但是, 不是所有浏览器都支持这样做, 为了兼容性, 还是需要自己部署获取这个参数的方式
+
+        .. code-block:: javascript
+
+            var url = window.prompt('请输入网址');
+
+            if (url) {
+                document.execCommand('createlink', false, url);
+            }
+
+        - 如果 `document.designMode` 属性设为 `on`, 那么整个文档用户可编辑
+        - 如果元素的 `contenteditable` 属性设为 `true`, 那么该元素可编辑
+
+        这两种情况下, 可以使用 `document.execCommand()` 方法, 改变内容的样式, 比如 `document.execCommand('bold')` 会使得字体加粗
+
+
+        `document.execCommand()` 的返回值是一个布尔值; 如果为 `false`, 表示这个方法无法生效
+
+        这个方法大部分情况下只对选中的内容生效; 如果有多个内容可编辑区域, 那么只对当前焦点所在的元素生效
+
+        `document.execCommand()` 方法可以执行的样式改变有很多种, 如: `bold`, `insertLineBreak`, `selectAll`, `createLink`, `insertOrderedList`, `subscript`, `delete`, `insertUnorderedList`, `superscript`, `formatBlock`, `insertParagraph`, `undo`, `forwardDelete`, `insertText`, `unlink`, `insertImage`, `italic`, `unselect`, `insertHTML`, `redo`
+
+    2. `document.queryCommandSupported()`
+
+        返回一个布尔值, 表示浏览器是否支持 `document.execCommand()` 的某个命令
+
+        .. code-block:: javascript
+
+            if (document.queryCommandSupported('SelectAll')) {
+                console.log('浏览器支持选中可编辑区域的所有内容');
+            }
+    3. `document.queryCommandEnabled()`
+
+        返回一个布尔值, 表示当前是否可用 `document.execCommand()` 的某个命令
+
+        比如, `bold` (加粗) 命令只有存在文本选中时才可用, 如果没有选中文本, 就不可用
+
+        .. code-block:: javascript
+
+            // HTML 代码为
+            // <input type="button" value="Copy" onclick="doCopy()">
+
+            function doCopy(){
+                // 浏览器是否支持 copy 命令 (选中内容复制到剪贴板)
+                if (document.queryCommandSupported('copy')) {
+                    copyText('你好');
+                }else{
+                    console.log('浏览器不支持');
+                }
+            }
+
+            function copyText(text) {
+                var input = document.createElement('textarea');
+                document.body.appendChild(input);
+                input.value = text;
+                input.focus();
+                input.select();
+
+                // 当前是否有选中文字
+                if (document.queryCommandEnabled('copy')) {
+                    var success = document.execCommand('copy');
+                    input.remove();
+                    console.log('Copy Ok');
+                } else {
+                    console.log('queryCommandEnabled is false');
+                }
+            }
+
+- `document.getSelection()`
+
+    指向 `window.getSelection()`
+
+Element 节点
+~~~~~~~~~~~~~~~~~~~~~
+
+`Element` 节点对象对应网页的 HTML 元素
+
+每一个 HTML 元素在 DOM 树上都会转化成一个 `Element` 节点对象 (以下简称元素节点)
+
+元素节点的 `nodeType` 属性都是 `1`
+
+`Element` 对象继承了 `Node` 接口, 因此 `Node` 的属性和方法在 `Element` 对象都存在
+
+此外, 不同的 HTML 元素对应的元素节点是不一样的, 浏览器使用不同的构造函数, 生成不同的元素节点; 比如 `<a>` 元素的构造函数是 `HTMLAnchorElement()`, `<button>` 是 `HTMLButtonElement()`
+
+因此, 元素节点不是一种对象, 而是许多种对象, 这些对象除了继承 `Element` 对象的属性和方法, 还有各自独有的属性和方法
+
+实例属性
+^^^^^^^^^^
+
+- 元素特性的相关属性
+
+    1. `Element.id`
+
+        返回指定元素的 `id` 属性, 可读写
+
+        大小写敏感
+
+    2. `Element.tagName`
+
+        返回指定元素的大写标签名, 与 `nodeName` 属性的值相等
+
+    3. `Element.dir`
+
+        用于读写当前元素的文字方向, 可能是从左到右 ("ltr") , 也可能是从右到左 ("rtl")
+
+    4. `Element.accessKey`
+
+        用于读写分配给当前元素的快捷键
+
+        .. code-block:: javascript
+
+            // HTML 代码如下
+            // <button accesskey="h" id="btn">点击</button>
+            var btn = document.getElementById('btn');
+            btn.accessKey // "h"
+
+    5. `Element.draggable`
+
+        返回一个布尔值, 表示当前元素是否可拖动; 可读写
+
+    6. `Element.lang`
+
+        返回当前元素的语言设置; 可读写
+
+        .. code-block:: javascript
+
+            // HTML 代码如下
+            // <html lang="en">
+            document.documentElement.lang // "en"
+
+    7. `Element.tabIndex`
+
+        返回一个整数, 表示当前元素在 Tab 键遍历时的顺序; 可读写
+
+        `tabIndex` 属性值如果是负值 (通常是 `-1`), 则 Tab 键不会遍历到该元素; 如果是正整数, 则按照顺序, 从小到大遍历; 如果两个元素的 `tabIndex` 属性的正整数值相同, 则按照出现的顺序遍历; 遍历完所有 `tabIndex` 为正整数的元素以后, 再遍历所有 `tabIndex` 等于 `0`, 或者属性值是非法值, 或者没有 `tabIndex` 属性的元素, 顺序为它们在网页中出现的顺序
+
+    8. `Element.title`
+
+        读写当前元素的 HTML 属性 `title`
+
+        通常用来指定鼠标悬浮时弹出的文字提示框
+
+- 元素状态的相关属性
+
+    1. `Element.hidden`
+
+        返回一个布尔值, 表示当前元素的 `hidden` 属性, 用来控制当前元素是否可见; 可读写
+
+        .. code-block:: javascript
+
+            var btn = document.getElementById('btn');
+            var mydiv = document.getElementById('mydiv');
+
+            btn.addEventListener('click', function () {
+                mydiv.hidden = !mydiv.hidden;
+            }, false);
+
+        该属性与 CSS 设置是互相独立的; `Element.hidden` 不能反映 CSS 对这个元素可见性的设置; 也就是说, 这个属性并不能用来判断当前元素的实际可见性
+
+        CSS 的设置高于 `Element.hidden`
+
+    2. `Element.contentEditable`, `Element.isContentEditable`
+
+        设置 `contentEditable` 属性使得元素的内容可以编辑
+
+        .. code-block:: html
+
+            <div contenteditable>123</div>
+            // <div> 元素有 contenteditable 属性, 因此用户可以在网页上编辑这个区块的内容
+
+        `Element.contentEditable` 属性返回一个字符串, 表示是否设置了 `contenteditable` 属性; 可写; 三种可能的值:
+
+        - `"true"`: 元素内容可编辑
+        - `"false"`: 元素内容不可编辑
+        - `"inherit"`: 元素是否可编辑, 继承了父元素的设置
+
+        `Element.isContentEditable` 属性返回一个布尔值, 同样表示是否设置了 `contenteditable` 属性; 只读
+
+- `Element.attributes`
+
+    返回一个类数组对象, 成员是当前元素节点的所有属性节点
+
+- `Element.className`, `Element.classList`
+
+    `className` 属性用来读写当前元素节点的 `class` 属性; 返回一个字符串, 每个 `class` 之间用空格分割
+
+    `classList` 属性返回一个类数组对象, 当前元素节点的每个 `class` 就是这个对象的一个成员
+
+    .. code-block:: javascript
+
+        // HTML 代码 <div class="one two three" id="myDiv"></div>
+        var div = document.getElementById('myDiv');
+
+        div.className
+        // "one two three"
+
+        div.classList
+        // {
+        //   0: "one"
+        //   1: "two"
+        //   2: "three"
+        //   length: 3
+        // }
+
+    `classList` 对象有下列方法:
+
+    - `add()`: 增加一个 `class`
+    - `remove()`: 移除一个 `class`
+    - `contains()`: 检查当前元素是否包含某个 `class`
+    - `toggle()`: 将某个 `class` 移入或移出当前元素
+    - `item()`: 返回指定索引位置的 `class`
+    - `toString()`: 将 `class` 的列表转为字符串
+
+- `Element.dataset`
+
+    网页元素可以自定义 `data-` 属性, 用来添加数据
+
+    `Element.dataset` 属性返回一个对象, 可以从这个对象读写 `data-` 属性
+
+    .. code-block:: javascript
+
+        // <article
+        //   id="foo"
+        //   data-columns="3"
+        //   data-index-number="12314"
+        //   data-parent="cars">
+        //   ...
+        // </article>
+        var article = document.getElementById('foo');
+        article.dataset.columns // "3"
+        article.dataset.indexNumber // "12314"
+        article.dataset.parent // "cars"
+
+    .. attention::
+
+        `dataset` 的各个属性返回都是字符串
+
+    HTML 代码中, `data-` 属性的属性名只能包含英文字母, 数字, 连词线 (`-`) , 点 (`.`) , 冒号 (`:`) 和下划线 (`_`); 它们转成 JavaScript 对应的 `dataset` 属性名, 规则如下:
+
+    - 开头的 `data-` 会省略
+    - 如果连词线后面跟了一个英文字母, 那么连词线会取消, 该字母变成大写
+    - 其他字符不变
+
+    因此, `data-abc-def` 对应 `dataset.abcDef`, `data-abc-1` 对应 `dataset["abc-1"]`
+
+    除了使用 `dataset` 读写 `data-` 属性, 也可以使用 `Element.getAttribute()` 和 `Element.setAttribute()`, 通过完整的属性名读写这些属性
+
+- `Element.innerHTML`
+
+    返回一个字符串, 等同于该元素包含的所有 HTML 代码; 可读写
+
+    能改写所有元素节点的内容, 包括 `<HTML>` 和 `<body>` 元素
+
+    如果将 `innerHTML` 属性设为空, 等于删除所有它包含的所有节点
+
+    .. attention::
+
+        读取属性值的时候, 如果文本节点包含 `&`, 小于号 (`<`) 和大于号 (`>`), `innerHTML` 属性会将它们转为实体形式 `&amp;`, `&lt;`, `&gt;`
+
+        如果想得到原文, 建议使用 `element.textContent` 属性
+
+    .. attention::
+
+        写入的时候, 如果插入的文本包含 HTML 标签, 会被解析成为节点对象插入 DOM
+
+        如果文本之中含有 `<script>` 标签, 虽然可以生成 `script` 节点, 但是插入的代码不会执行
+
+    .. code-block:: javascript
+
+        // 脚本并不会执行
+        var name = "<script>alert('haha')</script>";
+        el.innerHTML = name;
+
+        var name = "<img src=x onerror=alert(1)>";
+        el.innerHTML = name;
+        // alert 方法是会执行的
+        // 因此为了安全考虑, 如果插入的是文本, 最好用 textContent 属性代替innerHTML
+
+- `Element.outerHTML`
+
+    返回一个字符串, 表示当前元素节点的所有 HTML 代码, 包括该元素本身和所有子元素； 可读写, 对它进行赋值, 等于替换掉当前元素
+
+    .. code-block:: javascript
+
+        // HTML 代码如下
+        // <div id="container"><div id="d">Hello</div></div>
+        var container = document.getElementById('container');
+        var d = document.getElementById('d');
+        container.firstChild.nodeName // "DIV"
+        d.nodeName // "DIV"
+
+        d.outerHTML = '<p>Hello</p>';
+        container.firstChild.nodeName // "P"
+        d.nodeName // "DIV"
+        // 变量 d 代表子节点, 它的 outerHTML 属性重新赋值以后, 内层的 div 元素就不存在, 被 p 元素替换了
+        // 但是, 变量 d 依然指向原来的 div 元素, 这表示被替换的 DIV 元素还存在于内存中
+
+    .. attention:: text
+
+        如果一个节点没有父节点, 设置 `outerHTML` 属性会报错
+
+        .. code-block:: javascript
+
+            var div = document.createElement('div');
+            div.outerHTML = '<p>test</p>';
+            // DOMException: This element has no parent node.
+
+.. image:: ./imgs/dom-heights.png
+
+- `Element.clientHeight`, `Element.clientWidth`
+
+    `Element.clientHeight` 属性返回一个整数值 (如果是小数会被四舍五入), 表示元素节点的 CSS 高度 (单位像素), 只对块级元素生效, 对于行内元素返回 `0`; 如果块级元素没有设置 CSS 高度, 则返回实际高度
+
+    除了元素本身的高度, 它还包括 `padding` 部分, 但是不包括 `border`, `margin`; 如果有水平滚动条, 还要减去水平滚动条的高度
+
+    `Element.clientWidth` 属性返回元素节点的 CSS 宽度, 同样只对块级元素有效, 也是只包括元素本身的宽度和 `padding`, 如果有垂直滚动条, 还要减去垂直滚动条的宽度
+
+    `document.documentElement` 的 `clientHeight` 属性, 返回当前视口的高度 (即浏览器窗口的高度), 等同于 `window.innerHeight` 属性减去水平滚动条的高度 (如果有的话); `document.body` 的高度则是网页的实际高度
+
+    一般来说, `document.body.clientHeight` 大于 `document.documentElement.clientHeight`
+
+- `Element.clientLeft`, `Element.clientTop`
+
+    `Element.clientLeft` 属性等于元素节点左边框 (left border) 的宽度 (单位像素) , 不包括左侧的 `padding` 和 `margin`; 如果没有设置左边框, 或者是行内元素返回 `0`; 总是返回整数值, 如果是小数会四舍五入
+
+    `Element.clientTop` 属性等于网页元素顶部边框的宽度 (单位像素) , 其他特点都与 `clientLeft` 相同
+
+- `Element.scrollHeight`, `Element.scrollWidth`
+
+    `Element.scrollHeight` 属性返回一个整数值 (小数会四舍五入), 表示当前元素的总高度 (单位像素), 包括溢出容器, 当前不可见的部分; 它包括 `padding`, 但是不包括 `border`, `margin` 以及水平滚动条的高度 (如果有水平滚动条的话), 还包括伪元素 (`::before` 或 `::after`) 的高度
+
+    `Element.scrollWidth` 属性表示当前元素的总宽度 (单位像素), 其他地方都与 `scrollHeight` 属性类似
+
+    这两个属性只读
+
+    整张网页的总高度可以从 `document.documentElement` 或 `document.body` 上读取
+
+    .. code-block:: javascript
+
+        // 返回网页的总高度
+        document.documentElement.scrollHeight
+        document.body.scrollHeight
+
+    .. attention::
+
+        如果元素节点的内容出现溢出, 即使溢出的内容是隐藏的, `scrollHeight` 属性仍然返回元素的总高度
+
+        .. code-block:: javascript
+
+            // HTML 代码如下
+            // <div id="myDiv" style="height: 200px; overflow: hidden;">...<div>
+            document.getElementById('myDiv').scrollHeight // 356
+
+- `Element.scrollLeft`, `Element.scrollTop`
+
+    `Element.scrollLeft` 属性表示当前元素的水平滚动条向右侧滚动的像素数量, `Element.scrollTop` 属性表示当前元素的垂直滚动条向下滚动的像素数量
+
+    对于没有滚动条的网页元素, 这两个属性总是等于 `0`
+
+    如果要查看整张网页的水平的和垂直的滚动距离, 要从 `document.documentElement` 元素上读取
+
+    这两个属性都可读写, 设置该属性的值, 会导致浏览器将当前元素自动滚动到相应的位置
+
+- `Element.offsetParent`
+
+    返回最靠近当前元素的, 并且 CSS 的 `position` 属性不等于 `static` 的上层元素
+
+    .. code-block:: html
+
+        <div style="position: absolute;">
+            <p>
+                <span>Hello</span>
+            </p>
+        </div>
+        <!-- span 元素的 offsetParent 属性就是 div 元素 -->
+
+    该属性主要用于确定子元素位置偏移的计算基准, `Element.offsetTop` 和 `Element.offsetLeft` 就是根据 `offsetParent` 元素计算的
+
+    如果该元素是不可见的 (`display` 属性为 `none`), 或者位置是固定的 (`position` 属性为 `fixed`) , 则 `offsetParent` 属性返回 `null`
+
+    .. code-block:: html
+
+        <div style="position: absolute;">
+            <p>
+                <span style="display: none;">Hello</span>
+            </p>
+        </div>
+        <!-- span 元素的 offsetParent 属性是 null -->
+
+    如果某个元素的所有上层节点的 `position` 属性都是 `static`, 则 `Element.offsetParent` 属性指向 `<body>` 元素
+
+- `Element.offsetHeight`, `Element.offsetWidth`
+
+    `Element.offsetHeight` 属性返回一个整数, 表示元素的 CSS 垂直高度 (单位像素), 包括元素本身的高度, `padding` 和 `border`, 以及水平滚动条的高度 (如果存在滚动条)
+
+    `Element.offsetWidth` 属性表示元素的 CSS 水平宽度 (单位像素), 其他都与 `Element.offsetHeight` 一致
+
+    这两个属性都是只读属性, 只比 `Element.clientHeight` 和 `Element.clientWidth` 多了边框的高度或宽度; 如果元素的 CSS 设为不可见 (比如 `display: none;`), 则返回 `0`
+
+- `Element.offsetLeft`, `Element.offsetTop`
+
+    `Element.offsetLeft` 返回当前元素左上角相对于 `Element.offsetParent` 节点的水平位移, `Element.offsetTop` 返回垂直位移, 单位为像素; 通常, 这两个值是指相对于父节点的位移
+
+    .. code-block:: javascript
+
+        // 计算元素左上角相对于整张网页的坐标
+
+        function getElementPosition(e) {
+            var x = 0;
+            var y = 0;
+            while (e !== null)  {
+                x += e.offsetLeft;
+                y += e.offsetTop;
+                e = e.offsetParent;
+            }
+            return {x: x, y: y};
+        }
+
+- `Element.style`
+
+    每个元素节点都有 `style` 用来读写该元素的行内样式信息
+
+- `Element.children`, `Element.childElementCount`
+
+    `Element.children` 属性返回一个类数组对象 (`HTMLCollection` 实例), 包括当前元素节点的所有子元素; 如果当前元素没有子元素, 则返回的对象包含零个成员
+
+    这个属性与 `Node.childNodes` 属性的区别是, 它只包括元素类型的子节点, 不包括其他类型的子节点
+
+    `Element.childElementCount` 属性返回当前元素节点包含的子元素节点的个数, 与 `Element.children.length` 的值相同
+
+- `Element.firstElementChild`, `Element.lastElementChild`
+
+    `Element.firstElementChild` 属性返回当前元素的第一个元素子节点, `Element.lastElementChild` 返回最后一个元素子节点
+
+    如果没有元素子节点, 这两个属性返回 `null`
+
+- `Element.nextElementSibling`, `Element.previousElementSibling`
+
+    `Element.nextElementSibling` 属性返回当前元素节点的后一个同级元素节点, 如果没有则返回 `null`
+
+    `Element.previousElementSibling` 属性返回当前元素节点的前一个同级元素节点, 如果没有则返回 `null`
+
+实例方法
+^^^^^^^^^^^^
+
+- 属性相关方法
+
+    - `getAttribute()`: 读取某个属性的值
+    - `getAttributeNames()`: 返回当前元素的所有属性名
+    - `setAttribute()`: 写入属性值
+    - `hasAttribute()`: 某个属性是否存在
+    - `hasAttributes()`: 当前元素是否有属性
+    - `removeAttribute()`: 删除属性
+
+- `Element.querySelector()`
+
+    接受 CSS 选择器作为参数, 返回父元素的第一个匹配的子元素; 如果没有找到匹配的子元素, 就返回 `null`
+
+    接受任何复杂的 CSS 选择器; 无法选中伪元素
+
+    可以接受多个选择器, 使用逗号分隔
+
+    .. attention::
+
+        浏览器执行 `querySelector` 方法时, 是先在全局范围内搜索给定的 CSS 选择器, 然后过滤出哪些属于当前元素的子元素
+
+        因此, 会有一些违反直觉的结果:
+
+        .. code-block:: html
+
+            <div>
+                <blockquote id="outer">
+                    <p>Hello</p>
+                    <div id="inner">
+                        <p>World</p>
+                    </div>
+                </blockquote>
+            </div>
+
+        .. code-block:: javascript
+
+            //以下查询实际上返回的是第一个p元素, 而不是第二个。
+
+            var outer = document.getElementById('outer');
+            outer.querySelector('div p')
+            // <p>Hello</p>
+
+- `Element.querySelectorAll()`
+
+    接受 CSS 选择器作为参数, 返回一个 `NodeList` 实例, 包含所有匹配的子元素
+
+    该方法的执行机制与 `querySelector` 方法相同, 也是先在全局范围内查找, 再过滤出当前元素的子元素; 因此, 选择器实际上针对整个文档
+
+    可以接受多个 CSS 选择器, 使用逗号分隔
+
+    如果选择器里面有伪元素的选择器, 则总是返回一个空的 `NodeList` 实例
+
+- `Element.getElementsByClassName()`
+
+    返回一个 `HTMLCollection` 实例, 成员是当前元素节点的所有具有指定  `class` 的子元素节点
+
+    与 `document.getElementsByClassName` 方法的用法类似, 只是搜索范围不是整个文档, 而是当前元素节点
+
+    document对象的任何变化会立刻反应到实例
+
+    .. code-block:: javascript
+
+        // HTML 代码如下
+        // <div id="example">
+        //   <p class="foo"></p>
+        //   <p class="foo"></p>
+        // </div>
+        var element = document.getElementById('example');
+        var matches = element.getElementsByClassName('foo');
+
+        for (var i = 0; i< matches.length; i++) {
+            matches[i].classList.remove('foo');
+            matches.item(i).classList.add('bar');
+        }
+        // 执行后, HTML 代码如下
+        // <div id="example">
+        //   <p></p>
+        //   <p class="foo bar"></p>
+        // </div>
+
+        // matches 集合的第一个成员, 一旦被拿掉 class 里面的 foo, 就会立刻从 matches 里面消失, 导致出现上面的结果
+
+- `Element.getElementsByTagName()`
+
+    返回一个 `HTMLCollection` 实例, 成员是当前节点的所有匹配指定标签名的子元素节点
+
+    与 `document.getElementsByClassName()` 方法的用法类似, 只是搜索范围不是整个文档, 而是当前元素节点
+
+    参数大小写不敏感
+
+- `Element.closest()`
+
+    接受一个 CSS 选择器作为参数, 返回匹配该选择器的最接近当前节点的一个祖先节点 (包括当前节点本身); 如果没有任何节点匹配 CSS 选择器, 则返回 `null`
+
+    .. code-block:: javascript
+
+        // HTML 代码如下
+        // <article>
+        //   <div id="div-01">Here is div-01
+        //     <div id="div-02">Here is div-02
+        //       <div id="div-03">Here is div-03</div>
+        //     </div>
+        //   </div>
+        // </article>
+
+        var div03 = document.getElementById('div-03');
+
+        // div-03 最近的祖先节点
+        div03.closest("#div-02") // div-02
+        div03.closest("div div") // div-03
+        div03.closest("article > div") //div-01
+        div03.closest(":not(div)") // article
+
+- `Element.matches()`
+
+    返回一个布尔值, 表示当前元素是否匹配给定的 CSS 选择器
+
+    .. code-block:: javascript
+
+        if (el.matches('.someClass')) {
+            console.log('Match!');
+        }
+
+- 事件相关方法
+
+    以下三个方法与 `Element` 节点的事件相关; 这些方法都继承自 `EventTarget` 接口
+
+    - `Element.addEventListener()`: 添加事件的回调函数
+    - `Element.removeEventListener()`: 移除事件监听函数
+    - `Element.dispatchEvent()`: 触发事件
+
+- `Element.scrollIntoView()`
+
+    滚动当前元素, 进入浏览器的可见区域, 类似于设置 `window.location.hash` 的效果
+
+    该方法可以接受一个布尔值作为参数: 如果为 `true`, 表示元素的顶部与当前区域的可见部分的顶部对齐 (前提是当前区域可滚动); 如果为 `false`, 表示元素的底部与当前区域的可见部分的尾部对齐 (前提是当前区域可滚动); 如果没有提供该参数, 默认为 `true`
+
+    .. code-block:: javascript
+
+        el.scrollIntoView(); // 等同于el.scrollIntoView(true)
+        el.scrollIntoView(false);
+
+- `Element.getBoundingClientRect()`
+
+    返回一个对象, 提供当前元素节点的大小, 位置等信息, 基本上就是 CSS 盒状模型的所有信息
+
+    返回的对象具有以下属性 (全部为只读):
+
+    - `x`: 元素左上角相对于视口的横坐标
+    - `y`: 元素左上角相对于视口的纵坐标
+    - `height`: 元素高度
+    - `width`: 元素宽度
+    - `left`: 元素左上角相对于视口的横坐标, 与 `x` 属性相等
+    - `right`: 元素右边界相对于视口的横坐标 (等于 `x + width`)
+    - `top`: 元素顶部相对于视口的纵坐标, 与 `y` 属性相等
+    - `bottom`: 元素底部相对于视口的纵坐标 (等于 `y + height`)
+
+    由于元素相对于视口 (viewport) 的位置会随着页面滚动变化, 因此表示位置的四个属性值, 都不是固定不变的; 如果想得到绝对位置, 可以将 `left` 属性加上 `window.scrollX`, `top` 属性加上 `window.scrollY`
+
+    .. attention::
+
+        `getBoundingClientRect` 方法的所有属性, 都把边框 (`border` 属性) 算作元素的一部分; 也就是说, 都是从边框外缘的各个点来计算
+
+        因此, `width` 和 `height` 包括了元素本身 + `padding` + `border`
+
+        另外, 上面的这些属性都是继承自原型的属性, `Object.keys` 会返回一个空数组
+
+        .. code-block:: javascript
+
+        var rect = document.body.getBoundingClientRect();
+        Object.keys(rect) // []
+        // rect 对象没有自身属性, 而 Object.keys 方法只返回对象自身的属性, 所以返回了一个空数组
+
+- `Element.getClientRects()`
+
+    返回一个类数组对象, 里面是当前元素在页面上形成的所有矩形 (所以方法名中的 `Rect` 用的是复数); 每个矩形都有 `bottom`, `height`, `left`, `right`, `top` 和 `width` 六个属性, 表示它们相对于视口的四个坐标, 以及本身的高度和宽度
+
+    对于盒状元素 (比如 `<div>` 和 `<p>`), 该方法返回的对象中只有该元素一个成员; 对于行内元素 (比如 `<span>`, `<a>`, `<em>`), 该方法返回的对象有多少个成员, 取决于该元素在页面上占据多少行
+
+    这是它和 `Element.getBoundingClientRect()` 方法的主要区别, 后者对于行内元素总是返回一个矩形
+
+    .. code-block:: html
+
+        <span id="inline">Hello World Hello World Hello World</span>
+
+        如果 span 在页面上占据三行, getClientRects 方法返回的对象就有三个成员; 如果它在页面上占据一行, getClientRects 方法返回的对象就只有一个成员
+
+    .. code-block:: javascript
+
+        var el = document.getElementById('inline');
+        el.getClientRects().length // 3
+        el.getClientRects()[0].left // 8
+        el.getClientRects()[0].right // 113.908203125
+        el.getClientRects()[0].bottom // 31.200000762939453
+        el.getClientRects()[0].height // 23.200000762939453
+        el.getClientRects()[0].width // 105.908203125
+
+    这个方法主要用于判断行内元素是否换行, 以及行内元素的每一行的位置偏移
+
+    .. attention::
+
+        如果行内元素包括换行符, 那么该方法会把换行符考虑在内
+
+        .. code-block:: html
+
+            <span id="inline">
+                Hello World
+                Hello World
+                Hello World
+            </span>
+            <!-- span 内部有三个换行符, 即使 HTML 语言忽略换行符, 将它们显示为一行, getClientRects() 方法依然会返回三个成员 -->
+            <!-- 如果行宽设置得特别窄, 上面的 <span> 元素显示为 6 行, 那么就会返回六个成员 -->
+
+- `Element.insertAdjacentElement(position, element)`
+
+    在相对于当前元素的指定位置, 插入一个新的节点, 并返回被插入的节点; 如果插入失败, 返回 `null`
+
+    接受两个参数: 第一个参数是一个字符串, 表示插入的位置, 第二个参数是将要插入的节点
+
+    第一个参数只可以取如下的值:
+
+    - `beforebegin`: 当前元素之前
+    - `afterbegin`: 当前元素内部的第一个子节点前面
+    - `beforeend`: 当前元素内部的最后一个子节点后面
+    - `afterend`: 当前元素之后
+
+    .. attention::
+
+        `beforebegin` 和 `afterend` 只在当前节点有父节点时才会生效
+
+    如果插入的节点是一个文档里现有的节点, 它会从原有位置删除, 放置到新的位置
+
+- `Element.insertAdjacentHTML(position, text)`, `Element.insertAdjacentText()`
+
+    `Element.insertAdjacentHTML` 方法用于将一个 HTML 字符串解析生成 DOM 结构, 插入相对于当前节点的指定位置
+
+    接受两个参数: 第一个是一个表示指定位置的字符串, 第二个是待解析的 HTML 字符串
+
+    第一个参数只能设置下面四个值之一:
+
+    - `beforebegin`: 当前元素之前
+    - `afterbegin`: 当前元素内部的第一个子节点前面
+    - `beforeend`: 当前元素内部的最后一个子节点后面
+    - `afterend`: 当前元素之后
+
+    .. code-block:: javascript
+
+        // HTML 代码: <div id="one">one</div>
+        var d1 = document.getElementById('one');
+        d1.insertAdjacentHTML('afterend', '<div id="two">two</div>');
+        // 执行后的 HTML 代码:
+        // <div id="one">one</div><div id="two">two</div>
+
+    该方法只是在现有的 DOM 结构里面插入节点, 这使得它的执行速度比 `innerHTML` 方法快得多
+
+    .. attention::
+
+        该方法不会转义 HTML 字符串, 这导致它不能用来插入用户输入的内容, 否则会有安全风险
+
+    `Element.insertAdjacentText` 方法在相对于当前节点的指定位置, 插入一个文本节点, 用法与 `Element.insertAdjacentHTML` 方法完全一致
+
+    .. code-block:: javascript
+
+        // HTML 代码: <div id="one">one</div>
+        var d1 = document.getElementById('one');
+        d1.insertAdjacentText('afterend', 'two');
+        // 执行后的 HTML 代码:
+        // <div id="one">one</div>two
+
+- `Element.remove()`
+
+    继承自 `ChildNode` 接口, 用于将当前元素节点从它的父节点移除
+
+- `Element.focus()`, `Element.blur()`
+
+    `Element.focus` 方法用于将当前页面的焦点转移到指定元素上
+
+    该方法可以接受一个对象作为参数; 参数对象的 `preventScroll` 属性是一个布尔值, 指定是否将当前元素停留在原始位置, 而不是滚动到可见区域
+
+    .. code-block:: javascript
+
+        function getFocus() {
+            document.getElementById('btn').focus({preventScroll:false});
+        }
+        // btn 元素获得焦点, 并滚动到可见区域
+
+    从 `document.activeElement` 属性可以得到当前获得焦点的元素
+
+    `Element.blur` 方法用于将焦点从当前元素移除
+
+- `Element.click()`
+
+    用于在当前元素上模拟一次鼠标点击, 相当于触发了 `click` 事件
+
+属性的操作
+~~~~~~~~~~~~~
+
+HTML 元素包括标签名和若干个键值对, 这个键值对就称为 **属性** (attribute)
+
+.. code-block:: html
+
+    <a id="test" href="http://www.example.com">
+        链接
+    </a>
+    <!-- a 元素包括两个属性：id 属性和 href 属性 -->
+
+属性本身是一个对象 (`Attr` 对象), 但是实际上这个对象极少使用; 一般都是通过元素节点对象 (`HTMlElement` 对象) 来操作属性
+
+`Element.attributes` 属性
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+元素对象有一个 `attributes` 属性, 返回一个类数组动态对象, 成员是该元素标签的所有属性节点对象, 属性的实时变化都会反映在这个节点对象上
+
+其他类型的节点对象虽然也有attributes属性, 但返回的都是 `null`, 因此可以把这个属性视为元素对象独有的
+
+单个属性可以通过序号引用, 也可以通过属性名引用:
+
+.. code-block:: javascript
+
+    // HTML 代码如下
+    // <body bgcolor="yellow" onload="">
+    document.body.attributes[0]
+    document.body.attributes.bgcolor
+    document.body.attributes['ONLOAD']
+    // 返回的都是属性节点对象, 而不是属性值
+
+属性节点对象有 `name` 和 `value` 属性, 对应该属性的属性名和属性值, 等同于 `nodeName` 属性和 `nodeValue` 属性
+
+.. code-block:: javascript
+
+    // HTML代码为
+    // <div id="mydiv">
+    var n = document.getElementById('mydiv');
+
+    n.attributes[0].name // "id"
+    n.attributes[0].nodeName // "id"
+
+    n.attributes[0].value // "mydiv"
+    n.attributes[0].nodeValue // "mydiv"
+
+.. code-block:: javascript
+
+    // 遍历一个元素节点的所有属性
+
+    var para = document.getElementsByTagName('p')[0];
+    var result = document.getElementById('result');
+
+    if (para.hasAttributes()) {
+        var attrs = para.attributes;
+        var output = '';
+        for(var i = attrs.length - 1; i >= 0; i--) {
+            output += attrs[i].name + '->' + attrs[i].value;
+        }
+        result.textContent = output;
+    } else {
+        result.textContent = 'No attributes to show';
+    }
+
+元素的标准属性
+^^^^^^^^^^^^^^^^
+
+HTML 元素的标准属性 (即在标准中定义的属性) 会自动成为元素节点对象的属性
+
+.. code-block:: javascript
+
+    var a = document.getElementById('test');
+    a.id // "test"
+    a.href // "http://www.example.com/"
+    // a 元素标签的属性 id 和 href 自动成为节点对象的属性
+
+这些属性都是可写的
+
+这种修改属性的方法常用于添加表单的属性
+
+.. code-block:: javascript
+
+    var f = document.forms[0];
+    f.action = 'submit.php';
+    f.method = 'POST';
+    // 为表单添加提交网址和提交方法
+
+.. attention::
+
+    这种用法虽然可以读写属性, 但是无法删除属性, `delete` 运算符在这里不会生效
+
+HTML 元素的属性名是大小写不敏感的, 但是 JavaScript 对象的属性名是大小写敏感的
+
+转换规则: 转为 JavaScript 属性名时, 一律采用小写; 如果属性名包括多个单词, 则采用骆驼拼写法, 即从第二个单词开始, 每个单词的首字母采用大写, 比如 `onClick`
+
+有些 HTML 属性名是 JavaScript 的保留字, 转为 JavaScript 属性时, 必须改名; 主要是以下两个:
+
+- `for` 属性改为 `htmlFor`
+- `class` 属性改为 `className`
+
+另外, HTML 属性值一般都是字符串, 但是 JavaScript 属性会自动转换类型; 比如将字符串 `"true"` 转为布尔值, 将 `onClick` 的值转为一个函数, 将 `style` 属性的值转为一个 `CSSStyleDeclaration` 对象; 因此可以对这些属性赋予各种类型的值
+
+属性操作的标准方法
+^^^^^^^^^^^^^^^^^^^^^
+
+元素节点提供六个方法, 用来操作属性:
+
+- `getAttribute()`
+- `getAttributeNames()`
+- `setAttribute()`
+- `hasAttribute()`
+- `hasAttributes()`
+- `removeAttribute()`
+
+1. 适用性
+
+    对所有属性 (包括用户自定义的属性) 都适用
+
+2. 返回值
+
+    `getAttribute()` 只返回字符串, 不会返回其他类型的值
+
+3. 属性名
+
+    只接受属性的标准名称, 不用改写保留字; 对于大小写不敏感的
+
+- `Element.getAttribute()`
+
+    返回当前元素节点的指定属性; 如果指定属性不存在, 则返回 `null`
+
+- `Element.getAttributeNames()`
+
+    返回一个数组, 成员是当前元素的所有属性的名字; 如果当前元素没有任何属性, 则返回一个空数组
+
+    使用 `Element.attributes` 属性也可以拿到同样的结果, 唯一的区别是它返回的是类数组对象
+
+- `Element.setAttribute()`
+
+    为当前元素节点新增属性; 如果同名属性已存在, 则相当于编辑已存在的属性
+
+    没有返回值
+
+- `Element.hasAttribute()`
+
+    返回一个布尔值, 表示当前元素节点是否包含指定属性
+
+- `Element.hasAttributes()`
+
+    返回一个布尔值, 表示当前元素是否有属性, 如果没有任何属性, 就返回 `false`, 否则返回 `true`
+
+- `Element.removeAttribute()`
+
+    移除指定属性; 没有返回值
+
+`dataset` 属性
+^^^^^^^^^^^^^^^^^^^
+
+在HTML元素上可以附加数据供 JavaScript 脚本使用:
+
+1. 方法1: 自定义属性
+
+    .. code-block:: html
+
+        <div id="mydiv" foo="bar">
+        <!-- div 元素自定义了 foo 属性, 然后可以用 getAttribute() 和 setAttribute() 读写这个属性 -->
+
+    这种方法虽然可以达到目的, 但是会使得 HTML 元素的属性不符合标准, 导致网页代码通不过校验
+
+2. 方法2: 使用标准提供的 `data-*` 属性
+
+    .. code-block:: html
+
+        <div id="mydiv" data-foo="bar">
+
+    使用元素节点对象的 `dataset` 属性; 它指向一个对象, 可以用来操作 HTML 元素标签的 `data-*` 属性
+
+    .. code-block:: javascript
+
+        var n = document.getElementById('mydiv');
+        n.dataset.foo // bar
+        n.dataset.foo = 'baz'
+
+    删除一个 `data-*` 属性, 可以直接使用 `delete` 命令
+
+    也可以用 `getAttribute('data-foo')`, `removeAttribute('data-foo')`, `setAttribute('data-foo')`, `hasAttribute('data-foo')` 等方法操作 `data-*` 属性
 
 
 浏览器如何执行 Javascript
