@@ -283,9 +283,9 @@ Dockerfile 是由一行行命令语句组成, 并且支持以 "#" 开头的注�
 
     基础镜像 (父镜像) 信息指令
 
-2. MAINTAINER:
+2. LABEL:
 
-    维护者信息指令
+    镜像信息指令
 
 3. RUN, EVN, ADD, WORKDIR, .etc:
 
@@ -305,7 +305,7 @@ Dockerfile 是由一行行命令语句组成, 并且支持以 "#" 开头的注�
         # 从 Docker Hub 上 pull 下 python 3.6 的基础镜像
         FROM python:3.6
         # 显示维护者的信息
-        MAINTAINER test <test@gmail.com>
+        LABEL maintainer "test <test@gmail.com>"
         # copy 当前目录到容器中的 /app 目录下
         COPY . /app
         # 指定工作路径为 /app
@@ -350,6 +350,412 @@ Docker Compose
         # 删除停止运行的容器文件
         $ docker-compose rm
 
-Docker 使用
+Docker 命令
 ---------------
 
+容器生命周期管理
+~~~~~~~~~~~~~~~~~~
+
+.. raw:: html
+    
+    <details>
+      <summary><b>run</b></summary>
+
+.. code-block:: console
+
+    docker run [OPTIONS] IMAGE [COMMAND] [ARG...]
+
+创建一个新的容器并运行一个命令
+
+.. list-table:: **OPTIONS**
+
+    * - **--name="nginx-lb"**
+      - 为容器指定一个名称
+    * - **-h "mars"**
+      - 指定容器的 hostname
+    * - **-d**
+      - 后台运行容器, 并返回容器ID
+    * - **-i**
+      - 以交互模式运行容器, 通常与 `-t` 同时使用
+    * - **-t**
+      - 为容器重新分配一个伪输入终端, 通常与 `-i` 同时使用
+    * - **-P**
+      - 随机端口映射, 容器内部端口随机映射到主机的端口
+    * - **-p**
+      - 指定端口映射, 格式为: `主机(宿主)端口:容器端口`
+    * - **--expose=[]**
+      - 开放一个端口或一组端口
+    * - **-e username="toshinaki"**
+      - 设置环境变量
+    * - **--env-file=[]**
+      - 从指定文件读入环境变量
+    * - **--volume**, **-v**
+      - 绑定一个卷
+    * - **-a stdin**
+      - 指定标准输入输出内容类型, 可选 `STDIN`/`STDOUT`/`STDERR` 三项
+    * - **--link=[]**
+      - 添加链接到另一个容器
+    * - **--dns 8.8.8.8**
+      - 指定容器使用的 DNS 服务器, 默认和宿主一致
+    * - **--dns-search example.com**
+      - 指定容器 DNS 搜索域名, 默认和宿主一致
+    * - **--cpuset="0-2"** or **--cpuset="0,1,2"**
+      - 绑定容器到指定 CPU 运行
+    * - **-m**
+      - 设置容器使用内存最大值
+    * - **--net="bridge"**
+      - 指定容器的网络连接类型, 支持 `bridge`/`host`/`none`/`container`: 四种类型
+
+.. raw:: html
+
+   </details>
+
+start/stop/restart
+kill
+rm
+pause/unpause
+create
+exec
+
+容器操作
+~~~~~~~~~~~
+
+ps
+inspect
+top
+attach
+events
+logs
+wait
+export
+port
+
+容器 rootfs 命令
+~~~~~~~~~~~~~~~~~~~~
+
+commit
+cp
+diff
+
+镜像仓库
+~~~~~~~~~~~~~~
+
+login
+
+
+
+.. raw:: html
+    
+    <details>
+      <summary><b>pull</b></summary>
+
+.. code-block:: console
+    
+    docker pull [OPTIONS] NAME[:TAG|@DIGEST]
+
+从镜像仓库中拉取或者更新指定镜像 (当不指定 `TAG` 时默认下载 `latest`)
+
+.. list-table:: **OPTIONS**
+
+    * - `--all-tags`, `-a`
+      - 拉取所有 tagged 镜像
+    * - `--disable-content-trust`
+      - 忽略镜像的校验, 默认开启
+    * - `--quiet`, `-q`
+      - 关闭详细输出
+
+.. raw:: html
+    
+    <details>
+      <summary>例</summary>
+
+.. raw:: html
+    
+    <details>
+      <summary>下载 repository 中的所有 tagged 镜像</summary>
+
+.. code-block:: console
+
+    $ docker pull --all-tags fedora
+    Pulling repository fedora
+    ad57ef8d78d7: Download complete
+    105182bb5e8b: Download complete
+    511136ea3c5a: Download complete
+    73bd853d2ea5: Download complete
+    ....
+
+    Status: Downloaded newer image for fedora
+
+
+
+.. raw:: html
+
+   </details>
+
+.. raw:: html
+
+   </details>
+
+.. raw:: html
+
+   </details>
+
+push
+
+
+.. raw:: html
+    
+    <details>
+      <summary><b>search</b></summary>
+      
+.. code-block:: console
+    
+    docker search [OPTIONS] TERM
+
+从 Docker Hub 查找镜像
+
+.. list-table:: **OPTIONS**
+    
+    * - `--filter`, `-f`
+      - 根据条件过滤输出
+    * - `--format`
+      - 指定返回值的模板; 可以指定的值为: `.Name`, `.Description`, `.StarCount`, `.IsOfficial`, `.IsAutomated`
+    * - `--limit`
+      - 限制搜索结果数; 默认 25
+    * - `--no-trunc`
+      - 显示完整的镜像描述
+      
+.. raw:: html
+    
+    <details>
+      <summary>例</summary>
+      
+.. raw:: html
+    
+    <details>
+      <summary>过滤镜像</summary>
+
+当前支持的过滤为:
+
+- stars: int; number of stars the image has
+- is-automated: boolean - true or false; is the image automated or not
+- is-official: boolean - true or false; is the image official or not
+
+.. raw:: html
+
+   </details>
+   
+.. code-block:: console
+
+    $ docker search --filter stars=500 --filter is-official=true --format "table {{.Name}}\t{{.IsAutomated}}\t{{.IsOfficial}}" python
+    NAME                AUTOMATED           OFFICIAL
+    python                                  [OK]
+    django                                  [OK]
+
+   
+.. raw:: html
+
+   </details>
+
+.. raw:: html
+
+   </details>
+
+本地镜像管理
+~~~~~~~~~~~~~~~
+
+.. raw:: html
+    
+    <details>
+      <summary><b>images</b></summary>
+      
+.. code-block:: console
+
+    docker images [OPTIONS] [REPOSITORY[:TAG]]
+   
+列出本地镜像
+
+.. list-table:: **OPTIONS**
+
+    * - **--all**, **-a**
+      - 列出本地所有的镜像 (含中间映像层; 默认过滤掉中间映像层)
+    * - **--digests**
+      - 显示镜像的摘要信息
+    * - **--filter**, **-f**
+      - 显示满足条件的镜像
+    * - **--format**
+      - 指定返回值的模板; 可以指定的值为: `.ID`, `.Repository`, `.Tag`, `.Digest`, `.CreatedSince`, `.CreatedAt`, `.Size`
+    * - **--no-trunc**
+      - 显示完整的镜像信息
+    * - **--quiet**, **-q**
+      - 只显示镜像 ID
+
+.. raw:: html
+    
+    <details>
+      <summary>例</summary>
+
+.. raw:: html
+    
+    <details>
+      <summary>查看本地镜像列表</summary>
+
+.. code-block:: console
+
+    $ docker images
+    REPOSITORY              TAG                 IMAGE ID            CREATED             SIZE
+    mymysql                 v1                  37af1236adef        5 minutes ago       329 MB
+    runoob/ubuntu           v4                  1c06aa18edee        2 days ago          142.1 MB
+    <none>                  <none>              5c6e1090e771        2 days ago          165.9 MB
+
+.. raw:: html
+
+   </details>
+   
+.. raw:: html
+    
+    <details>
+      <summary>列出本地镜像中 REPOSITORY 为 ubuntu 的镜像列表</summary>
+
+.. code-block:: console
+
+    $ docker images ubuntu
+    REPOSITORY          TAG                 IMAGE ID            CREATED             SIZE
+    ubuntu              14.04               90d5884b1ee0        9 weeks ago         188 MB
+    ubuntu              15.10               4e3b13c8a266        3 months ago        136.3 MB
+
+.. raw:: html
+
+   </details>
+   
+.. raw:: html
+    
+    <details>
+      <summary>过滤镜像</summary>
+
+当前支持的过滤为:
+
+- dangling: boolean - true or false
+- label: `label=<key>` or `label=<key>=<value>`
+- before: `<image-name>[:<tag>]`, `<image id>` or `<image@digest>`; filter images created before given id or references
+- since: `<image-name>[:<tag>]`, `<image id>` or `<image@digest>`; filter images created since given id or references
+- reference: pattern of an image reference; filter images whose reference matches the specified pattern
+
+删除没有 tag 的镜像:
+
+.. code-block:: console
+    
+    $ docker rmi $(docker images -f "dangling=true" -q)
+
+    8abc22fbb042
+    48e5f45168b9
+    bf747efa0e2f
+    980fe10e5736
+    dea752e4e117
+    511136ea3c5a
+
+根据时间过滤镜像:
+
+.. code-block:: console
+
+    $ docker images
+
+    REPOSITORY          TAG                 IMAGE ID            CREATED              SIZE
+    image1              latest              eeae25ada2aa        4 minutes ago        188.3 MB
+    image2              latest              dea752e4e117        9 minutes ago        188.3 MB
+    image3              latest              511136ea3c5a        25 minutes ago       188.3 MB
+
+    $ docker images --filter "before=image1"
+
+    REPOSITORY          TAG                 IMAGE ID            CREATED              SIZE
+    image2              latest              dea752e4e117        9 minutes ago        188.3 MB
+    image3              latest              511136ea3c5a        25 minutes ago       188.3 MB
+
+    $ docker images --filter "since=image3"
+    REPOSITORY          TAG                 IMAGE ID            CREATED              SIZE
+    image1              latest              eeae25ada2aa        4 minutes ago        188.3 MB
+    image2              latest              dea752e4e117        9 minutes ago        188.3 MB
+
+.. raw:: html
+
+   </details>
+   
+.. raw:: html
+    
+    <details>
+      <summary>设置结果的格式</summary>
+      
+.. code-block:: console
+
+    $ docker images --format "table {{.ID}}\t{{.Repository}}\t{{.Tag}}"
+    IMAGE ID            REPOSITORY                TAG
+    77af4d6b9913        <none>                    <none>
+    b6fa739cedf5        committ                   latest
+    78a85c484f71        <none>                    <none>
+      
+.. raw:: html
+
+   </details>
+      
+.. raw:: html
+
+   </details>
+   
+.. raw:: html
+
+   </details>
+   
+   
+.. raw:: html
+    
+    <details>
+      <summary><b>rmi</b></summary>
+      
+.. code-block:: console
+
+    docker rmi [OPTIONS] IMAGE [IMAGE...]
+
+删除本地一个或多少镜像
+
+.. list-table:: **OPTIONS**
+
+    * - `--force`, `-f`
+      - 强制删除
+    * - `--no-prune`
+      - 不移除该镜像的过程镜像, 默认移除
+
+.. raw:: html
+    
+    <details>
+      <summary>例</summary>
+
+.. raw:: html
+    
+    <details>
+      <summary>删除全部镜像</summary>
+
+.. code-block:: console
+    
+    $ docker rmi -f $(docker images -ap)
+      
+.. raw:: html
+
+   </details>
+   
+.. raw:: html
+
+   </details>
+   
+.. raw:: html
+
+   </details>
+   
+tag
+build
+history
+save
+load
+import
+info|version
+info
+version
