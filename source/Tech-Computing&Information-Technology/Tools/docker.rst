@@ -368,64 +368,649 @@ Docker 命令
 创建一个新的容器并运行一个命令
 
 .. list-table:: **OPTIONS**
-
-    * - **--name="nginx-lb"**
+    
+    * - `--name="container1"`
       - 为容器指定一个名称
-    * - **-h "mars"**
-      - 指定容器的 hostname
-    * - **-d**
+    * - `--detach`, `-d`
       - 后台运行容器, 并返回容器ID
-    * - **-i**
+    * - `--interactive`, `-i`
       - 以交互模式运行容器, 通常与 `-t` 同时使用
-    * - **-t**
+    * - `--tty`, `-t`
       - 为容器重新分配一个伪输入终端, 通常与 `-i` 同时使用
-    * - **-P**
-      - 随机端口映射, 容器内部端口随机映射到主机的端口
-    * - **-p**
-      - 指定端口映射, 格式为: `主机(宿主)端口:容器端口`
-    * - **--expose=[]**
-      - 开放一个端口或一组端口
-    * - **-e username="toshinaki"**
+    * - `--env`, `-e`
       - 设置环境变量
-    * - **--env-file=[]**
+    * - `--env-file`
       - 从指定文件读入环境变量
-    * - **--volume**, **-v**
+    * - `--publish`, `-p`
+      - 指定端口映射, 格式为: `主机(宿主)端口:容器端口`
+    * - `--publish-all`, `-P`
+      - 随机端口映射, 容器内部端口随机映射到主机的端口
+    * - `--volume`, `-v`
       - 绑定一个卷
-    * - **-a stdin**
+    * - `--expose=[]`
+      - 开放一个端口或一组端口
+    * - `--add-host`
+      - Add a custom host-to-IP mapping (host:ip)
+    * - `--attach`, `-a`
       - 指定标准输入输出内容类型, 可选 `STDIN`/`STDOUT`/`STDERR` 三项
-    * - **--link=[]**
-      - 添加链接到另一个容器
-    * - **--dns 8.8.8.8**
+    * - `--blkio-weight`
+      - Block IO (relative weight), between 10 and 1000, or 0 to disable (default 0)
+    * - `--blkio-weight-device`
+      - Block IO weight (relative device weight)
+    * - `--cap-add`
+      - Add Linux capabilities
+    * - `--cap-drop`
+      - Drop Linux capabilities
+    * - `--cgroup-parent`
+      - Optional parent cgroup for the container
+    * - `--cidfile`
+      - Write the container ID to the file
+    * - `--cpu-count`
+      - CPU count (Windows only)
+    * - `--cpu-percent`
+      - CPU percent (Windows only)
+    * - `--cpu-period`
+      - Limit CPU CFS (Completely Fair Scheduler) period
+    * - `--cpu-quota`
+      - Limit CPU CFS (Completely Fair Scheduler) quota
+    * - `--cpu-rt-period`
+      - API 1.25+ Limit CPU real-time period in microseconds
+    * - `--cpu-rt-runtime`
+      - API 1.25+ Limit CPU real-time runtime in microseconds
+    * - `--cpu-shares`, `-c`
+      - CPU shares (relative weight)
+    * - `--cpus`
+      - API 1.25+ Number of CPUs
+    * - `--cpuset-cpus`
+      - 绑定容器到指定 CPU 运行 (`0-3`, `0,1`)
+    * - `--cpuset-mems`
+      - MEMs in which to allow execution (0-3, 0,1)
+    * - `--detach-keys`
+      - Override the key sequence for detaching a container
+    * - `--device`
+      - Add a host device to the container
+    * - `--device-cgroup-rule`
+      - Add a rule to the cgroup allowed devices list
+    * - `--device-read-bps`
+      - Limit read rate (bytes per second) from a device
+    * - `--device-read-iops`
+      - Limit read rate (IO per second) from a device
+    * - `--device-write-bps`
+      - Limit write rate (bytes per second) to a device
+    * - `--device-write-iops`
+      - Limit write rate (IO per second) to a device
+    * - `--disable-content-trust`
+      - true	Skip image verification
+    * - `--dns`
       - 指定容器使用的 DNS 服务器, 默认和宿主一致
-    * - **--dns-search example.com**
+    * - `--dns-opt`
+      - Set DNS options
+    * - `--dns-option`
+      - Set DNS options
+    * - `--dns-search`
       - 指定容器 DNS 搜索域名, 默认和宿主一致
-    * - **--cpuset="0-2"** or **--cpuset="0,1,2"**
-      - 绑定容器到指定 CPU 运行
-    * - **-m**
+    * - `--domainname`
+      - Container NIS domain name
+    * - `--entrypoint`
+      - Overwrite the default ENTRYPOINT of the image
+    * - `--gpus`
+      - API 1.40+ GPU devices to add to the container (‘all’ to pass all GPUs)
+    * - `--group-add`
+      - Add additional groups to join
+    * - `--health-cmd`
+      - Command to run to check health
+    * - `--health-interval`
+      - Time between running the check (ms|s|m|h) (default 0s)
+    * - `--health-retries`
+      - Consecutive failures needed to report unhealthy
+    * - `--health-start-period`
+      - API 1.29+ Start period for the container to initialize before starting health-retries countdown (ms|s|m|h) (default 0s)
+    * - `--health-timeout`
+      - Maximum time to allow one check to run (ms|s|m|h) (default 0s)
+    * - `--help`
+      - Print usage
+    * - `--hostname`, `-h`
+      - 指定容器的 hostname
+    * - `--init`
+      - API 1.25+ Run an init inside the container that forwards signals and reaps processes
+    * - `--io-maxbandwidth`
+      - Maximum IO bandwidth limit for the system drive (Windows only)
+    * - `--io-maxiops`
+      - Maximum IOps limit for the system drive (Windows only)
+    * - `--ip`
+      - IPv4 address (e.g., 172.30.100.104)
+    * - `--ip6`
+      - IPv6 address (e.g., 2001:db8::33)
+    * - `--ipc`
+      - IPC mode to use
+    * - `--isolation`
+      - Container isolation technology
+    * - `--kernel-memory`
+      - Kernel memory limit
+    * - `--label`, `-l`
+      - Set meta data on a container
+    * - `--label-file`
+      - Read in a line delimited file of labels
+    * - `--link`
+      - 添加链接到另一个容器
+    * - `--link-local-ip`
+      - Container IPv4/IPv6 link-local addresses
+    * - `--log-driver`
+      - Logging driver for the container
+    * - `--log-opt`
+      - Log driver options
+    * - `--mac-address`
+      - Container MAC address (e.g., 92:d0:c6:0a:29:33)
+    * - `--memory`, `-m`
       - 设置容器使用内存最大值
-    * - **--net="bridge"**
+    * - `--memory-reservation`
+      - Memory soft limit
+    * - `--memory-swap`
+      - Swap limit equal to memory plus swap: ‘-1’ to enable unlimited swap
+    * - `--memory-swappiness`
+      - -1	Tune container memory swappiness (0 to 100)
+    * - `--mount`
+      - Attach a filesystem mount to the container
+    * - `--net`
       - 指定容器的网络连接类型, 支持 `bridge`/`host`/`none`/`container`: 四种类型
+    * - `--net-alias`
+      - Add network-scoped alias for the container
+    * - `--network`
+      - Connect a container to a network
+    * - `--network-alias`
+      - Add network-scoped alias for the container
+    * - `--no-healthcheck`
+      - Disable any container-specified HEALTHCHECK
+    * - `--oom-kill-disable`
+      - Disable OOM Killer
+    * - `--oom-score-adj`
+      - Tune host’s OOM preferences (-1000 to 1000)
+    * - `--pid`
+      - PID namespace to use
+    * - `--pids-limit`
+      - Tune container pids limit (set -1 for unlimited)
+    * - `--platform`
+      - experimental (daemon)API 1.32+ Set platform if server is multi-platform capable
+    * - `--privileged`
+      - Give extended privileges to this container
+    * - `--read-only`
+      - Mount the container’s root filesystem as read only
+    * - `--restart`
+      - no	Restart policy to apply when a container exits
+    * - `--rm`
+      - Automatically remove the container when it exits
+    * - `--runtime`
+      - Runtime to use for this container
+    * - `--security-opt`
+      - Security Options
+    * - `--shm-size`
+      - Size of /dev/shm
+    * - `--sig-proxy`
+      - true	Proxy received signals to the process
+    * - `--stop-signal`
+      - SIGTERM	Signal to stop a container
+    * - `--stop-timeout`
+      - API 1.25+ Timeout (in seconds) to stop a container
+    * - `--storage-opt`
+      - Storage driver options for the container
+    * - `--sysctl`
+      - Sysctl options
+    * - `--tmpfs`
+      - Mount a tmpfs directory
+    * - `--ulimit`
+      - Ulimit options
+    * - `--user`, `-u`
+      - Username or UID (format: <name|uid>[:<group|gid>])
+    * - `--userns`
+      - User namespace to use
+    * - `--uts`
+      - UTS namespace to use
+    * - `--volume-driver`
+      - Optional volume driver for the container
+    * - `--volumes-from`
+      - Mount volumes from the specified container(s)
+    * - `--workdir`, `-w`
+      - Working directory inside the container
 
 .. raw:: html
 
    </details>
 
-start/stop/restart
-kill
-rm
+.. raw:: html
+    
+    <details>
+      <summary><b>start</b></summary>
+
+.. code-block:: console
+
+    docker start [OPTIONS] CONTAINER [CONTAINER...]
+
+启动一个或多个已经被停止的容器
+
+.. list-table:: **OPTIONS**
+
+    * - `--attach`, `-a`
+      - Attach STDOUT/STDERR and forward signals
+    * - `--detach-keys`
+      - Override the key sequence for detaching a container
+    * - `--interactive`, `-i`
+      - 绑定容器的 STDIN
+
+.. raw:: html
+
+   </details>
+   
+
+.. raw:: html
+    
+    <details>
+      <summary><b>stop</b></summary>
+
+.. code-block:: console
+
+    docker stop [OPTIONS] CONTAINER [CONTAINER...]
+    
+停止一个运行中的容器
+
+.. list-table:: **OPTIONS**
+    
+    * - `--time`, `-t`
+      - 强制退出前的等待时间; 默认 10 秒
+
+.. raw:: html
+
+   </details>
+    
+.. raw:: html
+    
+    <details>
+      <summary><b>restart</b></summary>
+
+.. code-block:: console
+
+    docker restart [OPTIONS] CONTAINER [CONTAINER...]
+    
+重启容器
+
+.. list-table:: **OPTIONS**
+    
+    * - `--time`, `-t`
+      - 强制退出并重启前的等待时间; 默认 10 秒
+
+.. raw:: html
+
+   </details>
+
+.. raw:: html
+    
+    <details>
+      <summary><b>kill</b></summary>
+
+.. code-block:: console
+
+    docker kill [OPTIONS] CONTAINER [CONTAINER...]
+    
+强制关闭运行中的容器
+
+.. list-table:: **OPTIONS**
+    
+    * - `--signal`, `-s`
+      - 向容器发送一个信号; 默认为 `KILL`
+
+.. raw:: html
+
+   </details>
+
+.. raw:: html
+    
+    <details>
+      <summary><b>rm</b></summary>
+      
+.. code-block:: console
+
+    docker rm [OPTIONS] CONTAINER [CONTAINER...]
+      
+删除一个或多个容器      
+      
+.. list-table:: **OPTIONS**
+
+    * - `--force`, `-f`
+      - 通过 SIGKILL 信号强制删除一个运行中的容器
+    * - `--link`, `-l`
+      - 移除容器间的网络连接, 而非容器本身
+    * - `--volumes`, `-v`
+      - 删除与容器关联的卷
+
+.. raw:: html
+    
+    <details>
+      <summary>删除所有已经停止的容器</summary>
+
+.. code-block:: console
+
+    docker rm $(docker ps -a -q)
+
+.. raw:: html
+
+   </details>
+   
+.. raw:: html
+
+   </details>
+         
+      
 pause/unpause
 create
-exec
 
+
+.. raw:: html
+    
+    <details>
+      <summary><b>exec</b></summary>
+
+.. code-block:: console
+
+    docker exec [OPTIONS] CONTAINER COMMAND [ARG...]
+    
+在运行的容器中执行命令
+
+.. list-table:: **OPTIONS**
+
+    * - `--detach`, `-d`
+      - 分离模式: 在后台运行
+    * - `--detach-keys`
+      - Override the key sequence for detaching a container
+    * - `--env`, `-e`
+      - 设置环境变量
+    * - `--interactive`, `-i`
+      - 即使没有附加也保持STDIN 打开
+    * - `--privileged`
+      - Give extended privileges to the command
+    * - `--tty`, `-t`
+      - 分配一个伪终端
+    * - `--user`, `-u`
+      - Username or UID (format: <name|uid>[:<group|gid>])
+    * - `--workdir`, `-w`
+      - Working directory inside the container
+
+.. raw:: html
+    
+    <details>
+      <summary>在容器中开启一个交互模式的终端</summary>
+    
+.. code-block:: console
+
+    $ docker exec -it ubuntu bash
+   
+.. raw:: html
+
+   </details>
+   
+.. raw:: html
+
+   </details>
+   
+    
 容器操作
 ~~~~~~~~~~~
 
-ps
-inspect
-top
-attach
+.. raw:: html
+    
+    <details>
+      <summary><b>ps</b></summary>
+
+.. code-block:: console
+    
+    docker ps [OPTIONS]
+
+列出容器
+
+.. list-table:: **OPTIONS**
+
+    * - `--all`, `-a`
+      - 显示所有的容器, 包括未运行的 (默认只显示运行中的)
+    * - `--filter`, `-f`
+      - 根据条件过滤显示的内容
+    * - `--format`
+      - 指定返回值的模板文件
+    * - `--last`, `-n`
+      - 列出最近创建的 `n` 个容器; 默认为 `-1`
+    * - `--latest`, `-l`
+      - 显示最近创建的容器
+    * - `--no-trunc`
+      - 不截断输出
+    * - `--quiet`, `-q`
+      - :静默模式, 只显示容器编号
+    * - `--size`, `-s`
+      - 显示总的文件大小
+
+.. raw:: html
+    
+    <details>
+      <summary>过滤容器</summary>
+
+当前支持的过滤为:
+
+- id: 容器 ID
+- name: 容器名
+- label: An arbitrary string representing either a key or a key-value pair. Expressed as <key> or <key>=<value>
+- exited: An integer representing the container’s exit code. Only useful with --all.
+- status: 容器状态; `created`, `restarting`, `running`, `removing`, `paused`, `exited`, `dead`
+- ancestor: Filters containers which share a given image as an ancestor. Expressed as <image-name>[:<tag>], <image id>, or <image@digest>
+- before / since: Filters containers created before or after a given container ID or name
+- volume: Filters running containers which have mounted a given volume or bind mount.
+- network" Filters running containers connected to a given network.
+- publish / expose: Filters containers which publish or expose a given port. Expressed as <port>[/<proto>] or <startport-endport>/[<proto>]
+- health: Filters containers based on their healthcheck status. One of starting, healthy, unhealthy or none.
+- isolation: Windows daemon only. One of default, process, or hyperv.
+- is-task: Filters containers that are a “task” for a service. Boolean option (true or false)
+
+.. code-block:: console
+
+    $ docker ps --filter status=paused
+    CONTAINER ID        IMAGE               COMMAND             CREATED             STATUS                      PORTS               NAMES
+    673394ef1d4c        busybox             "top"               About an hour ago   Up About an hour (Paused)                       nostalgic_shockley
+   
+.. raw:: html
+
+   </details>
+   
+.. raw:: html
+
+   </details>
+
+.. raw:: html
+    
+    <details>
+      <summary><b>inspect</b></summary>
+
+.. code-block:: console
+    
+    docker inspect [OPTIONS] NAME|ID [NAME|ID...]
+    
+获取容器/镜像的元数据
+
+.. list-table:: **OPTIONS**
+
+    * - `--format`, `-f`
+      - 指定返回值的模板文件
+    * - `--size`, `-s`
+      - 显示总的文件大小
+    * - `--type`
+      - 为指定类型返回JSON
+
+.. raw:: html
+    
+    <details>
+      <summary>获取 IP 地址</summary>
+      
+.. code-block:: console
+
+    docker inspect --format='{{range .NetworkSettings.Networks}}{{.IPAddress}}{{end}}' $INSTANCE_ID
+
+.. raw:: html
+
+   </details>   
+   
+.. raw:: html
+    
+    <details>
+      <summary>获取 MAC 地址</summary>
+      
+.. code-block:: console
+
+    docker inspect --format='{{range .NetworkSettings.Networks}}{{.MacAddress}}{{end}}' $INSTANCE_ID
+
+.. raw:: html
+
+   </details>   
+   
+.. raw:: html
+    
+    <details>
+      <summary>获取 log 地址</summary>
+      
+.. code-block:: console
+
+    docker inspect --format='{{.LogPath}}' $INSTANCE_ID
+
+.. raw:: html
+
+   </details>  
+   
+.. raw:: html
+
+   </details>
+   
+.. raw:: html
+    
+    <details>
+      <summary><b>top</b></summary>
+
+.. code-block:: console
+    
+    docker top CONTAINER [ps OPTIONS]
+ 
+查看容器中运行的进程信息; 支持 `ps` 命令参数
+
+.. raw:: html
+    
+    <details>
+      <summary>查看容器 mymysql 的进程信息</summary>
+      
+.. code-block:: console
+
+    $ docker top mymysql
+    UID    PID    PPID    C      STIME   TTY  TIME       CMD
+    999    40347  40331   18     00:58   ?    00:00:02   mysqld
+
+.. raw:: html
+
+   </details>
+   
+.. raw:: html
+
+    <details>
+      <summary>查看所有运行容器的进程信息</summary>
+      
+.. code-block:: console
+
+    $ for i in  `docker ps |grep Up|awk '{print $1}'`;do echo \ &&docker top $i; done
+
+.. raw:: html
+
+   </details>
+   
+.. raw:: html
+
+   </details>
+   
+.. raw:: html
+    
+    <details>
+      <summary><b>attach</b></summary>
+
+.. code-block:: console
+
+    docker attach [OPTIONS] CONTAINER
+
+连接到正在运行中的容器
+
+将本机的 STDIN (键盘), STDOUT (屏幕), STDERR (屏幕) 连接到一个运行的容器, 也就是说本机的输入直接输到容器中, 容器中 `ENTRYPOINT`/`CMD` 的进程的输出会直接显示在本机的屏幕上; 如果从 容器的 STDIN 中 exit, 会导致容器的停止
+
+宿主机上可以开启多个终端同时连接到同一个容器
+
+停止容器:
+
+    - `CTRL-c`, 发送 `SIGKILL` 至容器
+    - 设置 `--sig-proxy=true` 时，`CTRL-c` 发送 `SIGINT` 至容器
+    - 容器运行参数设置 `-it` 时, 可以使用按键序列 `CTRL-p CTRL-q` 中断连接, 容器会保持运行
+
+.. list-table:: **OPTIONS**
+
+    * - `--detach-keys="<sequence>"`
+      - 覆写脱离容器的按键序列
+    * - `--no-stdin`
+      - 不连接 STDIN
+    * - `--sig-proxy`
+      - Proxy all received signals to the process; default true
+
+.. raw:: html
+    
+    <details>
+      <summary><b>合法的覆写按键序列</b></summary>
+
+- 字母 `[a-Z]`
+- `ctrl-` + 以下任意按键
+
+    - `a-z` (一个小写字母)
+    - `@`
+    - `[` (左方括号)
+    - `\\`
+    - `_` (下划线)
+    - `^` (插入符)
+
+.. raw:: html
+
+   </details>
+
+.. raw:: html
+
+   </details>
+
 events
-logs
+
+
+.. raw:: html
+    
+    <details>
+      <summary><b>logs</b></summary>
+
+.. code-block:: console
+    
+    docker logs [OPTIONS] CONTAINER
+ 
+获取容器的日志
+
+.. list-table:: **OPTIONS**
+
+    * - `--details`
+      - Show extra details provided to logs
+    * - `--follow`, `-f`
+      - 跟踪日志输出
+    * - `--tail`
+      - 仅列出最新 `n` 条容器日志
+    * - `--timestamps`, `-t`
+      - 显示时间戳
+    * - `--since`
+      - 显示某个时间开始的所有日志 (时间戳, 如 2013-01-02T13:23:37 或相对时间, 如 42m for 42 minutes)
+    * - `--until`
+      - 显示某个时间开始的所有日志 (时间戳, 如 2013-01-02T13:23:37 或相对时间, 如 42m for 42 minutes)
+
+.. raw:: html
+
+   </details>
+   
 wait
 export
 port
@@ -434,7 +1019,34 @@ port
 ~~~~~~~~~~~~~~~~~~~~
 
 commit
-cp
+
+
+.. raw:: html
+    
+    <details>
+      <summary><b>cp</b></summary>
+
+.. code-block:: console
+
+    docker cp [OPTIONS] CONTAINER:SRC_PATH DEST_PATH|-
+    docker cp [OPTIONS] SRC_PATH|- CONTAINER:DEST_PATH
+
+用于容器与主机之间的数据拷贝
+
+.. list-table:: **OPTIONS**
+
+    * - `--archive`, `-a`
+      - Archive mode (copy all uid/gid information)
+    * - `--follow-link`, `-L`
+      - Always follow symbol link in SRC_PATH
+
+.. raw:: html
+
+   </details>
+
+
+
+
 diff
 
 镜像仓库
@@ -467,11 +1079,6 @@ login
 .. raw:: html
     
     <details>
-      <summary>例</summary>
-
-.. raw:: html
-    
-    <details>
       <summary>下载 repository 中的所有 tagged 镜像</summary>
 
 .. code-block:: console
@@ -485,12 +1092,6 @@ login
     ....
 
     Status: Downloaded newer image for fedora
-
-
-
-.. raw:: html
-
-   </details>
 
 .. raw:: html
 
@@ -524,12 +1125,7 @@ push
       - 限制搜索结果数; 默认 25
     * - `--no-trunc`
       - 显示完整的镜像描述
-      
-.. raw:: html
-    
-    <details>
-      <summary>例</summary>
-      
+            
 .. raw:: html
     
     <details>
@@ -540,10 +1136,6 @@ push
 - stars: int; number of stars the image has
 - is-automated: boolean - true or false; is the image automated or not
 - is-official: boolean - true or false; is the image official or not
-
-.. raw:: html
-
-   </details>
    
 .. code-block:: console
 
@@ -589,11 +1181,6 @@ push
       - 显示完整的镜像信息
     * - **--quiet**, **-q**
       - 只显示镜像 ID
-
-.. raw:: html
-    
-    <details>
-      <summary>例</summary>
 
 .. raw:: html
     
@@ -701,10 +1288,6 @@ push
 
    </details>
    
-.. raw:: html
-
-   </details>
-   
    
 .. raw:: html
     
@@ -727,21 +1310,12 @@ push
 .. raw:: html
     
     <details>
-      <summary>例</summary>
-
-.. raw:: html
-    
-    <details>
       <summary>删除全部镜像</summary>
 
 .. code-block:: console
     
     $ docker rmi -f $(docker images -ap)
       
-.. raw:: html
-
-   </details>
-   
 .. raw:: html
 
    </details>
