@@ -156,7 +156,36 @@ Docker 体系结构
 
 - UnionFS
 
-    联合文件系统, 支持将不同位置的目录挂载到同一虚拟文件系统, 形成一种分层的模型
+    联合文件系统, 分层, 轻量且高性能的文件系统, 支持对文件系统的修改作为一次提交 (类似 git 的提交) 来一层层地叠加, 同时可以将不同位置的目录挂载到同一虚拟文件系统
+    
+    联合文件系统是 Docker 镜像的基础, 镜像可以通过分层来进行继承, 基于基础镜像 (base image, 没有 parent image 的镜像) 可以制作各种具体的镜像; 这些镜像共享基础镜像, 提升了存储效率
+    
+    典型的 Linux 启动需要两个文件系统: **bootfs** 和 **rootfs**:
+            
+        - bootfs 主要包括 BootLoader 和 Kernel; BootLoader 主要是引导和加载 Kernel
+            
+            启动成功后, Kernel 被载入内存, 然后 bootfs 被卸载. 
+        
+        - rootfs 包含 Linux 系统中的标准目录和文件, 如 /dev, /proc, /bin 等
+        
+    .. figure:: imgs/bootfs-rootfs.png
+        :align: left
+    
+    而在 Docker 中, 不同的 Linux 发行版可以共享 bootfs, 因为 bootfs 基本上是一样的, 只不过 rootfs 不同
+    
+    .. figure:: imgs/different-rootfs.png
+        :align: left
+    
+    Linux 引导之后, 首先将 rootfs 设置为 Readonly, 然后进行一系列检查, 然后将其切换为 Readwrite, 以供用户使用; Docker中也使用了此技术, 然后将 Readwrite 文件系统安装在 Readonly rootfs 文件系统上, 并向上叠加
+    
+    一系列的 Readonly 和 Readwrite 结构构成了容器的运行目录, 每个结构都被称为一个文件系统 Layer
+    
+    对 Readonly 层的文件和目录的修改只存在于上层的 Writeable 层, 使得多个容器可以共享 Readonly 文件系统层
+    
+    在 Docker 中, Readonly 层被称为镜像 (image), Writeable 层被称为容器 (container); 对于容器来说, 整个 rootfs 都是可读写的, 但事实上所有的修改都发生在顶层容器; 镜像不会保存用户状态, 可被用来作为模板, 可以重建或被复制
+    
+    .. figure:: imgs/container-image.png
+        :align: left
 
 
 Docker 核心组件
@@ -1018,8 +1047,32 @@ port
 容器 rootfs 命令
 ~~~~~~~~~~~~~~~~~~~~
 
-commit
+.. raw:: html
+    
+    <details>
+      <summary><b>commit</b></summary>
 
+.. code-block:: console
+
+    docker commit [OPTIONS] CONTAINER [REPOSITORY[:TAG]]
+
+从容器创建一个新的镜像
+
+.. list-table:: **OPTIONS**
+    
+    * - `--author`, `-a`
+      - 镜像作者
+    * - `--change`, `-c`
+      - 使用 Dockerfile 指令来创建镜像
+    * - `--message`, `-m`
+      - 提交时的说明文字
+    * - `--pause`, `-p`
+      - 在commit时将容器暂停, 默认暂停
+
+
+.. raw:: html
+
+   </details>
 
 .. raw:: html
     
