@@ -393,6 +393,8 @@ Docker 命令
       - Add a custom host-to-IP mapping (host:ip)
     * - `--attach`, `-a`
       - 指定标准输入输出内容类型, 可选 `STDIN`/`STDOUT`/`STDERR` 三项
+    * - `--rm`
+      - 容器退出时自动删除
     * - `--blkio-weight`
       - Block IO (relative weight), between 10 and 1000, or 0 to disable (default 0)
     * - `--blkio-weight-device`
@@ -537,8 +539,6 @@ Docker 命令
       - Mount the container’s root filesystem as read only
     * - `--restart`
       - no	Restart policy to apply when a container exits
-    * - `--rm`
-      - Automatically remove the container when it exits
     * - `--runtime`
       - Runtime to use for this container
     * - `--security-opt`
