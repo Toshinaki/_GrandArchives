@@ -159,10 +159,6 @@ Docker 体系结构
     联合文件系统, 支持将不同位置的目录挂载到同一虚拟文件系统, 形成一种分层的模型
 
 
-.. figure:: imgs/docker_command_diagram.jpg
-    :scale: 60%
-    :align: right
-
 Docker 核心组件
 ~~~~~~~~~~~~~~~~~~
 
@@ -353,6 +349,10 @@ Docker Compose
 Docker 命令
 ---------------
 
+.. figure:: imgs/docker_command_diagram.jpg
+    :scale: 60%
+    :align: right
+    
 容器生命周期管理
 ~~~~~~~~~~~~~~~~~~
 
