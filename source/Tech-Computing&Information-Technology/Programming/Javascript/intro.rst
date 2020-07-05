@@ -7305,7 +7305,7 @@ Node 接口
 
 - `Node.prototype.normalize()`
 
-    清理当前节点内部的所有文本节点 (text)； 它会去除空的文本节点, 并且将毗邻的文本节点合并成一个
+    清理当前节点内部的所有文本节点 (text);  它会去除空的文本节点, 并且将毗邻的文本节点合并成一个
 
     .. code-block:: javascript
 
@@ -8171,7 +8171,7 @@ Document 节点
 
     .. attention::
 
-        有焦点的文档必定被激活 (active)； 反之不成立, 激活的文档未必有焦点
+        有焦点的文档必定被激活 (active);  反之不成立, 激活的文档未必有焦点
 
         比如用户点击按钮, 从当前窗口跳出一个新窗口, 该新窗口就是激活的, 但是不拥有焦点
 
@@ -8568,7 +8568,7 @@ Element 节点
 
 - `Element.outerHTML`
 
-    返回一个字符串, 表示当前元素节点的所有 HTML 代码, 包括该元素本身和所有子元素； 可读写, 对它进行赋值, 等于替换掉当前元素
+    返回一个字符串, 表示当前元素节点的所有 HTML 代码, 包括该元素本身和所有子元素;  可读写, 对它进行赋值, 等于替换掉当前元素
 
     .. code-block:: javascript
 
@@ -9037,7 +9037,7 @@ HTML 元素包括标签名和若干个键值对, 这个键值对就称为 **属�
     <a id="test" href="http://www.example.com">
         链接
     </a>
-    <!-- a 元素包括两个属性：id 属性和 href 属性 -->
+    <!-- a 元素包括两个属性: id 属性和 href 属性 -->
 
 属性本身是一个对象 (`Attr` 对象), 但是实际上这个对象极少使用; 一般都是通过元素节点对象 (`HTMlElement` 对象) 来操作属性
 
@@ -9212,6 +9212,2350 @@ HTML 元素的属性名是大小写不敏感的, 但是 JavaScript 对象的属�
     删除一个 `data-*` 属性, 可以直接使用 `delete` 命令
 
     也可以用 `getAttribute('data-foo')`, `removeAttribute('data-foo')`, `setAttribute('data-foo')`, `hasAttribute('data-foo')` 等方法操作 `data-*` 属性
+
+Text 节点
+~~~~~~~~~~~~~
+
+文本节点 (`Text`) 代表元素节点 (`Element`) 和属性节点 (`Attribute`) 的文本内容; 如果一个节点只包含一段文本, 那么它就有一个文本子节点, 代表该节点的文本内容
+
+通常使用父节点的 `firstChild`, `nextSibling` 等属性获取文本节点, 或者使用 `Document` 节点的 `createTextNode` 方法创造一个文本节点
+
+.. code-block:: javascript
+
+    // 获取文本节点
+    var textNode = document.querySelector('p').firstChild;
+
+    // 创造文本节点
+    var textNode = document.createTextNode('Hi');
+    document.querySelector('div').appendChild(textNode);
+
+浏览器原生提供一个 `Text` 构造函数, 返回一个文本节点实例; 参数就是该文本节点的文本内容
+
+.. code-block:: javascript
+
+    // 空字符串
+    var text1 = new Text();
+
+    // 非空字符串
+    var text2 = new Text('This is a text node');
+
+.. attention:: text
+
+    由于空格也是一个字符, 所以哪怕只有一个空格, 也会形成文本节点
+
+    比如 `<p> </p>` 包含一个空格, 它的子节点就是一个文本节点
+
+文本节点除了继承 `Node` 接口, 还继承了 `CharacterData` 接口
+
+属性
+^^^^^^^^
+
+- `data`
+
+    等同于 `nodeValue` 属性, 用来设置或读取文本节点的内容
+
+    .. code-block:: javascript
+
+        // 读取文本内容
+        document.querySelector('p').firstChild.data
+        // 等同于
+        document.querySelector('p').firstChild.nodeValue
+
+        // 设置文本内容
+        document.querySelector('p').firstChild.data = 'Hello World';
+
+- `wholeText`
+
+    将当前文本节点与毗邻的文本节点作为一个整体返回
+
+    大多数情况下, `wholeText` 属性的返回值与 `data` 属性和 `textContent` 属性相同; 某些特殊情况会有差异
+
+    .. code-block:: javascript
+
+        // html
+        // <p id="para">A <em>B</em> C</p>
+
+        // 这时文本节点的 wholeText 属性和 data 属性返回值相同
+        var el = document.getElementById('para');
+        el.firstChild.wholeText // "A "
+        el.firstChild.data // "A "
+
+        // 但是一旦移除 <em> 节点, wholeText 属性与 data 属性就会有差异, 因为这时其实<p>节点下面包含了两个毗邻的文本节点
+        el.removeChild(para.childNodes[1]);
+        el.firstChild.wholeText // "A C"
+        el.firstChild.data // "A "
+
+- `length`
+
+    返回当前文本节点的文本长度
+
+- `nextElementSibling`, `previousElementSibling`
+
+    `nextElementSibling` 返回紧跟在当前文本节点后面的那个同级元素节点; 如果取不到元素节点, 则返回 `null`
+
+    `previousElementSibling` 属性返回当前文本节点前面最近的同级元素节点; 如果取不到元素节点, 则返回 `null`
+
+方法
+^^^^^^^
+
+- `appendData()`: 在 `Text` 节点尾部追加字符串
+- `deleteData()`: 删除 `Text` 节点内部的子字符串, 第一个参数为子字符串开始位置, 第二个参数为子字符串长。
+- `insertData()`: 在 `Text` 节点插入字符串, 第一个参数为插入位置, 第二个参数为插入的子字符串
+- `replaceData()`: 用于替换文本, 第一个参数为替换开始位置, 第二个参数为需要被替换掉的长度, 第三个参数为新加入的字符串
+- `subStringData()`: 用于获取子字符串, 第一个参数为子字符串在 `Text` 节点中的开始位置, 第二个参数为子字符串长度
+- `remove()`: 移除当前 `Text` 节点
+- `splitText()`: 将 `Text` 节点一分为二, 变成两个毗邻的 `Text` 节点; 参数是分割位置 (从零开始), 分割到该位置的字符前结束; 如果分割位置不存在, 将报错; 返回分割位置后方的字符串, 而原 `Text` 节点变成只包含分割位置前方的字符串
+
+.. code-block:: javascript
+
+    // HTML 代码为
+    // <p>Hello World</p>
+    var pElementText = document.querySelector('p').firstChild;
+
+    pElementText.appendData('!');
+    // 页面显示 Hello World!
+    pElementText.deleteData(7, 5);
+    // 页面显示 Hello W
+    pElementText.insertData(7, 'Hello ');
+    // 页面显示 Hello WHello
+    pElementText.replaceData(7, 5, 'World');
+    // 页面显示 Hello WWorld
+    pElementText.substringData(7, 10);
+    // 页面显示不变, 返回"World "
+
+    // HTML 代码为
+    // <p>Hello World</p>
+    document.querySelector('p').firstChild.remove()
+    // 现在 HTML 代码为
+    // <p></p>
+
+    // html 代码为 <p id="p">foobar</p>
+    var p = document.getElementById('p');
+    var textnode = p.firstChild;
+    var newText = textnode.splitText(3);
+    newText // "bar"
+    textnode // "foo"
+
+DocumentFragment 节点
+~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+
+`DocumentFragment` 节点代表一个文档的片段, 本身就是一个完整的 DOM 树形结构; 它没有父节点, `parentNode` 返回 `null`, 但是可以插入任意数量的子节点; 它不属于当前文档, 操作 `DocumentFragment` 节点, 要比直接操作 DOM 树快得多
+
+一般用于构建一个 DOM 结构, 然后插入当前文档; `document.createDocumentFragment` 方法, 以及浏览器原生的 `DocumentFragment` 构造函数, 可以创建一个空的 `DocumentFragment` 节点; 然后再使用其他 DOM 方法, 向其添加子节点
+
+.. code-block:: javascript
+
+    var docFrag = document.createDocumentFragment();
+    // 等同于
+    var docFrag = new DocumentFragment();
+
+    var li = document.createElement('li');
+    li.textContent = 'Hello World';
+    docFrag.appendChild(li);
+
+    document.querySelector('ul').appendChild(docFrag);
+
+.. attention::
+
+    `DocumentFragment` 节点本身不能被插入当前文档
+
+    当它作为 `appendChild()`, `insertBefore()`, `replaceChild()` 等方法的参数时, 是它的所有子节点插入当前文档, 而不是它自身
+
+    一旦 `DocumentFragment` 节点被添加进当前文档, 它自身就变成了空节点, 可以被再次使用
+
+    如果想要保存 `DocumentFragment` 节点的内容, 可以使用 `cloneNode` 方法
+
+    .. code-block:: javascript
+
+        document
+        .querySelector('ul')
+        .appendChild(docFrag.cloneNode(true));
+
+`DocumentFragment` 节点对象没有自己的属性和方法, 全部继承自 `Node` 节点和 `ParentNode` 接口
+
+也就是说, `DocumentFragment` 节点比Node节点多出以下四个属性:
+
+- `children`: 返回一个动态的 `HTMLCollection` 集合对象, 包括当前 `DocumentFragment` 对象的所有子元素节点
+- `firstElementChild`: 返回当前 `DocumentFragment` 对象的第一个子元素节点, 如果没有则返回 `null`
+- `lastElementChild`: 返回当前 `DocumentFragment` 对象的最后一个子元素节点, 如果没有则返回 `null`
+- `childElementCount`: 返回当前 `DocumentFragment` 对象的所有子元素数量
+
+CSS 操作
+~~~~~~~~~~~~
+
+操作 CSS 样式最简单的方法, 就是使用网页元素节点的 `getAttribute()` 方法, `setAttribute()` 方法和 `removeAttribute()` 方法, 直接读写或删除网页元素的 `style` 属性
+
+CSSStyleDeclaration 接口
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+CSSStyleDeclaration 接口用来操作元素的样式
+
+三个地方部署了这个接口:
+
+- 元素节点的 `style` 属性 (`Element.style`)
+- `CSSStyle` 实例的 `style` 属性
+- `window.getComputedStyle()` 的返回值
+
+CSSStyleDeclaration 接口可以直接读写 CSS 的样式属性, 不过连词号需要变成骆驼拼写法
+
+.. code-block:: javascript
+
+    var divStyle = document.querySelector('div').style;
+
+    divStyle.backgroundColor = 'red';
+    divStyle.border = '1px solid black';
+    divStyle.width = '100px';
+    divStyle.height = '100px';
+    divStyle.fontSize = '10em';
+
+    divStyle.backgroundColor // red
+    divStyle.border // 1px solid black
+    divStyle.height // 100px
+    divStyle.width // 100px
+
+.. attention::
+
+    该对象的属性值都是字符串, 设置时必须包括单位, 但是不含规则结尾的分号
+
+    另外, `Element.style` 返回的只是行内样式, 并不是该元素的全部样式; 通过样式表设置的样式, 或者从父元素继承的样式, 无法通过这个属性得到; 元素的全部样式要通过 `window.getComputedStyle()` 得到
+
+属性
+^^^^^^
+
+- `CSSStyleDeclaration.cssText`
+
+    读写当前规则的所有样式声明文本
+
+    .. code-block:: javascript
+
+        var divStyle = document.querySelector('div').style;
+
+        divStyle.cssText = 'background-color: red;'
+            + 'border: 1px solid black;'
+            + 'height: 100px;'
+            + 'width: 100px;';
+
+        // 删除一个元素的所有行内样式, 最简便的方法就是设置 cssText 为空字符串
+        divStyle.cssText = '';
+
+- `CSSStyleDeclaration.length`
+
+    返回一个整数值, 表示当前规则包含多少条样式声明
+
+- `CSSStyleDeclaration.parentRule`
+
+    返回当前规则所属的那个样式块 (CSSRule 实例); 如果不存在所属的样式块返回 `null`
+
+    只读, 且只在使用 CSSRule 接口时有意义
+
+    .. code-block:: javascript
+
+        var declaration = document.styleSheets[0].rules[0].style;
+        declaration.parentRule === document.styleSheets[0].rules[0]
+        // true
+
+方法
+^^^^^^^^^
+
+- `CSSStyleDeclaration.getPropertyPriority()`
+
+    接受 CSS 样式的属性名作为参数, 返回一个字符串, 表示有没有设置 `important` 优先级; 如果有就返回 `"important"`, 否则返回空字符串
+
+    .. code-block:: javascript
+
+        // HTML 代码为
+        // <div id="myDiv" style="margin: 10px!important; color: red;"/>
+        var style = document.getElementById('myDiv').style;
+        style.margin // "10px"
+        style.getPropertyPriority('margin') // "important"
+        style.getPropertyPriority('color') // ""
+
+- `CSSStyleDeclaration.getPropertyValue()`
+
+    接受 CSS 样式属性名作为参数, 返回一个字符串, 表示该属性的属性值
+
+    .. code-block:: javascript
+
+        // HTML 代码为
+        // <div id="myDiv" style="margin: 10px!important; color: red;"/>
+        var style = document.getElementById('myDiv').style;
+        style.margin // "10px"
+        style.getPropertyValue("margin") // "10px"
+
+- `CSSStyleDeclaration.item()`
+
+    接受一个整数值作为参数, 返回该位置的 CSS 属性名
+
+    .. code-block:: javascript
+
+        // HTML 代码为
+        // <div id="myDiv" style="color: red; background-color: white;"/>
+        var style = document.getElementById('myDiv').style;
+        style.item(0) // "color"
+        style.item(1) // "background-color"
+
+    如果没有提供参数, 报错; 如果参数值超过实际的属性数目, 返回一个空字符值
+
+- `CSSStyleDeclaration.removeProperty()`
+
+    接受一个属性名作为参数, 在 CSS 规则里面移除这个属性, 返回这个属性原来的值
+
+    .. code-block:: javascript
+
+        // HTML 代码为
+        // <div id="myDiv" style="color: red; background-color: white;">
+        //   111
+        // </div>
+        var style = document.getElementById('myDiv').style;
+        style.removeProperty('color') // 'red'
+        // HTML 代码变为
+        // <div id="myDiv" style="background-color: white;">
+
+- `CSSStyleDeclaration.setProperty()`
+
+    设置新的 CSS 属性; 没有返回值
+
+    接受三个参数:
+
+    - 第一个参数: 属性名, 必需
+    - 第二个参数: 属性值, 可选; 如果省略, 则参数值默认为空字符串
+    - 第三个参数: 优先级, 可选; 如果设置, 唯一的合法值是 `important`, 表示 CSS 规则里面的 `!important`
+
+    .. code-block:: javascript
+
+        // HTML 代码为
+        // <div id="myDiv" style="color: red; background-color: white;">
+        //   111
+        // </div>
+        var style = document.getElementById('myDiv').style;
+        style.setProperty('border', '1px solid blue');
+
+CSS 模块的侦测
+^^^^^^^^^^^^^^^^^^^
+
+检查当前浏览器是否支持某个模块
+
+一个比较普遍适用的方法是, 判断元素的 `style` 对象的某个属性值是否为字符串
+
+.. code-block:: javascript
+
+    typeof element.style.animationName === 'string';
+    typeof element.style.transform === 'string';
+
+如果该 CSS 属性确实存在, 会返回一个字符串; 即使该属性实际上并未设置, 也会返回一个空字符串; 如果该属性不存在, 则会返回 `undefined`
+
+.. code-block:: javascript
+
+    document.body.style['maxWidth'] // ""
+    document.body.style['maximumWidth'] // undefined
+
+不管 CSS 属性名的写法带不带连词线, `style` 属性上都能反映出该属性是否存在
+
+.. code-block:: javascript
+
+    document.body.style['backgroundColor'] // ""
+    document.body.style['background-color'] // ""
+
+使用的时候需要把不同浏览器的 CSS 前缀也考虑进去
+
+.. code-block:: javascript
+
+    var content = document.getElementById('content');
+    typeof content.style['webkitAnimation'] === 'string'
+
+封装成函数:
+
+.. code-block:: javascript
+
+    function isPropertySupported(property) {
+        if (property in document.body.style) return true;
+        var prefixes = ['Moz', 'Webkit', 'O', 'ms', 'Khtml'];
+        var prefProperty = property.charAt(0).toUpperCase() + property.substr(1);
+
+        for(var i = 0; i < prefixes.length; i++){
+                if((prefixes[i] + prefProperty) in document.body.style) return true;
+        }
+
+        return false;
+    }
+
+    isPropertySupported('background-clip')
+    // true
+
+CSS 对象
+^^^^^^^^^^
+
+浏览器原生提供 CSS 对象, 为 JavaScript 操作 CSS 提供一些工具方法
+
+两个静态方法:
+
+- `CSS.escape()`
+
+    用于转义 CSS 选择器里面的特殊字符
+
+    .. code-block:: javascript
+
+    document.querySelector('#' + CSS.escape('foo#bar'))
+
+- `CSS.supports()`
+
+    返回一个布尔值, 表示当前环境是否支持某一句 CSS 规则
+
+    它的参数有两种写法, 一种是第一个参数是属性名, 第二个参数是属性值; 另一种是整个参数就是一行完整的 CSS 语句
+
+    .. code-block:: javascript
+
+        // 第一种写法
+        CSS.supports('transform-origin', '5px') // true
+
+        // 第二种写法
+        CSS.supports('display: table-cell') // true
+
+        // 第二种写法的参数结尾不能带有分号, 否则结果不准确
+        CSS.supports('display: table-cell;') // false
+
+`window.getComputedStyle()`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+行内样式 (inline style) 具有最高的优先级, 改变行内样式, 通常会立即反映出来; 但是, 网页元素最终的样式是综合各种规则计算出来的
+
+因此, 如果想得到元素实际的样式, 只读取行内样式是不够的, 需要得到浏览器最终计算出来的样式规则
+
+`window.getComputedStyle`方法返回浏览器计算后得到的最终规则; 它接受一个节点对象作为参数, 返回一个 CSSStyleDeclaration 实例, 包含了指定节点的最终样式信息
+
+这个实例会实时反映样式的修改; 只读
+
+`getComputedStyle` 方法还可以接受第二个参数, 表示当前元素的伪元素
+
+.. code-block:: javascript
+
+    var result = window.getComputedStyle(div, ':before');
+
+.. attention::
+
+    - CSSStyleDeclaration 实例返回的 CSS 值都是绝对单位
+    - CSS 规则的简写形式无效; 比如想读取 `margin` 属性的值, 不能直接读, 只能读 `marginLeft`, `marginTop` 等属性
+    - 如果读取 CSS 原始的属性名, 要用方括号运算符, 比如 `styleObj['z-index']`; 如果读取骆驼拼写法的 CSS 属性名, 可以直接读取 `styleObj.zIndex`
+    - 该方法返回的 CSSStyleDeclaration 实例的 `cssText` 属性无效, 返回 `undefined`
+
+CSS 伪元素
+^^^^^^^^^^^^^^^^
+
+CSS 伪元素是通过 CSS 向 DOM 添加的元素, 主要是通过 `:before` 和 `:after` 选择器生成, 然后用 `content` 属性指定伪元素的内容
+
+.. code-block:: javascript
+
+    // 节点元素的 style 对象无法读写伪元素的样式, 可以使用 window.getComputedStyle()
+    var test = document.querySelector('#test');
+
+    var result = window.getComputedStyle(test, ':before').content;
+    var color = window.getComputedStyle(test, ':before').color;
+
+    // 也可以使用 CSSStyleDeclaration 实例的 getPropertyValue 方法, 获取伪元素的属性
+    var result = window.getComputedStyle(test, ':before')
+    .getPropertyValue('content');
+    var color = window.getComputedStyle(test, ':before')
+    .getPropertyValue('color');
+
+StyleSheet 接口
+^^^^^^^^^^^^^^^^^^^
+
+StyleSheet 接口代表网页的一张样式表, 包括 `<link>` 元素加载的样式表和 `<style>` 元素内嵌的样式表
+
+`document` 对象的 `styleSheets` 属性, 可以返回当前页面的所有 `StyleSheet` 实例 (即所有样式表); 它是一个类数组对象
+
+如果是 `<style>` 元素嵌入的样式表, 还可以用这个节点元素的sheet属性获取 `StyleSheet` 实例
+
+严格地说, StyleSheet 接口不仅包括网页样式表, 还包括 XML 文档的样式表; 所以, 它有一个子类 CSSStyleSheet 表示网页的 CSS 样式表
+
+在网页里面拿到的样式表实例, 实际上是 CSSStyleSheet 的实例; 这个子接口继承了 StyleSheet 的所有属性和方法, 并且定义了几个自己的属性
+
+- 实例属性
+
+    - `StyleSheet.disabled`
+
+        返回一个布尔值, 表示该样式表是否处于禁用状态; 手动设置 `disabled` 属性为 `true`, 等同于在 `<link>` 元素里面, 将这张样式表设为 `alternate stylesheet`, 即该样式表将不会生效
+
+        .. attention::
+
+            `disabled` 属性只能在 JavaScript 脚本中设置, 不能在 HTML 语句中设置
+
+    - `Stylesheet.href`
+
+        返回样式表的网址; 对于内嵌样式表返回 `null`; 只读
+
+    - `StyleSheet.media`
+
+        返回一个类数组对象 (`MediaList` 实例), 成员是表示适用媒介的字符串, 表示当前样式表是用于屏幕 (screen) , 还是用于打印 (print) 或手持设备 (handheld), 或各种媒介都适用 (all); 只读, 默认为 `screen`
+
+        .. code-block:: javascript
+
+            document.styleSheets[0].media.mediaText
+            // "all"
+
+        `MediaList` 实例的 `appendMedium` 方法, 用于增加媒介; `deleteMedium` 方法用于删除媒介
+
+        .. code-block:: javascript
+
+            document.styleSheets[0].media.appendMedium('handheld');
+            document.styleSheets[0].media.deleteMedium('print');
+
+    - `StyleSheet.title`
+
+        返回样式表的 `title` 属性
+
+    - `StyleSheet.type`
+
+        返回样式表的 `type` 属性, 通常是 `text/css`
+
+    - `StyleSheet.parentStyleSheet`
+
+        CSS 的 `@import` 命令允许在样式表中加载其他样式表; `StyleSheet.parentStyleSheet` 属性返回包含了当前样式表的那张样式表; 如果当前样式表是顶层样式表, 则该属性返回 `null`
+
+    - `StyleSheet.ownerNode`
+
+        返回 `StyleSheet` 对象所在的 DOM 节点, 通常是 `<link>` 或 `<style>`; 对于那些由其他样式表引用的样式表, 该属性为 `null`
+
+        .. code-block:: javascript
+
+            // HTML代码为
+            // <link rel="StyleSheet" href="example.css" type="text/css" />
+            document.styleSheets[0].ownerNode // [object HTMLLinkElement]
+
+    - `CSSStyleSheet.cssRules`
+
+        指向一个类数组对象 (`CSSRuleList` 实例), 里面每一个成员就是当前样式表的一条 CSS 规则; 使用该规则的 `cssText` 属性, 可以得到 CSS 规则对应的字符串
+
+        .. code-block:: javascript
+
+            var sheet = document.querySelector('#styleElement').sheet;
+
+            sheet.cssRules[0].cssText
+            // "body { background-color: red; margin: 20px; }"
+
+            sheet.cssRules[1].cssText
+            // "p { line-height: 1.4em; color: blue; }"
+
+        每条 CSS 规则还有一个 `style` 属性, 指向一个对象, 用来读写具体的 CSS 命令
+
+        .. code-block:: javascript
+
+            cssStyleSheet.cssRules[0].style.color = 'red';
+            cssStyleSheet.cssRules[1].style.color = 'purple';
+
+    - `CSSStyleSheet.ownerRule`
+
+        有些样式表是通过 `@import` 规则输入的, 它的 `ownerRule` 属性会返回一个 `CSSRule` 实例, 代表那行 `@import` 规则; 如果当前样式表不是通过 `@import` 引入的, ownerRule属性返回 `null`
+
+- 实例方法
+
+    - `CSSStyleSheet.insertRule()`
+
+        在当前样式表的插入一个新的 CSS 规则
+
+        .. code-block:: javascript
+
+            var sheet = document.querySelector('#styleElement').sheet;
+            sheet.insertRule('#block { color: white }', 0);
+            sheet.insertRule('p { color: red }', 1);
+
+        接受两个参数: 第一个参数是表示 CSS 规则的字符串, 这里只能有一条规则, 否则会报错; 第二个参数是该规则在样式表的插入位置 (从0开始), 该参数可选, 默认为0 (即默认插在样式表的头部)
+
+        如果插入位置大于现有规则的数目, 会报错
+
+        返回新插入规则的位置序号
+
+        .. attention::
+
+            浏览器对脚本在样式表里面插入规则有很多限制
+
+            所以这个方法最好放在 `try...catch` 里使用
+
+    - `CSSStyleSheet.deleteRule()`
+
+        在样式表里面移除一条规则
+
+        参数是该条规则在 `cssRules` 对象中的位置
+
+        没有返回值
+
+添加样式表
+^^^^^^^^^^^^^^
+
+网页添加样式表的两种方式
+
+1. 添加一张内置样式表, 即在文档中添加一个 `<style>` 节点
+
+    .. code-block:: javascript
+
+        // 写法一
+        var style = document.createElement('style');
+        style.setAttribute('media', 'screen');
+        style.innerHTML = 'body{color:red}';
+        document.head.appendChild(style);
+
+        // 写法二
+        var style = (function () {
+        var style = document.createElement('style');
+        document.head.appendChild(style);
+        return style;
+        })();
+        style.sheet.insertRule('.foo{color:red;}', 0);
+
+2. 添加外部样式表, 即在文档中添加一个 `<link>` 节点, 然后将 `href` 属性指向外部样式表的 URL
+
+    .. code-block:: javascript
+
+        var linkElm = document.createElement('link');
+        linkElm.setAttribute('rel', 'stylesheet');
+        linkElm.setAttribute('type', 'text/css');
+        linkElm.setAttribute('href', 'reset-min.css');
+
+        document.head.appendChild(linkElm);
+
+CSSRuleList 接口
+^^^^^^^^^^^^^^^^^^^^
+
+CSSRuleList 接口是一个类似数组的对象, 表示一组 CSS 规则, 成员都是 CSSRule 实例
+
+一般通过 `StyleSheet.cssRules` 属性获取 CSSRuleList 实例
+
+.. code-block:: javascript
+
+    // HTML 代码如下
+    // <style id="myStyle">
+    //   h1 { color: red; }
+    //   p { color: blue; }
+    // </style>
+    var myStyleSheet = document.getElementById('myStyle').sheet;
+    var crl = myStyleSheet.cssRules;
+    crl instanceof CSSRuleList // true
+
+CSSRuleList 实例里面, 每一条规则 (CSSRule 实例) 可以通过 `rules.item(index)` 或者 `rules[index]` 拿到
+
+.. attention::
+
+    添加规则和删除规则不能在 CSSRuleList 实例操作, 而要在它的父元素 StyleSheet 实例上, 通过 `StyleSheet.insertRule()` 和 `StyleSheet.deleteRule()` 操作
+
+CSSRule 接口
+^^^^^^^^^^^^^^^^
+
+一条 CSS 规则包括两个部分: CSS 选择器和样式声明
+
+JavaScript 通过 CSSRule 接口操作 CSS 规则; 一般通过 CSSRuleList 接口获取 CSSRule 实例
+
+- 实例属性
+
+    - `CSSRule.cssText`
+
+        返回当前规则的文本
+
+        如果规则是加载 (`@import`) 其他样式表, cssText属性返回 `@import 'url'`
+
+    - `CSSRule.parentStyleSheet`
+
+        返回当前规则所在的样式表对象 (StyleSheet 实例)
+
+    - `CSSRule.parentRule`
+
+        返回包含当前规则的父规则, 如果不存在父规则 (即当前规则是顶层规则) , 则返回 `null`
+
+        父规则最常见的情况是, 当前规则包含在 `@media` 规则代码块之中:
+
+        .. code-block:: javascript
+
+            // HTML 代码如下
+            // <style id="myStyle">
+            //   @supports (display: flex) {
+            //     @media screen and (min-width: 900px) {
+            //       article {
+            //         display: flex;
+            //       }
+            //     }
+            //  }
+            // </style>
+            var myStyleSheet = document.getElementById('myStyle').sheet;
+            var ruleList = myStyleSheet.cssRules;
+
+            var rule0 = ruleList[0];
+            rule0.cssText
+            // "@supports (display: flex) {
+            //    @media screen and (min-width: 900px) {
+            //      article { display: flex; }
+            //    }
+            // }"
+
+            // 由于这条规则内嵌其他规则,
+            // 所以它有 cssRules 属性, 且该属性是 CSSRuleList 实例
+            rule0.cssRules instanceof CSSRuleList // true
+
+            var rule1 = rule0.cssRules[0];
+            rule1.cssText
+            // "@media screen and (min-width: 900px) {
+            //   article { display: flex; }
+            // }"
+
+            var rule2 = rule1.cssRules[0];
+            rule2.cssText
+            // "article { display: flex; }"
+
+            rule1.parentRule === rule0 // true
+            rule2.parentRule === rule1 // true
+
+    - `CSSRule.type`
+
+        返回一个整数值, 表示当前规则的类型
+
+        最常见的类型有:
+
+        1. 普通样式规则 (CSSStyleRule 实例)
+        2. `@import` 规则
+        3. `@media` 规则 (CSSMediaRule 实例)
+        4. `@font-face` 规则
+
+- CSSStyleRule 接口
+
+    如果一条 CSS 规则是普通的样式规则 (不含特殊的 CSS 命令), 那么除了 CSSRule 接口, 它还部署了 CSSStyleRule 接口
+
+    CSSStyleRule 接口有以下两个属性:
+
+    - `CSSStyleRule.selectorText`
+
+        返回当前规则的选择器
+
+        .. code-block:: javascript
+
+            var stylesheet = document.styleSheets[0];
+            stylesheet.cssRules[0].selectorText // ".myClass"
+
+    - `CSSStyleRule.style`
+
+        返回一个对象 (CSSStyleDeclaration 实例), 代表当前规则的样式声明, 也就是选择器后面的大括号里面的部分
+
+        CSSStyleDeclaration 实例的 `cssText` 属性可以返回所有样式声明, 格式为字符串
+
+        .. code-block:: javascript
+
+            // HTML 代码为
+            // <style id="myStyle">
+            //   p { color: red; }
+            // </style>
+            var styleSheet = document.getElementById('myStyle').sheet;
+            styleSheet.cssRules[0].style instanceof CSSStyleDeclaration
+            // true
+
+            styleSheet.cssRules[0].style.cssText
+            // "color: red;"
+            styleSheet.cssRules[0].selectorText
+            // "p"
+
+- CSSMediaRule 接口
+
+    如果一条 CSS 规则是 `@media` 代码块, 那么它除了 CSSRule 接口, 还部署了 CSSMediaRule 接口
+
+    该接口主要提供 `media` 属性和 `conditionText` 属性: 前者返回代表 `@media` 规则的一个对象 (MediaList 实例) , 后者返回 `@media` 规则的生效条件
+
+    .. code-block:: javascript
+
+        // HTML 代码如下
+        // <style id="myStyle">
+        //   @media screen and (min-width: 900px) {
+        //     article { display: flex; }
+        //   }
+        // </style>
+        var styleSheet = document.getElementById('myStyle').sheet;
+        styleSheet.cssRules[0] instanceof CSSMediaRule
+        // true
+
+        styleSheet.cssRules[0].media
+        //  {
+        //    0: "screen and (min-width: 900px)",
+        //    appendMedium: function,
+        //    deleteMedium: function,
+        //    item: function,
+        //    length: 1,
+        //    mediaText: "screen and (min-width: 900px)"
+        // }
+
+        styleSheet.cssRules[0].conditionText
+        // "screen and (min-width: 900px)"
+
+`window.matchMedia()`
+^^^^^^^^^^^^^^^^^^^^^^
+
+`window.matchMedia` 方法用来将 CSS 的 `MediaQuery` 条件语句, 转换成一个 MediaQueryList 实例
+
+.. code-block:: javascript
+
+    var mdl = window.matchMedia('(min-width: 400px)');
+    mdl instanceof MediaQueryList // true
+
+    // 如果参数不是有效的 MediaQuery 条件语句, window.matchMedia 不会报错, 依然返回一个 MediaQueryList 实例
+
+    window.matchMedia('bad string') instanceof MediaQueryList // true
+
+- 实例属性
+
+    - `MediaQueryList.media`
+
+        返回一个字符串, 表示对应的 MediaQuery 条件语句
+
+        .. code-block:: javascript
+
+            var mql = window.matchMedia('(min-width: 400px)');
+            mql.media // "(min-width: 400px)"
+
+    - `MediaQueryList.matches`
+
+        返回一个布尔值, 表示当前页面是否符合指定的 MediaQuery 条件语句
+
+        .. code-block:: javascript
+
+            if (window.matchMedia('(min-width: 400px)').matches) {
+            /* 当前视口不小于 400 像素 */
+            } else {
+            /* 当前视口小于 400 像素 */
+            }
+
+            // 根据 mediaQuery 是否匹配当前环境, 加载相应的 CSS 样式表
+
+            var result = window.matchMedia("(max-width: 700px)");
+
+            if (result.matches){
+                var linkElm = document.createElement('link');
+                linkElm.setAttribute('rel', 'stylesheet');
+                linkElm.setAttribute('type', 'text/css');
+                linkElm.setAttribute('href', 'small.css');
+
+                document.head.appendChild(linkElm);
+            }
+
+    - `MediaQueryList.onchange`
+
+        如果 MediaQuery 条件语句的适配环境发生变化, 会触发 `change` 事件
+
+        `MediaQueryList.onchange` 属性用来指定 `change` 事件的监听函数
+
+        该函数的参数是 `change` 事件对象 (MediaQueryListEvent 实例); 该对象与 MediaQueryList 实例类似, 也有 `media` 和 `matches` 属性
+
+        .. code-block:: javascript
+
+            var mql = window.matchMedia('(max-width: 600px)');
+
+            mql.onchange = function(e) {
+                if (e.matches) {
+                    /* 视口不超过 600 像素 */
+                } else {
+                    /* 视口超过 600 像素 */
+                }
+            }
+
+- 实例方法
+
+    - `MediaQueryList.addListener()`
+    - `MediaQueryList.removeListener()`
+
+    .. code-block:: javascript
+
+        var mql = window.matchMedia('(max-width: 600px)');
+
+        // 指定监听函数
+        mql.addListener(mqCallback);
+
+        // 撤销监听函数
+        mql.removeListener(mqCallback);
+
+        function mqCallback(e) {
+            if (e.matches) {
+                /* 视口不超过 600 像素 */
+            } else {
+                /* 视口超过 600 像素 */
+            }
+        }
+
+    .. attention::
+
+        `MediaQueryList.removeListener()` 方法不能撤销 `MediaQueryList.onchange` 属性指定的监听函数
+
+Mutation Observer API
+~~~~~~~~~~~~~~~~~~~~~~~~~
+
+Mutation Observer API 用来监视 DOM 变动; DOM 的任何变动, 比如节点的增减, 属性的变动, 文本内容的变动, 这个 API 都可以得到通知
+
+概念上, 它很接近事件, 可以理解为 DOM 发生变动就会触发 Mutation Observer 事件
+
+但是它与事件有一个本质不同: 事件是同步触发, 也就是说, DOM 的变动立刻会触发相应的事件; Mutation Observer 则是异步触发, DOM 的变动并不会马上触发, 而是要等到当前所有 DOM 操作都结束才触发
+
+这样设计是为了应付 DOM 变动频繁的特点
+
+举例来说, 如果文档中连续插入1000个 `<p>` 元素, 就会连续触发1000个插入事件, 执行每个事件的回调函数, 这很可能造成浏览器的卡顿; 而 Mutation Observer 完全不同, 只在1000个段落都插入结束后才会触发, 而且只触发一次
+
+Mutation Observer 有以下特点:
+
+- 等待所有脚本任务完成后才会运行 (即异步触发方式)
+- 把 DOM 变动记录封装成一个数组进行处理, 而不是一条条个别处理 DOM 变动
+- 既可以观察 DOM 的所有类型变动, 也可以指定只观察某一类变动
+
+构造函数
+^^^^^^^^^^^^
+
+使用时, 首先使用 `MutationObserver` 构造函数新建一个观察器实例, 同时指定这个实例的回调函数; 回调函数接受两个参数: 第一个是变动数组, 第二个是观察器实例
+
+.. code-block:: javascript
+
+    var observer = new MutationObserver(function (mutations, observer) {
+        mutations.forEach(function(mutation) {
+            console.log(mutation);
+        });
+    });
+
+实例方法
+^^^^^^^^^^^^^
+
+- `observe()`
+
+    启动监听; 接受两个参数:
+
+    - 所要观察的 DOM 节点
+    - 一个配置对象, 指定所要观察的特定变动
+
+    .. code-block:: javascript
+
+        var article = document.querySelector('article');
+
+        var  options = {
+            'childList': true,
+            'attributes':true
+        } ;
+
+        observer.observe(article, options);
+
+    观察器所能观察的 DOM 变动类型:
+
+    - **childList**: 子节点的变动 (指新增, 删除或者更改)
+    - **attributes**: 属性的变动
+    - **characterData**: 节点内容或节点文本的变动
+
+    想要观察哪一种变动类型, 就在 `option` 对象中指定它的值为 `true`; 至少必须指定这三种观察的一种, 若均未指定将报错
+
+    除了变动类型, options对象还可以设定以下属性:
+
+    - `subtree`: 布尔值, 表示是否将该观察器应用于该节点的所有后代节点
+    - `attributeOldValue`: 布尔值, 表示观察 `attributes` 变动时, 是否需要记录变动前的属性值
+    - `characterDataOldValue`: 布尔值, 表示观察 `characterData` 变动时, 是否需要记录变动前的值
+    - `attributeFilter`: 数组, 表示需要观察的特定属性 (比如 `['class','src']`)
+
+    .. code-block:: javascript
+
+        // 开始监听文档根节点 (即<html>标签) 的变动
+            mutationObserver.observe(document.documentElement, {
+            attributes: true,
+            characterData: true,
+            childList: true,
+            subtree: true,
+            attributeOldValue: true,
+            characterDataOldValue: true
+        });
+
+    对一个节点添加观察器, 就像使用 `addEventListener()` 方法一样, 多次添加同一个观察器是无效的, 回调函数依然只会触发一次; 如果指定不同的options对象, 以后面添加的那个为准
+
+    .. code-block:: javascript
+
+        // 观察新增的子节点
+
+        var insertedNodes = [];
+        var observer = new MutationObserver(function(mutations) {
+            mutations.forEach(function(mutation) {
+                for (var i = 0; i < mutation.addedNodes.length; i++) {
+                    insertedNodes.push(mutation.addedNodes[i]);
+                }
+            });
+            console.log(insertedNodes);
+        });
+        observer.observe(document, { childList: true, subtree: true });
+
+- `disconnect()`, `takeRecords () `
+
+    `disconnect()` 方法用来停止观察; 调用该方法后, DOM 再发生变动, 也不会触发观察器
+
+    `takeRecords()` 方法用来清除变动记录, 即不再处理未处理的变动; 返回变动记录的数组
+
+    .. code-block:: javascript
+
+        // 保存所有没有被观察器处理的变动
+        var changes = mutationObserver.takeRecords();
+
+        // 停止观察
+        mutationObserver.disconnect();
+
+MutationRecord 对象
+^^^^^^^^^^^^^^^^^^^^^^^
+
+DOM 每次发生变化, 就会生成一条变动记录 (MutationRecord 实例)
+
+该实例包含了与变动相关的所有信息; Mutation Observer 处理的就是一个个 `MutationRecord` 实例所组成的数组
+
+`MutationRecord` 对象包含了 DOM 的相关信息, 有如下属性:
+
+- `type`: 观察的变动类型 (`attributes`, `characterData` 或者 `childList`)
+- `target`: 发生变动的 DOM 节点
+- `addedNodes`: 新增的 DOM 节点
+- `removedNodes`: 删除的 DOM 节点
+- `previousSibling`: 前一个同级节点, 如果没有则返回 `null`
+- `nextSibling`: 下一个同级节点, 如果没有则返回 `null`
+- `attributeName`: 发生变动的属性; 如果设置了 `attributeFilter`, 则只返回预先指定的属性
+- `oldValue`: 变动前的值; 这个属性只对 `attribute` 和 `characterData` 变动有效, 如果发生 `childList` 变动, 则返回 `null`
+
+使用例
+^^^^^^^^^^^
+
+- 子元素的变动
+
+    .. code-block:: javascript
+
+        读取变动记录
+
+        var callback = function (records){
+            records.map(function(record){
+                console.log('Mutation type: ' + record.type);
+                console.log('Mutation target: ' + record.target);
+            });
+        };
+
+        var mo = new MutationObserver(callback);
+
+        var option = {
+            'childList': true,
+            'subtree': true
+        };
+
+        mo.observe(document.body, option);
+
+- 属性的变动
+
+    .. code-block:: javascript
+
+        追踪属性的变动
+
+        var callback = function (records) {
+            records.map(function (record) {
+                console.log('Previous attribute value: ' + record.oldValue);
+            });
+        };
+
+        var mo = new MutationObserver(callback);
+
+        var element = document.getElementById('#my_element');
+
+        var options = {
+            'attributes': true,
+            'attributeOldValue': true
+        }
+
+        mo.observe(element, options);
+
+- 取代 DOMContentLoaded 事件
+
+    网页加载的时候, DOM 节点的生成会产生变动记录, 因此只要观察 DOM 的变动, 就能在第一时间触发相关事件, 也就没有必要使用 DOMContentLoaded 事件
+
+    .. code-block:: javascript
+
+        var observer = new MutationObserver(callback);
+        observer.observe(document.documentElement, {
+            childList: true,
+            subtree: true
+        });
+
+
+        // 使用 MutationObserver 对象封装一个监听 DOM 生成的函数
+        (function(win){
+            'use strict';
+
+            var listeners = [];
+            var doc = win.document;
+            var MutationObserver = win.MutationObserver || win.WebKitMutationObserver;
+            var observer;
+
+            function ready(selector, fn){
+                // 储存选择器和回调函数
+                listeners.push({
+                    selector: selector,
+                    fn: fn
+                });
+                if(!observer){
+                    // 监听document变化
+                    observer = new MutationObserver(check);
+                    observer.observe(doc.documentElement, {
+                        childList: true,
+                        subtree: true
+                    });
+                }
+                // 检查该节点是否已经在DOM中
+                check();
+            }
+
+            function check(){
+                // 检查是否匹配已储存的节点
+                for(var i = 0; i < listeners.length; i++){
+                    var listener = listeners[i];
+                    // 检查指定节点是否有匹配
+                    var elements = doc.querySelectorAll(listener.selector);
+                    for(var j = 0; j < elements.length; j++){
+                        var element = elements[j];
+                        // 确保回调函数只会对该元素调用一次
+                        if(!element.ready){
+                            element.ready = true;
+                            // 对该节点调用回调函数
+                            listener.fn.call(element, element);
+                        }
+                    }
+                }
+            }
+
+            // 对外暴露ready
+            win.ready = ready;
+
+        })(this);
+
+        // 使用方法
+        ready('.foo', function(element){
+        // ...
+        });
+
+
+事件 Event
+----------------
+
+EventTarget 接口
+~~~~~~~~~~~~~~~~~~~~~~
+
+事件的本质是程序各个组成部分之间的一种通信方式, 也是异步编程的一种实现
+
+DOM 的事件操作 (监听和触发)都定义在 EventTarget 接口; 所有节点对象都部署了这个接口, 其他一些需要事件通信的浏览器内置对象 (比如 XMLHttpRequest, AudioNode, AudioContext) 也部署了这个接口
+
+该接口主要提供三个实例方法:
+
+- `addEventListener`: 绑定事件的监听函数
+- `removeEventListener`: 移除事件的监听函数
+- `dispatchEvent`: 触发事件
+
+`EventTarget.addEventListener()`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+在当前节点或对象上定义一个特定事件的监听函数; 一旦这个事件发生, 就会执行监听函数; 没有返回值
+
+.. code-block:: javascript
+
+    target.addEventListener(type, listener[, useCapture]);
+
+接受三个参数:
+
+- `type`: 事件名称, 大小写敏感
+- `listener`: 事件发生时调用的监听函数
+- `useCapture`: 布尔值, 表示监听函数是否在 *捕获阶段* (capture) 触发; 默认为false (监听函数只在 *冒泡阶段* 被触发); 可选
+
+.. attention::
+
+    1. 第二个参数除了监听函数, 还可以是一个具有 `handleEvent` 方法的对象
+
+        .. code-block:: javascript
+
+            buttonElement.addEventListener('click', {
+                handleEvent: function (event) {
+                    console.log('click');
+                }
+            });
+
+    2. 第三个参数除了布尔值 `useCapture`, 还可以是一个属性配置对象; 该对象有以下属性:
+
+        - `capture`: 布尔值, 表示该事件是否在 *捕获阶段* 触发监听函数
+        - `once`: 布尔值, 表示监听函数是否只触发一次, 然后就自动移除
+        - `passive`: 布尔值, 表示监听函数不会调用事件的 `preventDefault` 方法; 如果监听函数调用了, 浏览器将忽略这个要求, 并在监控台输出一行警告
+
+`addEventListener` 方法可以针对当前对象的同一个事件, 添加多个不同的监听函数; 这些函数按照添加顺序触发, 即先添加先触发
+
+如果为同一个事件多次添加同一个监听函数, 该函数只会执行一次, 多余的添加将自动被去除
+
+可以用匿名函数包装来向监听函数传递参数
+
+.. code-block:: javascript
+
+    function print(x) {
+        console.log(x);
+    }
+
+    var el = document.getElementById('div1');
+    el.addEventListener('click', function () { print('Hello'); }, false);
+
+监听函数内部的 `this` 指向当前事件所在的那个对象
+
+.. code-block:: javascript
+
+    // HTML 代码如下
+    // <p id="para">Hello</p>
+    var para = document.getElementById('para');
+    para.addEventListener('click', function (e) {
+        console.log(this.nodeName); // "P"
+    }, false);
+
+`EventTarget.removeEventListener()`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+移除 `addEventListener` 方法添加的事件监听函数; 没有返回值
+
+参数与 `addEventListener` 方法完全一致
+
+.. attention::
+
+    `removeEventListener` 方法移除的监听函数必须是 `addEventListener` 方法添加的那个监听函数, 而且必须在同一个元素节点, 否则无效
+
+    .. code-block:: javascript
+
+        div.addEventListener('click', function (e) {}, false);
+        div.removeEventListener('click', function (e) {}, false);
+        // 监听函数不是同一个匿名函数
+
+        element.addEventListener('mousedown', handleMouseDown, true);
+        element.removeEventListener("mousedown", handleMouseDown, false);
+        // 第三个参数不一样
+
+`EventTarget.dispatchEvent()`
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+在当前节点上触发指定事件, 从而触发监听函数的执行; 返回一个布尔值, 只要有一个监听函数调用了 `Event.preventDefault()`, 则返回值为 `false`, 否则为 `true`
+
+参数是一个 `Event` 对象的实例
+
+如果参数为空, 或者不是一个有效的事件对象, 将报错
+
+
+事件模型
+~~~~~~~~~~~~
+
+监听函数
+^^^^^^^^^^
+
+浏览器的事件模型就是通过监听函数 (listener) 对事件做出反应; 事件发生后, 浏览器监听到了这个事件, 就会执行对应的监听函数
+
+这是事件驱动编程模式 (event-driven) 的主要编程方式
+
+JavaScript 有三种方法, 可以为事件绑定监听函数:
+
+1. HTML 的 `on-` 属性
+
+    HTML 语言允许在元素的属性中, 直接定义某些事件的监听代码
+
+    元素的事件监听属性都是 `on` 加上事件名, 比如 `onload` 就是 `on + load`, 表示 `load` 事件的监听代码
+
+    .. attention::
+
+        这些属性的值是将会执行的代码, 而不是一个函数
+
+    .. code-block:: html
+
+        <!-- 正确 -->
+        <body onload="doSomething()">
+
+        <!-- 错误 -->
+        <body onload="doSomething">
+
+    一旦指定的事件发生, `on-` 属性的值是原样传入 JavaScript 引擎执行; 因此如果要执行函数, 不要忘记加上一对圆括号
+
+    使用这个方法指定的监听代码, 只会在 *冒泡阶段* 触发
+
+    .. code-block:: html
+
+        <div onclick="console.log(2)">
+            <button onclick="console.log(1)">点击</button>
+        </div>
+        // <button> 的 click 事件也会触发 <div> 的 click 事件
+        // 由于 on- 属性的监听代码只在冒泡阶段触发, 所以点击结果是先输出 1, 再输出 2, 即事件从子元素开始冒泡到父元素
+
+    直接设置 `on-` 属性, 与通过元素节点的 `setAttribute` 方法设置 `on-` 属性效果是一样的
+
+2. 元素节点的事件属性
+
+    .. code-block:: javascript
+
+        window.onload = doSomething;
+
+        div.onclick = function (event) {
+        console.log('触发事件');
+        };
+
+    使用这个方法指定的监听函数, 也是只会在 *冒泡阶段* 触发
+
+    .. attention::
+
+        这种方法与 HTML 的 `on-` 属性的差异是: 它的值是函数名 (doSomething), 而不像后者, 必须给出完整的监听代码 (doSomething())
+
+3. `EventTarget.addEventListener()`
+
+    所有 DOM 节点实例都有 `addEventListener` 方法, 用来为该节点定义事件的监听函数
+
+上面三种方法, 第一种违反了 HTML 与 JavaScript 代码相分离的原则, 将两者写在一起, 不利于代码分工, 因此不推荐使用
+
+第二种的缺点在于, 同一个事件只能定义一个监听函数, 也就是说, 如果定义两次 `onclick` 属性, 后一次定义会覆盖前一次; 因此也不推荐使用
+
+第三种是推荐的指定监听函数的方法; 优点:
+
+- 同一个事件可以添加多个监听函数
+- 能够指定在哪个阶段 (捕获阶段还是冒泡阶段) 触发监听函数
+- 除了 DOM 节点, 其他对象 (比如 `window`, `XMLHttpRequest` 等) 也有这个接口, 它等于是整个 JavaScript 统一的监听函数接口
+
+`this` 的指向
+^^^^^^^^^^^^^^^
+
+监听函数内部的 `this` 指向触发事件的那个元素节点
+
+事件的传播
+^^^^^^^^^^^^^^^^^^
+
+一个事件发生后, 会在子元素和父元素之间传播 (propagation); 这种传播分成三个阶段:
+
+- 第一阶段: 从 `window` 对象一层一层传导到目标节点 (上层传到底层), 称为 **捕获阶段** (**capture phase**)
+- 第二阶段: 在目标节点上触发, 称为 **目标阶段** (**target phase**)
+- 第三阶段: 从目标节点一层一层传导回 `window` 对象 (从底层传回上层), 称为 **冒泡阶段** (**bubbling phase**)
+
+这种三阶段的传播模型, 使得同一个事件会在多个节点上触发
+
+.. code-block:: javascript
+
+    // HTML
+    // <div>
+    //   <p>点击</p>
+    // </div>
+
+    // click 事件会触发四次
+
+    var phases = {
+        1: 'capture',
+        2: 'target',
+        3: 'bubble'
+    };
+
+    var div = document.querySelector('div');
+    var p = document.querySelector('p');
+
+    div.addEventListener('click', callback, true);
+    p.addEventListener('click', callback, true);
+    div.addEventListener('click', callback, false);
+    p.addEventListener('click', callback, false);
+
+    function callback(event) {
+        var tag = event.currentTarget.tagName;
+        var phase = phases[event.eventPhase];
+        console.log("Tag: '" + tag + "'. EventPhase: '" + phase + "'");
+    }
+
+    // 点击以后的结果
+    // Tag: 'DIV'. EventPhase: 'capture'
+    // Tag: 'P'. EventPhase: 'target'
+    // Tag: 'P'. EventPhase: 'target'
+    // Tag: 'DIV'. EventPhase: 'bubble'
+
+    // 捕获阶段: 事件从 <div> 向 <p> 传播时, 触发 <div> 的 click 事件
+    // 目标阶段: 事件从 <div> 到达 <p> 时, 触发 <p> 的 click 事件
+    // 冒泡阶段: 事件从 <p> 传回 <div> 时, 再次触发 <div> 的 click 事件
+
+    // <p> 节点有两个监听函数 (addEventListener方法第三个参数的不同, 会导致绑定两个监听函数), 因此它们都会因为 click 事件触发一次
+
+    // 浏览器总是假定 click 事件的目标节点为点击位置嵌套最深的那个节点, 所以 <p> 节点的捕获阶段和冒泡阶段, 都会显示为 target 阶段
+
+事件的代理
+^^^^^^^^^^^^^^^^^^^
+
+由于事件会在冒泡阶段向上传播到父节点, 因此可以把子节点的监听函数定义在父节点上, 由父节点的监听函数统一处理多个子元素的事件
+
+这种方法叫做事件的 **代理** (**delegation**)
+
+.. code-block:: javascript
+
+    var ul = document.querySelector('ul');
+
+    ul.addEventListener('click', function (event) {
+        if (event.target.tagName.toLowerCase() === 'li') {
+            // some code
+        }
+    });
+
+这样做的好处是, 只要定义一个监听函数, 就能处理多个子节点的事件, 而不用在每个子节点上定义监听函数; 而且以后再添加子节点, 监听函数依然有效
+
+如果希望事件到某个节点为止, 不再传播, 可以使用事件对象的 `stopPropagation` 方法
+
+.. code-block:: javascript
+
+    // 事件传播到 p 元素后, 就不再向下传播了
+    p.addEventListener('click', function (event) {
+        event.stopPropagation();
+    }, true);
+
+    // 事件冒泡到 p 元素后, 就不再向上冒泡了
+    p.addEventListener('click', function (event) {
+        event.stopPropagation();
+    }, false);
+
+但是, `stopPropagation` 方法只会阻止事件的传播, 不会阻止该事件触发当前节点的其他事件的监听函数
+
+.. code-block:: javascript
+
+    p.addEventListener('click', function (event) {
+    event.stopPropagation();
+    console.log(1);
+    });
+
+    p.addEventListener('click', function(event) {
+    // 会触发
+    console.log(2);
+    });
+
+如果想要彻底取消该事件, 不再触发后面所有该事件的监听函数, 可以使用 `stopImmediatePropagation` 方法
+
+.. code-block:: javascript
+
+    p.addEventListener('click', function (event) {
+    event.stopImmediatePropagation();
+    console.log(1);
+    });
+
+    p.addEventListener('click', function(event) {
+    // 不会被触发
+    console.log(2);
+    });
+
+Event 对象
+~~~~~~~~~~~~~~
+
+事件发生以后, 会产生一个事件对象, 作为参数传给监听函数; 浏览器原生提供一个 `Event` 对象, 所有的事件都是这个对象的实例, 或者说继承了 `Event.prototype` 对象
+
+`Event` 对象本身就是一个构造函数, 可以用来生成新的实例
+
+.. code-block:: javascript
+
+    event = new Event(type, options);
+
+`Event` 构造函数接受两个参数: 第一个参数 `type` 是字符串, 表示事件的名称; 第二个参数 `options` 是一个对象, 表示事件对象的配置
+
+`options` 对象主要有下面两个属性:
+
+- `bubbles`: 布尔值, 可选, 默认为 `false`, 表示事件对象是否冒泡
+- `cancelable`: 布尔值, 可选, 默认为 `false`, 表示事件是否可以被取消, 即能否用 `Event.preventDefault()` 取消这个事件; 一旦事件被取消, 就好像从来没有发生过, 不会触发浏览器对该事件的默认行为
+
+.. code-block:: javascript
+
+    var ev = new Event(
+        'look',
+        {
+            'bubbles': true,
+            'cancelable': false
+        }
+    );
+    document.dispatchEvent(ev);
+
+.. attention::
+
+    如果不是显式指定 `bubbles` 属性为 `true`, 生成的事件就只能在 *捕获阶段* 触发监听函数
+
+    .. code-block:: javascript
+
+        // HTML 代码为
+        // <div><p>Hello</p></div>
+        var div = document.querySelector('div');
+        var p = document.querySelector('p');
+
+        function callback(event) {
+            var tag = event.currentTarget.tagName;
+            console.log('Tag: ' + tag); // 没有任何输出
+        }
+
+        div.addEventListener('click', callback, false);
+
+        var click = new Event('click');
+        p.dispatchEvent(click);
+
+
+        // 如果这个事件在 div 元素上触发
+        // div.dispatchEvent(click);
+        // 那么不管 div 元素是在冒泡阶段监听, 还是在捕获阶段监听, 都会触发监听函数
+        // 因为这时 div 元素是事件的目标, 不存在是否冒泡的问题, div元素总是会接收到事件, 因此导致监听函数生效
+
+实例属性
+^^^^^^^^^^^^
+
+- `Event.bubbles`
+
+    返回一个布尔值, 表示当前事件是否会冒泡; 只读
+
+- `Event.eventPhase`
+
+    返回一个整数常量, 表示事件目前所处的阶段; 只读; 返回值:
+
+    - 0, 事件目前没有发生
+    - 1, 事件目前处于捕获阶段, 即处于从祖先节点向目标节点的传播过程中
+    - 2, 事件到达目标节点, 即 `Event.target` 属性指向的那个节点
+    - 3, 事件处于冒泡阶段, 即处于从目标节点向祖先节点的反向传播过程中
+
+- `Event.cancelable`
+
+    返回一个布尔值, 表示事件是否可以取消; 只读
+
+    大多数浏览器的原生事件是可以取消的; 但是除非显式声明, `Event` 构造函数生成的事件默认是不可以取消的
+
+    .. code-block:: javascript
+
+        var evt = new Event('foo');
+        evt.cancelable  // false
+
+    当 `Event.cancelable` 属性为 `true` 时, 调用 `Event.preventDefault()` 就可以取消这个事件, 阻止浏览器对该事件的默认行为
+
+    如果事件不能取消, 调用 `Event.preventDefault()` 会没有任何效果
+
+- `Event.cancelBubble`
+
+    布尔值; 如果设为true, 相当于执行 `Event.stopPropagation()`, 可以阻止事件的传播
+
+- `event.defaultPrevented`
+
+    返回一个布尔值, 表示该事件是否调用过 `Event.preventDefault` 方法; 只读
+
+- `Event.currentTarget`, `Event.target`
+
+    事件发生以后, 会经过捕获和冒泡两个阶段, 依次通过多个 DOM 节点
+
+    任意时刻都有两个与事件相关的节点: 一个是事件的 *原始触发节点* ( `Event.target`), 另一个是事件当前正在通过的节点( `Event.currentTarget`); 前者通常是后者的后代节点
+
+    `Event.currentTarget` 属性返回事件当前所在的节点, 即事件当前正在通过的节点, 也就是当前正在执行的监听函数所在的那个节点; 随着事件的传播, 这个属性的值会变
+
+    `Event.target` 属性返回原始触发事件的那个节点, 即事件最初发生的节点; 这个属性不会随着事件的传播而改变
+
+    事件传播过程中, 不同节点的监听函数内部的 `Event.target` 与 `Event.currentTarget` 属性的值是不一样的:
+
+    .. code-block:: javascript
+
+        // HTML 代码为
+        // <p id="para">Hello <em>World</em></p>
+        function hide(e) {
+            // 不管点击 Hello 或 World, 总是返回 true
+            console.log(this === e.currentTarget);
+
+            // 点击 Hello, 返回 true
+            // 点击 World, 返回 false
+            console.log(this === e.target);
+        }
+
+        document.getElementById('para').addEventListener('click', hide, false);
+
+- `Event.type`
+
+    返回一个字符串, 表示事件类型; 事件的类型是在生成事件的时候指定的; 只读
+
+- `Event.timeStamp`
+
+    返回一个毫秒时间戳, 表示事件发生的时间;  相对于网页加载成功开始计算
+
+    返回值有可能是整数, 也有可能是小数( 高精度时间戳), 取决于浏览器的设置
+
+    .. code-block:: javascript
+
+        // 计算鼠标移动速度, 显示每秒移动的像素数量
+
+        var previousX;
+        var previousY;
+        var previousT;
+
+        window.addEventListener('mousemove', function(event) {
+        if (
+            previousX !== undefined &&
+            previousY !== undefined &&
+            previousT !== undefined
+        ) {
+            var deltaX = event.screenX - previousX;
+            var deltaY = event.screenY - previousY;
+            var deltaD = Math.sqrt(Math.pow(deltaX, 2) + Math.pow(deltaY, 2));
+
+            var deltaT = event.timeStamp - previousT;
+            console.log(deltaD / deltaT * 1000);
+        }
+
+        previousX = event.screenX;
+        previousY = event.screenY;
+        previousT = event.timeStamp;
+        });
+
+- `Event.isTrusted`
+
+    返回一个布尔值, 表示该事件是否由真实的用户行为产生; 比如, 用户点击链接会产生一个 `click` 事件, 该事件是用户产生的; `Event` 构造函数生成的事件, 则是脚本产生的
+
+    .. code-block:: javascript
+
+        var evt = new Event('foo');
+        evt.isTrusted // false
+
+- `Event.detail`
+
+    只有浏览器的 UI (用户界面) 事件才具有; 返回一个数值, 表示事件的某种信息; 具体含义与事件类型相关
+
+    比如, 对于 `click` 和 `dblclick` 事件, `Event.detail` 是鼠标按下的次数 (1表示单击, 2表示双击, 3表示三击); 对于鼠标滚轮事件, `Event.detail` 是滚轮正向滚动的距离, 负值就是负向滚动的距离, 返回值总是 3 的倍数
+
+    .. code-block:: javascript
+
+        // HTML 代码如下
+        // <p>Hello</p>
+        function giveDetails(e) {
+            console.log(e.detail);
+        }
+
+        document.querySelector('p').onclick = giveDetails;
+
+实例方法
+^^^^^^^^^^^^
+
+- `Event.preventDefault()`
+
+    取消浏览器对当前事件的默认行为; 该方法生效的前提是, 事件对象的 `cancelable` 属性为 `true`; 如果为 `false`, 调用该方法没有任何效果
+
+    .. attention::
+
+        该方法只是取消事件对当前元素的默认影响, 不会阻止事件的传播
+
+    .. code-block:: javascript
+
+        // HTML 代码为
+        // <input type="checkbox" id="my-checkbox" />
+        var cb = document.getElementById('my-checkbox');
+
+        cb.addEventListener(
+            'click',
+            function (e){ e.preventDefault(); },
+            false
+        );
+        // 浏览器的默认行为是单击会选中单选框
+        // 取消这个行为, 就导致无法选中单选框
+
+    .. code-block:: javascript
+
+        // 为文本输入框设置校验条件
+        // 如果用户的输入不符合条件, 就无法将字符输入文本框
+
+        // HTML 代码为
+        // <input type="text" id="my-input" />
+        var input = document.getElementById('my-input');
+        input.addEventListener('keypress', checkName, false);
+
+        function checkName(e) {
+            if (e.charCode < 97 || e.charCode > 122) {
+                e.preventDefault();
+            }
+        }
+        // 只能输入小写字母, 否则输入事件的默认行为 (写入文本框) 将被取消, 导致不能向文本框输入内容。
+
+- `Event.stopPropagation()`
+
+    阻止事件在 DOM 中继续传播, 防止再触发定义在别的节点上的监听函数, 但是不包括在当前节点上其他的事件监听函数
+
+- `Event.stopImmediatePropagation()`
+
+    阻止同一个事件的其他监听函数被调用, 不管监听函数定义在当前节点还是其他节点
+
+    如果同一个节点对于同一个事件指定了多个监听函数, 这些函数会根据添加的顺序依次调用; 只要其中有一个监听函数调用了 `Event.stopImmediatePropagation` 方法, 剩下的监听函数就不会再执行了
+
+- `Event.composedPath()`
+
+    返回一个数组, 成员是事件的最底层节点和依次冒泡经过的所有上层节点
+
+    .. code-block:: javascript
+
+        // HTML 代码如下
+        // <div>
+        //   <p>Hello</p>
+        // </div>
+        var div = document.querySelector('div');
+        var p = document.querySelector('p');
+
+        div.addEventListener('click', function (e) {
+            console.log(e.composedPath());
+        }, false);
+        // [p, div, body, html, document, Window]
+
+鼠标事件
+~~~~~~~~~~~~~
+
+种类
+^^^^^^^^
+
+鼠标事件指与鼠标相关的事件, 继承了 `MouseEvent` 接口
+
+- `click`: 按下鼠标 (通常是按下主按钮) 时触发; 用户在同一个位置先完成 `mousedown` 动作, 再完成 `mouseup` 动作; 触发顺序: `mousedown -> mouseup -> click`
+- `dblclick`: 在同一个元素上双击鼠标时触发; 触发顺序: `mousedown -> mouseup -> click -> dbclick`
+- `mousedown`: 按下鼠标键时触发
+- `mouseup`: 释放按下的鼠标键时触发
+- `mousemove`: 当鼠标在一个节点内部移动时触发; 当鼠标持续移动时, 该事件会连续触发 (为了避免性能问题, 建议对该事件的监听函数做一些限定, 比如限定一段时间内只能运行一次)
+- `mouseenter`: 鼠标进入一个节点时触发, 进入子节点不会触发这个事件
+- `mouseover`: 鼠标进入一个节点时触发, 进入子节点会再一次触发这个事件
+- `mouseout`: 鼠标离开一个节点时触发, 离开父节点也会触发这个事件
+- `mouseleave`: 鼠标离开一个节点时触发, 离开父节点不会触发这个事件
+- `contextmenu`: 按下鼠标右键时 (上下文菜单出现前) 触发, 或者按下 "上下文菜单键" 时触发
+- `wheel`: 滚动鼠标的滚轮时触发, 该事件继承的是 `WheelEvent` 接口
+
+`mouseover` 事件和 `mouseenter` 事件, 都是鼠标进入一个节点时触发; 两者的区别是: `mouseenter` 事件只触发一次, 而只要鼠标在节点内部移动, `mouseover` 事件会在子节点上触发多次:
+
+.. code-block:: javascript
+
+    /* HTML 代码如下
+    <ul>
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+    </ul>
+    */
+
+    var ul = document.querySelector('ul');
+
+    // 进入 ul 节点以后, mouseenter 事件只会触发一次
+    // 以后只要鼠标在节点内移动, 都不会再触发这个事件
+    // event.target 是 ul 节点
+    ul.addEventListener('mouseenter', function (event) {
+        event.target.style.color = 'purple';
+        setTimeout(function () {
+            event.target.style.color = '';
+        }, 500);
+    }, false);
+
+    // 进入 ul 节点以后, 只要在子节点上移动, mouseover 事件会触发多次
+    // event.target 是 li 节点
+    ul.addEventListener('mouseover', function (event) {
+        event.target.style.color = 'orange';
+        setTimeout(function () {
+            event.target.style.color = '';
+        }, 500);
+    }, false);
+
+`mouseout` 事件和 `mouseleave` 事件都是鼠标离开一个节点时触发; 两者的区别是: 在父元素内部离开一个子元素时, `mouseleave` 事件不会触发, 而 `mouseout` 事件会触发
+
+.. code-block:: javascript
+
+    /* HTML 代码如下
+    <ul>
+        <li>item 1</li>
+        <li>item 2</li>
+        <li>item 3</li>
+    </ul>
+    */
+
+    var ul = document.querySelector('ul');
+
+    // 先进入 ul 节点, 然后在节点内部移动, 不会触发 mouseleave 事件
+    // 只有离开 ul 节点时, 触发一次 mouseleave
+    // event.target 是 ul 节点
+    ul.addEventListener('mouseleave', function (event) {
+        event.target.style.color = 'purple';
+        setTimeout(function () {
+            event.target.style.color = '';
+        }, 500);
+    }, false);
+
+    // 先进入 ul 节点, 然后在节点内部移动, mouseout 事件会触发多次
+    // event.target 是 li 节点
+    ul.addEventListener('mouseout', function (event) {
+        event.target.style.color = 'orange';
+        setTimeout(function () {
+            event.target.style.color = '';
+        }, 500);
+    }, false);
+
+MouseEvent 接口概述
+^^^^^^^^^^^^^^^^^^^^^^^^^
+
+`MouseEvent` 接口代表了鼠标相关的事件; 继承了 `Event` 接口, 所以拥有 `Event` 的所有属性和方法
+
+浏览器原生提供一个 `MouseEvent` 构造函数, 用于新建一个` MouseEvent` 实例
+
+接受两个参数: 第一个参数是字符串, 表示事件名称; 第二个参数是一个事件配置对象, 可选; 除了 `Event` 接口的实例配置属性, 该对象可以配置以下属性, 所有属性都是可选的:
+
+- `screenX`: 数值, 鼠标相对于屏幕的水平位置 (单位像素), 默认值为 `0`, 设置该属性不会移动鼠标
+- `screenY`: 数值, 鼠标相对于屏幕的垂直位置 (单位像素), 其他与 `screenX` 相同
+- `clientX`: 数值, 鼠标相对于程序窗口的水平位置 (单位像素), 默认值为 0, 设置该属性不会移动鼠标
+- `clientY`: 数值, 鼠标相对于程序窗口的垂直位置 (单位像素), 其他与 `clientX` 相同
+- `ctrlKey`: 布尔值, 是否同时按下了 Ctrl 键, 默认值为 `false`
+- `shiftKey`: 布尔值, 是否同时按下了 Shift 键, 默认值为 `false`
+- `altKey`: 布尔值, 是否同时按下 Alt 键, 默认值为 `false`
+- `metaKey`: 布尔值, 是否同时按下 Meta 键, 默认值为 `false`
+- `button`: 数值, 表示按下了哪一个鼠标按键
+- `buttons`: 数值, 表示按下了鼠标的哪些键
+- `relatedTarget`: 节点对象, 表示事件的相关节点, 默认为 `null`; `mouseenter` 和 `mouseover` 事件时, 表示鼠标刚刚离开的那个元素节点; `mouseout` 和 `mouseleave` 事件时, 表示鼠标正在进入的那个元素节点
+下面是一个例子。
+
+实例属性
+^^^^^^^^^^
+
+- `MouseEvent.altKey`, `MouseEvent.ctrlKey`, `MouseEvent.metaKey`, `MouseEvent.shiftKey`
+
+    都返回一个布尔值, 表示事件发生时, 是否按下对应的键; 只读
+
+- `MouseEvent.button`
+
+    返回一个数值, 表示事件发生时按下了鼠标的哪个键; 只读
+
+    - `0`: 按下主键 (通常是左键), 或者该事件没有初始化这个属性 (比如 `mousemove` 事件)
+    - `1`: 按下辅助键 (通常是中键或者滚轮键)
+    - `2`: 按下次键 (通常是右键)
+
+- `MouseEvent.buttons`
+
+    返回一个三个比特位的二进制值, 表示同时按下了哪些键; 只读
+
+    - `0`: 没有按下任何键; 默认
+    - `1` (二进制 `001`): 表示按下主键 (通常是左键)
+    - `2` (二进制 `010`): 表示按下次要键 (通常是右键)
+    - `4` (二进制 `100`): 表示按下辅助键 (通常是中间键)
+
+    `3` (二进制 `011`) 表示同时按下了左键和右键
+
+- `MouseEvent.clientX`, `MouseEvent.clientY`
+
+    这两个属性还分别有一个别名 `MouseEvent.x` 和 `MouseEvent.y`
+
+- `MouseEvent.movementX`, `MouseEvent.movementY`
+
+    `currentEvent.movementX = currentEvent.screenX - previousEvent.screenX`
+
+    `currentEvent.movementY = currentEvent.screenY - previousEvent.screenY`
+
+    只读
+
+- `MouseEvent.screenX`, `MouseEvent.screenY`
+
+    鼠标位置相对于屏幕左上角的水平坐标 (单位像素) 和垂直坐标; 只读
+
+- `MouseEvent.offsetX`, `MouseEvent.offsetY`
+
+    鼠标位置与目标节点左侧的 `padding` 边缘的水平距离 (单位像素) 和目标节点上方的 `padding` 边缘的垂直距离; 只读
+
+- `MouseEvent.pageX`, `MouseEvent.pageY`
+
+    鼠标位置与文档左侧边缘的距离 (单位像素) 和与文档上侧边缘的距离; 包括文档不可见的部分; 只读
+
+- `MouseEvent.relatedTarget`
+
+    返回事件的相关节点; 对于那些没有相关节点的事件, 返回 `null`; 只读
+
+    .. list-table:: 不同事件的 `target` 属性值和 `relatedTarget` 属性值
+        :widths: auto
+        :header-rows: 1
+
+        * - 事件名称
+          - target 属性
+          - relatedTarget 属性
+        * - focusin
+          - 接受焦点的节点
+          - 丧失焦点的节点
+        * - focusout
+          - 丧失焦点的节点
+          - 接受焦点的节点
+        * - mouseenter
+          - 将要进入的节点
+          - 将要离开的节点
+        * - mouseleave
+          - 将要离开的节点
+          - 将要进入的节点
+        * - mouseout
+          - 将要离开的节点
+          - 将要进入的节点
+        * - mouseover
+          - 将要进入的节点
+          - 将要离开的节点
+        * - dragenter
+          - 将要进入的节点
+          - 将要离开的节点
+        * - dragexit
+          - 将要离开的节点
+          - 将要进入的节点
+
+实例方法
+^^^^^^^^^^^^^
+
+- `MouseEvent.getModifierState()`
+
+    返回一个布尔值, 表示有没有按下特定的功能键; 参数是一个表示功能键的字符串
+
+    .. code-block:: javascript
+
+    // 是否按下了大写键
+    document.addEventListener('click', function (e) {
+        console.log(e.getModifierState('CapsLock'));
+    }, false);
+
+WheelEvent 接口
+^^^^^^^^^^^^^^^^^^^
+
+WheelEvent 接口继承了 MouseEvent 实例, 代表鼠标滚轮事件的实例对象
+
+目前鼠标滚轮相关的事件只有一个 `wheel` 事件, 用户滚动鼠标的滚轮, 就生成这个事件的实例
+
+浏览器原生提供 `WheelEvent()` 构造函数, 用来生成 `WheelEvent` 实例
+
+.. code-block:: javascript
+
+    var wheelEvent = new WheelEvent(type, options);
+
+接受两个参数: 第一个是字符串, 表示事件类型, 对于滚轮事件来说, 这个值目前只能是 `"wheel"`; 第二个参数是事件的配置对象, 该对象的属性除了 `Event`, `UIEvent` 的配置属性以外, 还可以接受以下几个可选属性:
+
+- `deltaX`: 数值, 表示滚轮的水平滚动量, 默认值是 `0.0`
+- `deltaY`: 数值, 表示滚轮的垂直滚动量, 默认值是 `0.0`
+- `deltaZ`: 数值, 表示滚轮的 Z 轴滚动量, 默认值是 `0.0`
+- `deltaMode`: 数值, 表示相关的滚动事件的单位, 适用于上面三个属性; `0` 表示滚动单位为像素 (默认), `1` 表示单位为行, `2` 表示单位为页
+
+
+键盘事件
+~~~~~~~~~~~~~~~
+
+种类
+^^^^^^^
+
+键盘事件由用户击打键盘触发, 主要有 `keydown`, `keypress`, `keyup` 三个事件, 它们都继承了 `KeyboardEvent` 接口
+
+- `keydown`: 按下键盘时触发
+- `keypress`: 按下有值的键时触发, 即按下 Ctrl, Alt, Shift, Meta 这样无值的键, 这个事件不会触发。对于有值的键, 按下时先触发keydown事件, 再触发这个事件
+- `keyup`: 松开键盘时触发该事件
+
+如果用户一直按键不松开, 就会连续触发键盘事件, 触发的顺序如下:
+
+keydown -> keypress -> keydown -> keypress ... (重复以上过程) -> keyup
+
+KeyboardEvent 接口概述
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+`KeyboardEvent` 接口用来描述用户与键盘的互动
+
+这个接口继承了 `Event` 接口, 并且定义了自己的实例属性和实例方法
+
+浏览器原生提供 `KeyboardEvent` 构造函数, 用来新建键盘事件的实例
+
+.. code-block:: javascript
+
+    new KeyboardEvent(type, options)
+
+接受两个参数: 第一个参数是字符串, 表示事件类型; 第二个参数是一个事件配置对象, 可选
+
+除了Event接口提供的属性, 还可以配置以下可选字段:
+
+- `key`: 字符串, 当前按下的键, 默认为空字符串
+- `code`: 字符串, 表示当前按下的键的字符串形式, 默认为空字符串
+- `location`: 整数, 当前按下的键的位置, 默认为 `0`
+- `ctrlKey`: 布尔值, 是否按下 Ctrl 键, 默认为 `false`
+- `shiftKey`: 布尔值, 是否按下 Shift 键, 默认为 `false`
+- `altKey`: 布尔值, 是否按下 Alt 键, 默认为 `false`
+- `metaKey`: 布尔值, 是否按下 Meta 键, 默认为 `false`
+- `repeat`: 布尔值, 是否重复按键, 默认为 `false`
+
+KeyboardEvent 的实例属性
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- `KeyboardEvent.altKey`, `KeyboardEvent.ctrlKey`, `KeyboardEvent.metaKey`, `KeyboardEvent.shiftKey`
+
+    只读; 返回一个布尔值, 表示是否按下对应的键
+
+- `KeyboardEvent.code`
+
+    返回一个字符串, 表示当前按下的键的字符串形式; 只读
+
+    常用键的字符串形式:
+
+    - 数字键0 - 9: 返回 `digital0 - digital9`
+    - 字母键A - z: 返回 `KeyA - KeyZ`
+    - 功能键F1 - F12: 返回 `F1 - F12`
+    - 方向键: 返回 `ArrowDown`, `ArrowUp`, `ArrowLeft`, `ArrowRight`
+    - Alt 键: 返回 `AltLeft` 或 `AltRight`
+    - Shift 键: 返回 `ShiftLeft` 或 `ShiftRight`
+    - Ctrl 键: 返回 `ControlLeft` 或 `ControlRight`
+
+- `KeyboardEvent.key`
+
+    返回一个字符串, 表示按下的键名; 只读
+
+    如果按下的键代表可打印字符, 则返回这个字符 (如数字, 字母)
+
+    如果按下的键代表不可打印的特殊字符, 则返回预定义的键值 (如 Backspace, Tab, Enter, Shift, Control, Alt, CapsLock, Esc, Spacebar, PageUp, PageDown, End, Home, Left, Right, Up, Down, PrintScreen, Insert, Del, Win, F1～F12, NumLock, Scroll 等)
+
+    如果同时按下一个控制键和一个符号键, 则返回符号键的键名 (如按下 Ctrl + a, 则返回 `a`; 按下 Shift + a, 则返回大写的 `A`)
+
+    如果无法识别键名, 返回字符串 `Unidentified`
+
+- `KeyboardEvent.location`
+
+    返回一个整数, 表示按下的键处在键盘的哪一个区域; 可能值:
+
+    0 0: 处在键盘的主区域, 或者无法判断处于哪一个区域
+    0 1: 处在键盘的左侧, 只适用那些有两个位置的键 (比如 Ctrl 和 Shift 键)
+    0 2: 处在键盘的右侧, 只适用那些有两个位置的键 (比如 Ctrl 和 Shift 键)
+    0 3: 处在数字小键盘
+
+- `KeyboardEvent.repeat`
+
+    返回一个布尔值, 代表该键是否被按着不放, 以便判断是否重复这个键, 即浏览器会持续触发 `keydown` 和 `keypress` 事件, 直到用户松开手为止
+
+KeyboardEvent 的实例方法
+^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- `KeyboardEvent.getModifierState()`
+
+    返回一个布尔值, 表示是否按下或激活指定的功能键
+
+    常用参数:
+
+    - `Alt`: Alt 键
+    - `CapsLock`: 大写锁定键
+    - `Control`: Ctrl 键
+    - `Meta`: Meta 键
+    - `NumLock`: 数字键盘开关键
+    - `Shift`: Shift 键
+
+    .. code-block:: javascript
+
+    if (
+        event.getModifierState('Control') +
+        event.getModifierState('Alt') +
+        event.getModifierState('Meta') > 1
+    ) {
+    return;
+    }
+    // 只要 Control, Alt, Meta 里面, 同时按下任意两个或两个以上的键就返回
+
+进度事件
+~~~~~~~~~~~~~
+
+进度事件用来描述资源加载的进度, 主要由 AJAX 请求, `<img>`, `<audio>`, `<video>`, `<style>`, `<link>` 等外部资源的加载触发, 继承了 `ProgressEvent` 接口
+
+主要包含以下几种事件:
+
+- `abort`: 外部资源中止加载时 (比如用户取消) 触发; 如果发生错误导致中止, 不会触发该事件
+- `error`: 由于错误导致外部资源无法加载时触发
+- `load`: 外部资源加载成功时触发
+- `loadstart`: 外部资源开始加载时触发
+- `loadend`: 外部资源停止加载时触发, 发生顺序排在 `error`, `abort`, `load` 等事件的后面
+- `progress`: 外部资源加载过程中不断触发
+- `timeout`: 加载超时时触发
+
+除了资源下载, 文件上传也存在这些事件
+
+.. code-block:: javascript
+
+    image.addEventListener('load', function (event) {
+    image.classList.add('finished');
+    });
+
+    image.addEventListener('error', function (event) {
+    image.style.display = 'none';
+    });
+    // 图片元素加载完成后, 为图片元素添加一个 finished 的 Class
+    // 如果加载失败, 就把图片元素的样式设置为不显示
+
+    // 有时候, 图片加载会在脚本运行之前就完成, 尤其是当脚本放置在网页底部的时候, 因此有可能 load 和 error 事件的监听函数根本不会执行
+    // 所以, 比较可靠的方式, 是用 complete 属性先判断一下是否加载完成
+
+    function loaded() {
+        // ...
+    }
+
+    if (image.complete) {
+        loaded();
+    } else {
+        image.addEventListener('load', loaded);
+    }
+
+由于 DOM 的元素节点没有提供是否加载错误的属性, 所以 error 事件的监听函数最好放在 `<img>` 元素的 HTML 代码中, 这样才能保证发生加载错误时百分之百会执行
+
+`loadend` 事件的监听函数可以用来取代 `abort` 事件, `load` 事件, `error` 事件的监听函数, 因为它总是在这些事件之后发生
+
+`loadend` 事件本身不提供关于进度结束的原因, 但可以用它来做所有加载结束场景都需要做的一些操作
+
+另外, `error` 事件有一个特殊的性质, 就是不会冒泡; 所以, 子元素的 `error` 事件, 不会触发父元素的 `error` 事件监听函数
+
+ProgressEvent 接口
+^^^^^^^^^^^^^^^^^^^^^
+
+`ProgressEvent` 接口主要用来描述外部资源加载的进度; 进度相关的事件都继承了这个接口
+
+浏览器原生提供了 `ProgressEvent()` 构造函数, 用来生成事件实例
+
+.. code-block:: javascript
+
+    new ProgressEvent(type, options)
+
+接受两个参数: 第一个参数是字符串, 表示事件的类型, 这个参数是必须的; 第二个参数是一个配置对象, 表示事件的属性, 该参数可选
+
+配置对象除了可以使用 `Event` 接口的配置属性, 还可以使用下面的可选属性:
+
+- lengthComputable: 布尔值, 表示加载的总量是否可以计算, 默认是 `false`
+- loaded: 整数, 表示已经加载的量, 默认是 `0`
+- total: 整数, 表示需要加载的总量, 默认是 `0`
+
+对应的实例属性:
+
+- `ProgressEvent.lengthComputable`
+- `ProgressEvent.loaded`
+- `ProgressEvent.total`
+
+如果 `ProgressEvent.lengthComputable` 为 `false`, `ProgressEvent.total` 实际上是没有意义的
+
+表单事件
+~~~~~~~~~~~~~~
+
+种类
+^^^^^^^^^^
+
+- `input` 事件
+
+    当 `<input>`, `<select>`, `<textarea>` 的值发生变化时触发; 对于复选框 (`<input type=checkbox>`) 或单选框 (`<input type=radio>`), 用户改变选项时也会触发这个事件; 另外, 对于打开 `contenteditable` 属性的元素, 只要值发生变化, 也会触发 `input` 事件
+
+    `input` 事件的一个特点就是会连续触发, 比如用户每按下一次按键, 就会触发一次 `input` 事件
+
+    `input` 事件对象继承了 `InputEvent` 接口
+
+    该事件跟 `change` 事件很像, 不同之处在于 `input` 事件在元素的值发生变化后立即发生, 而 `change` 在元素失去焦点时发生, 而内容此时可能已经变化多次; 也就是说, 如果有连续变化, `input` 事件会触发多次, 而 `change` 事件只在失去焦点时触发一次
+
+- `select` 事件
+
+    当在 `<input>`, `<textarea>` 里面选中文本时触发
+
+    选中的文本可以通过 `event.target` 元素的 `selectionDirection`, `selectionEnd`, `selectionStart` 和 `value` 属性拿到
+
+- `change` 事件
+
+    当 `<input>`, `<select>`, `<textarea>` 的值发生变化时触发
+
+    它与 `input` 事件的最大不同, 就是不会连续触发, 只有当全部修改完成时才会触发; 另一方面 `input` 事件必然伴随 `change` 事件
+
+    具体分成以下几种情况:
+
+    - 激活单选框 (radio) 或复选框 (checkbox) 时触发
+    - 用户提交时触发 (比如, 从下列列表 (select) 完成选择, 在日期或文件输入框完成选择)
+    - 当文本框或 `<textarea>` 元素的值发生改变, 并且丧失焦点时触发
+
+- `invalid` 事件
+
+    用户提交表单时, 如果表单元素的值不满足校验条件, 就会触发 `invalid` 事件
+
+- `reset` 事件, `submit` 事件
+
+    发生在表单对象 `<form>` 上, 而不是发生在表单的成员上
+
+    `reset` 事件当表单重置 (所有表单成员变回默认值) 时触发
+
+    `submit` 事件当表单数据向服务器提交时触发; `submit` 事件的发生对象是 `<form>` 元素, 而不是 `<button>` 元素, 因为提交的是表单, 而不是按钮
+
+InputEvent 接口
+^^^^^^^^^^^^^^^^^
+
+`InputEvent` 接口主要用来描述 `input` 事件的实例
+
+该接口继承了 `Event` 接口, 还定义了一些自己的实例属性和实例方法
+
+浏览器原生提供 `InputEvent()` 构造函数, 用来生成实例对象
+
+.. code-block:: javascript
+
+    new InputEvent(type, options)
+
+接受两个参数: 第一个参数是字符串, 表示事件名称, 该参数是必需的; 第二个参数是一个配置对象, 用来设置事件实例的属性, 可选
+
+配置对象的字段除了 `Event` 构造函数的配置属性, 还可以设置下面可选的只读字段:
+
+- `InputEvent.data`
+
+    返回一个字符串, 表示变动的内容; 如果没有插入的字符串 (比如删除操作), 则返回 `null` 或空字符串
+
+- `InputEvent.inputType`
+
+    返回一个字符串, 表示字符串发生变更的类型
+
+    对于常见情况, Chrome 浏览器的返回值如下
+
+    - 手动插入文本: `insertText`
+    - 粘贴插入文本: `insertFromPaste`
+    - 向后删除: `deleteContentBackward`
+    - 向前删除: `deleteContentForward`
+
+- `InputEvent.dataTransfer`
+
+    返回一个 DataTransfer 实例; 该属性只在文本框接受粘贴内容 (insertFromPaste) 或拖拽内容 (insertFromDrop) 时才有效
+
+
+触摸事件
+~~~~~~~~~~~~
+
+浏览器的触摸 API 由三个部分组成:
+
+- `Touch`: 一个触摸点, 包括位置, 大小, 形状, 压力, 目标元素等属性
+- `TouchList`: 多个触摸点的集合
+- `TouchEvent`: 触摸引发的事件实例; 只有触摸屏才会引发
+
+很多时候, 触摸事件和鼠标事件同时触发, 即使这个时候并没有用到鼠标; 这是为了让那些只定义鼠标事件, 没有定义触摸事件的代码, 在触摸屏的情况下仍然能用
+
+如果想避免这种情况, 可以用 `event.preventDefault` 方法阻止发出鼠标事件
+
+`Touch` 接口
+^^^^^^^^^^^^^^^
+
+Touch 接口代表单个触摸点; 触摸点可能是一根手指, 也可能是一根触摸笔
+
+浏览器原生提供 `Touch` 构造函数, 用来生成 `Touch` 实例
+
+.. code-block:: javascript
+
+    var touch = new Touch(touchOptions);
+
+接受一个配置对象作为参数, 有以下属性:
+
+- `identifier`: 必需, 类型为整数, 表示触摸点的唯一 ID
+- `target`: 必需, 类型为元素节点, 表示触摸点开始时所在的网页元素
+- `clientX`: 可选, 类型为数值, 表示触摸点相对于浏览器窗口左上角的水平距离, 默认为 `0`
+- `clientY`: 可选, 类型为数值, 表示触摸点相对于浏览器窗口左上角的垂直距离, 默认为 `0`
+- `screenX`: 可选, 类型为数值, 表示触摸点相对于屏幕左上角的水平距离, 默认为 `0`
+- `screenY`: 可选, 类型为数值, 表示触摸点相对于屏幕左上角的垂直距离, 默认为 `0`
+- `pageX`: 可选, 类型为数值, 表示触摸点相对于网页左上角的水平位置 (即包括页面的滚动距离) , 默认为 `0`
+- `pageY`: 可选, 类型为数值, 表示触摸点相对于网页左上角的垂直位置 (即包括页面的滚动距离) , 默认为 `0`
+- `radiusX`: 可选, 类型为数值, 表示触摸点周围受到影响的椭圆范围的 X 轴半径, 默认为 `0`
+- `radiusY`: 可选: 类型为数值, 表示触摸点周围受到影响的椭圆范围的 Y 轴半径, 默认为 `0`
+- `rotationAngle`: 可选, 类型为数值, 表示触摸区域的椭圆的旋转角度, 单位为度数, 在 `0` 到 `90` 度之间, 默认值为 `0`
+- `force`: 可选, 类型为数值, 范围在 `0` 到 `1` 之间, 表示触摸压力; `0` 代表没有压力, `1` 代表硬件所能识别的最大压力, 默认为 `0`
+
+Touch 接口的实例属性:
+
+ - `Touch.identifier`
+
+    返回一个整数, 表示触摸点的唯一 ID; 这个值在整个触摸过程保持不变, 直到触摸事件结束
+
+- `Touch.screenX`, `Touch.screenY`, `Touch.clientX`, `Touch.clientY`, `Touch.pageX`, `Touch.pageY`
+
+    `Touch.screenX` 属性和 `Touch.screenY` 属性, 分别表示触摸点相对于屏幕左上角的横坐标和纵坐标, 与页面是否滚动无关
+
+    `Touch.clientX` 属性和 `Touch.clientY` 属性, 分别表示触摸点相对于浏览器视口左上角的横坐标和纵坐标, 与页面是否滚动无关
+
+    `Touch.pageX` 属性和 `Touch.pageY` 属性, 分别表示触摸点相对于当前页面左上角的横坐标和纵坐标, 包含了页面滚动带来的位移
+
+- `Touch.radiusX`, `Touch.radiusY`, `Touch.rotationAngle`
+
+    `Touch.radiusX` 属性和 `Touch.radiusY` 属性, 分别返回触摸点周围受到影响的椭圆范围的 X 轴半径和 Y 轴半径, 单位为像素; 乘以 2 就可以得到触摸范围的宽度和高度
+
+    `Touch.rotationAngle` 属性表示触摸区域的椭圆的旋转角度, 单位为度数, 在 `0` 到 `90` 度之间
+
+    上面这三个属性共同定义了用户与屏幕接触的区域, 对于描述手指这一类非精确的触摸很有帮助
+
+    指尖接触屏幕, 触摸范围会形成一个椭圆, 这三个属性就用来描述这个椭圆区域
+
+- `Touch.force`
+
+    返回一个 `0` 到 `1` 之间的数值, 表示触摸压力
+
+    `0` 代表没有压力, `1` 代表硬件所能识别的最大压力
+
+- `Touch.target`
+
+    返回一个元素节点, 代表触摸发生时所在的那个元素节点; 即使触摸点已经离开了这个节点, 该属性依然不变
+
+`TouchList` 接口
+^^^^^^^^^^^^^^^^^^^^^
+
+`TouchList` 接口表示一组触摸点的集合
+
+它的实例是一个类数组对象, 成员是 `Touch` 的实例对象, 表示所有触摸点
+
+用户用三根手指触摸, 产生的 `TouchList` 实例就会包含三个成员, 每根手指的触摸点对应一个 `Touch` 实例对象
+
+它的实例主要通过触摸事件的 `TouchEvent.touches`, `TouchEvent.changedTouches`, `TouchEvent.targetTouches` 这几个属性获取
+
+实例属性:
+
+- `TouchList.length`: 数值, 表示成员数量 (即触摸点的数量)
+
+实例方法:
+
+- `TouchList.item()`: 返回指定位置的成员, 它的参数是该成员的位置编号 (从零开始)
+
+TouchEvent 接口
+^^^^^^^^^^^^^^^^^^^
+
+`TouchEvent` 接口继承了 `Event` 接口, 表示由触摸引发的事件实例, 通常来自触摸屏或轨迹板
+
+浏览器原生提供 `TouchEvent()` 构造函数, 用来生成触摸事件的实例
+
+.. code-block:: javascript
+
+    new TouchEvent(type, options)
+
+接受两个参数: 第一个参数是字符串, 表示事件类型; 第二个参数是事件的配置对象, 可选, 对象的所有属性也是可选的
+
+除了 `Event` 接口的配置属性, 该接口还有一些自己的配置属性:
+
+- `touches`: `TouchList` 实例, 代表所有的当前处于活跃状态的触摸点, 默认值是一个空数组 `[]`
+- `targetTouches`: `TouchList` 实例, 代表所有处在触摸的目标元素节点内部, 且仍然处于活动状态的触摸点, 默认值是一个空数组 `[]`
+- `changedTouches`: `TouchList` 实例, 代表本次触摸事件的相关触摸点, 默认值是一个空数组 `[]`
+- `ctrlKey`: 布尔值, 表示 Ctrl 键是否同时按下, 默认值为 `false`
+- `shiftKey`: 布尔值, 表示 Shift 键是否同时按下, 默认值为 `false`
+- `altKey`: 布尔值, 表示 Alt 键是否同时按下, 默认值为 `false`
+- `metaKey`: 布尔值, 表示 Meta 键 (或 Windows 键) 是否同时按下, 默认值为 `false`
+
+实例属性:
+
+`TouchEvent` 接口的实例具有 `Event` 实例的所有属性和方法, 此外还有一些它自己的只读属性:
+
+- `TouchEvent.altKey`, `TouchEvent.ctrlKey`, `TouchEvent.shiftKey`, `TouchEvent.metaKey`
+
+布尔值, 表示触摸时是否按下了 Alt 键, Ctrl 键, Shift 键, Meta 键 (或 Windows 键)
+
+- `TouchEvent.changedTouches`
+
+    返回一个 `TouchList` 实例, 成员是一组 `Touch` 实例对象, 表示本次触摸事件的相关触摸点
+
+    对于不同的时间, 该属性的含义有所不同:
+
+    - `touchstart`事件: 被激活的触摸点
+    - `touchmove`事件: 发生变化的触摸点
+    - `touchend`事件: 消失的触摸点 (即不再被触碰的点)
+
+- `TouchEvent.touches`
+
+    返回一个 `TouchList` 实例, 成员是所有仍然处于活动状态 (即触摸中) 的触摸点
+
+    .. code-block:: javascript
+
+        someElement.addEventListener('touchstart', function (e) {
+            switch (e.touches.length) {
+                // 一根手指触摸
+                case 1: handle_one_touch(e); break;
+                // 两根手指触摸
+                case 2: handle_two_touches(e); break;
+                // 三根手指触摸
+                case 3: handle_three_touches(e); break;
+                // 其他情况
+                default: console.log('Not supported'); break;
+            }
+        }, false);
+
+- `TouchEvent.targetTouches`
+
+    返回一个 `TouchList` 实例, 成员是触摸事件的目标元素节点内部所有仍然处于活动状态 (即触摸中) 的触摸点
+
+触摸事件的种类
+^^^^^^^^^^^^^^^^^^
+
+可以通过 `TouchEvent.type` 属性查看触摸引发的事件:
+
+- `touchstart`: 用户开始触摸时触发, 它的 `target` 属性返回发生触摸的元素节点
+- `touchend`: 用户不再接触触摸屏时 (或者移出屏幕边缘时) 触发, 它的 `target` 属性与 `touchstart` 事件一致的, 就是开始触摸时所在的元素节点; 它的 `changedTouches` 属性返回一个 `TouchList` 实例, 包含所有不再触摸的触摸点 (即 `Touch` 实例对象)
+- `touchmove`: 用户移动触摸点时触发, 它的 `target` 属性与 `touchstart` 事件一致; 如果触摸的半径, 角度, 力度发生变化, 也会触发该事件
+- `touchcancel`: 触摸点取消时触发, 比如在触摸区域跳出一个模态窗口 (modal window), 触摸点离开了文档区域 (进入浏览器菜单栏), 用户的触摸点太多, 超过了支持的上限 (自动取消早先的触摸点)
+
+
+
+
+
+
+
+
+
+
 
 
 浏览器如何执行 Javascript
