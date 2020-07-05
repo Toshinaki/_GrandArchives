@@ -104,7 +104,7 @@ Docker 架构
     :scale: 50%
     :align: right
 
-Docker 是 C/S 架构, 命令行运行 `docker` 命令的时候, 需要本机有 Docker 服务
+Docker 是 Client/Server 架构, 命令行运行 `docker` 命令的时候, 需要本机有 Docker 服务
 
 Docker 客户端与 Docker 服务器进行交互, Docker服务端负责构建, 运行和分发 Docker 镜像; Docker 客户端和服务端可以运行在一台机器上, 也可以通过 RESTful, stock 或网络接口与远程 Docker 服务端进行通信
 
@@ -122,6 +122,75 @@ Docker 客户端与 Docker 服务器进行交互, Docker服务端负责构建, �
 1. 提供一次性的环境
 2. 提供弹性的云服务
 3. 组建微服务架构
+
+Install
+--------
+
+Install on Ubuntu
+~~~~~~~~~~~~~~~~~~~~
+
+Prerequisites
+^^^^^^^^^^^^^^^
+
+1. OS requirements
+
+    64-bit version Ubuntu
+    
+2. Uninstall old versions
+    
+    .. code-block:: console
+        
+        $ sudo apt-get remove docker docker-engine docker.io containerd runc
+
+Install
+^^^^^^^^^^
+
+1. Set up the Docker repository
+    
+    1. Update the `apt` package index and install packages to allow `apt` to use a repository over HTTPS:
+    
+        .. code-block:: console
+
+            $ sudo apt-get update
+
+            $ sudo apt-get install \
+                apt-transport-https \
+                ca-certificates \
+                curl \
+                gnupg-agent \
+                software-properties-common
+                
+    2. Add Docker’s official GPG key, then verify
+        
+        .. code-block:: console
+        
+            $ curl -fsSL https://download.docker.com/linux/ubuntu/gpg | sudo apt-key add -
+            
+            $ sudo apt-key fingerprint 0EBFCD88
+     
+    3. Set up the stable repository
+        
+        .. code-block:: console
+        
+            $ sudo add-apt-repository \
+               "deb [arch=amd64] https://download.docker.com/linux/ubuntu \
+               $(lsb_release -cs) \
+               stable"
+
+2. Install Docker engine
+    
+    1. Update the `apt` package index, and install the latest version of Docker Engine and containerd
+    
+        .. code-block:: console
+        
+            $ sudo apt-get update
+            $ sudo apt-get install docker-ce docker-ce-cli containerd.io
+    
+    2. Verify that Docker Engine is installed correctly by running the `hello-world` image
+    
+        .. code-block:: console
+        
+            $ sudo docker run hello-world
 
 
 Detailed
