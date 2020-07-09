@@ -11548,7 +11548,686 @@ TouchEvent 接口
 - `touchcancel`: 触摸点取消时触发, 比如在触摸区域跳出一个模态窗口 (modal window), 触摸点离开了文档区域 (进入浏览器菜单栏), 用户的触摸点太多, 超过了支持的上限 (自动取消早先的触摸点)
 
 
+拖拉事件
+~~~~~~~~~~~~~
 
+种类
+^^^^^^^^^
+
+拖拉 (drag) 指的是, 用户在某个对象上按下鼠标键不放, 拖动它到另一个位置, 然后释放鼠标键, 将该对象放在那里
+
+拖拉的对象有好几种, 包括元素节点, 图片, 链接, 选中的文字等等; 在网页中, 除了元素节点默认不可以拖拉, 其他 (图片, 链接, 选中的文字) 都是可以直接拖拉的
+
+为了让元素节点可拖拉, 可以将该节点的 `draggable` 属性设为 `true`
+
+.. code-block:: html
+
+    <div draggable="true">
+        此区域可拖拉
+    </div>
+
+`draggable` 属性可用于任何元素节点, 但是图片 (`<img>`) 和链接 (`<a>`) 不加这个属性就可以拖拉; 对于它们, 用到这个属性的时候, 往往是将其设为 `false`, 防止拖拉这两种元素
+
+.. attention::
+
+    一旦某个元素节点的 `draggable` 属性设为 `true`, 就无法再用鼠标选中该节点内部的文字或子节点了
+
+当元素节点或选中的文本被拖拉时, 就会持续触发拖拉事件, 包括以下一些事件:
+
+- `drag`: 拖拉过程中, 在被拖拉的节点上持续触发 (相隔几百毫秒)
+- `dragstart`: 用户开始拖拉时, 在被拖拉的节点上触发, 该事件的 `target` 属性是被拖拉的节点; 通常应该在这个事件的监听函数中, 指定拖拉的数据
+- `dragend`: 拖拉结束时 (释放鼠标键或按下 ESC 键) 在被拖拉的节点上触发, 该事件的 `target` 属性是被拖拉的节点; 它与 `dragstart` 事件在同一个节点上触发; 不管拖拉是否跨窗口, 或者中途被取消, `dragend` 事件总是会触发的
+- `dragenter`: 拖拉进入当前节点时, 在当前节点上触发一次, 该事件的 `target` 属性是当前节点; 通常应该在这个事件的监听函数中, 指定是否允许在当前节点放下 (drop) 拖拉的数据; 如果当前节点没有该事件的监听函数, 或者监听函数不执行任何操作, 就意味着不允许在当前节点放下数据; 在视觉上显示拖拉进入当前节点, 也是在这个事件的监听函数中设置
+- `dragover`: 拖拉到当前节点上方时, 在当前节点上持续触发 (相隔几百毫秒), 该事件的 `target` 属性是当前节点; 该事件与dragenter事件的区别是: `dragenter` 事件在进入该节点时触发, 而只要没有离开这个节点, `dragover`事件会持续触发
+- `dragleave`: 拖拉操作离开当前节点范围时, 在当前节点上触发, 该事件的 `target` 属性是当前节点; 如果要在视觉上显示拖拉离开操作当前节点, 就在这个事件的监听函数中设置
+- `drop`: 被拖拉的节点或选中的文本释放到目标节点时, 在目标节点上触发; 如果当前节点不允许 `drop`, 即使在该节点上方松开鼠标键, 也不会触发该事件; 如果用户按下 ESC 键, 取消这个操作, 也不会触发该事件; 该事件的监听函数负责取出拖拉数据, 并进行相关处理
+
+
+.. code-block:: javascript
+
+    // 动态改变被拖动节点的背景色
+
+    div.addEventListener('dragstart', function (e) {
+        this.style.backgroundColor = 'red';
+    }, false);
+
+    div.addEventListener('dragend', function (e) {
+        this.style.backgroundColor = 'green';
+    }, false);
+
+.. code-block:: javascript
+
+    // 将一个节点从当前父节点拖拉到另一个父节点中
+
+    /* HTML 代码如下
+    <div class="dropzone">
+        <div id="draggable" draggable="true">
+            该节点可拖拉
+        </div>
+    </div>
+    <div class="dropzone"></div>
+    <div class="dropzone"></div>
+    <div class="dropzone"></div>
+    */
+
+    // 被拖拉节点
+    var dragged;
+
+    document.addEventListener('dragstart', function (event) {
+        // 保存被拖拉节点
+        dragged = event.target;
+        // 被拖拉节点的背景色变透明
+        event.target.style.opacity = 0.5;
+    }, false);
+
+    document.addEventListener('dragend', function (event) {
+        // 被拖拉节点的背景色恢复正常
+        event.target.style.opacity = '';
+    }, false);
+
+    document.addEventListener('dragover', function (event) {
+        // 防止拖拉效果被重置, 允许被拖拉的节点放入目标节点
+        event.preventDefault();
+    }, false);
+
+    document.addEventListener('dragenter', function (event) {
+        // 目标节点的背景色变紫色
+        // 由于该事件会冒泡, 所以要过滤节点
+        if (event.target.className === 'dropzone') {
+            event.target.style.background = 'purple';
+        }
+    }, false);
+
+    document.addEventListener('dragleave', function( event ) {
+        // 目标节点的背景色恢复原样
+        if (event.target.className === 'dropzone') {
+            event.target.style.background = '';
+        }
+    }, false);
+
+    document.addEventListener('drop', function( event ) {
+        // 防止事件默认行为 (比如某些元素节点上可以打开链接) ,
+        event.preventDefault();
+        if (event.target.className === 'dropzone') {
+            // 恢复目标节点背景色
+            event.target.style.background = '';
+            // 将被拖拉节点插入目标节点
+            dragged.parentNode.removeChild(dragged);
+            event.target.appendChild( dragged );
+        }
+    }, false);
+
+.. attention::
+
+    - 拖拉过程只触发以上这些拖拉事件, 尽管鼠标在移动, 但是鼠标事件不会触发
+    - 将文件从操作系统拖拉进浏览器, 不会触发 `dragstart` 和 `dragend` 事件。
+    - `dragenter` 和 `dragover` 事件的监听函数用来取出拖拉的数据 (即允许放下被拖拉的元素); 由于网页的大部分区域不适合作为放下拖拉元素的目标节点, 所以这两个事件的默认设置为当前节点不允许接受被拖拉的元素; 如果想要在目标节点上放下的数据, 首先必须阻止这两个事件的默认行为
+
+    .. code-block:: javascript
+
+        <div ondragover="return false">
+        <div ondragover="event.preventDefault()">
+
+DragEvent 接口
+^^^^^^^^^^^^^^^^^
+
+拖拉事件都继承了 `DragEvent` 接口, 这个接口又继承了 `MouseEvent` 接口和 `Event` 接口
+
+浏览器原生提供一个 `DragEvent()` 构造函数, 用来生成拖拉事件的实例对象
+
+.. code-block:: javascript
+
+    new DragEvent(type, options)
+
+`DragEvent()` 构造函数接受两个参数: 第一个参数是字符串, 表示事件的类型, 必须; 第二个参数是事件的配置对象, 用来设置事件的属性, 可选
+
+配置对象除了接受 `MouseEvent` 接口和 `Event` 接口的配置属性, 还可以设置 `dataTransfer` 属性为 `null` 或者一个 `DataTransfer` 接口的实例
+
+`DataTransfer` 的实例对象用来读写拖拉事件中传输的数据
+
+DataTransfer 接口
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+所有拖拉事件的实例都有一个 `DragEvent.dataTransfer` 属性, 用来读写需要传递的数据; 这个属性的值是一个 `DataTransfer` 接口的实例
+
+浏览器原生提供一个 `DataTransfer()` 构造函数, 用来生成 `DataTransfer` 实例对象
+
+.. code-block:: javascript
+
+    var dataTrans = new DataTransfer();
+
+`DataTransfer()` 构造函数不接受参数
+
+拖拉的数据分成两方面: 数据的种类 (又称格式) 和数据的值
+
+数据的种类是一个 MIME 字符串 (比如 `text/plain`, `image/jpeg`); 数据的值是一个字符串
+
+一般来说, 如果拖拉一段文本, 则数据默认就是那段文本; 如果拖拉一个链接, 则数据默认就是链接的 URL
+
+拖拉事件开始时, 开发者可以提供数据类型和数据值; 拖拉过程中, 开发者通过 `dragenter` 和 `dragover` 事件的监听函数, 检查数据类型, 以确定是否允许放下 (drop) 被拖拉的对象
+
+发生 `drop` 事件时, 监听函数取出拖拉的数据, 对其进行处理
+
+DataTransfer 的实例属性
+^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- `DataTransfer.dropEffect`
+
+    设置放下 (drop) 被拖拉节点时的效果, 会影响到拖拉经过相关区域时鼠标的形状; 可能的值:
+
+    - copy: 复制被拖拉的节点
+    - move: 移动被拖拉的节点
+    - link: 创建指向被拖拉的节点的链接
+    - none: 无法放下被拖拉的节点
+
+    `dropEffect` 属性一般在 `dragenter` 和 `dragover` 事件的监听函数中设置, 对于`dragstart`, `drag`, `dragleave` 这三个事件, 该属性不起作用; 因为该属性只对接受被拖拉的节点的区域有效, 对被拖拉的节点本身是无效的; 进入目标区域后, 拖拉行为会初始化成设定的效果
+
+- `DataTransfer.effectAllowed`
+
+    设置本次拖拉中允许的效果; 可能的值:
+
+    - copy: 复制被拖拉的节点
+    - move: 移动被拖拉的节点
+    - link: 创建指向被拖拉节点的链接
+    - copyLink: 允许 `copy` 或 `link`
+    - copyMove: 允许 `copy` 或 `move`
+    - linkMove: 允许 `link` 或 `move`
+    - all: 允许所有效果
+    - none: 无法放下被拖拉的节点
+    - uninitialized: 默认值, 等同于 `all`
+
+    如果某种效果是不允许的, 用户就无法在目标节点中达成这种效果
+
+    这个属性与 `dropEffect` 属性是同一件事的两个方面: 前者设置被拖拉的节点允许的效果, 后者设置接受拖拉的区域的效果, 它们往往配合使用
+
+    `dragstart` 事件的监听函数可以用来设置这个属性; 其他事件的监听函数里面设置这个属性是无效的
+
+    只要 `dropEffect` 属性和 `effectAllowed` 属性之中有一个为 `none`, 就无法在目标节点上完成 `drop` 操作
+
+- `DataTransfer.files`
+
+    一个 FileList 对象, 包含一组本地文件, 可以用来在拖拉操作中传送; 如果本次拖拉不涉及文件, 则该属性为空的 FileList 对象
+
+    .. code-block:: javascript
+
+        接收拖拉文件
+
+        // HTML 代码如下
+        // <div id="output" style="min-height: 200px;border: 1px solid black;">
+        //   文件拖拉到这里
+        // </div>
+
+        var div = document.getElementById('output');
+
+        div.addEventListener("dragenter", function( event ) {
+            div.textContent = '';
+            event.stopPropagation();
+            event.preventDefault();
+        }, false);
+
+        div.addEventListener("dragover", function( event ) {
+            event.stopPropagation();
+            event.preventDefault();
+        }, false);
+
+        div.addEventListener("drop", function( event ) {
+            event.stopPropagation();
+            event.preventDefault();
+            var files = event.dataTransfer.files;
+            for (var i = 0; i < files.length; i++) {
+                div.textContent += files[i].name + ' ' + files[i].size + '字节\n';
+            }
+        }, false);
+
+        // 通过 dataTransfer.files 属性读取被拖拉的文件的信息
+
+        // 要读取文件内容, 就要使用 FileReader 对象
+
+        div.addEventListener('drop', function(e) {
+            e.preventDefault();
+            e.stopPropagation();
+
+            var fileList = e.dataTransfer.files;
+            if (fileList.length > 0) {
+                var file = fileList[0];
+                var reader = new FileReader();
+                reader.onloadend = function(e) {
+                if (e.target.readyState === FileReader.DONE) {
+                    var content = reader.result;
+                    div.innerHTML = 'File: ' + file.name + '\n\n' + content;
+                }
+                }
+                reader.readAsBinaryString(file);
+            }
+        });
+
+- `DataTransfer.types`
+
+    一个只读的数组, 每个成员是一个字符串, 里面是拖拉的数据格式 (通常是 MIME 值)
+
+    .. code-block:: javascript
+
+        // 通过检查 dataTransfer 属性的类型, 决定是否允许在当前节点执行 drop 操作
+
+        function contains(list, value){
+            for (var i = 0; i < list.length; ++i) {
+                if(list[i] === value) return true;
+            }
+            return false;
+        }
+
+        function doDragOver(event) {
+            var isLink = contains(event.dataTransfer.types, 'text/uri-list');
+            if (isLink) event.preventDefault();
+        }
+
+- `DataTransfer.items`
+
+    返回一个类数组的只读对象 (`DataTransferItemList` 实例), 每个成员就是本次拖拉的一个对象 (`DataTransferItem` 实例); 如果本次拖拉不包含对象, 则返回一个空对象
+
+    `DataTransferItemList` 实例具有以下的属性和方法:
+
+    - `length`: 返回成员的数量
+    - `add(data, type)`: 增加一个指定内容和类型 (比如 `text/html` 和 `text/plain`) 的字符串作为成员
+    - `add(file)`: `add` 方法的另一种用法, 增加一个文件作为成员
+    - `remove(index)`: 移除指定位置的成员
+    - `clear()`: 移除所有的成员
+
+    `DataTransferItem` 实例具有以下的属性和方法:
+
+    - `kind`: 返回成员的种类 (`string` 还是 `file`)
+    - `type`: 返回成员的类型 (通常是 MIME 值)
+    - `getAsFile()`: 如果被拖拉是文件, 返回该文件, 否则返回 `null`
+    - `getAsString(callback)`: 如果被拖拉的是字符串, 将该字符传入指定的回调函数处理; 该方法是异步的, 所以需要传入回调函数
+
+DataTransfer 的实例方法
+^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+- `DataTransfer.setData()`
+
+    用来设置拖拉事件所带有的数据; 没有返回值
+
+    .. code-block:: javascript
+
+        event.dataTransfer.setData('text/plain', 'Text to drag');
+
+    接受两个参数, 都是字符串: 第一个参数表示数据类型, 第二个参数是具体数据; 如果指定类型的数据在 `dataTransfer` 属性不存在, 那么这些数据将被加入, 否则原有的数据将被新数据替换
+
+    如果是拖拉文本框或者拖拉选中的文本, 会默认将对应的文本数据添加到 `dataTransfer` 属性, 不用手动指定
+
+    .. code-block:: javascript
+
+        <div draggable="true">
+            aaa
+        </div>
+        // 拖拉这个 <div> 元素会自动带上文本数据 aaa
+
+        // 使用 setData 方法可以替换原有数据
+        <div
+            draggable="true"
+            ondragstart="event.dataTransfer.setData('text/plain', 'bbb')"
+        >
+            aaa
+        </div>
+
+    由于 `text/plain` 是最普遍支持的格式, 为了保证兼容性, 建议最后总是保存一份纯文本格式的数据
+
+    .. code-block:: javascript
+
+        var dt = event.dataTransfer;
+
+        // 添加链接
+        dt.setData('text/uri-list', 'http://www.example.com');
+        dt.setData('text/plain', 'http://www.example.com');
+
+        // 添加 HTML 代码
+        dt.setData('text/html', 'Hello there, <strong>stranger</strong>');
+        dt.setData('text/plain', 'Hello there, <strong>stranger</strong>');
+
+        // 添加图像的 URL
+        dt.setData('text/uri-list', imageurl);
+        dt.setData('text/plain', imageurl);
+
+- `DataTransfer.getData()`
+
+    接受一个字符串 (表示数据类型) 作为参数, 返回事件所带的指定类型的数据 (通常是用 `setData` 方法添加的数据); 如果指定类型的数据不存在, 则返回空字符串
+
+    通常只有 `drop` 事件触发后才能取出数据
+
+- `DataTransfer.clearData()`
+
+    接受一个字符串 (表示数据类型) 作为参数, 删除事件所带的指定类型的数据; 如果没有指定类型, 则删除所有数据; 如果指定类型不存在, 则调用该方法不会产生任何效果
+
+    该方法不会移除拖拉的文件, 因此调用该方法后, `DataTransfer.types` 属性可能依然会返回 `Files` 类型 (前提是存在文件拖拉)
+
+    .. attention::
+
+        该方法只能在 `dragstart` 事件的监听函数之中使用, 因为这是拖拉操作的数据唯一可写的时机
+
+- `DataTransfer.setDragImage()`
+
+    拖动过程中 (`dragstart` 事件触发后), 浏览器会显示一张图片跟随鼠标一起移动, 表示被拖动的节点。这张图片是自动创造的, 通常显示为被拖动节点的外观, 不需要自己动手设置
+
+    `DataTransfer.setDragImage()` 方法可以自定义这张图片; 接受三个参数: 第一个是 `<img>` 节点或者 `<canvas>` 节点, 如果省略或为 `null`, 则使用被拖动的节点的外观; 第二个和第三个参数为鼠标相对于该图片左上角的横坐标和右坐标。
+
+    .. code-block:: javascript
+
+        /* HTML 代码如下
+        <div id="drag-with-image" class="dragdemo" draggable="true">
+            drag me
+        </div>
+        */
+
+        var div = document.getElementById('drag-with-image');
+        div.addEventListener('dragstart', function (e) {
+            var img = document.createElement('img');
+            img.src = 'http://path/to/img';
+            e.dataTransfer.setDragImage(img, 0, 0);
+        }, false);
+
+其他常见事件
+~~~~~~~~~~~~~~~
+
+资源事件
+^^^^^^^^^^^^^^
+
+- `beforeunload` 事件
+
+    在窗口, 文档, 各种资源将要卸载前触发; 可以用来防止用户不小心卸载资源
+
+    如果该事件对象的 `returnValue` 属性是一个非空字符串, 那么浏览器就会弹出一个对话框, 询问用户是否要卸载该资源; 但是, 用户指定的字符串可能无法显示, 浏览器会展示预定义的字符串; 如果用户点击 "取消" 按钮, 资源就不会卸载
+
+    .. code-block:: javascript
+
+        window.addEventListener('beforeunload', function (event) {
+            event.returnValue = '你确定离开吗？';
+        });
+
+    浏览器对这个事件的行为很不一致, 有的浏览器调用 `event.preventDefault()` 也会弹出对话框; 而且, 大多数浏览器在对话框中不显示指定文本, 只显示默认文本; 因此可以采用下面的写法, 取得最大的兼容性:
+
+    .. code-block:: javascript
+
+        window.addEventListener('beforeunload', function (e) {
+            var confirmationMessage = '确认关闭窗口？';
+
+            e.returnValue = confirmationMessage;
+            return confirmationMessage;
+        });
+
+    .. attention::
+
+        许多手机浏览器 (比如 Safari) 默认忽略这个事件, 桌面浏览器也有办法忽略这个事件; 所以它可能根本不会生效, 不能依赖它来阻止用户关闭浏览器窗口, 最好不要使用这个事件
+
+        另外, 一旦使用了 `beforeunload` 事件, 浏览器就不会缓存当前网页, 使用 "回退" 按钮将重新向服务器请求网页; 这是因为监听这个事件的目的, 一般是为了网页状态, 这时缓存页面的初始状态就没意义了
+
+- `unload` 事件
+
+    在窗口关闭或者 `document` 对象将要卸载时触发; 它的触发顺序排在 `beforeunload`, `pagehide` 事件后面
+
+    `unload` 事件发生时, 文档处于一个特殊状态; 所有资源依然存在, 但是对用户来说都不可见, UI 互动全部无效
+
+    这个事件是无法取消的, 即使在监听函数里面抛出错误, 也不能停止文档的卸载
+
+    .. code-block:: javascript
+
+        window.addEventListener('unload', function(event) {
+            console.log('文档将要卸载');
+        });
+
+    手机上, 浏览器或系统可能会直接丢弃网页, 这时该事件根本不会发生; 而且跟 `beforeunload` 事件一样, 一旦使用了 `unload` 事件, 浏览器就不会缓存当前网页; 因此, 任何情况下都不应该依赖这个事件, 指定网页卸载时要执行的代码, 可以考虑完全不使用这个事件
+
+    该事件可以用 `pagehide` 代替
+
+- `load` 事件, `error` 事件, `abort` 事件
+
+    `load` 事件在页面或某个资源加载成功时触发; 页面或资源从浏览器缓存加载, 并不会触发 `load` 事件
+
+    `error` 事件在页面或资源加载失败时触发
+
+    `abort` 事件在用户取消加载时触发
+
+    这三个事件实际上属于进度事件, 不仅发生在 `document` 对象, 还发生在各种外部资源上面; 浏览网页就是一个加载各种资源的过程, 图像 (image), 样式表 (style sheet), 脚本 (script), 视频 (video), 音频 (audio), Ajax 请求 (XMLHttpRequest) 等等; 这些资源和 `document` 对象, `window` 对象, `XMLHttpRequestUpload` 对象, 都会触发 `load` 事件和 `error` 事件
+
+    页面的 `load` 事件也可以用 `pageshow` 事件代替
+
+session 历史事件
+^^^^^^^^^^^^^^^^^^^^^^
+
+- `pageshow` 事件
+
+    默认情况下, 浏览器会在当前会话 (session) 缓存页面, 当用户点击 "前进/后退" 按钮时, 浏览器就会从缓存中加载页面
+
+    `pageshow` 事件在页面加载时触发, 包括第一次加载和从缓存加载两种情况; 如果要指定页面每次加载 (不管是不是从浏览器缓存) 时都运行的代码, 可以放在这个事件的监听函数
+
+    第一次加载时, 它的触发顺序排在 `load` 事件后面; 从缓存加载时, `load` 事件不会触发, 因为网页在缓存中的样子通常是 `load` 事件的监听函数运行后的样子, 所以不必重复执行; 同理, 如果是从缓存中加载页面, 网页内初始化的 JavaScript 脚本 (比如 DOMContentLoaded 事件的监听函数) 也不会执行
+
+    `pageshow` 事件有一个 `persisted` 属性, 返回一个布尔值; 页面第一次加载时, 这个属性是 `false`; 当页面从缓存加载时, 这个属性是 `true`
+
+- `pagehide` 事件
+
+    `pagehide` 事件与 `pageshow` 事件类似, 当用户通过 "前进/后退" 按钮离开当前页面时触发; 它与 `unload` 事件的区别在于: 在 `window` 对象上定义 `unload` 事件的监听函数之后, 页面不会保存在缓存中, 而使用 `pagehide` 事件, 页面会保存在缓存中
+
+    `pagehide` 事件实例也有一个 `persisted` 属性, 将这个属性设为 `true`, 就表示页面要保存在缓存中; 设为 `false`, 表示网页不保存在缓存中, 这时如果设置了 `unload` 事件的监听函数, 该函数将在 `pagehide` 事件后立即运行
+
+    如果页面包含 `<frame>` 或 `<iframe>` 元素, 则 `<frame>` 页面的 `pageshow` 事件和 `pagehide` 事件, 都会在主页面之前触发
+
+    .. attention::
+
+        `pageshow` 事件和`pagehide` 事件只在浏览器的 `history` 对象发生变化时触发, 跟网页是否可见没有关系
+
+- `popstate` 事件
+
+    在浏览器的 `history` 对象的当前记录发生显式切换时触发; 注意, 调用 `history.pushState()` 或 `history.replaceState()`, 并不会触发 `popstate` 事件; 该事件只在用户在 `history` 记录之间显式切换时触发, 比如鼠标点击 "后退/前进" 按钮, 或者在脚本中调用 `history.back()`, `history.forward()`, `history.go()`时触发
+
+    该事件对象有一个 `state` 属性, 保存 `history.pushState` 方法和 `history.replaceState` 方法为当前记录添加的 `state` 对象
+
+    .. code-block:: javascript
+
+        window.onpopstate = function (event) {
+        console.log('state: ' + event.state);
+        };
+        history.pushState({page: 1}, 'title 1', '?page=1');
+        history.pushState({page: 2}, 'title 2', '?page=2');
+        history.replaceState({page: 3}, 'title 3', '?page=3');
+        history.back(); // state: {"page":1}
+        history.back(); // state: null
+        history.go(2);  // state: {"page":3}
+
+    浏览器对于页面首次加载是否触发 `popstate` 事件处理不一样, Firefox 不触发该事件
+
+- `hashchange` 事件
+
+    在 URL 的 hash 部分 (即 `#` 号后面的部分, 包括 `#` 号) 发生变化时触发; 该事件一般在 `window` 对象上监听
+
+    `hashchange` 的事件实例具有两个特有属性: `oldURL` 属性和 `newURL` 属性, 分别表示变化前后的完整 URL
+
+    .. code-block:: javascript
+
+        // URL 是 http://www.example.com/
+        window.addEventListener('hashchange', myFunction);
+
+        function myFunction(e) {
+            console.log(e.oldURL);
+            console.log(e.newURL);
+        }
+
+        location.hash = 'part2';
+        // http://www.example.com/
+        // http://www.example.com/#part2
+
+网页状态事件
+^^^^^^^^^^^^^^^^^^
+
+- `DOMContentLoaded` 事件
+
+    网页下载并解析完成以后, 浏览器就会在 `document` 对象上触发 `DOMContentLoaded` 事件; 这时仅仅完成了网页的解析 (整张页面的 DOM 生成了), 所有外部资源 (样式表, 脚本, iframe 等等) 可能还没有下载结束
+
+    也就是说, 这个事件比 `load` 事件发生时间早得多
+
+    .. attention::
+
+        网页的 JavaScript 脚本是同步执行的, 脚本一旦发生堵塞, 将推迟触发 `DOMContentLoaded` 事件
+
+- `readystatechange` 事件
+
+    当 `Document` 对象和 `XMLHttpRequest` 对象的 `readyState` 属性发生变化时触发; `document.readyState` 有三个可能的值: `loading` (网页正在加载), `interactive` (网页已经解析完成, 但是外部资源仍然处在加载状态) 和 `complete` (网页和所有外部资源已经结束加载, `load` 事件即将触发)
+
+    这个事件可以看作 `DOMContentLoaded` 事件的另一种实现方法
+
+窗口事件
+^^^^^^^^^^^^^^^^
+
+- `scroll` 事件
+
+    在文档或文档元素滚动时触发, 主要出现在用户拖动滚动条
+
+    该事件会连续地大量触发, 所以它的监听函数之中不应该有非常耗费计算的操作; 推荐的做法是使用 `requestAnimationFrame` 或 `setTimeout` 控制该事件的触发频率, 然后可以结合 `customEvent` 抛出一个新事件
+
+    .. code-block:: javascript
+
+        (function () {
+            var throttle = function (type, name, obj) {
+                var obj = obj || window;
+                var running = false;
+                var func = function () {
+                    if (running) { return; }
+                    running = true;
+                    requestAnimationFrame(function() {
+                        obj.dispatchEvent(new CustomEvent(name));
+                        running = false;
+                    });
+                };
+                obj.addEventListener(type, func);
+            };
+
+            // 将 scroll 事件重定义为 optimizedScroll 事件
+            throttle('scroll', 'optimizedScroll');
+        })();
+
+        window.addEventListener('optimizedScroll', function() {
+            console.log('Resource conscious scroll callback!');
+        });
+        // throttle 函数用于控制事件触发频率, requestAnimationFrame 方法保证每次页面重绘 (每秒60次), 只会触发一次scroll事件的监听函数
+        // 也就是说, 上面方法将 scroll 事件的触发频率限制在每秒 60 次
+        // 具体来说, 就是 scroll 事件只要频率低于每秒 60 次, 就会触发 optimizedScroll 事件, 从而执行 optimizedScroll 事件的监听函数
+
+        // 改用 setTimeout 方法, 可以放置更大的时间间隔
+        (function() {
+            window.addEventListener('scroll', scrollThrottler, false);
+
+            var scrollTimeout;
+            function scrollThrottler() {
+                if (!scrollTimeout) {
+                scrollTimeout = setTimeout(function () {
+                    scrollTimeout = null;
+                    actualScrollHandler();
+                }, 66);
+                }
+            }
+
+            function actualScrollHandler() {
+                // ...
+            }
+        }());
+        // 每次 scroll 事件都会执行 scrollThrottler 函数
+        // 该函数里面有一个定时器 setTimeout, 每 66 毫秒触发一次 (每秒15次) 真正执行的任务 actualScrollHandler
+
+        // 更一般的 throttle 函数的写法
+
+        function throttle(fn, wait) {
+            var time = Date.now();
+            return function() {
+                if ((time + wait - Date.now()) < 0) {
+                fn();
+                time = Date.now();
+                }
+            }
+        }
+
+        window.addEventListener('scroll', throttle(callback, 1000));
+        // 上面的代码将 scroll 事件的触发频率限制在一秒一次
+
+        // lodash 函数库提供了现成的 throttle 函数, 可以直接使用
+        window.addEventListener('scroll', _.throttle(callback, 1000));
+
+- `resize` 事件
+
+    改变浏览器窗口大小时触发, 主要发生在 `window` 对象上面
+
+    该事件也会连续地大量触发, 所以最好像 scroll 事件一样, 通过 throttle 函数控制事件触发频率
+
+- `fullscreenchange` 事件, `fullscreenerror` 事件
+
+    `fullscreenchange` 事件在进入或退出全屏状态时触发, 该事件发生在document对象上面
+
+    `fullscreenerror` 事件在浏览器无法切换到全屏状态时触发
+
+剪贴板事件
+^^^^^^^^^^^^^^
+
+- `cut`: 将选中的内容从文档中移除, 加入剪贴板时触发
+- `copy`: 进行复制动作时触发
+- `paste`: 剪贴板内容粘贴到文档后触发
+
+这三个事件都是 `ClipboardEvent` 接口的实例
+
+`ClipboardEvent` 有一个实例属性 `clipboardData`, 是一个 `DataTransfer` 对象, 存放剪贴的数据
+
+.. code-block:: javascript
+
+    document.addEventListener('copy', function (e) {
+        e.clipboardData.setData('text/plain', 'Hello, world!');
+        e.clipboardData.setData('text/html', '<b>Hello, world!</b>');
+        e.preventDefault();
+    });
+
+焦点事件
+^^^^^^^^^^^^^^^
+
+焦点事件发生在元素节点和 `document` 对象上面, 与获得或失去焦点相关
+
+主要包括以下四个事件:
+
+- `focus`: 元素节点获得焦点后触发, 该事件不会冒泡
+- `blur`: 元素节点失去焦点后触发, 该事件不会冒泡
+- `focusin`: 元素节点将要获得焦点时触发, 发生在 `focus` 事件之前; 该事件会冒泡
+- `focusout`: 元素节点将要失去焦点时触发, 发生在 `blur` 事件之前; 该事件会冒泡
+
+这四个事件都继承了 `FocusEvent`接口
+
+`FocusEvent` 实例具有以下属性:
+
+- `FocusEvent.target`: 事件的目标节点
+- `FocusEvent.relatedTarget`: 对于 `focusin` 事件, 返回失去焦点的节点; 对于 `focusout` 事件, 返回将要接受焦点的节点; 对于 `focus` 和 `blur` 事件, 返回 `null`
+
+由于 `focus` 和 `blur` 事件不会冒泡, 只能在捕获阶段触发, 所以 `addEventListener` 方法的第三个参数需要设为 `true`
+
+`CustomEvent` 接口
+^^^^^^^^^^^^^^^^^^^^^^^^
+
+`CustomEvent` 接口用于生成自定义的事件实例
+
+浏览器预定义的事件虽然可以手动生成, 但是往往不能在事件上绑定数据; 如果需要在触发事件的同时, 传入指定的数据, 就可以使用 `CustomEvent` 接口生成的自定义事件对象
+
+浏览器原生提供 `CustomEvent()` 构造函数, 用来生成 `CustomEvent` 事件实例
+
+`CustomEvent()` 构造函数接受两个参数: 第一个参数是字符串, 表示事件的名字, 必须; 第二个参数是事件的配置对象, 可选
+
+`CustomEvent` 的配置对象除了接受 `Event` 事件的配置属性, 只有一个自己的属性 `detail`, 表示事件的附带数据, 默认为 `null`
+
+.. code-block:: javascript
+
+    var event = new CustomEvent('build', { 'detail': 'hello' });
+
+    function eventHandler(e) {
+        console.log(e.detail);
+    }
+
+    document.body.addEventListener('build', function (e) {
+        console.log(e.detail);
+    });
+
+    document.body.dispatchEvent(event);
 
 
 
