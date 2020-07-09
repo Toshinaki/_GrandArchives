@@ -485,6 +485,8 @@ Docker 命令
       - 随机端口映射, 容器内部端口随机映射到主机的端口
     * - `--volume`, `-v`
       - 绑定一个卷
+    * - `--volumes-from`
+      - 从指定的一个或多个容器挂载卷; 实现容器间的数据同步
     * - `--expose=[]`
       - 开放一个端口或一组端口
     * - `--add-host`
@@ -665,10 +667,49 @@ Docker 命令
       - UTS namespace to use
     * - `--volume-driver`
       - Optional volume driver for the container
-    * - `--volumes-from`
-      - Mount volumes from the specified container(s)
     * - `--workdir`, `-w`
       - Working directory inside the container
+
+.. raw:: html
+    
+    <details>
+      <summary><i>匿名挂载, 具名挂载, 指定路径挂载</i></summary>
+
+- `-v 容器内路径` 匿名挂载
+
+    .. code-block:: console
+
+        docker run -d -P --name nginx01 -v /etc/nginx nginx
+    
+    缺点: 不好维护
+
+    通常使用 `docker volume` 命令管理
+
+- `-v 卷名:/容器内路径` 具名挂载
+
+    .. code-block:: console
+
+        docker run -d -P --name nginx02 -v nginxconfig:/etc/nginx nginx
+    
+    之后就可以使用 `nginxconfig` 来管理
+
+    默认以 "/" 开始的为宿主机的绝对路径名 (`/nginxconfig`), 不以 "/" 开始的就是卷名 (`nginxconfig`)
+
+- `-v 宿主机路径:容器内路径` 指定路径挂载
+
+    将宿主机目录与容器内的目录同步; 在一个目录上的操作会反映到另一个目录上
+
+可以设置容器对目录的权限为只读或可读写 (`ro` 为只读; `rw` 为可读写):
+
+.. code-block:: console
+
+    docker run -d -P --name nginx02 -v nginxconfig:/etc/nginx:ro nginx
+    docker run -d -P --name nginx02 -v nginxconfig:/etc/nginx:rw nginx
+
+.. raw:: html
+
+   </details>
+   
 
 .. raw:: html
 
@@ -1447,11 +1488,240 @@ push
    </details>
    
 tag
-build
+
+
+.. raw:: html
+    
+    <details>
+      <summary><b>build</b></summary>
+      
+.. code-block:: console
+
+    docker build [OPTIONS] PATH | URL | -
+
+删除本地一个或多少镜像
+
+.. list-table:: **OPTIONS**
+
+    * - `--add-host`
+      - Add a custom host-to-IP mapping (host:ip)
+    * - `--build-arg`
+      - Set build-time variables
+    * - `--cache-from`
+      - Images to consider as cache sources
+    * - `--cgroup-parent`
+      - Optional parent cgroup for the container
+    * - `--compress`
+      - Compress the build context using gzip
+    * - `--cpu-period`
+      - Limit the CPU CFS (Completely Fair Scheduler) period
+    * - `--cpu-quota`
+      - Limit the CPU CFS (Completely Fair Scheduler) quota
+    * - `--cpu-shares`, `-c`
+      - CPU shares (relative weight)
+    * - `--cpuset-cpus`
+      - CPUs in which to allow execution (0-3, 0,1)
+    * - `--cpuset-mems`
+      - MEMs in which to allow execution (0-3, 0,1)
+    * - `--disable-content-trust`
+      - true	Skip image verification
+    * - `--file`, `-f`
+      - Name of the Dockerfile (Default is ‘PATH/Dockerfile’)
+    * - `--force-rm`
+      - Always remove intermediate containers
+    * - `--iidfile`
+      - Write the image ID to the file
+    * - `--isolation`
+      - Container isolation technology
+    * - `--label`
+      - Set metadata for an image
+    * - `--memory`, `-m`
+      - Memory limit
+    * - `--memory-swap`
+      - Swap limit equal to memory plus swap: ‘-1’ to enable unlimited swap
+    * - `--network`
+      - Set the networking mode for the RUN instructions during build
+    * - `--no-cache`
+      - Do not use cache when building the image
+    * - `--output`, `-o`
+      - Output destination (format: type=local,dest=path)
+    * - `--platform`
+      - Set platform if server is multi-platform capable
+    * - `--progress`
+      - auto	Set type of progress output (auto, plain, tty). Use plain to show container output
+    * - `--pull`
+      - Always attempt to pull a newer version of the image
+    * - `--quiet`, `-q`
+      - Suppress the build output and print image ID on success
+    * - `--rm`
+      - true	Remove intermediate containers after a successful build
+    * - `--secret`
+      - Secret file to expose to the build (only if BuildKit enabled): id=mysecret,src=/local/secret
+    * - `--security-opt`
+      - Security options
+    * - `--shm-size`
+      - Size of /dev/shm
+    * - `--squash`
+      - Squash newly built layers into a single new layer
+    * - `--ssh`
+      - SSH agent socket or keys to expose to the build (only if BuildKit enabled) (format: default|[=|[,]])
+    * - `--stream`
+      - Stream attaches to server to negotiate build context
+    * - `--tag`, `-t`
+      - Name and optionally a tag in the ‘name:tag’ format
+    * - `--target`
+      - Set the target build stage to build.
+    * - `--ulimit`
+      - Ulimit options
+
+.. raw:: html
+    
+    <details>
+      <summary><i></i></summary>
+
+.. code-block:: console
+    
+    
+      
+.. raw:: html
+
+   </details>
+   
+.. raw:: html
+
+   </details>
+   
+
+
+
 history
 save
 load
 import
+
 info|version
+~~~~~~~~~~~~~~~~~~
+
 info
 version
+
+数据卷管理
+~~~~~~~~~~~~~~~~
+
+.. raw:: html
+    
+    <details>
+      <summary><b>volume create</b></summary>
+      
+.. code-block:: console
+
+    docker volume create [OPTIONS] [VOLUME]
+
+新建一个卷
+
+.. list-table:: **OPTIONS**
+
+    * - `--driver`, `-d`
+      - Specify volume driver name (default `local`)
+    * - `--label`	
+      - Set metadata for a volume
+    * - `--name`	
+      - Specify volume name
+    * - `--opt`, -o		
+      - Set driver specific options
+   
+.. raw:: html
+
+   </details>
+   
+.. raw:: html
+    
+    <details>
+      <summary><b>volume inspect</b></summary>
+      
+.. code-block:: console
+
+    docker volume inspect [OPTIONS] VOLUME [VOLUME...]
+
+显示一个或多个卷的详细信息
+
+.. list-table:: **OPTIONS**
+
+    * - `--format`, `-f`
+      - Format the output using the given Go template
+   
+.. raw:: html
+
+   </details>
+   
+.. raw:: html
+    
+    <details>
+      <summary><b>volume ls</b></summary>
+      
+.. code-block:: console
+
+    docker volume ls [OPTIONS]
+
+列出所有卷
+
+.. list-table:: **OPTIONS**
+
+    * - `--filter`, `-f`
+      - Provide filter values (e.g. ‘dangling=true’)
+    * - `--format`
+      - Pretty-print volumes using a Go template
+    * - `--quiet`, `-q`
+      - Only display volume names
+   
+.. raw:: html
+
+   </details>
+   
+.. raw:: html
+    
+    <details>
+      <summary><b>volume prune</b></summary>
+      
+.. code-block:: console
+
+    docker volume prune [OPTIONS]
+
+删除所有未被使用的本地卷
+
+.. list-table:: **OPTIONS**
+
+    * - `--filter`
+      - Provide filter values (e.g. ‘label=’)
+    * - `--force`, `-f`
+      - Do not prompt for confirmation
+   
+.. raw:: html
+
+   </details>
+   
+.. raw:: html
+    
+    <details>
+      <summary><b>volume rm</b></summary>
+      
+.. code-block:: console
+
+    docker volume rm [OPTIONS] VOLUME [VOLUME...]
+
+删除一个或多个卷
+
+.. list-table:: **OPTIONS**
+
+    * - `--force`, `-f`
+      - Force the removal of one or more volumes
+   
+.. raw:: html
+
+   </details>
+   
+
+
+
+
+
